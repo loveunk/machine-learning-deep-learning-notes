@@ -13,9 +13,10 @@ $$ (r-s)^2 = r^2 + s^2 - 2r \cdot\ s \cdot\ cos\theta$$
 ##### Scalar projection
 $$ r \cdot s = |r| \times|s| \times cos\theta $$
 $$ proj_r^s  = \frac{r \cdot s}{|r|} $$
-| 示图 | 说明 |
-| --- | :--- |
-| <img src="./img/vector-projection-r-s.png" width="300" /> | 可以通过向量点乘的原理的来理解这一点，假设$r$是在坐标系$i$上的向量（$r_j = 0$）。那么 $r \cdot s = r_i s_i + r_j s_j = r_i s_i = \vert r \vert s_i$，其中 $s_i = \vert s \vert \cdot cos \theta$，所以 $r \cdot s = \vert r \vert \cdot \vert s \vert \cdot cos \theta$ |
+
+> <p align="center"><img src="./img/vector-projection-r-s.png" width="300" /> </p>
+
+> 可以通过向量点乘的原理的来理解这一点，假设$r$是在坐标系$i$上的向量（$r_j = 0$）。那么 $r \cdot s = r_i s_i + r_j s_j = r_i s_i = \vert r \vert s_i$，其中 $s_i = \vert s \vert \cdot cos \theta$，所以 $r \cdot s = \vert r \vert \cdot \vert s \vert \cdot cos \theta$
 
 ##### Vector projection
 $s$往$r$上的投影向量如下，同样可以用上图来解释
@@ -26,9 +27,9 @@ $$ proj_r^s  = \frac{r \cdot s}{|r| \times |r|} r$$
 for vector $r$ in the axis $(e_1, e_2)$，project its cordinates to $(b_1, b_2)$，the new value is of $r$ is
 $$[\frac{r \cdot b_1}{|b_1|^2} , \frac{r \cdot b_2}{|b_2|^2} ]^T$$
 
->| 示图 | 说明 |
->| --- | --- |
->| <img src="./img/vector-change-basis.png" width="300" /> | In this example, $r = \begin{bmatrix} 2 \\ 0.5 \end{bmatrix}$ |
+> <p align="center"><img src="./img/vector-change-basis.png" width="300" /></p>
+
+> In the aboeve example, $r = \begin{bmatrix} 2 \\ 0.5 \end{bmatrix}$.
 
 ##### Python code to calculate $r$
 ``` python
@@ -97,11 +98,12 @@ $$\begin{aligned}
 \beta _{3}=v_{3}-\left( v_{3}\cdot e_{1}\right) e_{1}-\left( v_{3}\cdot e_{2}\right) e_{2},e_{3}=\dfrac {V_{3}}{\left| v_{3}\right| }\\
 \vdots \\
 \beta _{n}=v_{n}-\sum ^{n-1}_{i=1}\left( v_{n}e_{i}\right) e_{i},e_{n}=\dfrac {V_{n}}{\left| v_{n}\right| }
-\end{aligned}$$
+\end{aligned} $$
+
 After above process, $\beta_ij = 0$, for any $i,j$.
 
 ### Reflecting in a plane
-$r' = E \cdot T_E \cdot E^{-1} \cdot r$
+$$ r' = E \cdot T_E \cdot E^{-1} \cdot r $$
 $E$ is calculated via the gram-schmidt process, $T_E$ is the transformation matrix in the basic plane.
 $E^{-1} \cdot r$ stands for covert $r$ to $E$'s plane, $T_E \cdot E^{-1} \cdot r$ stands for doing $T_E$ transformation in $E$'s plane. Finally, $E \cdot$ goes back to the original plane.
 > <p align="center"><img src="./img/matrix-reflecting-in-a-plane.png" width="300"/></p>

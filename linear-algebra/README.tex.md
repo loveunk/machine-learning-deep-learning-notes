@@ -1,4 +1,4 @@
-#Linear Algebra
+# Linear Algebra Notes
 
 ## Vectors
 ### Basic rules
@@ -13,9 +13,9 @@ $$ (r-s)^2 = r^2 + s^2 - 2r \cdot\ s \cdot\ cos\theta$$
 ##### Scalar projection
 $$ r \cdot s = |r| \times|s| \times cos\theta $$
 $$ proj_r^s  = \frac{r \cdot s}{|r|} $$
->| 示图 | 说明 |
->| --- | :--- |
->| <img src="./img/vector-projection-r-s.png" width="300" /> | 可以通过向量点乘的原理的来理解这一点，假设$r$是在坐标系$i$上的向量（$r_j = 0$）。那么 $r \cdot s = r_i s_i + r_j s_j = r_i s_i = |r| s_i$，其中 $s_i = |s| \cdot cos \theta$，所以 $r \cdot s = |r| \cdot |s| \cdot cos \theta$|
+| 示图 | 说明 |
+| --- | :--- |
+| <img src="./img/vector-projection-r-s.png" width="300" /> | 可以通过向量点乘的原理的来理解这一点，假设$r$是在坐标系$i$上的向量（$r_j = 0$）。那么 $r \cdot s = r_i s_i + r_j s_j = r_i s_i = \vert r \vert s_i$，其中 $s_i = \vert s \vert \cdot cos \theta$，所以 $r \cdot s = \vert r \vert \cdot \vert s \vert \cdot cos \theta$ |
 
 ##### Vector projection
 $s$往$r$上的投影向量如下，同样可以用上图来解释
@@ -52,7 +52,8 @@ $$ \begin{bmatrix}
  & 1
 \end{bmatrix}
 \cdot \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} x \\ y \end{bmatrix} $$
-> <p align="center"><img src="./img/matrix-transformation.png"/></p>
+
+> <p align="center"><img src="./img/matrix-transformation.png" width="400"/></p>
 
 #### Relationship between the matrix and rotaion angle $\theta$
 The transformation matrix $= \begin{bmatrix} cos\theta & sin\theta \\ -sin\theta & cos\theta \end{bmatrix}$
@@ -66,7 +67,7 @@ $$A^{-1}A = I$$
 Matrix $A$'s determinant is denoted as $det(A)$ or $|A|$.
 For matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, $|A| = ad - cd$
 
-> <p align="center"><img src="./img/matrix-determinant.png"/></p>
+> <p align="center"><img src="./img/matrix-determinant.png" width="400"/></p>
 
 >一个矩阵的行列式就是一个平行多面体的（定向的）体积，这个多面体的每条边对应着对应矩阵的列。 ------ 俄国数学家阿诺尔德（Vladimir Arnold）《论数学教育》
 
@@ -82,7 +83,7 @@ $$\begin{bmatrix} a_{11} & a_{12} & \ldots & a_{1n} \\ a_{21} & a_{22} & \ldots 
 For matrix $A$ and $B$, $A \cdot B$ can be treated as changing $B$'s basis to that as $A$.
 
 Transform (rotate) $R$ in $B$'s coordinates: $B^{-1} R B$
-> <p align="center"><img src="./img/transformation-in-a-changed-basis.png"/></p>
+> <p align="center"><img src="./img/transformation-in-a-changed-basis.png" width="300"/></p>
 
 
 ### Orthogonal matrices 正交矩阵
@@ -96,14 +97,14 @@ $$\begin{aligned}
 \beta _{3}=v_{3}-\left( v_{3}\cdot e_{1}\right) e_{1}-\left( v_{3}\cdot e_{2}\right) e_{2},e_{3}=\dfrac {V_{3}}{\left| v_{3}\right| }\\
 \vdots \\
 \beta _{n}=v_{n}-\sum ^{n-1}_{i=1}\left( v_{n}e_{i}\right) e_{i},e_{n}=\dfrac {V_{n}}{\left| v_{n}\right| }
-\end{aligned} $$
-After above process, $\beta_ij = 0$, for any $i,j$
+\end{aligned}$$
+After above process, $\beta_ij = 0$, for any $i,j$.
 
 ### Reflecting in a plane
 $r' = E \cdot T_E \cdot E^{-1} \cdot r$
 $E$ is calculated via the gram-schmidt process, $T_E$ is the transformation matrix in the basic plane.
 $E^{-1} \cdot r$ stands for covert $r$ to $E$'s plane, $T_E \cdot E^{-1} \cdot r$ stands for doing $T_E$ transformation in $E$'s plane. Finally, $E \cdot$ goes back to the original plane.
-> <p align="center"><img src="./img/matrix-reflecting-in-a-plane.png"/></p>
+> <p align="center"><img src="./img/matrix-reflecting-in-a-plane.png" width="300"/></p>
 
 ### Eigenvectors and Eigenvalues 特征向量和特征值
 For matrix $A$, $A$'s eigenvector $v$ should satisfies $Av=\lambda v$, where $\lambda$ is a $scalar$ and it's the eigenvalue.
@@ -117,7 +118,7 @@ $C=\begin{pmatrix} x_{1} & x_{2} & x_{3} \\ \vdots & \vdots & \vdots \end{pmatri
 $T=CDC^{-1}$
 $T^2=CDC^{-1}CDC^{-1}=CD^2C^{-1}$
 $T^n=CD^nC^{-1}$
-> <p align="center"><img src="./img/Eigenbasis-example.png"/></p>
+> <p align="center"><img src="./img/Eigenbasis-example.png" width="300"/></p>
 
 $C$ is from the eigenvectors. $D$ is constructed with eigenvalues.
 

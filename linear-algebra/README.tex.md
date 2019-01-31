@@ -15,7 +15,7 @@ $$ r \cdot s = |r| \times|s| \times cos\theta $$
 $$ proj_r^s  = \frac{r \cdot s}{|r|} $$
 >| 示图 | 说明 |
 >| --- | :--- |
->| <img src="./img/vector-projection-r-s.png" width="300" /> | 可以通过向量点乘的原理的来理解这一点，假设$r$是在坐标系$i$上的向量（$r_j = 0$）。那么$r\cdot s = r_i s_i + r_j s_j = r_i s_i = |r| s_i$，其中 $s_i = |s| \cdot cos\theta$，所以$ r \cdot s = |r| \cdot |s| \cdot cos\theta $ |
+>| <img src="./img/vector-projection-r-s.png" width="300" /> | 可以通过向量点乘的原理的来理解这一点，假设$r$是在坐标系$i$上的向量（$r_j = 0$）。那么 $r\cdot s = r_i s_i + r_j s_j = r_i s_i = |r| s_i$，其中 $s_i = |s| \cdot cos\theta$，所以 $r \cdot s = |r| \cdot |s| \cdot cos \theta$|
 
 ##### Vector projection
 $s$往$r$上的投影向量如下，同样可以用上图来解释
@@ -27,7 +27,7 @@ for vector $r$ in the axis $(e_1, e_2)$，project its cordinates to $(b_1, b_2)$
 
 >| 示图 | 说明 |
 >| --- | --- |
->| <img src="./img/vector-change-basis.png" width="300" /> | In this example, $r = \begin{bmatrix} 2 \\ 0.5 \end{bmatrix} $ |
+>| <img src="./img/vector-change-basis.png" width="300" /> | In this example, $r = \begin{bmatrix} 2 \\ 0.5 \end{bmatrix}$ |
 
 ##### Python code to calculate $r$
 ``` python
@@ -113,7 +113,7 @@ According to the definition of eigenvector, we can have $det(A - \lambda  I) = 0
 
 #### Changing the Eigenbasis
 $C=\begin{pmatrix} x_{1} & x_{2} & x_{3} \\ \vdots & \vdots & \vdots \end{pmatrix}$, $D=\begin{pmatrix}
-$ \lambda_1 & 0 & 0 \\ 0 & \lambda_{2} & 0 \\ 0 & 0 & \lambda_{3} \end{pmatrix}$, $T^n=\begin{pmatrix} a^n & 0 & 0 \\ 0 & b^n & 0 \\ 0 & 0 & c^n \end{pmatrix} $
+$ \lambda_1 & 0 & 0 \\ 0 & \lambda_{2} & 0 \\ 0 & 0 & \lambda_{3} \end{pmatrix}$, $T^n=\begin{pmatrix} a^n & 0 & 0 \\ 0 & b^n & 0 \\ 0 & 0 & c^n \end{pmatrix}$
 $T=CDC^{-1}$
 $T^2=CDC^{-1}CDC^{-1}=CD^2C^{-1}$
 $T^n=CD^nC^{-1}$

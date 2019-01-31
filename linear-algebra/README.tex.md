@@ -104,9 +104,10 @@ After above process, $\beta_ij = 0$, for any $i,j$.
 
 ### Reflecting in a plane
 $$ r' = E \cdot T_E \cdot E^{-1} \cdot r $$
-$E$ is calculated via the gram-schmidt process, $T_E$ is the transformation matrix in the basic plane.
-$E^{-1} \cdot r$ stands for covert $r$ to $E$'s plane, $T_E \cdot E^{-1} \cdot r$ stands for doing $T_E$ transformation in $E$'s plane. Finally, $E \cdot$ goes back to the original plane.
-> <p align="center"><img src="./img/matrix-reflecting-in-a-plane.png" width="300"/></p>
+
+Where $E$ is calculated via the gram-schmidt process, $T_E$ is the transformation matrix in the basic plane. $E^{-1} \cdot r$ stands for coverting $r$ to $E$'s plane, $T_E \cdot E^{-1} \cdot r$ stands for doing $T_E$ transformation in $E$'s plane. Finally, $E$ goes back to the original plane.
+
+<p align="center"><img src="./img/matrix-reflecting-in-a-plane.png" width="300"/></p>
 
 ### Eigenvectors and Eigenvalues 特征向量和特征值
 For matrix $A$, $A$'s eigenvector $v$ should satisfies $Av=\lambda v$, where $\lambda$ is a $scalar$ and it's the eigenvalue.

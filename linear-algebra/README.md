@@ -13,9 +13,10 @@
 ##### Scalar projection
 <p align="center"><img src="/linear-algebra/tex/4638742f5e0a8676951049ddd39aa57f.svg?invert_in_darkmode&sanitize=true" align=middle width=154.35462074999998pt height=16.438356pt/></p>
 <p align="center"><img src="/linear-algebra/tex/137eef3148f2b6f46e0e9895dd9a8ae9.svg?invert_in_darkmode&sanitize=true" align=middle width=90.18891914999999pt height=33.81210195pt/></p>
-| 示图 | 说明 |
-| --- | :--- |
-| <img src="./img/vector-projection-r-s.png" width="300" /> | 可以通过向量点乘的原理的来理解这一点，假设<img src="/linear-algebra/tex/89f2e0d2d24bcf44db73aab8fc03252c.svg?invert_in_darkmode&sanitize=true" align=middle width=7.87295519999999pt height=14.15524440000002pt/>是在坐标系<img src="/linear-algebra/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align=middle width=5.663225699999989pt height=21.68300969999999pt/>上的向量（<img src="/linear-algebra/tex/3cd2a27357b75c79b6fa6f5355a41346.svg?invert_in_darkmode&sanitize=true" align=middle width=44.47956314999999pt height=21.18721440000001pt/>）。那么 <img src="/linear-algebra/tex/1f52075e5d9534b10dc52df12f030fdf.svg?invert_in_darkmode&sanitize=true" align=middle width=223.76567400000002pt height=24.65753399999998pt/>，其中 <img src="/linear-algebra/tex/2e3672a24fbcd6fb067199052bdd3ceb.svg?invert_in_darkmode&sanitize=true" align=middle width=94.76667749999999pt height=24.65753399999998pt/>，所以 <img src="/linear-algebra/tex/57f0f45daa8ac4703678be80baa6d025.svg?invert_in_darkmode&sanitize=true" align=middle width=137.91620204999998pt height=24.65753399999998pt/> |
+
+> <p align="center"><img src="./img/vector-projection-r-s.png" width="300" /> </p>
+
+> 可以通过向量点乘的原理的来理解这一点，假设<img src="/linear-algebra/tex/89f2e0d2d24bcf44db73aab8fc03252c.svg?invert_in_darkmode&sanitize=true" align=middle width=7.87295519999999pt height=14.15524440000002pt/>是在坐标系<img src="/linear-algebra/tex/77a3b857d53fb44e33b53e4c8b68351a.svg?invert_in_darkmode&sanitize=true" align=middle width=5.663225699999989pt height=21.68300969999999pt/>上的向量（<img src="/linear-algebra/tex/3cd2a27357b75c79b6fa6f5355a41346.svg?invert_in_darkmode&sanitize=true" align=middle width=44.47956314999999pt height=21.18721440000001pt/>）。那么 <img src="/linear-algebra/tex/1f52075e5d9534b10dc52df12f030fdf.svg?invert_in_darkmode&sanitize=true" align=middle width=223.76567400000002pt height=24.65753399999998pt/>，其中 <img src="/linear-algebra/tex/2e3672a24fbcd6fb067199052bdd3ceb.svg?invert_in_darkmode&sanitize=true" align=middle width=94.76667749999999pt height=24.65753399999998pt/>，所以 <img src="/linear-algebra/tex/57f0f45daa8ac4703678be80baa6d025.svg?invert_in_darkmode&sanitize=true" align=middle width=137.91620204999998pt height=24.65753399999998pt/>
 
 ##### Vector projection
 <img src="/linear-algebra/tex/6f9bad7347b91ceebebd3ad7e6f6f2d1.svg?invert_in_darkmode&sanitize=true" align=middle width=7.7054801999999905pt height=14.15524440000002pt/>往<img src="/linear-algebra/tex/89f2e0d2d24bcf44db73aab8fc03252c.svg?invert_in_darkmode&sanitize=true" align=middle width=7.87295519999999pt height=14.15524440000002pt/>上的投影向量如下，同样可以用上图来解释
@@ -26,9 +27,9 @@
 for vector <img src="/linear-algebra/tex/89f2e0d2d24bcf44db73aab8fc03252c.svg?invert_in_darkmode&sanitize=true" align=middle width=7.87295519999999pt height=14.15524440000002pt/> in the axis <img src="/linear-algebra/tex/0558930693deb29567044c994aea539c.svg?invert_in_darkmode&sanitize=true" align=middle width=50.14851269999999pt height=24.65753399999998pt/>，project its cordinates to <img src="/linear-algebra/tex/c701722573d311c8a477072ac0fda939.svg?invert_in_darkmode&sanitize=true" align=middle width=48.94982894999999pt height=24.65753399999998pt/>，the new value is of <img src="/linear-algebra/tex/89f2e0d2d24bcf44db73aab8fc03252c.svg?invert_in_darkmode&sanitize=true" align=middle width=7.87295519999999pt height=14.15524440000002pt/> is
 <p align="center"><img src="/linear-algebra/tex/fa0ee461fa76017e6e13b569c22d0b5b.svg?invert_in_darkmode&sanitize=true" align=middle width=102.2107449pt height=37.9216761pt/></p>
 
->| 示图 | 说明 |
->| --- | --- |
->| <img src="./img/vector-change-basis.png" width="300" /> | In this example, <img src="/linear-algebra/tex/a5b9f6119dc7fc37d8ebc607b7f311fe.svg?invert_in_darkmode&sanitize=true" align=middle width=68.14689915pt height=47.6716218pt/> |
+> <p align="center"><img src="./img/vector-change-basis.png" width="300" /></p>
+
+> In the aboeve example, <img src="/linear-algebra/tex/a5b9f6119dc7fc37d8ebc607b7f311fe.svg?invert_in_darkmode&sanitize=true" align=middle width=68.14689915pt height=47.6716218pt/>.
 
 ##### Python code to calculate <img src="/linear-algebra/tex/89f2e0d2d24bcf44db73aab8fc03252c.svg?invert_in_darkmode&sanitize=true" align=middle width=7.87295519999999pt height=14.15524440000002pt/>
 ``` python
@@ -84,11 +85,12 @@ If <img src="/linear-algebra/tex/53d147e7f3fe6e47ee05b88b166bd3f6.svg?invert_in_
 
 ### The Gram–Schmidt process
 如果内积空间上的一组向量能够组成一个子空间，那么这一组向量就称为这个子空间的一个基。Gram－Schmidt正交化提供了一种方法，能够通过这一子空间上的一个基得出子空间的一个正交基，并可进一步求出对应的标准正交基。
-<p align="center"><img src="/linear-algebra/tex/64dccc6905efcb77fe1ba27f6969399e.svg?invert_in_darkmode&sanitize=true" align=middle width=312.38068949999996pt height=215.03230814999998pt/></p>
+<p align="center"><img src="/linear-algebra/tex/ce1a029072950702be7398ec28eb73fc.svg?invert_in_darkmode&sanitize=true" align=middle width=312.38068949999996pt height=215.03230814999998pt/></p>
+
 After above process, <img src="/linear-algebra/tex/635109484d0cb7219d82c571275998d6.svg?invert_in_darkmode&sanitize=true" align=middle width=52.61801819999998pt height=22.831056599999986pt/>, for any <img src="/linear-algebra/tex/4fe48dde86ac2d37419f0b35d57ac460.svg?invert_in_darkmode&sanitize=true" align=middle width=20.679527549999985pt height=21.68300969999999pt/>.
 
 ### Reflecting in a plane
-<img src="/linear-algebra/tex/6076a4ff36fc037df7c79269d7f83fbd.svg?invert_in_darkmode&sanitize=true" align=middle width=142.41540554999997pt height=26.76175259999998pt/>
+<p align="center"><img src="/linear-algebra/tex/e72bcaa0ca647c0608cd5fe51ddc0788.svg?invert_in_darkmode&sanitize=true" align=middle width=142.4154039pt height=16.66852275pt/></p>
 <img src="/linear-algebra/tex/84df98c65d88c6adf15d4645ffa25e47.svg?invert_in_darkmode&sanitize=true" align=middle width=13.08219659999999pt height=22.465723500000017pt/> is calculated via the gram-schmidt process, <img src="/linear-algebra/tex/08376a7e30918bb08996d4dec5494dbc.svg?invert_in_darkmode&sanitize=true" align=middle width=19.889337599999987pt height=22.465723500000017pt/> is the transformation matrix in the basic plane.
 <img src="/linear-algebra/tex/90ef2fdf0a9392b85da459e8aafb9092.svg?invert_in_darkmode&sanitize=true" align=middle width=50.47557239999999pt height=26.76175259999998pt/> stands for covert <img src="/linear-algebra/tex/89f2e0d2d24bcf44db73aab8fc03252c.svg?invert_in_darkmode&sanitize=true" align=middle width=7.87295519999999pt height=14.15524440000002pt/> to <img src="/linear-algebra/tex/84df98c65d88c6adf15d4645ffa25e47.svg?invert_in_darkmode&sanitize=true" align=middle width=13.08219659999999pt height=22.465723500000017pt/>'s plane, <img src="/linear-algebra/tex/844fe03b1a2d50af7233a576b824eae5.svg?invert_in_darkmode&sanitize=true" align=middle width=83.05878569999999pt height=26.76175259999998pt/> stands for doing <img src="/linear-algebra/tex/08376a7e30918bb08996d4dec5494dbc.svg?invert_in_darkmode&sanitize=true" align=middle width=19.889337599999987pt height=22.465723500000017pt/> transformation in <img src="/linear-algebra/tex/84df98c65d88c6adf15d4645ffa25e47.svg?invert_in_darkmode&sanitize=true" align=middle width=13.08219659999999pt height=22.465723500000017pt/>'s plane. Finally, <img src="/linear-algebra/tex/33797a5069cf3d138d6d1f1c0fb33043.svg?invert_in_darkmode&sanitize=true" align=middle width=17.64840164999999pt height=22.465723500000017pt/> goes back to the original plane.
 > <p align="center"><img src="./img/matrix-reflecting-in-a-plane.png" width="300"/></p>

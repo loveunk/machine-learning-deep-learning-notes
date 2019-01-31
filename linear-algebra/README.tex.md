@@ -15,7 +15,7 @@ $$ r \cdot s = |r| \times|s| \times cos\theta $$
 $$ proj_r^s  = \frac{r \cdot s}{|r|} $$
 >| 示图 | 说明 |
 >| --- | :--- |
->| <img src="./img/vector-projection-r-s.png" width="300" /> | 可以通过向量点乘的原理的来理解这一点，假设$r$是在坐标系$i$上的向量（$r_j = 0$）。那么 $r\cdot s = r_i s_i + r_j s_j = r_i s_i = |r| s_i$，其中 $s_i = |s| \cdot cos\theta$，所以 $r \cdot s = |r| \cdot |s| \cdot cos \theta$|
+>| <img src="./img/vector-projection-r-s.png" width="300" /> | 可以通过向量点乘的原理的来理解这一点，假设$r$是在坐标系$i$上的向量（$r_j = 0$）。那么 $r \cdot s = r_i s_i + r_j s_j = r_i s_i = |r| s_i$，其中 $s_i = |s| \cdot cos \theta$，所以 $r \cdot s = |r| \cdot |s| \cdot cos \theta$|
 
 ##### Vector projection
 $s$往$r$上的投影向量如下，同样可以用上图来解释
@@ -23,7 +23,8 @@ $$ proj_r^s  = \frac{r \cdot s}{|r| \times |r|} r$$
 
 ### Changing the reference frame
 #### Change basis
-for vector $r$ in the axis $(e_1, e_2)$，project its cordinates to $(b_1, b_2)$，the new value is of $r$ is $$ [\frac{r \cdot b_1}{|b_1|^2} , \frac{r \cdot b_2}{|b_2|^2} ]^T $$
+for vector $r$ in the axis $(e_1, e_2)$，project its cordinates to $(b_1, b_2)$，the new value is of $r$ is
+$$[\frac{r \cdot b_1}{|b_1|^2} , \frac{r \cdot b_2}{|b_2|^2} ]^T$$
 
 >| 示图 | 说明 |
 >| --- | --- |
@@ -45,7 +46,7 @@ if $r$ is indenpdent to s, $r \ne \alpha \cdot s$, for any $\alpha$
 
 ## Matrices
 #### Transformation
-矩阵$E = [e_1 e_2]$和一个向量$v$相乘可以理解为把$v$在$e_1, e_2$的坐标系上重新投影
+矩阵 $E = [e_1 e_2]$ 和一个向量$v$相乘可以理解为把$v$在$e_1, e_2$的坐标系上重新投影
 $$ \begin{bmatrix}
 1 & 0\\ 0
  & 1
@@ -62,7 +63,7 @@ The transformation matrix $= \begin{bmatrix} cos\theta & sin\theta \\ -sin\theta
 $$A^{-1}A = I$$
 
 #### Determinant (行列式)
-Matrix $A$'s determinant is denoted as $det(A)$ or $|A|.
+Matrix $A$'s determinant is denoted as $det(A)$ or $|A|$.
 For matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, $|A| = ad - cd$
 
 > <p align="center"><img src="./img/matrix-determinant.png"/></p>
@@ -112,8 +113,7 @@ For matrix $A$, $A$'s eigenvector $v$ should satisfies $Av=\lambda v$, where $\l
 According to the definition of eigenvector, we can have $det(A - \lambda  I) = 0$, e.g., $A=\begin{pmatrix} a & b \\ c & d \end{pmatrix}$, then $\det \left( \begin{pmatrix} a &b \\ c & d \end{pmatrix}-\begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} \right) =0$, then  $\lambda ^{2}-\left( a+d\right) \lambda +ad-bc=0$, we get $\lambda$ and use it to calculate the eigenvector.
 
 #### Changing the Eigenbasis
-$C=\begin{pmatrix} x_{1} & x_{2} & x_{3} \\ \vdots & \vdots & \vdots \end{pmatrix}$, $D=\begin{pmatrix}
-$ \lambda_1 & 0 & 0 \\ 0 & \lambda_{2} & 0 \\ 0 & 0 & \lambda_{3} \end{pmatrix}$, $T^n=\begin{pmatrix} a^n & 0 & 0 \\ 0 & b^n & 0 \\ 0 & 0 & c^n \end{pmatrix}$
+$C=\begin{pmatrix} x_{1} & x_{2} & x_{3} \\ \vdots & \vdots & \vdots \end{pmatrix}$, $D=\begin{pmatrix} \lambda_1 & 0 & 0 \\ 0 & \lambda_{2} & 0 \\ 0 & 0 & \lambda_{3} \end{pmatrix}$, $T^n=\begin{pmatrix} a^n & 0 & 0 \\ 0 & b^n & 0 \\ 0 & 0 & c^n \end{pmatrix}$
 $T=CDC^{-1}$
 $T^2=CDC^{-1}CDC^{-1}=CD^2C^{-1}$
 $T^n=CD^nC^{-1}$

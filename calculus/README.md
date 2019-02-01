@@ -1,6 +1,21 @@
 # Calculus Notes 微积分
 
-## Derivative 倒数
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Calculus Notes 微积分](#calculus-notes-微积分)
+	- [Derivative 导数](#derivative-导数)
+		- [Rules](#rules)
+			- [Sum / Subtraction rule 线性法则](#sum-subtraction-rule-线性法则)
+			- [Power rule 指数法则](#power-rule-指数法则)
+			- [Other rule 其他](#other-rule-其他)
+		- [Product rule 乘积法则](#product-rule-乘积法则)
+		- [Chain rule 链式法则](#chain-rule-链式法则)
+	- [Partial Derivative 偏导数](#partial-derivative-偏导数)
+		- [Definitions](#definitions)
+
+<!-- /TOC -->
+
+## Derivative 导数
 Definition:
 <p align="center"><img src="/calculus/tex/08e96921bcaeaddd7a86d676ecda4c64.svg?invert_in_darkmode&sanitize=true" align=middle width=299.17671794999995pt height=39.452455349999994pt/></p>
 
@@ -27,3 +42,11 @@ if <img src="/calculus/tex/c96be4c1fe26be551262160288e019fb.svg?invert_in_darkmo
 ### Chain rule 链式法则
 * <img src="/calculus/tex/e0cd8211f1b6f71d6f0f655e3a3822ce.svg?invert_in_darkmode&sanitize=true" align=middle width=172.79128514999996pt height=24.7161288pt/>
 > 可以想象成两个函数分别求导，再求乘积，例子如下图 <p align="center"><img src="./img/derivative-chain-rule-explanation.png" width="300" /> </p>
+
+## Partial Derivative 偏导数
+### Definitions
+A partial derivative of a function of several variables is its derivative with respect to one of those variables, with the others held constant. <br/>
+一个多变量的函数的偏导数是它关于其中一个变量的导数，而保持其他变量恒定。
+
+Denoted by
+<img src="/calculus/tex/0b1468f8c8af2024c8e55b39eb3e58a3.svg?invert_in_darkmode&sanitize=true" align=middle width=246.13603080000001pt height=30.648287999999997pt/> or  <img src="/calculus/tex/6572ae083bad5b8434549f6081c959ab.svg?invert_in_darkmode&sanitize=true" align=middle width=172.24168995pt height=30.648287999999997pt/>

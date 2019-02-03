@@ -30,6 +30,7 @@ $$ f'(x) = abx^{b-1} $$
 #### Other rule 其他
 * $f(x) =\dfrac {1}{x}, f'(x) = -\dfrac{1}{x^{2}}$
 * $f(x) = e^{x},  f'(x) = e^x$
+* $f(x) = log_a(x), f'(x) = \frac{1}{x\ln(a)}$
 * $f(x) = sin(x), f'(x) = cos(x)$
 * $f(x) = cos(x), f'(x) = -sin(x)$
 

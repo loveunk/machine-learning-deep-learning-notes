@@ -30,6 +30,7 @@ if <img src="/calculus/tex/c96be4c1fe26be551262160288e019fb.svg?invert_in_darkmo
 #### Other rule 其他
 * <img src="/calculus/tex/d5232b97a6802f7d17313b07dcce7b26.svg?invert_in_darkmode&sanitize=true" align=middle width=164.61630569999997pt height=43.42856099999997pt/>
 * <img src="/calculus/tex/7ac9c567818db293dd86c778d60edd3b.svg?invert_in_darkmode&sanitize=true" align=middle width=150.7876029pt height=24.7161288pt/>
+* <img src="/calculus/tex/3d7eeb2868aebdb290b8f30fb8925837.svg?invert_in_darkmode&sanitize=true" align=middle width=210.97660484999997pt height=27.77565449999998pt/>
 * <img src="/calculus/tex/ff83fac3f8592cd90af956224edd9219.svg?invert_in_darkmode&sanitize=true" align=middle width=210.13244669999997pt height=24.7161288pt/>
 * <img src="/calculus/tex/5fd832a490eb3bf1a35e49a22c928e75.svg?invert_in_darkmode&sanitize=true" align=middle width=222.91788089999997pt height=24.7161288pt/>
 

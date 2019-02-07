@@ -51,3 +51,32 @@ A partial derivative of a function of several variables is its derivative with r
 
 Denoted by
 $f'_x, f_x, \partial_x f,\ D_xf, D_1f, \frac{\partial}{\partial x}f, \text{ or } \frac{\partial f}{\partial x}.$ or  $f_x(x, y, \ldots), \frac{\partial f}{\partial x} (x, y, \ldots)$
+
+## Jacobians - vectors of derivatives
+## Hessian
+
+# Neural Networks
+## Simple neural networks
+## Backpropagation
+
+# Taylor series
+When x = 0, we have
+$$\sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( 0\right) }{n!}x^{n}$$
+When
+$$ \begin {aligned}
+f(x) &= f(p)\\
+f(x) &= f(p) + f'(p)(x-p)\\
+f(x) &= f(p) + f'(p)(x-p) + \frac{1}{2}f''(p-p)(x-p)^2\\
+f(x) &= \sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( p\right) }{n!}(x-p)^{n}
+\end {aligned} $$
+
+## Multivariable Taylor Series
+
+# Optimisation - min and max with constraints
+## Newton-Raphson 牛顿-拉弗森方法
+## Gradient Descent
+## Lagrange multipliers 拉格朗日乘数
+
+# Linear Regression
+
+# Non-linear Regression

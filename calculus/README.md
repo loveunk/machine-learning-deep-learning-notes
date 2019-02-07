@@ -51,3 +51,27 @@ A partial derivative of a function of several variables is its derivative with r
 
 Denoted by
 <img src="/calculus/tex/0b1468f8c8af2024c8e55b39eb3e58a3.svg?invert_in_darkmode&sanitize=true" align=middle width=246.13603080000001pt height=30.648287999999997pt/> or  <img src="/calculus/tex/6572ae083bad5b8434549f6081c959ab.svg?invert_in_darkmode&sanitize=true" align=middle width=172.24168995pt height=30.648287999999997pt/>
+
+## Jacobians - vectors of derivatives
+## Hessian
+
+# Neural Networks
+## Simple neural networks
+## Backpropagation
+
+# Taylor series
+When x = 0, we have
+<p align="center"><img src="/calculus/tex/aeee31ee512cf115f775095fd93a5871.svg?invert_in_darkmode&sanitize=true" align=middle width=101.75946pt height=44.91258585pt/></p>
+When
+<p align="center"><img src="/calculus/tex/f3d7696510403d1867a0dd33e4600828.svg?invert_in_darkmode&sanitize=true" align=middle width=347.89482749999996pt height=135.38765625pt/></p>
+
+## Multivariable Taylor Series
+
+# Optimisation - min and max with constraints
+## Newton-Raphson 牛顿-拉弗森方法
+## Gradient Descent
+## Lagrange multipliers 拉格朗日乘数
+
+# Linear Regression
+
+# Non-linear Regression

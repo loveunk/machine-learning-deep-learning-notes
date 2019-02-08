@@ -75,3 +75,9 @@ When
 # Linear Regression
 
 # Non-linear Regression
+## Steepest Descent
+<p align="center"><img src="/calculus/tex/7323a732de923a1aaf5745f76b8db0d5.svg?invert_in_darkmode&sanitize=true" align=middle width=144.40847685pt height=40.11819404999999pt/></p>
+
+<p align="center"><img src="/calculus/tex/5181baed84b827deee3f108bef66e023.svg?invert_in_darkmode&sanitize=true" align=middle width=152.67284834999998pt height=18.312383099999998pt/></p>
+
+<p align="center"><img src="/calculus/tex/9b9662cda0db60a22561474c88ef9bbf.svg?invert_in_darkmode&sanitize=true" align=middle width=287.8009431pt height=38.973783749999996pt/></p>

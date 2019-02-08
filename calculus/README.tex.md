@@ -80,3 +80,9 @@ f(x) &= \sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( p\right) }{n!}(x
 # Linear Regression
 
 # Non-linear Regression
+## Steepest Descent
+$$ \mathbf{J} = \left[ \frac{\partial ( \chi^2 ) }{\partial \mu} , \frac{\partial ( \chi^2 ) }{\partial \sigma} \right] $$
+
+$$ \chi^2 = |\mathbf{y} - f(\mathbf{x};\mu, \sigma)|^2 $$
+
+$$ \frac{\partial ( \chi^2 ) }{\partial \mu} = -2 (\mathbf{y} - f(\mathbf{x};\mu, \sigma)) \cdot \frac{\partial f}{\partial \mu}(\mathbf{x};\mu, \sigma)$$

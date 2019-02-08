@@ -3,3 +3,5 @@
 1. [Calculus](calculus)
 
 1. [Linear Algebra](linear-algebra)
+
+1. [PCA](pca)

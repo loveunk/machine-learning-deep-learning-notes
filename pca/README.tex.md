@@ -45,3 +45,13 @@ $$ x^Ty = ||x|| \cdot ||y|| cos(\theta) $$
 
 计算角度
 * $cos(w) = \frac{\langle x, y\rangle}{|x|\cdot|y|}$
+
+### Inner product of functions
+Example:
+$$ \langle u, v \rangle = \int ^{b}_{a}u\left( x\right) v\left( x\right)dx $$
+In this example, $u(x) = sin(x), v(x) = cos(x), f(x) = sin(x)cos(x)$
+
+### Inner product of random variables
+Example:
+$$ \langle x, y \rangle = cov [x, y] $$
+where $||x|| = \sqrt{cov[x,x]} = \sqrt{var[x]} = \sigma(x)$ and $||y|| = \sigma(y)$

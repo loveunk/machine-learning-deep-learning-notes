@@ -24,7 +24,7 @@ For matrix $D = \{x_1, x_2, ..., x_n\}, x \in R^p$
 $$ x^Ty = \sum_{d=1}^{D} x_d y_d, x,y\in R^D $$
 
 #### Geometric definition 几何定义
-$$ x^Ty = ||x|| ||y|| cos(\theta) $$
+$$ x^Ty = ||x|| \cdot ||y|| cos(\theta) $$
 
 ### Inner product 内积
 定义：对于 $x , y\in V$，内积 $\langle x, y \rangle的定义为x, y 到实数R的映射: V\times V -> R$，内积具有如下性质：
@@ -37,3 +37,11 @@ $$ x^Ty = ||x|| ||y|| cos(\theta) $$
   * $\langle x, y \rangle = \langle y, x \rangle$
 
 如果定义 $\langle x, y \rangle = x^TAy$，当$A=I$，则其和x，y的点积一致，否则不同。
+
+#### Inner product properties
+* $||\lambda x|| = |\lambda| \cdot ||x||$
+* $||x + y|| \leq ||x|| + ||y||$
+* $|\langle x, y\rangle| \leq ||x|| \cdot ||y||$
+
+计算角度
+* $cos(w) = \frac{\langle x, y\rangle}{|x|\cdot|y|}$

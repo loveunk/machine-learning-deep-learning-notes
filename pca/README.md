@@ -24,7 +24,7 @@ For matrix <img src="/pca/tex/c40a373054f74758866fb2c35baf329d.svg?invert_in_dar
 <p align="center"><img src="/pca/tex/312d2f414d1bd623f930852764eb9972.svg?invert_in_darkmode&sanitize=true" align=middle width=186.04350929999998pt height=48.18280005pt/></p>
 
 #### Geometric definition 几何定义
-<p align="center"><img src="/pca/tex/abe132a79e10c14af7c0790312d3386b.svg?invert_in_darkmode&sanitize=true" align=middle width=148.6376991pt height=18.7598829pt/></p>
+<p align="center"><img src="/pca/tex/d1550d19537fa87033aae6c3ac37bbe6.svg?invert_in_darkmode&sanitize=true" align=middle width=160.5096801pt height=18.7598829pt/></p>
 
 ### Inner product 内积
 定义：对于 <img src="/pca/tex/a0a901384136988a9d6d78e56ddbdbf5.svg?invert_in_darkmode&sanitize=true" align=middle width=58.68325154999999pt height=22.465723500000017pt/>，内积 <img src="/pca/tex/97b1a397fad4dd310d999b59a0255d0d.svg?invert_in_darkmode&sanitize=true" align=middle width=183.67926885pt height=24.65753399999998pt/>，内积具有如下性质：
@@ -37,3 +37,11 @@ For matrix <img src="/pca/tex/c40a373054f74758866fb2c35baf329d.svg?invert_in_dar
   * <img src="/pca/tex/4a48cdf0f489164ef3ba7020880d066a.svg?invert_in_darkmode&sanitize=true" align=middle width=98.1886521pt height=24.65753399999998pt/>
 
 如果定义 <img src="/pca/tex/b7911fe0e9dbfaf20f81aa5ad5a26229.svg?invert_in_darkmode&sanitize=true" align=middle width=100.78174589999998pt height=27.6567522pt/>，当<img src="/pca/tex/6cba520138110bd6f4fe5ebaf7498303.svg?invert_in_darkmode&sanitize=true" align=middle width=42.762416399999985pt height=22.465723500000017pt/>，则其和x，y的点积一致，否则不同。
+
+#### Inner product properties
+* <img src="/pca/tex/8dc33a58bec631b6a60db1eea1137a61.svg?invert_in_darkmode&sanitize=true" align=middle width=117.41999444999998pt height=24.65753399999998pt/>
+* <img src="/pca/tex/ad0051711b5ac0c26c3d1f0bba3e10da.svg?invert_in_darkmode&sanitize=true" align=middle width=152.98308959999997pt height=24.65753399999998pt/>
+* <img src="/pca/tex/bf49d4b9fcd341637305404332117c24.svg?invert_in_darkmode&sanitize=true" align=middle width=135.63155759999998pt height=24.65753399999998pt/>
+
+计算角度
+* <img src="/pca/tex/6e22d99d884fa03d39ae405e5030a15f.svg?invert_in_darkmode&sanitize=true" align=middle width=105.72848549999998pt height=33.20539859999999pt/>

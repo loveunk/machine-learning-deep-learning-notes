@@ -1,4 +1,27 @@
-# PCA
+# PCA - Principal Component Analysis
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [PCA - Principal Component Analysis](#pca-principal-component-analysis)
+	- [Varianes & Covariances 方差 & 协方差](#varianes-covariances-方差-协方差)
+		- [Variance 方差](#variance-方差)
+		- [Covariance 协方差](#covariance-协方差)
+		- [Rules 方差规则](#rules-方差规则)
+	- [Product](#product)
+		- [Dot product](#dot-product)
+			- [Algebraic definition 代数定义](#algebraic-definition-代数定义)
+			- [Geometric definition 几何定义](#geometric-definition-几何定义)
+		- [Inner product 内积](#inner-product-内积)
+			- [Inner product properties](#inner-product-properties)
+		- [Inner product of functions](#inner-product-of-functions)
+		- [Inner product of random variables](#inner-product-of-random-variables)
+	- [Projection 投影](#projection-投影)
+		- [Projection onto 1D subspaces 投影到一维空间](#projection-onto-1d-subspaces-投影到一维空间)
+		- [Projections onto higher-dimentional subspaces 投影到高维空间](#projections-onto-higher-dimentional-subspaces-投影到高维空间)
+	- [PCA derivation](#pca-derivation)
+	- [References](#references)
+
+<!-- /TOC -->
+PCA是一种数据线性降维的方法，在学习PCA之前，先回顾一些基础知识。
 
 ## Varianes & Covariances 方差 & 协方差
 ### Variance 方差
@@ -83,4 +106,19 @@ Then, we get
 where <img src="/pca/tex/4862bc7dff092e4d615aac59f705af07.svg?invert_in_darkmode&sanitize=true" align=middle width=75.94082099999999pt height=77.26096289999998pt/>, <img src="/pca/tex/746ccb5a2c0d33096aaec720e2925c4c.svg?invert_in_darkmode&sanitize=true" align=middle width=107.81621894999998pt height=27.94539330000001pt/>
 
 推导如下：
-<p align="center"><img src="/pca/tex/c31dc5cdf1939fde09d2b025d06508a2.svg?invert_in_darkmode&sanitize=true" align=middle width=278.2362759pt height=188.51225415pt/></p>
+<p align="center"><img src="/pca/tex/808301ef48677b2fa6fed66bef3a1a80.svg?invert_in_darkmode&sanitize=true" align=middle width=278.2362759pt height=188.51225415pt/></p>
+
+## PCA derivation
+**问题描述**：对于点集合 <img src="/pca/tex/500a0e9bbdb59bc7107074da65cc7e1f.svg?invert_in_darkmode&sanitize=true" align=middle width=168.23207445pt height=27.6567522pt/>，希望找到一个映射集合 <img src="/pca/tex/a20246caf18614d8d3f603f8fc269282.svg?invert_in_darkmode&sanitize=true" align=middle width=122.45864234999998pt height=27.6567522pt/>, <img src="/pca/tex/d3aa71141bc89a24937c86ec1d350a7c.svg?invert_in_darkmode&sanitize=true" align=middle width=11.705695649999988pt height=22.831056599999986pt/>是正交基, <img src="/pca/tex/3d13090ef3ed1448f3c4dc166d06ab4d.svg?invert_in_darkmode&sanitize=true" align=middle width=13.948864049999989pt height=22.831056599999986pt/>是正交基系数。有如下推导：
+1. <img src="/pca/tex/f30461f3f01320f83f7041446c652dad.svg?invert_in_darkmode&sanitize=true" align=middle width=117.0710508pt height=32.256008400000006pt/>
+2. <img src="/pca/tex/2d9bda5fcac2f022666c27d11ec00101.svg?invert_in_darkmode&sanitize=true" align=middle width=76.27068734999999pt height=27.6567522pt/>（这是假设使用的是点积，那么 <img src="/pca/tex/0060675245d6343a9bcdc3efc9137c76.svg?invert_in_darkmode&sanitize=true" align=middle width=56.51844989999999pt height=22.831056599999986pt/> 和 <img src="/pca/tex/d3aa71141bc89a24937c86ec1d350a7c.svg?invert_in_darkmode&sanitize=true" align=middle width=11.705695649999988pt height=22.831056599999986pt/> 正交）
+3. <img src="/pca/tex/b8b1f48f2faeaf683afe0d69b875188c.svg?invert_in_darkmode&sanitize=true" align=middle width=112.3823085pt height=24.65753399999998pt/>是低维空间坐标系
+
+那么得到如下表达，其中 <img src="/pca/tex/25950a2e429f93f60687aa0568aed862.svg?invert_in_darkmode&sanitize=true" align=middle width=122.46196049999999pt height=27.6567522pt/> 是X在低维空间<img src="/pca/tex/61e84f854bc6258d4108d08d4c4a0852.svg?invert_in_darkmode&sanitize=true" align=middle width=13.29340979999999pt height=22.465723500000017pt/>上的投影，称为coordinates或code。
+<p align="center"><img src="/pca/tex/12e263e42bf06012d7e41cb4996c42bd.svg?invert_in_darkmode&sanitize=true" align=middle width=83.16368445pt height=14.6502939pt/></p>
+
+**优化目标**:样本点到新的超平面上的距离足够近
+<p align="center"><img src="/pca/tex/556ae1fe3888034e1d4c1082821b65bf.svg?invert_in_darkmode&sanitize=true" align=middle width=196.84777365pt height=47.60747145pt/></p>
+
+## References
+1. [PCA chapter of "Mathematics for Machine Learning"](https://mml-book.github.io/book/chapter10.pdf)

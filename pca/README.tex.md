@@ -55,3 +55,22 @@ In this example, $u(x) = sin(x), v(x) = cos(x), f(x) = sin(x)cos(x)$
 Example:
 $$ \langle x, y \rangle = cov [x, y] $$
 where $||x|| = \sqrt{cov[x,x]} = \sqrt{var[x]} = \sigma(x)$ and $||y|| = \sigma(y)$
+
+## Projection 投影
+### Projection onto 1D subspaces 投影到一维空间
+<p align="center">
+  <img src="img/projection-onto-1d-subspace.png" width="300" />
+</p>
+
+投影后的向量 $\pi_u(x)$ 具有如下两点属性:
+1. $\exists \lambda \in \mathbb{R}: \pi _{u}\left( x\right) =\lambda b$. (as $\pi_u(x) \in \mathbb{U}$)
+2. $\langle b, \pi_u(x)-x\rangle = 0$ (orthogonality)
+
+Then, we get
+$$ \pi_u(x) = \frac{bb^T}{||b||^2}x $$
+推导如下：
+$$ \begin{aligned}
+&\Rightarrow \langle b,\pi _{u}\left( X\right) -x\rangle =0\\ &\Leftrightarrow \langle b,\pi _{u}\left( X\right) \rangle -\langle b,x\rangle =0\\
+&\Leftrightarrow \langle b,\lambda b\rangle -\langle b,x\rangle =0\\ &\Leftrightarrow \lambda \left\| b\right\| ^{2}-\langle b,x\rangle =0\\ &\Leftrightarrow \lambda =\dfrac {\langle b, x\rangle }{\left\| b\right\| ^{2}}\\
+&\Rightarrow \pi _{u}\left( x\right) =\lambda b = \frac{b^Txb}{||b||^2} = \frac{bb^T}{||b||^2}x
+\end{aligned} $$

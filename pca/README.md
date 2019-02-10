@@ -70,3 +70,17 @@ Then, we get
 <p align="center"><img src="/pca/tex/4ec4208967db241519476d7e440e95aa.svg?invert_in_darkmode&sanitize=true" align=middle width=108.09674865pt height=40.33452225pt/></p>
 推导如下：
 <p align="center"><img src="/pca/tex/a82fc21279570d7873a5d291b7e38c2f.svg?invert_in_darkmode&sanitize=true" align=middle width=230.12533169999998pt height=190.65162105pt/></p>
+
+### Projections onto higher-dimentional subspaces 投影到高维空间
+<p align="center">
+  <img src="img/projection-onto-2d-subspace.png" width="300" />
+</p>
+
+投影后的向量 <img src="/pca/tex/730f68f8efd606b60ba487aefb60aea2.svg?invert_in_darkmode&sanitize=true" align=middle width=40.14480194999999pt height=24.65753399999998pt/> 具有如下两点属性:
+1. <img src="/pca/tex/c4301450c4c98622fdce3bc427a96073.svg?invert_in_darkmode&sanitize=true" align=middle width=198.16092614999997pt height=32.256008400000006pt/>
+2. <img src="/pca/tex/482dd2e16eec3358f4da18af4514cbef.svg?invert_in_darkmode&sanitize=true" align=middle width=221.54285669999996pt height=24.65753399999998pt/> (orthogonality)
+
+where <img src="/pca/tex/4862bc7dff092e4d615aac59f705af07.svg?invert_in_darkmode&sanitize=true" align=middle width=75.94082099999999pt height=77.26096289999998pt/>, <img src="/pca/tex/746ccb5a2c0d33096aaec720e2925c4c.svg?invert_in_darkmode&sanitize=true" align=middle width=107.81621894999998pt height=27.94539330000001pt/>
+
+推导如下：
+<p align="center"><img src="/pca/tex/c31dc5cdf1939fde09d2b025d06508a2.svg?invert_in_darkmode&sanitize=true" align=middle width=278.2362759pt height=188.51225415pt/></p>

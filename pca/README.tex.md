@@ -74,3 +74,25 @@ $$ \begin{aligned}
 &\Leftrightarrow \langle b,\lambda b\rangle -\langle b,x\rangle =0\\ &\Leftrightarrow \lambda \left\| b\right\| ^{2}-\langle b,x\rangle =0\\ &\Leftrightarrow \lambda =\dfrac {\langle b, x\rangle }{\left\| b\right\| ^{2}}\\
 &\Rightarrow \pi _{u}\left( x\right) =\lambda b = \frac{b^Txb}{||b||^2} = \frac{bb^T}{||b||^2}x
 \end{aligned} $$
+
+### Projections onto higher-dimentional subspaces 投影到高维空间
+<p align="center">
+  <img src="img/projection-onto-2d-subspace.png" width="300" />
+</p>
+
+投影后的向量 $\pi_u(x)$ 具有如下两点属性:
+1. $\exists \lambda \in \mathbb{R}: \pi _{u}\left( x\right) =\sum_{i=1}^M\lambda_i b_i$
+2. $\langle \pi_u(x)-x, b_i\rangle = 0, i=1,...,M$ (orthogonality)
+
+where $\lambda =\begin{bmatrix} \lambda _{xi} \\ \vdots \\ \lambda _{m} \end{bmatrix}$, $B = \begin{bmatrix}b_1 | ... | b_M\end{bmatrix}$
+
+推导如下：
+$$ \begin{aligned}
+&\Rightarrow \pi _{u}\left( x\right) =B\lambda \\
+&\Leftrightarrow \langle B\lambda -X,b_{i}\rangle =0\\
+&\Leftrightarrow \lambda ^{T}B^{T}bi-X^{T}b_{i}=0,i=1,2,\ldots ,M\\
+&\Leftrightarrow  \lambda ^{T}B^{+}B-X^{T}B=0\\
+&\Leftrightarrow \lambda ^{T}=X^{T}B\left( B^{T}B\right) ^{-1}\\
+&\Leftrightarrow \lambda =\left( B^{T}B\right) ^{-1}B^{T}X \\
+&\Rightarrow \pi _{u} =B\lambda = B\left( B^{T}B\right) ^{-1}B^{T}X
+\end{aligned} $$

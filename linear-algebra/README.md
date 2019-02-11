@@ -1,6 +1,36 @@
 # Linear Algebra 线性代数
 这篇笔记总结了线性代数的一些基础知识，包括向量、矩阵及其属性和计算方法。
 
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Linear Algebra 线性代数](#linear-algebra-线性代数)
+	- [Vectors 向量](#vectors-向量)
+		- [Basic rules 性质](#basic-rules-性质)
+			- [Cosine rule 向量点积](#cosine-rule-向量点积)
+			- [Projection 投影](#projection-投影)
+				- [Scalar projection 标量投影](#scalar-projection-标量投影)
+				- [Vector projection 向量投影](#vector-projection-向量投影)
+		- [Changing the reference frame](#changing-the-reference-frame)
+			- [Vector change basis 向量基变更](#vector-change-basis-向量基变更)
+				- [Python code to calculate r](#python-code-to-calculate-r)
+		- [Linear independent 线性无关](#linear-independent-线性无关)
+	- [Matrices 矩阵](#matrices-矩阵)
+		- [Transformation 矩阵变换](#transformation-矩阵变换)
+			- [Relationship between the matrix and rotaion angle θ](#relationship-between-the-matrix-and-rotaion-angle-theta)
+		- [Matrix Rank 矩阵秩](#matrix-rank-矩阵秩)
+		- [Matrix inverse 逆矩阵](#matrix-inverse-逆矩阵)
+			- [Going from Gaussian elimination to finding the inverse matrix](#going-from-gaussian-elimination-to-finding-the-inverse-matrix)
+		- [Determinant 行列式](#determinant-行列式)
+		- [Matrix multiplication 矩阵乘法](#matrix-multiplication-矩阵乘法)
+		- [Matrices changing basis 矩阵基变更](#matrices-changing-basis-矩阵基变更)
+		- [Orthogonal matrices 正交矩阵](#orthogonal-matrices-正交矩阵)
+		- [The Gram–Schmidt process 格拉姆-施密特正交化](#the-gramschmidt-process-格拉姆-施密特正交化)
+		- [Reflecting in a plane](#reflecting-in-a-plane)
+		- [Eigenvectors and Eigenvalues 特征向量和特征值](#eigenvectors-and-eigenvalues-特征向量和特征值)
+			- [Changing the Eigenbasis](#changing-the-eigenbasis)
+	- [One more thing](#one-more-thing)
+
+<!-- /TOC -->
 
 ## Vectors 向量
 ### Basic rules 性质
@@ -115,10 +145,9 @@ According to the definition of eigenvector, we can have <img src="/linear-algebr
 <img src="/linear-algebra/tex/460a2dd88e9d934481b86fd3d30d0fa8.svg?invert_in_darkmode&sanitize=true" align=middle width=108.44489039999999pt height=26.76175259999998pt/>
 > <p align="center"><img src="./img/Eigenbasis-example.png" width="300"/></p>
 
-<img src="/linear-algebra/tex/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode&sanitize=true" align=middle width=12.92464304999999pt height=22.465723500000017pt/> is from the eigenvectors. <img src="/linear-algebra/tex/78ec2b7008296ce0561cf83393cb746d.svg?invert_in_darkmode&sanitize=true" align=middle width=14.06623184999999pt height=22.465723500000017pt/> is constructed with eigenvalues.
+其中，<img src="/linear-algebra/tex/9b325b9e31e85137d1de765f43c0f8bc.svg?invert_in_darkmode&sanitize=true" align=middle width=12.92464304999999pt height=22.465723500000017pt/> 是**特征向量**(eigenvectors)，<img src="/linear-algebra/tex/78ec2b7008296ce0561cf83393cb746d.svg?invert_in_darkmode&sanitize=true" align=middle width=14.06623184999999pt height=22.465723500000017pt/>由**特征值**(eigenvalues)构成.
 
-For example, <img src="/linear-algebra/tex/46b2bcebab075dce603c1a362cb73836.svg?invert_in_darkmode&sanitize=true" align=middle width=90.88472909999999pt height=47.6716218pt/>, <img src="/linear-algebra/tex/8761f77b33a88c75d7e458569181cf3e.svg?invert_in_darkmode&sanitize=true" align=middle width=91.92005459999999pt height=47.6716218pt/>,  <img src="/linear-algebra/tex/60e78040fd02c95d58bfe94a93fc84cb.svg?invert_in_darkmode&sanitize=true" align=middle width=122.35393995pt height=47.6716218pt/>, <img src="/linear-algebra/tex/0739b208cbbb3d03b3b6be832d720f45.svg?invert_in_darkmode&sanitize=true" align=middle width=93.06164834999998pt height=47.6716218pt/>.
-<img src="/linear-algebra/tex/f265938112144b63ab3223e48e92a9e2.svg?invert_in_darkmode&sanitize=true" align=middle width=317.04938595pt height=54.374859000000015pt/>
-
-## One more thing
-Here's a [website](https://webdemo.myscript.com/views/math/index.html) to translate handwriting formula to latex.
+>一个例子：
+>
+> <img src="/linear-algebra/tex/46b2bcebab075dce603c1a362cb73836.svg?invert_in_darkmode&sanitize=true" align=middle width=90.88472909999999pt height=47.6716218pt/>, <img src="/linear-algebra/tex/8761f77b33a88c75d7e458569181cf3e.svg?invert_in_darkmode&sanitize=true" align=middle width=91.92005459999999pt height=47.6716218pt/>,  <img src="/linear-algebra/tex/60e78040fd02c95d58bfe94a93fc84cb.svg?invert_in_darkmode&sanitize=true" align=middle width=122.35393995pt height=47.6716218pt/>, <img src="/linear-algebra/tex/0739b208cbbb3d03b3b6be832d720f45.svg?invert_in_darkmode&sanitize=true" align=middle width=93.06164834999998pt height=47.6716218pt/>.
+> <img src="/linear-algebra/tex/f265938112144b63ab3223e48e92a9e2.svg?invert_in_darkmode&sanitize=true" align=middle width=317.04938595pt height=54.374859000000015pt/>

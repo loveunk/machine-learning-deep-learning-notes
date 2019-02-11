@@ -7,3 +7,4 @@
 
 #### 一些好用的工具
 * 一个[识别并转换手写公式为Latex](https://webdemo.myscript.com/views/math/index.html)的网站
+* [Google Colaboratory](https://colab.research.google.com)：用于机器学习的Jupyter环境

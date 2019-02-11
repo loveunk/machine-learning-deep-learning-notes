@@ -1,32 +1,34 @@
 # PCA (Principal Component Analysis) - 主成分分析
+PCA是一种数据线性降维的方法，在学习PCA之前，先回顾一些基础知识。
+
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [PCA (Principal Component Analysis) - 主成分分析](#pca-principal-component-analysis-主成分分析)
-	- [Varianes & Covariances 方差 & 协方差](#varianes-covariances-方差-协方差)
+	- [Varianes & Covariances 方差和协方差](#varianes-covariances-方差和协方差)
 		- [Variance 方差](#variance-方差)
 		- [Covariance 协方差](#covariance-协方差)
 		- [Rules 方差规则](#rules-方差规则)
 	- [Product](#product)
-		- [Dot product](#dot-product)
+		- [Dot product 点积](#dot-product-点积)
 			- [Algebraic definition 代数定义](#algebraic-definition-代数定义)
 			- [Geometric definition 几何定义](#geometric-definition-几何定义)
 		- [Inner product 内积](#inner-product-内积)
-			- [Inner product properties](#inner-product-properties)
-			- [Inner product of functions](#inner-product-of-functions)
-			- [Inner product of random variables](#inner-product-of-random-variables)
+			- [Inner product properties 内积性质](#inner-product-properties-内积性质)
+			- [Inner product of functions 函数内积](#inner-product-of-functions-函数内积)
+			- [Inner product of random variables 随机变量内积](#inner-product-of-random-variables-随机变量内积)
 	- [Projection 投影](#projection-投影)
 		- [Projection onto 1D subspaces 投影到一维空间](#projection-onto-1d-subspaces-投影到一维空间)
 		- [Projections onto higher-dimentional subspaces 投影到高维空间](#projections-onto-higher-dimentional-subspaces-投影到高维空间)
-	- [PCA derivation - PCA推导](#pca-derivation-pca推导)
-	- [PCA algorithm - PCA算法](#pca-algorithm-pca算法)
-		- [Steps of PCA - PCA步骤](#steps-of-pca-pca步骤)
-		- [高维空间的PCA](#高维空间的pca)
+	- [PCA](#pca)
+		- [PCA derivation - PCA推导](#pca-derivation-pca推导)
+		- [PCA algorithm PCA算法](#pca-algorithm-pca算法)
+			- [Steps of PCA PCA步骤](#steps-of-pca-pca步骤)
+			- [High-dimentional PCA - 高维空间PCA](#high-dimentional-pca-高维空间pca)
 	- [References](#references)
 
 <!-- /TOC -->
-PCA是一种数据线性降维的方法，在学习PCA之前，先回顾一些基础知识。
 
-## Varianes & Covariances 方差 & 协方差
+## Varianes & Covariances 方差和协方差
 ### Variance 方差
 $$ Var[X] = \frac{1}{N} \sum_{n=1}^{N}(x_n - \mu)^2, \mu = E[X] $$
 $$ Std[X] = \sqrt{Var[X]} $$
@@ -45,7 +47,7 @@ For matrix $D = \{x_1, x_2, ..., x_n\}, x \in R^p$
 * $Var[AD + b] = A Var[D] A^T$
 
 ## Product
-### Dot product
+### Dot product 点积
 #### Algebraic definition 代数定义
 $$ x^Ty = \sum_{d=1}^{D} x_d y_d, x,y\in R^D $$
 
@@ -64,7 +66,7 @@ $$ x^Ty = ||x|| \cdot ||y|| cos(\theta) $$
 
 如果定义 $\langle x, y \rangle = x^TAy$，当$A=I$，则其和x，y的点积一致，否则不同。
 
-#### Inner product properties
+#### Inner product properties 内积性质
 * $||\lambda x|| = |\lambda| \cdot ||x||$
 * $||x + y|| \leq ||x|| + ||y||$
 * $|\langle x, y\rangle| \leq ||x|| \cdot ||y||$
@@ -72,12 +74,12 @@ $$ x^Ty = ||x|| \cdot ||y|| cos(\theta) $$
 计算角度
 * $cos(w) = \frac{\langle x, y\rangle}{|x|\cdot|y|}$
 
-#### Inner product of functions
+#### Inner product of functions 函数内积
 Example:
 $$ \langle u, v \rangle = \int ^{b}_{a}u\left( x\right) v\left( x\right)dx $$
 In this example, $u(x) = sin(x), v(x) = cos(x), f(x) = sin(x)cos(x)$
 
-#### Inner product of random variables
+#### Inner product of random variables 随机变量内积
 Example:
 $$ \langle x, y \rangle = cov [x, y] $$
 where $||x|| = \sqrt{cov[x,x]} = \sqrt{var[x]} = \sigma(x)$ and $||y|| = \sigma(y)$
@@ -123,26 +125,26 @@ $$ \begin{aligned}
 &\Rightarrow \pi _{u} =B\lambda = B\left( B^{T}B\right) ^{-1}B^{T}X
 \end{aligned} $$
 
-## PCA derivation - PCA推导
+## PCA
+### PCA derivation - PCA推导
 **问题描述**：对于点集合 $\mathcal{X} = {x_1, ..., x_N}, x_i \in \mathbb{R}^D$，
 定义是低维空间坐标系 $B=(b_1,...,b_M)$ 。其中 $M < D$， $b_i$ 是正交基，$\beta_i$是正交基系数。
-希望找到一个映射集合 $\tilde{x} \in \mathbb{R}^M$。
-有如下推导：
-
+希望找到一个映射集合 $\tilde{x} \in \mathbb{R}^M$。有如下 **公式(_A_)**：
 $$ \tilde{x}_n = \sum_{i=1}^D\beta_{in}b_i \tag{A} $$
 
-假设使用的是点积，$\beta_{D(D\neq i)}$ 和 $b_i$ 正交，那么
+假设使用的是点积，$\beta_{D(D\neq i)}$ 和 $b_i$ 正交，那么得到 **公式(_B_)**：
 $$ \beta_{in} = x_n^Tb_i \tag{B} $$
 
 $\mathcal{z}_n = B^TX \in \mathbb{R}^M$ 是 $\mathcal{X}$ 在低维空间$B$上的投影的坐标值，称为coordinates或code。可得
 $$ \tilde{x} = BB^T\mathcal{x} $$
 
-对于PCA问题，其**优化目标**为：样本点到新的超平面上的距离足够近，等于最小化下面的成本函数：
+对于PCA问题，其**优化目标**为：样本点到新的超平面上的距离足够近，等于最小化下面的成本函数，**公式(_C_)**：
 $$\mathcal{J} = \dfrac{1}{N}\sum_{n=1}^{N}||x_n - \tilde{x}_n||^2 \tag{C} $$
 
-因此
+因此可得 **公式(_D_)**：
 $$ \dfrac {\partial J}{\partial \tilde{x}_{n}} = -\dfrac {2}{N}\left( x_{n}-\tilde{x}_{n}\right) ^{T} \tag{D} $$
 
+**公式(_E_)**：
 $$ \dfrac {\partial \tilde{x}_n}{\partial \beta_{in}} = b_i \tag{E} $$
 
 由(D), (E)可得
@@ -159,6 +161,7 @@ x_n &= \left(\sum_{j=1}^M b_j b_j^T \right)x_n + \left(\sum_{j=M+1}^D b_jb_j^T \
 \end{aligned}
 $$
 
+**公式(_F_)**：
 $$ x_n - \tilde{x}_n = \left(\sum_{j=M+1}^D b_jb_j^T \right)x_n = \sum_{j=M+1}^D (b_j^Tx_n)b_j
 \tag{F} $$
 
@@ -172,11 +175,12 @@ $$
 &= \sum_{j=M+1}^D b_j^T \mathcal{S} b_j = trace \left(\left(\sum_{j=M+1}^D b_j^T b_j\right) \mathcal{S}\right)
 \end{aligned}$$
 
+**公式(_G_)**：
 $$\mathcal{J}  = \sum_{j=M+1}^D b_j^T \mathcal{S} b_j \tag{G}$$
 
 上式等于将数据的协方差矩阵 _S_ 投影到子空间 $\mathbb{R}^{D-M}$ 中，因此 $min(\mathcal{J})$ 等于投影到该子空间后的数据的方差最小化。
 
-由(G)构造拉格朗日函数，其中 $b_i \in \mathbb{R}^{M}, b_j \in \mathbb{R}^{D-M}$ ：
+由(G)构造拉格朗日函数，其中 $b_i \in \mathbb{R}^{M}, b_j \in \mathbb{R}^{D-M}$ ，得到**公式(_H_)**：
 $$ \begin{aligned}
 L &= b_j^{T}Sb_j+\lambda \left( 1-b_j^{T}b_j\right) \\
 &\Rightarrow
@@ -189,33 +193,39 @@ L &= b_j^{T}Sb_j+\lambda \left( 1-b_j^{T}b_j\right) \\
 b_j^T b_j = 1 \\
 b_j^T s=\lambda b_j^T
 \end{cases}
-\end{aligned} \tag{F}$$
+\end{aligned} \tag{H}$$
 
-由(G), (F)可得
+由(_G_), (_H_)可得
 $$\mathcal{J} = \sum_{j=M+1}^D \lambda_j$$
 
 所以在忽略的子空间里要选那些比较小的特征值，在主子空间选那些大的特征值。
 
 This nicely aligns with properties of the covariance matrix. The eigen vectors of the covariance matrix are orthogonal to each other because of symmetry and the eigen vector belonging to the largest eigen value points in the direction of the data with the largest variance and the variance in that direction is given by the corresponding eigen value.
 
-## PCA algorithm - PCA算法
-### Steps of PCA - PCA步骤
+### PCA algorithm PCA算法
+#### Steps of PCA PCA步骤
 1. **数据预归一化** (normalization)
 	1. **每列数据减该列平均值(mean)**, to avoid numerial problems
-	2. **梅列数据除该列标准差(std)**，使数据无单位（unit-free）且方差为1
+	2. **每列数据除该列标准差(std)**，使数据无单位（unit-free）且方差为1
 	$$x_*^{(d)} \leftarrow \dfrac{x_*^{(d)} - \mu^{(d)}}{\sigma^{(d)}}$$
 2. 计算数据**协方差矩阵**（covariance matrix）和**该矩阵**对应的**特征值**、**特征向量**（eigenvalues, eigenvectors）
 	* $\tilde{x}_* = \pi_u(x_*) = BB^Tx_*$
 	* _B_ 是由特征向量作为列的矩阵，其中特征向量对应的是最大的特征值
 
-### High-dimentional PCA - 高维空间PCA
+#### High-dimentional PCA - 高维空间PCA
 对于 $X = \begin{bmatrix} x_1^T \\ \vdots \\ x_N^T \end{bmatrix}
- \in \mathbb{R}^{N \times D}$ 如果 $N \ll D$，那么 _X_ 的协方差矩阵 _S_ 的秩为 _N_。那么 _S_ 有 _D-N+1_ 个特征值为0。
+ \in \mathbb{R}^{N \times D}$ 如果 $N \ll D$，那么 _X_ 的协方差矩阵 _S_ 的秩为 _N_。那么 _S_ 有 _D-N+1_ 个特征值为0，其非满秩矩阵。
 
- 下面考虑如何把 _S_ 转换为满秩矩阵：
+ 下面考虑如何把 _S_ 转换为满秩矩阵 _E_：
  $$ \underset{E \in \mathbb{R} ^{N\times N}}{\underbrace{\dfrac {1}{N}XX^{T}}}
- \underset {c_{i}}{\underbrace{xb_{i}}}
- = \lambda _{i}  \underset {c_{i}}{\underbrace{xb_{i}}} $$
+ \underset {c_{i}}{\underbrace{Xb_{i}}}
+ = \lambda _{i}  \underset {c_{i}}{\underbrace{Xb_{i}}} $$
+
+其中 $c_i = Xb_i$，在变换后，_E_ 为满秩矩阵，由PCA 的计算方法可以得到 _E_ 对应的特征向量 $c_i$，但这里需要计算 _S_对应的特征向量。再次变换上式：
+$$ \underset{S}{\underbrace{\dfrac {1}{N}X^T X}}
+X^{T} c_i = \lambda_{i} c_{i} X^T c_{i} $$
+
+所以 _S_ 的特征向量为 $X^Tc_i$。
 
 ## References
 1. [PCA chapter of "Mathematics for Machine Learning"](https://mml-book.github.io/book/chapter10.pdf)

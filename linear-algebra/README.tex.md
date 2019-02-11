@@ -1,16 +1,48 @@
-# Linear Algebra Notes
+# Linear Algebra 线性代数
+这篇笔记总结了线性代数的一些基础知识，包括向量、矩阵及其属性和计算方法。
 
-## Vectors
-### Basic rules
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Linear Algebra 线性代数](#linear-algebra-线性代数)
+	- [Vectors 向量](#vectors-向量)
+		- [Basic rules 性质](#basic-rules-性质)
+			- [Cosine rule 向量点积](#cosine-rule-向量点积)
+			- [Projection 投影](#projection-投影)
+				- [Scalar projection 标量投影](#scalar-projection-标量投影)
+				- [Vector projection 向量投影](#vector-projection-向量投影)
+		- [Changing the reference frame](#changing-the-reference-frame)
+			- [Vector change basis 向量基变更](#vector-change-basis-向量基变更)
+				- [Python code to calculate $r$](#python-code-to-calculate-r)
+		- [Linear independent 线性无关](#linear-independent-线性无关)
+	- [Matrices 矩阵](#matrices-矩阵)
+		- [Transformation 矩阵变换](#transformation-矩阵变换)
+			- [Relationship between the matrix and rotaion angle $\theta$](#relationship-between-the-matrix-and-rotaion-angle-theta)
+		- [Matrix Rank 矩阵秩](#matrix-rank-矩阵秩)
+		- [Matrix inverse 逆矩阵](#matrix-inverse-逆矩阵)
+			- [Going from Gaussian elimination to finding the inverse matrix](#going-from-gaussian-elimination-to-finding-the-inverse-matrix)
+		- [Determinant 行列式](#determinant-行列式)
+		- [Matrix multiplication 矩阵乘法](#matrix-multiplication-矩阵乘法)
+		- [Matrices changing basis 矩阵基变更](#matrices-changing-basis-矩阵基变更)
+		- [Orthogonal matrices 正交矩阵](#orthogonal-matrices-正交矩阵)
+		- [The Gram–Schmidt process 格拉姆-施密特正交化](#the-gramschmidt-process-格拉姆-施密特正交化)
+		- [Reflecting in a plane](#reflecting-in-a-plane)
+		- [Eigenvectors and Eigenvalues 特征向量和特征值](#eigenvectors-and-eigenvalues-特征向量和特征值)
+			- [Changing the Eigenbasis](#changing-the-eigenbasis)
+	- [One more thing](#one-more-thing)
+
+<!-- /TOC -->
+
+## Vectors 向量
+### Basic rules 性质
 $$ r + s  = s + r $$
 $$ r \cdot s = s \cdot  r $$
 $$ r \cdot  (s + t) = r \cdot s + r \cdot t $$
 
-#### Cosine rule
+#### Cosine rule 向量点积
 $$ (r-s)^2 = r^2 + s^2 - 2r \cdot\ s \cdot\ cos\theta$$
 
-#### Projection
-##### Scalar projection
+#### Projection 投影
+##### Scalar projection 标量投影
 $$ r \cdot s = |r| \times|s| \times cos\theta $$
 $$ proj_r^s  = \frac{r \cdot s}{|r|} $$
 
@@ -18,12 +50,12 @@ $$ proj_r^s  = \frac{r \cdot s}{|r|} $$
 
 > 可以通过向量点乘的原理的来理解这一点，假设$r$是在坐标系$i$上的向量（$r_j = 0$）。那么 $r \cdot s = r_i s_i + r_j s_j = r_i s_i = \vert r \vert s_i$，其中 $s_i = \vert s \vert \cdot cos \theta$，所以 $r \cdot s = \vert r \vert \cdot \vert s \vert \cdot cos \theta$
 
-##### Vector projection
+##### Vector projection 向量投影
 $s$往$r$上的投影向量如下，同样可以用上图来解释
 $$ proj_r^s  = \frac{r \cdot s}{|r| \times |r|} r$$
 
 ### Changing the reference frame
-#### Change basis
+#### Vector change basis 向量基变更
 for vector $r$ in the axis $(e_1, e_2)$，project its cordinates to $(b_1, b_2)$，the new value is of $r$ is
 $$[\frac{r \cdot b_1}{|b_1|^2} , \frac{r \cdot b_2}{|b_2|^2} ]^T$$
 
@@ -42,11 +74,11 @@ v, b1, b2 = np.array([1,  1]), np.array([1,  0]), np.array([0,  2])
 change_basis(v, b1, b2)
 ```
 
-#### Linear independent
+### Linear independent 线性无关
 if $r$ is indenpdent to s, $r \ne \alpha \cdot s$, for any $\alpha$
 
-## Matrices
-#### Transformation
+## Matrices 矩阵
+### Transformation 矩阵变换
 矩阵 $E = [e_1 e_2]$ 和一个向量$v$相乘可以理解为把$v$在$e_1, e_2$的坐标系上重新投影
 $$ \begin{bmatrix}
 1 & 0\\ 0
@@ -59,12 +91,14 @@ $$ \begin{bmatrix}
 #### Relationship between the matrix and rotaion angle $\theta$
 The transformation matrix $= \begin{bmatrix} cos\theta & sin\theta \\ -sin\theta & cos\theta \end{bmatrix}$
 
+### Matrix Rank 矩阵秩
+矩阵 _A_ 的列秩是 _A_ 的线性无关的纵列的极大数目。行秩是 _A_ 的线性无关的横行的极大数目。其列秩和行秩总是相等的，称作矩阵 _A_ 的秩。通常表示为 r(_A_)或rank(_A_)。
 
-### Matrix inverse
+### Matrix inverse 逆矩阵
 #### Going from Gaussian elimination to finding the inverse matrix
 $$A^{-1}A = I$$
 
-#### Determinant (行列式)
+### Determinant 行列式
 Matrix $A$'s determinant is denoted as $det(A)$ or $|A|$.
 For matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, $|A| = ad - cd$
 
@@ -74,13 +108,14 @@ For matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, $|A| = ad - cd$
 
 If $det(A) = 0$, then the invert matrix cannot be calculated.
 
-#### Matrix dot product
-$$\begin{bmatrix} a_{11} & a_{12} & \ldots & a_{1n} \\ a_{21} & a_{22} & \ldots & a_{2n} \\  \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{n2} & \ldots & a_{mn} \end{bmatrix}
+### Matrix multiplication 矩阵乘法
+$$\begin{bmatrix} a_{11} & a_{12} & \ldots & a_{1n} \\ a_{21} & a_{22} & \ldots & a_{2n} \\  \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \ldots & a_{mn} \end{bmatrix}
 \cdot
-\begin{bmatrix} b_{11} & a_{12} & \ldots & b_{1n} \\ b_{21} & b_{22} & \ldots & b_{2n} \\ \vdots &  \vdots & \ddots & \vdots \\ b_{m1} & b_{n2} & \ldots & b_{mn} \end{bmatrix}
+\begin{bmatrix} b_{11} & a_{12} & \ldots & b_{1p} \\ b_{21} & b_{22} & \ldots & b_{2p} \\ \vdots &  \vdots & \ddots & \vdots \\ b_{n1} & b_{n2} & \ldots & b_{np} \end{bmatrix}
 = \begin{bmatrix} c_{11} & c_{12} & \ldots & c_{1p} \\ c_{21} & c_{22} & \ldots & c_{2p} \\  \vdots & \vdots & \ddots & \vdots \\ c_{m1} & c_{m2} & \ldots & c_{mp} \end{bmatrix}$$
+$$ c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}$$
 
-#### Matrices changing basis
+### Matrices changing basis 矩阵基变更
 For matrix $A$ and $B$, $A \cdot B$ can be treated as changing $B$'s basis to that as $A$.
 
 Transform (rotate) $R$ in $B$'s coordinates: $B^{-1} R B$
@@ -90,14 +125,14 @@ Transform (rotate) $R$ in $B$'s coordinates: $B^{-1} R B$
 ### Orthogonal matrices 正交矩阵
 If $A$ is an orthogonal matrix, then $AA^T  = I$, so $A^T = A^{-1}$
 
-### The Gram–Schmidt process
+### The Gram–Schmidt process 格拉姆-施密特正交化
 如果内积空间上的一组向量能够组成一个子空间，那么这一组向量就称为这个子空间的一个基。Gram－Schmidt正交化提供了一种方法，能够通过这一子空间上的一个基得出子空间的一个正交基，并可进一步求出对应的标准正交基。
 $$\begin{aligned}
-\beta _{1}=v_{1}, e_{1}=\dfrac {v_{1}}{\left| v_{1}\right| }\\
-\beta _{2}=V_{2}-\left( v_{2}.e_{1}\right) e_{1},e_{2}=\dfrac {V_{2}}{\left| v_{2}\right| }\\
-\beta _{3}=v_{3}-\left( v_{3}\cdot e_{1}\right) e_{1}-\left( v_{3}\cdot e_{2}\right) e_{2},e_{3}=\dfrac {V_{3}}{\left| v_{3}\right| }\\
+\beta _{1}&=v_{1}, &e_{1}=\dfrac {v_{1}}{\left| v_{1}\right| }\\
+\beta _{2}&=V_{2}-\left( v_{2}.e_{1}\right) &e_{1},e_{2}=\dfrac {V_{2}}{\left| v_{2}\right| }\\
+\beta _{3}&=v_{3}-\left( v_{3}\cdot e_{1}\right) &e_{1}-\left( v_{3}\cdot e_{2}\right) e_{2},e_{3}=\dfrac {V_{3}}{\left| v_{3}\right| }\\
 \vdots \\
-\beta _{n}=v_{n}-\sum ^{n-1}_{i=1}\left( v_{n}e_{i}\right) e_{i},e_{n}=\dfrac {V_{n}}{\left| v_{n}\right| }
+\beta _{n}&=v_{n}-\sum ^{n-1}_{i=1}\left( v_{n}e_{i}\right) &e_{i},e_{n}=\dfrac {V_{n}}{\left| v_{n}\right| }
 \end{aligned} $$
 
 After above process, $\beta_ij = 0$, for any $i,j$.

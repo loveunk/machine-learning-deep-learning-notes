@@ -1,7 +1,7 @@
-# PCA - Principal Component Analysis
+# PCA (Principal Component Analysis) - 主成分分析
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [PCA - Principal Component Analysis](#pca-principal-component-analysis)
+- [PCA (Principal Component Analysis) - 主成分分析](#pca-principal-component-analysis-主成分分析)
 	- [Varianes & Covariances 方差 & 协方差](#varianes-covariances-方差-协方差)
 		- [Variance 方差](#variance-方差)
 		- [Covariance 协方差](#covariance-协方差)
@@ -12,12 +12,15 @@
 			- [Geometric definition 几何定义](#geometric-definition-几何定义)
 		- [Inner product 内积](#inner-product-内积)
 			- [Inner product properties](#inner-product-properties)
-		- [Inner product of functions](#inner-product-of-functions)
-		- [Inner product of random variables](#inner-product-of-random-variables)
+			- [Inner product of functions](#inner-product-of-functions)
+			- [Inner product of random variables](#inner-product-of-random-variables)
 	- [Projection 投影](#projection-投影)
 		- [Projection onto 1D subspaces 投影到一维空间](#projection-onto-1d-subspaces-投影到一维空间)
 		- [Projections onto higher-dimentional subspaces 投影到高维空间](#projections-onto-higher-dimentional-subspaces-投影到高维空间)
-	- [PCA derivation](#pca-derivation)
+	- [PCA derivation - PCA推导](#pca-derivation-pca推导)
+	- [PCA algorithm - PCA算法](#pca-algorithm-pca算法)
+		- [Steps of PCA - PCA步骤](#steps-of-pca-pca步骤)
+		- [高维空间的PCA](#高维空间的pca)
 	- [References](#references)
 
 <!-- /TOC -->
@@ -69,12 +72,12 @@ For matrix <img src="/pca/tex/c40a373054f74758866fb2c35baf329d.svg?invert_in_dar
 计算角度
 * <img src="/pca/tex/6e22d99d884fa03d39ae405e5030a15f.svg?invert_in_darkmode&sanitize=true" align=middle width=105.72848549999998pt height=33.20539859999999pt/>
 
-### Inner product of functions
+#### Inner product of functions
 Example:
 <p align="center"><img src="/pca/tex/f94f1f13be99495500d81c95bc1f92fe.svg?invert_in_darkmode&sanitize=true" align=middle width=176.99632334999998pt height=41.27894265pt/></p>
 In this example, <img src="/pca/tex/7732d8a998f72cec1479ba40d01e0b0b.svg?invert_in_darkmode&sanitize=true" align=middle width=355.4589686999999pt height=24.65753399999998pt/>
 
-### Inner product of random variables
+#### Inner product of random variables
 Example:
 <p align="center"><img src="/pca/tex/0d95067884b91d03b1610d2f7331d2e2.svg?invert_in_darkmode&sanitize=true" align=middle width=118.17536279999999pt height=16.438356pt/></p>
 where <img src="/pca/tex/de97e079871785548f8ce73f6866993d.svg?invert_in_darkmode&sanitize=true" align=middle width=260.96807549999994pt height=29.424786600000015pt/> and <img src="/pca/tex/4a37536969a66463b2b6b4b051ea2cb7.svg?invert_in_darkmode&sanitize=true" align=middle width=80.24925479999999pt height=24.65753399999998pt/>
@@ -108,17 +111,69 @@ where <img src="/pca/tex/4862bc7dff092e4d615aac59f705af07.svg?invert_in_darkmode
 推导如下：
 <p align="center"><img src="/pca/tex/808301ef48677b2fa6fed66bef3a1a80.svg?invert_in_darkmode&sanitize=true" align=middle width=278.2362759pt height=188.51225415pt/></p>
 
-## PCA derivation
-**问题描述**：对于点集合 <img src="/pca/tex/500a0e9bbdb59bc7107074da65cc7e1f.svg?invert_in_darkmode&sanitize=true" align=middle width=168.23207445pt height=27.6567522pt/>，希望找到一个映射集合 <img src="/pca/tex/a20246caf18614d8d3f603f8fc269282.svg?invert_in_darkmode&sanitize=true" align=middle width=122.45864234999998pt height=27.6567522pt/>, <img src="/pca/tex/d3aa71141bc89a24937c86ec1d350a7c.svg?invert_in_darkmode&sanitize=true" align=middle width=11.705695649999988pt height=22.831056599999986pt/>是正交基, <img src="/pca/tex/3d13090ef3ed1448f3c4dc166d06ab4d.svg?invert_in_darkmode&sanitize=true" align=middle width=13.948864049999989pt height=22.831056599999986pt/>是正交基系数。有如下推导：
-1. <img src="/pca/tex/f30461f3f01320f83f7041446c652dad.svg?invert_in_darkmode&sanitize=true" align=middle width=117.0710508pt height=32.256008400000006pt/>
-2. <img src="/pca/tex/2d9bda5fcac2f022666c27d11ec00101.svg?invert_in_darkmode&sanitize=true" align=middle width=76.27068734999999pt height=27.6567522pt/>（这是假设使用的是点积，那么 <img src="/pca/tex/0060675245d6343a9bcdc3efc9137c76.svg?invert_in_darkmode&sanitize=true" align=middle width=56.51844989999999pt height=22.831056599999986pt/> 和 <img src="/pca/tex/d3aa71141bc89a24937c86ec1d350a7c.svg?invert_in_darkmode&sanitize=true" align=middle width=11.705695649999988pt height=22.831056599999986pt/> 正交）
-3. <img src="/pca/tex/b8b1f48f2faeaf683afe0d69b875188c.svg?invert_in_darkmode&sanitize=true" align=middle width=112.3823085pt height=24.65753399999998pt/>是低维空间坐标系
+## PCA derivation - PCA推导
+**问题描述**：对于点集合 <img src="/pca/tex/500a0e9bbdb59bc7107074da65cc7e1f.svg?invert_in_darkmode&sanitize=true" align=middle width=168.23207445pt height=27.6567522pt/>，
+定义是低维空间坐标系 <img src="/pca/tex/b8b1f48f2faeaf683afe0d69b875188c.svg?invert_in_darkmode&sanitize=true" align=middle width=112.3823085pt height=24.65753399999998pt/> 。其中 <img src="/pca/tex/51d7540736efae5d5b0123af77ff8f0a.svg?invert_in_darkmode&sanitize=true" align=middle width=53.72357759999999pt height=22.465723500000017pt/>， <img src="/pca/tex/d3aa71141bc89a24937c86ec1d350a7c.svg?invert_in_darkmode&sanitize=true" align=middle width=11.705695649999988pt height=22.831056599999986pt/> 是正交基，<img src="/pca/tex/3d13090ef3ed1448f3c4dc166d06ab4d.svg?invert_in_darkmode&sanitize=true" align=middle width=13.948864049999989pt height=22.831056599999986pt/>是正交基系数。
+希望找到一个映射集合 <img src="/pca/tex/29b35d554c6c42b8e2ddb82722130105.svg?invert_in_darkmode&sanitize=true" align=middle width=55.12774079999999pt height=27.6567522pt/>。
+有如下推导：
 
-那么得到如下表达，其中 <img src="/pca/tex/25950a2e429f93f60687aa0568aed862.svg?invert_in_darkmode&sanitize=true" align=middle width=122.46196049999999pt height=27.6567522pt/> 是X在低维空间<img src="/pca/tex/61e84f854bc6258d4108d08d4c4a0852.svg?invert_in_darkmode&sanitize=true" align=middle width=13.29340979999999pt height=22.465723500000017pt/>上的投影，称为coordinates或code。
-<p align="center"><img src="/pca/tex/12e263e42bf06012d7e41cb4996c42bd.svg?invert_in_darkmode&sanitize=true" align=middle width=83.16368445pt height=14.6502939pt/></p>
+<p align="center"><img src="/pca/tex/187f12da59988b1e47702ffd47870587.svg?invert_in_darkmode&sanitize=true" align=middle width=101.3470095pt height=47.806078649999996pt/></p>
 
-**优化目标**:样本点到新的超平面上的距离足够近
-<p align="center"><img src="/pca/tex/556ae1fe3888034e1d4c1082821b65bf.svg?invert_in_darkmode&sanitize=true" align=middle width=196.84777365pt height=47.60747145pt/></p>
+假设使用的是点积，<img src="/pca/tex/0060675245d6343a9bcdc3efc9137c76.svg?invert_in_darkmode&sanitize=true" align=middle width=56.51844989999999pt height=22.831056599999986pt/> 和 <img src="/pca/tex/d3aa71141bc89a24937c86ec1d350a7c.svg?invert_in_darkmode&sanitize=true" align=middle width=11.705695649999988pt height=22.831056599999986pt/> 正交，那么
+<p align="center"><img src="/pca/tex/af10c86f1351a41ba6bb94104f052715.svg?invert_in_darkmode&sanitize=true" align=middle width=76.27068735pt height=18.7141317pt/></p>
+
+<img src="/pca/tex/25950a2e429f93f60687aa0568aed862.svg?invert_in_darkmode&sanitize=true" align=middle width=122.46196049999999pt height=27.6567522pt/> 是 <img src="/pca/tex/7da75f4e61cdeabf944740206b511812.svg?invert_in_darkmode&sanitize=true" align=middle width=14.132466149999988pt height=22.465723500000017pt/> 在低维空间<img src="/pca/tex/61e84f854bc6258d4108d08d4c4a0852.svg?invert_in_darkmode&sanitize=true" align=middle width=13.29340979999999pt height=22.465723500000017pt/>上的投影的坐标值，称为coordinates或code。可得
+<p align="center"><img src="/pca/tex/adc9c68353e0ed32c71d7f9986963b47.svg?invert_in_darkmode&sanitize=true" align=middle width=75.56098275000001pt height=17.8466442pt/></p>
+
+对于PCA问题，其**优化目标**为：样本点到新的超平面上的距离足够近，等于最小化下面的成本函数：
+<p align="center"><img src="/pca/tex/e124d6ed48be0c32dd59b4a747753f2d.svg?invert_in_darkmode&sanitize=true" align=middle width=166.8845706pt height=47.60747145pt/></p>
+
+因此
+<p align="center"><img src="/pca/tex/5790eb8e55dc8f39e4e337038e886fd0.svg?invert_in_darkmode&sanitize=true" align=middle width=165.43991145pt height=36.2778141pt/></p>
+
+<p align="center"><img src="/pca/tex/38a795eda848f8cf9b136da4027c599a.svg?invert_in_darkmode&sanitize=true" align=middle width=68.13308864999999pt height=37.0084374pt/></p>
+
+由(D), (E)可得
+
+<p align="center"><img src="/pca/tex/373b7d7b36b859f6286b1246924191a1.svg?invert_in_darkmode&sanitize=true" align=middle width=215.6812515pt height=151.20189974999997pt/></p>
+
+由(A), (B)可得
+<p align="center"><img src="/pca/tex/21cd3604bc6f8dac91959455eea2f451.svg?invert_in_darkmode&sanitize=true" align=middle width=297.84528509999996pt height=124.93263584999998pt/></p>
+
+<p align="center"><img src="/pca/tex/3237c0592f14f17f6177cf5f43a54685.svg?invert_in_darkmode&sanitize=true" align=middle width=339.50969745pt height=59.1786591pt/></p>
+
+由(_C_), (_F_)可得
+<p align="center"><img src="/pca/tex/693fb7bf62bfdbc978b5e8a6f1079c6d.svg?invert_in_darkmode&sanitize=true" align=middle width=342.14835105pt height=346.56774075pt/></p>
+
+<p align="center"><img src="/pca/tex/572ef034ce558fbede1b8cd24235def3.svg?invert_in_darkmode&sanitize=true" align=middle width=127.2014238pt height=50.2924224pt/></p>
+
+上式等于将数据的协方差矩阵 _S_ 投影到子空间 <img src="/pca/tex/f10f982c502c8d0f7703d188d11194e5.svg?invert_in_darkmode&sanitize=true" align=middle width=47.01774825pt height=27.6567522pt/> 中，因此 <img src="/pca/tex/d530021e5e2a93bd8ddb91ea547ec699.svg?invert_in_darkmode&sanitize=true" align=middle width=56.92671929999998pt height=24.65753399999998pt/> 等于投影到该子空间后的数据的方差最小化。
+
+由(G)构造拉格朗日函数，其中 <img src="/pca/tex/48a5d5590c242598ccdc7dba996bd880.svg?invert_in_darkmode&sanitize=true" align=middle width=147.47822924999997pt height=27.6567522pt/> ：
+<p align="center"><img src="/pca/tex/85f738a8e64e1ad32aba15a2dd5b0541.svg?invert_in_darkmode&sanitize=true" align=middle width=350.07059834999995pt height=99.85425615pt/></p>
+
+由(G), (F)可得
+<p align="center"><img src="/pca/tex/600eaf3c1faf71ea31c86790cacc1fc8.svg?invert_in_darkmode&sanitize=true" align=middle width=101.1381591pt height=50.2924224pt/></p>
+
+所以在忽略的子空间里要选那些比较小的特征值，在主子空间选那些大的特征值。
+
+This nicely aligns with properties of the covariance matrix. The eigen vectors of the covariance matrix are orthogonal to each other because of symmetry and the eigen vector belonging to the largest eigen value points in the direction of the data with the largest variance and the variance in that direction is given by the corresponding eigen value.
+
+## PCA algorithm - PCA算法
+### Steps of PCA - PCA步骤
+1. **数据预归一化** (normalization)
+	1. **每列数据减该列平均值(mean)**, to avoid numerial problems
+	2. **梅列数据除该列标准差(std)**，使数据无单位（unit-free）且方差为1
+	<p align="center"><img src="/pca/tex/0fa38c7ad69c18b991ec87f48037e468.svg?invert_in_darkmode&sanitize=true" align=middle width=130.1462943pt height=39.860229749999995pt/></p>
+2. 计算数据**协方差矩阵**（covariance matrix）和**该矩阵**对应的**特征值**、**特征向量**（eigenvalues, eigenvectors）
+	* <img src="/pca/tex/2d02b5fb9f2f4b64ecb656edab259639.svg?invert_in_darkmode&sanitize=true" align=middle width=161.56178939999998pt height=27.6567522pt/>
+	* _B_ 是由特征向量作为列的矩阵，其中特征向量对应的是最大的特征值
+
+### High-dimentional PCA - 高维空间PCA
+对于 <img src="/pca/tex/7e773f53227121ebad7ef454d6b9a93c.svg?invert_in_darkmode&sanitize=true" align=middle width=145.5927825pt height=78.37837259999999pt/> 如果 <img src="/pca/tex/f5accc43a9e4e0703d65ff8bebb3190a.svg?invert_in_darkmode&sanitize=true" align=middle width=54.63679979999999pt height=22.465723500000017pt/>，那么 _X_ 的协方差矩阵 _S_ 的秩为 _N_。那么 _S_ 有 _D-N+1_ 个特征值为0。
+
+ 下面考虑如何把 _S_ 转换为满秩矩阵：
+ <p align="center"><img src="/pca/tex/0ebe499518325aafbae6ca77ee20b4e8.svg?invert_in_darkmode&sanitize=true" align=middle width=155.27622824999997pt height=57.34033469999999pt/></p>
 
 ## References
 1. [PCA chapter of "Mathematics for Machine Learning"](https://mml-book.github.io/book/chapter10.pdf)

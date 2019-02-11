@@ -1,36 +1,6 @@
 # Linear Algebra 线性代数
 这篇笔记总结了线性代数的一些基础知识，包括向量、矩阵及其属性和计算方法。
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [Linear Algebra 线性代数](#linear-algebra-线性代数)
-	- [Vectors 向量](#vectors-向量)
-		- [Basic rules 性质](#basic-rules-性质)
-			- [Cosine rule 向量点积](#cosine-rule-向量点积)
-			- [Projection 投影](#projection-投影)
-				- [Scalar projection 标量投影](#scalar-projection-标量投影)
-				- [Vector projection 向量投影](#vector-projection-向量投影)
-		- [Changing the reference frame](#changing-the-reference-frame)
-			- [Vector change basis 向量基变更](#vector-change-basis-向量基变更)
-				- [Python code to calculate $r$](#python-code-to-calculate-r)
-		- [Linear independent 线性无关](#linear-independent-线性无关)
-	- [Matrices 矩阵](#matrices-矩阵)
-		- [Transformation 矩阵变换](#transformation-矩阵变换)
-			- [Relationship between the matrix and rotaion angle $\theta$](#relationship-between-the-matrix-and-rotaion-angle-theta)
-		- [Matrix Rank 矩阵秩](#matrix-rank-矩阵秩)
-		- [Matrix inverse 逆矩阵](#matrix-inverse-逆矩阵)
-			- [Going from Gaussian elimination to finding the inverse matrix](#going-from-gaussian-elimination-to-finding-the-inverse-matrix)
-		- [Determinant 行列式](#determinant-行列式)
-		- [Matrix multiplication 矩阵乘法](#matrix-multiplication-矩阵乘法)
-		- [Matrices changing basis 矩阵基变更](#matrices-changing-basis-矩阵基变更)
-		- [Orthogonal matrices 正交矩阵](#orthogonal-matrices-正交矩阵)
-		- [The Gram–Schmidt process 格拉姆-施密特正交化](#the-gramschmidt-process-格拉姆-施密特正交化)
-		- [Reflecting in a plane](#reflecting-in-a-plane)
-		- [Eigenvectors and Eigenvalues 特征向量和特征值](#eigenvectors-and-eigenvalues-特征向量和特征值)
-			- [Changing the Eigenbasis](#changing-the-eigenbasis)
-	- [One more thing](#one-more-thing)
-
-<!-- /TOC -->
 
 ## Vectors 向量
 ### Basic rules 性质
@@ -109,11 +79,11 @@ For matrix $A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$, $|A| = ad - cd$
 If $det(A) = 0$, then the invert matrix cannot be calculated.
 
 ### Matrix multiplication 矩阵乘法
-$$\begin{bmatrix} a_{11} & a_{12} & \ldots & a_{1n} \\ a_{21} & a_{22} & \ldots & a_{2n} \\  \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \ldots & a_{mn} \end{bmatrix}
+$$ \begin{bmatrix} a_{11} & a_{12} & \ldots & a_{1n} \\ a_{21} & a_{22} & \ldots & a_{2n} \\  \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \ldots & a_{mn} \end{bmatrix}
 \cdot
 \begin{bmatrix} b_{11} & a_{12} & \ldots & b_{1p} \\ b_{21} & b_{22} & \ldots & b_{2p} \\ \vdots &  \vdots & \ddots & \vdots \\ b_{n1} & b_{n2} & \ldots & b_{np} \end{bmatrix}
-= \begin{bmatrix} c_{11} & c_{12} & \ldots & c_{1p} \\ c_{21} & c_{22} & \ldots & c_{2p} \\  \vdots & \vdots & \ddots & \vdots \\ c_{m1} & c_{m2} & \ldots & c_{mp} \end{bmatrix}$$
-$$ c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj}$$
+= \begin{bmatrix} c_{11} & c_{12} & \ldots & c_{1p} \\ c_{21} & c_{22} & \ldots & c_{2p} \\  \vdots & \vdots & \ddots & \vdots \\ c_{m1} & c_{m2} & \ldots & c_{mp} \end{bmatrix} $$
+$$ c_{ij} = \sum_{k=1}^{n} a_{ik}b_{kj} $$
 
 ### Matrices changing basis 矩阵基变更
 For matrix $A$ and $B$, $A \cdot B$ can be treated as changing $B$'s basis to that as $A$.

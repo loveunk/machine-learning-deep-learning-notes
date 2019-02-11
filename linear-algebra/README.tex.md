@@ -1,6 +1,36 @@
 # Linear Algebra 线性代数
 这篇笔记总结了线性代数的一些基础知识，包括向量、矩阵及其属性和计算方法。
 
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Linear Algebra 线性代数](#linear-algebra-线性代数)
+	- [Vectors 向量](#vectors-向量)
+		- [Basic rules 性质](#basic-rules-性质)
+			- [Cosine rule 向量点积](#cosine-rule-向量点积)
+			- [Projection 投影](#projection-投影)
+				- [Scalar projection 标量投影](#scalar-projection-标量投影)
+				- [Vector projection 向量投影](#vector-projection-向量投影)
+		- [Changing the reference frame](#changing-the-reference-frame)
+			- [Vector change basis 向量基变更](#vector-change-basis-向量基变更)
+				- [Python code to calculate r](#python-code-to-calculate-r)
+		- [Linear independent 线性无关](#linear-independent-线性无关)
+	- [Matrices 矩阵](#matrices-矩阵)
+		- [Transformation 矩阵变换](#transformation-矩阵变换)
+			- [Relationship between the matrix and rotaion angle θ](#relationship-between-the-matrix-and-rotaion-angle-theta)
+		- [Matrix Rank 矩阵秩](#matrix-rank-矩阵秩)
+		- [Matrix inverse 逆矩阵](#matrix-inverse-逆矩阵)
+			- [Going from Gaussian elimination to finding the inverse matrix](#going-from-gaussian-elimination-to-finding-the-inverse-matrix)
+		- [Determinant 行列式](#determinant-行列式)
+		- [Matrix multiplication 矩阵乘法](#matrix-multiplication-矩阵乘法)
+		- [Matrices changing basis 矩阵基变更](#matrices-changing-basis-矩阵基变更)
+		- [Orthogonal matrices 正交矩阵](#orthogonal-matrices-正交矩阵)
+		- [The Gram–Schmidt process 格拉姆-施密特正交化](#the-gramschmidt-process-格拉姆-施密特正交化)
+		- [Reflecting in a plane](#reflecting-in-a-plane)
+		- [Eigenvectors and Eigenvalues 特征向量和特征值](#eigenvectors-and-eigenvalues-特征向量和特征值)
+			- [Changing the Eigenbasis](#changing-the-eigenbasis)
+	- [One more thing](#one-more-thing)
+
+<!-- /TOC -->
 
 ## Vectors 向量
 ### Basic rules 性质
@@ -128,10 +158,9 @@ $T^2=CDC^{-1}CDC^{-1}=CD^2C^{-1}$
 $T^n=CD^nC^{-1}$
 > <p align="center"><img src="./img/Eigenbasis-example.png" width="300"/></p>
 
-$C$ is from the eigenvectors. $D$ is constructed with eigenvalues.
+其中，$C$ 是**特征向量**(eigenvectors)，$D$由**特征值**(eigenvalues)构成.
 
-For example, $T=\begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}$, $C=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$,  $C^{-1}=\begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix}$, $D = \begin{pmatrix} 1 & 0 \\ 0 & 2\end{pmatrix}$.
-$T^2=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}^{2}\begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 3 \\ 0 & 4 \end{pmatrix}$
-
-## One more thing
-Here's a [website](https://webdemo.myscript.com/views/math/index.html) to translate handwriting formula to latex.
+>一个例子：
+>
+> $T=\begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}$, $C=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$,  $C^{-1}=\begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix}$, $D = \begin{pmatrix} 1 & 0 \\ 0 & 2\end{pmatrix}$.
+> $T^2=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}^{2}\begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 3 \\ 0 & 4 \end{pmatrix}$

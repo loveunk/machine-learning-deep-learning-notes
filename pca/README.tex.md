@@ -171,8 +171,8 @@ $$
 &= \sum_{j=M+1}^{D} b_j^T \left( \underset{\mathcal{S} = cov[x, x]}{\underbrace{\dfrac{1}{N} \sum_{n=1}^N x_n x_n^T }}\right) b_j \\
 &= \sum_{j=M+1}^D b_j^T \mathcal{S} b_j = trace \left(\left(\sum_{j=M+1}^D b_j^T b_j\right) \mathcal{S}\right)
 \end{aligned}$$
-$$\mathcal{J}  = \sum_{j=M+1}^D b_j^T \mathcal{S} b_j \tag{G}$$
 
+$$\mathcal{J}  = \sum_{j=M+1}^D b_j^T \mathcal{S} b_j \tag{G}$$
 
 上式等于将数据的协方差矩阵 _S_ 投影到子空间 $\mathbb{R}^{D-M}$ 中，因此 $min(\mathcal{J})$ 等于投影到该子空间后的数据的方差最小化。
 
@@ -208,7 +208,14 @@ This nicely aligns with properties of the covariance matrix. The eigen vectors o
 	* $\tilde{x}_* = \pi_u(x_*) = BB^Tx_*$
 	* _B_ 是由特征向量作为列的矩阵，其中特征向量对应的是最大的特征值
 
-### 高维空间的PCA
+### High-dimentional PCA - 高维空间PCA
+对于 $X = \begin{bmatrix} x_1^T \\ \vdots \\ x_N^T \end{bmatrix}
+ \in \mathbb{R}^{N \times D}$ 如果 $N \ll D$，那么 _X_ 的协方差矩阵 _S_ 的秩为 _N_。那么 _S_ 有 _D-N+1_ 个特征值为0。
+
+ 下面考虑如何把 _S_ 转换为满秩矩阵：
+ $$ \underset{E \in \mathbb{R} ^{N\times N}}{\underbrace{\dfrac {1}{N}XX^{T}}}
+ \underset {c_{i}}{\underbrace{xb_{i}}}
+ = \lambda _{i}  \underset {c_{i}}{\underbrace{xb_{i}}} $$
 
 ## References
 1. [PCA chapter of "Mathematics for Machine Learning"](https://mml-book.github.io/book/chapter10.pdf)

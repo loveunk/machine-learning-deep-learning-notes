@@ -221,7 +221,7 @@ This nicely aligns with properties of the covariance matrix. The eigen vectors o
  \underset {c_{i}}{\underbrace{Xb_{i}}}
  = \lambda _{i}  \underset {c_{i}}{\underbrace{Xb_{i}}} $$
 
-其中 $c_i = Xb_i$，在变换后，_E_ 为满秩矩阵，由PCA 的计算方法可以得到 _E_ 对应的特征向量 $c_i$，但这里需要计算 _S_对应的特征向量。再次变换上式：
+其中 $c_i = Xb_i$，在变换后，_E_ 为满秩矩阵，由PCA 的计算方法可以得到 _E_ 对应的特征向量 $c_i$，但这里需要计算 _S_ 对应的特征向量。再次变换上式：
 $$ \underset{S}{\underbrace{\dfrac {1}{N}X^T X}}
 X^{T} c_i = \lambda_{i} c_{i} X^T c_{i} $$
 

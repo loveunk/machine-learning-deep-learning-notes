@@ -84,10 +84,10 @@ S3 = """Kevin and "K.K".""" # => Kevin and "K.K".
 * 但三重引号的字符串如果没有复制，其相当于多行注释
 ``` python
 def add(x, y):
-	'''Add two object(x, y) --> object(x + y)
-	Return two var to one var
-	'''
-	return x + y
+  '''Add two object(x, y) --> object(x + y)
+  Return two var to one var
+  '''
+  return x + y
 ```
 
 ``` python
@@ -315,13 +315,19 @@ _Python_ 中变量区分局部和全局作用域，同 _C++_ / _Java_ 之类的�
 
 ``` python
 with open("example.txt", "r") as file:
-	content = file.read()
-	print(content)
+  content = file.read()
+  print(content)
 ```
 
 ### Writting Files 写文件
 * `file.write(string)`：
 	* 写入一行内容
 
+``` python
+with open("example.txt", "w") as file:
+  file.write("a line")
+```
+
 ### Delete a File or Folder 删除文件或目录
-删除一个文件或目录：`os.remove("filename_or_foldername")`
+* 删除一个文件或目录：
+	* `os.remove("filename_or_foldername")`

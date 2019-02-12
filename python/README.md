@@ -290,3 +290,38 @@ _Python_ 中变量区分局部和全局作用域，同 _C++_ / _Java_ 之类的�
 * **方法(Method)**：类中定义的函数
 
 可以用`dir(object)`的方式列出类的属性。
+
+## File IO 文件操作
+### File open and close 文件打开关闭
+1. 读写格式
+	* `FileObject = open(file_path, mode)`
+		* 创建：`"x"`，如果文件存在则返回失败
+		* 只读：`"r"`
+		* 覆写：`"w"`
+		* 追加：`"a"`
+		* 文本：`"t"` ，为默认值
+		* 二进制：`"b"` ，例如读写图片
+
+2. 关闭文件
+	* `file.close()`
+	* 推荐用`with open(path, mode) as file:`，在执行完with的作用域时自动调用`file.close()`。
+
+### Reading Files 读文件
+* `file.read([n_characters])`：
+	* `n_characters == 0`: 读整个文件
+	* 读`n_characters`个字符的内容
+* `file.readline()` ：读一行
+* `file.readlines()` ：读所有的行
+
+``` python
+with open("example.txt", "r") as file:
+	content = file.read()
+	print(content)
+```
+
+### Writting Files 写文件
+* `file.write(string)`：
+	* 写入一行内容
+
+### Delete a File or Folder 删除文件或目录
+删除一个文件或目录：`os.remove("filename_or_foldername")`

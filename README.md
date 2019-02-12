@@ -1,13 +1,16 @@
 # Notes for Deep Learning and related courses 深度学习和相关知识总结
-1. [Calculus 微积分](calculus)
 
-1. [Linear Algebra 线性代数](linear-algebra)
+## Basic Math - 数学基础
+  * [Calculus 微积分](calculus)
+  * [Linear Algebra 线性代数](linear-algebra)
+  * [PCA 主成分分析](pca)
 
-1. [PCA 主成分分析](pca)
+## Python
+  * [Python基础](python)
+  * [Pandas](python-pandas)
+  * [Numpy](python-numpy)
 
-1. [Python基础](python)
-
-#### 一些好用的工具
+#### 一些工具
 编辑用工具
 * 一个[识别并转换手写公式为Latex](https://webdemo.myscript.com/views/math/index.html)的网站
 * [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)

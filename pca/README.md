@@ -179,7 +179,7 @@ This nicely aligns with properties of the covariance matrix. The eigen vectors o
  下面考虑如何把 _S_ 转换为满秩矩阵 _E_：
  <p align="center"><img src="/pca/tex/731fac87d2ea7b56ca6b97ee2008e7eb.svg?invert_in_darkmode&sanitize=true" align=middle width=155.27622824999997pt height=57.34033469999999pt/></p>
 
-其中 <img src="/pca/tex/83562e501a80dd5df6b6c0e433f10afa.svg?invert_in_darkmode&sanitize=true" align=middle width=61.118593799999985pt height=22.831056599999986pt/>，在变换后，_E_ 为满秩矩阵，由PCA 的计算方法可以得到 _E_ 对应的特征向量 <img src="/pca/tex/3bc6fc8b86b6c61889f4e572c7546b8e.svg?invert_in_darkmode&sanitize=true" align=middle width=11.76470294999999pt height=14.15524440000002pt/>，但这里需要计算 _S_对应的特征向量。再次变换上式：
+其中 <img src="/pca/tex/83562e501a80dd5df6b6c0e433f10afa.svg?invert_in_darkmode&sanitize=true" align=middle width=61.118593799999985pt height=22.831056599999986pt/>，在变换后，_E_ 为满秩矩阵，由PCA 的计算方法可以得到 _E_ 对应的特征向量 <img src="/pca/tex/3bc6fc8b86b6c61889f4e572c7546b8e.svg?invert_in_darkmode&sanitize=true" align=middle width=11.76470294999999pt height=14.15524440000002pt/>，但这里需要计算 _S_ 对应的特征向量。再次变换上式：
 <p align="center"><img src="/pca/tex/5679dc38151a63db1329aa4c9f87bbd3.svg?invert_in_darkmode&sanitize=true" align=middle width=183.56396684999999pt height=55.428486299999996pt/></p>
 
 所以 _S_ 的特征向量为 <img src="/pca/tex/681039f030ab2ab9dfed008b8b687f2a.svg?invert_in_darkmode&sanitize=true" align=middle width=37.02896339999999pt height=27.6567522pt/>。

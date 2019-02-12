@@ -8,7 +8,7 @@
 ## Python
   * [Python基础](python)
   * [Pandas](python-pandas)
-  * [Numpy](python-numpy)
+  * [Numpy](python/python-numpy)
 
 ## 相关工具
 * 编辑用工具

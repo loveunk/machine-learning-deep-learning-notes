@@ -1,4 +1,7 @@
 # Python基础
+
+本文为Python的一些基础知识总结，基于Python 3。
+
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Python基础](#python基础)
@@ -15,6 +18,26 @@
 			- [String replication 字符串复制](#string-replication-字符串复制)
 			- [String is immutable 字符串的值是不可变的](#string-is-immutable-字符串的值是不可变的)
 			- [String functions 字符串常用函数](#string-functions-字符串常用函数)
+	- [Lists and Tuple 列表和元组](#lists-and-tuple-列表和元组)
+		- [Tuple 元组](#tuple-元组)
+			- [Tuple properties 元组属性](#tuple-properties-元组属性)
+			- [Tuple Nesting 元组嵌套](#tuple-nesting-元组嵌套)
+		- [List 列表](#list-列表)
+			- [List properties 列表属性](#list-properties-列表属性)
+			- [Covert String to List 转换字符串到列表](#covert-string-to-list-转换字符串到列表)
+			- [List Aliasing 列表别名](#list-aliasing-列表别名)
+			- [List Clone 列表复制](#list-clone-列表复制)
+	- [Dictionary 字典](#dictionary-字典)
+	- [Sets 集合](#sets-集合)
+	- [Conditions and Branching 条件和分支](#conditions-and-branching-条件和分支)
+		- [Conditions 条件](#conditions-条件)
+		- [Branching 分支](#branching-分支)
+	- [Loops 循环](#loops-循环)
+	- [Functions 函数](#functions-函数)
+		- [Build in functions 内置函数](#build-in-functions-内置函数)
+		- [Collecting arguments 多参数](#collecting-arguments-多参数)
+		- [Scope 作用域](#scope-作用域)
+	- [Objects and Classes 对象和类](#objects-and-classes-对象和类)
 
 <!-- /TOC -->
 
@@ -26,7 +49,7 @@
 * bool
 
 ### Type conversion 类型转换
-使用 _Type(*)_ 用来获得变量类型
+使用 _type(*)_ 用来获得变量类型，_help(*)_ 可以获得帮助说明。
 ``` python
 float(7)  # => 7.0
 int(7.24) # => 7
@@ -115,3 +138,155 @@ s1 = "Wen"  # OK
 * `str.upper()`
 * `str.repleace(from_str, to_str)`
 * `str.find(sub_str)`，返回第一次出现的`index`，没找到返回`-1`
+
+## Lists and Tuple 列表和元组
+### Tuple 元组
+* Tuple是有序的序列
+* Tuple可以含有不同的基本类型，例如`string`、`int`、`float`、`bool`等
+* 使用圆括号 `(*, *)`
+
+#### Tuple properties 元组属性
+* 可以使用索引的方式访问`tuple[i]`
+* 合并：`tuple3 = tuple1 + tuple2`
+* 支持`slicing`
+* 同样`immutable`
+
+#### Tuple Nesting 元组嵌套
+`Tuple`的一个`item`可以是`Tuple`
+``` python
+tuple0 = (1, 2, ("pop", "rock"), (3, 4))
+tuple0[2]     # => ("pop", "rock")
+tuple0[2][1]  # => "rock"`
+```
+
+### List 列表
+* List是有序的序列
+* List可以含有不同的基本类型，例如`string`、`int`、`float`、`bool`等
+* 使用方括号 `[*, *]`
+
+#### List properties 列表属性
+* 支持索引访问
+* 合并：`list3 = list1 + list2`
+  * 等于`list3 = list1`, `list3.extend(list2)`
+  * **注意**：`append`与`extend`不同，被`append`的`item`是作为一个整体追加到`list`末尾，例如`L.append(["pop", 10])`后，`L`中多了一个元素`["pop", 10]`
+* 支持`slicing`
+* 支持Nesting 嵌套
+* **`mutable`**，元素可被修改
+  * 对某个元素重新赋值：`L[0] = 0`
+  * `del(L[0])`即可删除某个`item`
+
+#### Covert String to List 转换字符串到列表
+`string.split()`：按照空格拆分字符串
+``` python
+"Kaikai is a dog".split()     # => ['Kaikai', 'is', 'a', 'dog']
+"Kaikai,is,a,dog".split(",")  # => ['Kaikai', 'is', 'a', 'dog']
+```
+
+#### List Aliasing 列表别名
+如果一个变量`B`指向另一个变量`A` `(B = A)`，那么`B`是`A`的别名。对`A`的任何改动，`B`都可以访问到。
+
+#### List Clone 列表复制
+复制一个列表通过 `B = A[:]`的方式，`A`和`B`相互不影响
+
+## Dictionary 字典
+`Dictionary`中的每个元素由`(key, value)`的键值对组成。
+* 使用花括号来表示`{}`来表示。
+* `Key`是唯一的，并且不可修改
+* `value`可以是可修改的/不可修改的，可重复的
+* 每个`item`之间用逗号隔开
+* 访问
+  * 使用`dict[key]`的方式来访问`value`
+* 新增
+  * 直接对一个`dict[key]`赋值
+* 删除
+  * `del(dict[key])`
+* 获取所有keys或values
+  * `dict.keys()`
+  * `dict.values()`
+
+```python
+dic = {"k1":1, "k2":"2", "k3":[3,3], "k4":(4,4), ('k5'):5}
+```
+
+## Sets 集合
+`Sets` 是类似`list`和`tuple`的集合，可以包含任意元素。
+* 使用花括号来表示`{}`来表示。
+* **Unordered**：Sets是无序的
+* **Unique**：Sets里的元素是唯一的
+* 创建
+  * 通过类型转换：`set(a_list)`
+* 新增
+  * `s.add(item)`
+* 删除
+  * `s.remove(item)`
+* 两个集合的交集
+  * `s0 & s2`
+* 两个集合的合集
+  * `s0`
+* 测试是否包含某个元素
+  * `item in s`
+* 测试是否是子集
+  * `s0.issubset(s1)`
+
+## Conditions and Branching 条件和分支
+### Conditions 条件
+* `==, <=, >=, >, <, !=`
+  * 比较int、float、double、string、list等都可以
+  * 尤其是`==`可用来比较值/元素是否相同
+* `or` / `and`
+
+### Branching 分支
+* `if (...), elif(...), else`:
+
+## Loops 循环
+`range([start], end)`
+* 产生从`0`开始的一个序列知道`end -1`，
+
+`for i in range(N):`
+* 循环`0, 1, ..., N-1`
+
+`while (condition):`
+
+## Functions 函数
+函数是有输入和输出的代码集合，主要目的是为了复用，同时让代码结构更清晰。 _Python_ 中函数的定义使用关键词`def function_name():`
+
+### Build in functions 内置函数
+* `len()`: 长度、元素个数
+* `sum()`：元素求和
+* `sorted()`：将collection的元素排序的结果返回，原collection不受影响
+
+### Collecting arguments 多参数
+参数前可以有1个或2个星号，这两种用法其实都是用来将任意个数的参数导入到python函数中。
+* `def foo(param1, *agrs):`：
+  * 将所以参数以元组(tuple)的形式导入
+  ``` python
+  def foo(param1, *param2):
+    print(param1) # => 1
+    print(param2) # => (2, 3, 4, 5)
+  foo(1,2,3,4,5)
+  ```
+* `def bar(param1, **kwargs):`：
+  * 将参数以字典的形式导入
+  ``` python
+  def bar(param1, **param2):
+    print(param1) # => 1
+    print(param2) # => {'a': 2, 'b': 3}
+  bar(1, a=2, b=3)
+  ```
+
+### Scope 作用域
+_Python_ 中变量区分局部和全局作用域，同 _C++_ / _Java_ 之类的语言。
+如果在函数中希望定义全局变量，可以在变量前加关键字`global`，以便在全局可被访问。
+
+## Objects and Classes 对象和类
+* **类(Class)**: 用来描述具有相同的属性(Data attributes)和方法(methods)的对象的集合。
+  * 定义：
+    * `class ClassName ([ParentClassName]):`
+  * 构造函数或初始化方法：
+    * `def __init__(self, name, salary):`
+* **对象(Object)**：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。
+  * 创建：
+    * `varName = ClassName ([parameters])`
+* **方法(Method)**：类中定义的函数
+
+可以用`dir(object)`的方式列出类的属性。

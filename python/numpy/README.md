@@ -1,6 +1,7 @@
 # NumPy
 
 NumPy 是一个运行速度非常快的 Python 数学库，主要用于数组计算。
+这里总结一些常用的功能，供查阅。
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -217,7 +218,7 @@ array([[ 9.,  5.,  6.,  3.,  6.,  8.,  0.,  7.,  9.,  7.,  2.,  7.],
 * 输出数组的shape是输入数组shape的各个轴上的最大值
 * 如果输入数组的某个轴和输出数组的对应轴的长度相同或者其长度为1时，这个数组能够用来计算，否则出错
 * 当输入数组的某个轴的长度为1时，沿着此轴运算时都用此轴上的第一组值
-``` python
+```
 Image (3d array):  256 x 256 x 3
 Scale (1d array):              3
 Result (3d array): 256 x 256 x 3
@@ -237,9 +238,9 @@ Result (2d array):  15 x 3 x 5
 
 下面是 _NumPy_ 官方的几个说明图：
 <p align="center">
-<img src="https://www.numpy.org/devdocs/_images/theory.broadcast_1.gif" />
-<img src="https://www.numpy.org/devdocs/_images/theory.broadcast_2.gif" />
-<img src="https://www.numpy.org/devdocs/_images/theory.broadcast_3.gif" />
+<img src="https://www.numpy.org/devdocs/_images/theory.broadcast_1.gif" /><br/>
+<img src="https://www.numpy.org/devdocs/_images/theory.broadcast_2.gif" /><br/>
+<img src="https://www.numpy.org/devdocs/_images/theory.broadcast_3.gif" /><br/>
 <img src="https://www.numpy.org/devdocs/_images/theory.broadcast_4.gif" />
 </p>
 
@@ -333,5 +334,7 @@ _NumPy_ 的 `histogram` 函数应用于数组，返回两个`vector`：数组的
 
 
 ## Reference
-* ![NumPy官方入门教程](https://docs.scipy.org/doc/numpy/user/quickstart.html)
-* ![Numpy与MATLAB的区别——写给Matlab用户](https://docs.scipy.org/doc/numpy/user/numpy-for-matlab-users.html)
+* [NumPy官方入门教程](https://docs.scipy.org/doc/numpy/user/quickstart.html)
+* [Numpy与MATLAB的区别——写给Matlab用户](https://docs.scipy.org/doc/numpy/user/numpy-for-matlab-users.html)
+
+[回到目录](#numpy)

@@ -297,7 +297,7 @@ array([[False, False, False, False],
 array([ 5,  6,  7,  8,  9, 10, 11])
 ```
 
-选择性负值：
+选择性赋值：
 ``` python
 >>> a[b] = 0
 >>> a

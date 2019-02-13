@@ -331,3 +331,5 @@ with open("example.txt", "w") as file:
 ### Delete a File or Folder 删除文件或目录
 * 删除一个文件或目录：
 	* `os.remove("filename_or_foldername")`
+
+[回到目录](#python基础)

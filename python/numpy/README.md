@@ -6,7 +6,7 @@ NumPy 是一个运行速度非常快的 Python 数学库，主要用于数组计
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [NumPy](#numpy)
-	- [First step 使用Numpy](#first-step-使用numpy)
+	- [开始使用NumPy](#开始使用numpy)
 	- [Numpy Array 数组](#numpy-array-数组)
 		- [创建数组](#创建数组)
 		- [访问数组](#访问数组)
@@ -33,13 +33,14 @@ NumPy 是一个运行速度非常快的 Python 数学库，主要用于数组计
 
 <!-- /TOC -->
 
-## First step 使用Numpy
+## 开始使用NumPy
+对于使用 _Python_ 库，第一步必然是`import`：
 ``` python
 import numpy as np
 ```
 
 ## Numpy Array 数组
-NumPy 的核心是数组（arrays）。具体来说是多维数组（ndarrays）。其中几个常用的属性和方法：
+_NumPy_ 的核心是数组 (`arrays`)。具体来说是多维数组 (`ndarrays`)。其中几个常用的属性和方法：
 * `ndarray.ndim`：数组维度
 * `ndarray.shape`：数组形状
 * `ndarray.size`：所有元素的个数
@@ -92,7 +93,7 @@ NumPy 的核心是数组（arrays）。具体来说是多维数组（ndarrays）
 #### 两个`ndarray`间的运算
 * `*` ：按照元素位置相乘 (elmentwise multiply)
 * `@` ：同`.dot()`，求向量点积、矩阵相乘
-*
+
 #### 统计函数
 数组所有元素的和的一元操作。通过指定 axis 参数可以将操作应用于数组的某一具体 axis 。
 * `ndarray.mean()`
@@ -331,7 +332,14 @@ _NumPy_ 可以实现大量的矩阵操作，例如：
 
 ### 直方图 Histgram
 _NumPy_ 的 `histogram` 函数应用于数组，返回两个`vector`：数组的柱状图和 bins 的`vector`
-
+``` python
+(n, bins) = np.histogram(v, bins=50, density=True)  # NumPy version (no plot)
+plt.plot(.5*(bins[1:]+bins[:-1]), n)
+plt.show()
+```
+<p align="center">
+<img src="https://docs.scipy.org/doc/numpy/_images/quickstart-2_01_00.png" />
+</p>
 
 ## Reference
 * [NumPy官方入门教程](https://docs.scipy.org/doc/numpy/user/quickstart.html)

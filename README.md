@@ -10,7 +10,7 @@
 ## Python
   * [Python](python/python-basic)
   * [Pandas](python/pandas)
-  * [Numpy](python/numpy)
+  * [NumPy](python/numpy)
 
 ## 机器学习算法
 基于Deep Learning 专题课程 (Coursera, Andrew Ng).

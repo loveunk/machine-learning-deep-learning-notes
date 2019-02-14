@@ -11,7 +11,7 @@
   * [PCA 主成分分析](pca)
 
 ## Python
-如果有比较好的Python和相关库的背景知识，对于学习算法过程中的代码可以快速理解和调试，一方面节省时间，另一方面也可以更聚焦在算法和模型本身上。
+如果有比较好的Python和机器学习相关Library的只是，对于学习算法过程中的代码可以快速理解和调试，一方面节省时间，另一方面也可以更聚焦在算法和模型本身上。
   * [Python](python/python-basic)
   * [Pandas](python/pandas)
   * [NumPy](python/numpy)

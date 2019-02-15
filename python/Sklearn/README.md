@@ -55,7 +55,7 @@ digits = datasets.load_digits()
 
 看看数据的大小：共1797行，每个数字图片是8*8的，所以有64列：
 ``` python
-print(digits.data.shape)		# => (1797, 64)
+print(digits.data.shape)    # => (1797, 64)
 print(digits.target.shape)	# => (1797,)
 ```
 
@@ -99,9 +99,9 @@ plt.show()
 Python 的内置的持久化模块joblib将模型保存:
 ``` python
 from joblib import dump, load
-s = dumps(clf, "filename.joblib")		# 保持此前fit的模型
-clf2 = load(s)											# 加载之前存的模型
-clf2.predict(X[0:1])								# 做预测
+s = dumps(clf, "filename.joblib")   # 保持此前fit的模型
+clf2 = load(s)                      # 加载之前存的模型
+clf2.predict(X[0:1])                # 做预测
 ```
 
 ### 约定
@@ -154,4 +154,5 @@ print(classif.fit(X, y).predict(X))
 * [Scikit-learn官方文档（英文）](https://scikit-learn.org/stable/documentation.html)
 * [Scikit-learn中文文档](https://www.kancloud.cn/luponu/sklearn-doc-zh/889724)
 * [Scikit-learn与TensorFlow机器学习实战](https://hand2st.apachecn.org/)
+
 [回到目录](#scikit-learn)

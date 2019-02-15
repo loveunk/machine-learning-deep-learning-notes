@@ -15,8 +15,8 @@
   * [Python](python/python-basic)
   * [Pandas](python/pandas)
   * [NumPy](python/numpy)
-  * [Matplotlib](python/matplotlib)
-  * [Sklearn](python/sklearn)
+  * [Matplotlib](python/Mtplotlib)
+  * [Sklearn](python/Sklearn)
 
 ## 机器学习算法
 主要基于Machine Learning (Coursera, Andrew Ng) 的课程内容。

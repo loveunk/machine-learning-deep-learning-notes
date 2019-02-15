@@ -167,23 +167,23 @@ array([[ 9.,  5.,  6.,  3.,  6.,  8.,  0.,  7.,  9.,  7.,  2.,  7.],
   >>> c = a.view()
   >>> c is a
   False
-  >>> c.base is a                        # c is a view of the data owned by a
+  >>> c.base is a     # c is a view of the data owned by a
   True
   >>> c.flags.owndata
   False
   >>>
-  >>> c.shape = 2,6                      # a's shape doesn't change
+  >>> c.shape = 2,6   # a's shape doesn't change
   >>> a.shape
   (3, 4)
-  >>> c[0,4] = 1234                      # a's data changes
+  >>> c[0,4] = 1234   # a's data changes
   ```
 * 深拷贝 (Deep Copy)
   * `copy` 方法完全拷贝数组。
   ``` python
-  >>> d = a.copy()                          # a new array object with new data is created
+  >>> d = a.copy()    # a new array object with new data is created
   >>> d is a
   False
-  >>> d.base is a                           # d doesn't share anything with a
+  >>> d.base is a     # d doesn't share anything with a
   False
   ```
 

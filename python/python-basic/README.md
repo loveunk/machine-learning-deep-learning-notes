@@ -38,6 +38,7 @@
 		- [Collecting arguments 多参数](#collecting-arguments-多参数)
 		- [Scope 作用域](#scope-作用域)
 	- [Objects and Classes 对象和类](#objects-and-classes-对象和类)
+	- [Reference](#reference)
 
 <!-- /TOC -->
 
@@ -331,5 +332,8 @@ with open("example.txt", "w") as file:
 ### Delete a File or Folder 删除文件或目录
 * 删除一个文件或目录：
 	* `os.remove("filename_or_foldername")`
+
+## Reference
+* [Python 3 官方文档](https://docs.python.org/zh-cn/3/)
 
 [回到目录](#python基础)

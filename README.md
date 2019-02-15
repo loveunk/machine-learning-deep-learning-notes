@@ -33,6 +33,10 @@
 ### Keras
 * TBD
 
+
+## 工欲善其事，必先利其器
+* Anaconda
+
 ## 一些好用的工具
 * 机器学习工具
   * [Google Colaboratory](https://colab.research.google.com)：机器学习Jupyter环境
@@ -40,7 +44,6 @@
 * 编辑用工具
   * 一个[识别并转换手写公式为Latex](https://webdemo.myscript.com/views/math/index.html)的网站
   * [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-
 
 
 [回到目录](#深度学习知识总结)

@@ -15,7 +15,7 @@
   * [Python](python/python-basic)
   * [Pandas](python/pandas)
   * [NumPy](python/numpy)
-  * [Matplotlib](python/Mtplotlib)
+  * [Matplotlib](python/Matplotlib)
   * [Sklearn](python/Sklearn)
 
 ## 机器学习算法
@@ -35,7 +35,7 @@
 
 
 ## 工欲善其事，必先利其器
-* Anaconda
+* [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib那些，以及对于深度学习初学者很重要的Jupyter Notebook）。
 
 ## 一些好用的工具
 * 机器学习工具
@@ -46,4 +46,4 @@
   * [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 
-[回到目录](#深度学习知识总结)
+[回到顶部](#深度学习知识总结)

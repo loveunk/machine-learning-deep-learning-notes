@@ -344,5 +344,6 @@ plt.show()
 ## Reference
 * [NumPy官方入门教程](https://docs.scipy.org/doc/numpy/user/quickstart.html)
 * [Numpy与MATLAB的区别——写给Matlab用户](https://docs.scipy.org/doc/numpy/user/numpy-for-matlab-users.html)
+* [Numpy中文文档](https://www.numpy.org.cn/index.html)
 
 [回到目录](#numpy)

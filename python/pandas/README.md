@@ -152,5 +152,6 @@ uk_jpn_rain.plot(x='year', y=['rain_octsep', 'jpn_rainfall'])
 
 ## References
 * [An Introduction to Scientific Python – Pandas](http://www.datadependence.com/2016/05/scientific-python-pandas/)
+* [Pandas中文文档](https://www.pypandas.cn/)
 
 [回到目录](#pandas)

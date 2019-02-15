@@ -151,6 +151,7 @@ print(classif.fit(X, y).predict(X))
 
 ## 更多推荐阅读
 * [Scikit-learn速查表](Scikit_Learn_Cheat_Sheet_Python.pdf)
-* [Scikit-learn文档](https://scikit-learn.org/stable/documentation.html)
-
+* [Scikit-learn官方文档（英文）](https://scikit-learn.org/stable/documentation.html)
+* [Scikit-learn中文文档](https://www.kancloud.cn/luponu/sklearn-doc-zh/889724)
+* [Scikit-learn与TensorFlow机器学习实战](https://hand2st.apachecn.org/)
 [回到目录](#scikit-learn)

@@ -1,8 +1,10 @@
-# Calculus Notes 微积分
+# Calculus 微积分
+这篇笔记总结了微积分的一些基础知识，包括导数、偏导数、泰勒展开式、拉格朗日乘数等等的基础知识。
+内容部分参考[Mathematics for Machine Learning: Multivariate Calculus](https://www.coursera.org/learn/multivariate-calculus-machine-learning/)。
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Calculus Notes 微积分](#calculus-notes-微积分)
+- [Calculus 微积分](#calculus-微积分)
 	- [Derivative 导数](#derivative-导数)
 		- [Rules](#rules)
 			- [Sum / Subtraction rule 线性法则](#sum-subtraction-rule-线性法则)

@@ -1,5 +1,6 @@
 # Linear Algebra 线性代数
 这篇笔记总结了线性代数的一些基础知识，包括向量、矩阵及其属性和计算方法。
+内容部分参考[Mathematics for Machine Learning: Linear Algebra](https://www.coursera.org/learn/linear-algebra-machine-learning/)。
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 

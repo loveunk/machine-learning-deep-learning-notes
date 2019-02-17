@@ -1,5 +1,6 @@
 # PCA (Principal Component Analysis) - 主成分分析
 PCA是一种数据线性降维的方法，在学习PCA之前，先回顾一些基础知识。
+内容部分参考[Mathematics for Machine Learning: Multivariate Calculus](https://www.coursera.org/learn/pca-machine-learning/)。
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 

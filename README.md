@@ -9,9 +9,13 @@
 * **Python**：`Python`提供了非常丰富的工具包，非常适合学习者实现算法，也可以作为工业环境完成项目。主流的深度学习框架，例如`TensorFlow`、`Keras`都把Python作为首选语言。此外，主流的在线课程（比如Andrew Ng在Coursera的深度学习系列课程）用Python作为练习项目的语言。在这部分，我将介绍包括Python语言基础和机器学习常用的几个Library，包括`Numpy`、`Pandas`、`matplotlib`、`Scikit-Learn`等。
 * **机器学习**：介绍主流的机器学习算法，比如线性回归、逻辑回归、神经网络、SVM、PCA、聚类算法等等。
 * **深度学习**：介绍原理和常见的模型（比如`CNN`、`RNN`、`LSTM`等）和深度学习的框架（`TensorFlow`、`Keras`）。
+* **强化学习**：TBD
 * **实践项目**：这里将结合几个实际的项目来做比较完整的讲解。此外结合`Kaggle`、`阿里云天池`比赛来做讲解。
 
 因为内容正持续更新中，未完成的部分标识有TBD (To be done)。
+
+## 绪论
+[机器学习绪论](machine-learning)一文中总结了机器学习领域和其解决的问题介绍，建议先读此文，以便有一个系统认知。
 
 ## 数学基础
 微积分和线性代数的基础是必要掌握的，不然对于理解学习算法的原理会有困难。如果已经有一定的数学基础，可以先跳过这一部分，需要的时候再回来补。这里的Notes是基于Coursera中Mathematics for Machine Learning专题做的总结。
@@ -45,8 +49,13 @@
 ### Keras
 * TBD
 
+## 强化学习
+* TBD
 
 ## 工欲善其事，必先利其器
+### 一些电子书
+* [一些资料电子书](https://1drv.ms/f/s!At5_i2TzOUcnhOxc8mwDzwK8ILf5jg)（OneDrive分享，可能被墙）
+
 ### 推荐的学习环境
 * [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib那些，以及对于深度学习初学者很重要的Jupyter Notebook）。
 

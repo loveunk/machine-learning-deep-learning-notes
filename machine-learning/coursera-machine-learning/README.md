@@ -10,6 +10,7 @@
 			- [代价函数](#代价函数)
 		- [梯度下降](#梯度下降)
 			- [梯度下降的直观理解](#梯度下降的直观理解)
+			- [梯度下降的线性回归](#梯度下降的线性回归)
 	- [逻辑回归](#逻辑回归)
 	- [神经网络](#神经网络)
 	- [SVM](#svm)
@@ -40,9 +41,10 @@ Andrew有一句话是关于学习方法的，给我很深印象：“给你讲�
 
 上述例子是个**监督学习**的例子，同时是一个**回归问题**。**回归**指根据之前的数据预测出一个准确的输出值，对于这个例子预测的值是价格。
 
-这个数据集可以表示为
+这个数据集可以表示为下表：
+
 | 房屋大小 (_x_) | 价格 (_y_) |
-|:--------------:|:----------:|
+| :---:         |     :---:      |
 | 2104 | 460 |
 | 1416 | 232 |
 | 1534 | 315 |
@@ -85,7 +87,7 @@ Andrew有一句话是关于学习方法的，给我很深印象：“给你讲�
 为衡量 _h_ 的性能，回归任务中常见的方法是定义代价函数（Cost Function）：
 * 均方误差（MES: Mean Squared Error）
   <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?J(\theta_0,\theta_1)&space;=&space;\frac{1}{m}\sum\limits_{i=1}^m&space;\left(&space;h_{\theta}(x^{(i)})-y^{(i)}&space;\right)^{2}" title="J(\theta_0,\theta_1) = \frac{1}{m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)^{2}" />
+  <img src="https://latex.codecogs.com/gif.latex?J(\theta_0,\theta_1)&space;=&space;\frac{1}{2m}\sum\limits_{i=1}^m&space;\left(&space;h_{\theta}(x^{(i)})-y^{(i)}&space;\right)^{2}" title="J(\theta_0,\theta_1) = \frac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)^{2}" />
   </p>
 * 选取参数以最小化 _J_，从而优化 _h_
 
@@ -147,7 +149,58 @@ Andrew有一句话是关于学习方法的，给我很深印象：“给你讲�
 
 假设你将 _θ<sub>1</sub>_ 初始化在局部最低点，它已经在一个局部的最优处或局部最低点。结果是局部最优点的导数将等于零，因为它是那条切线的斜率。使得 _θ<sub>1</sub>_ 不再改变，也就是新的 _θ<sub>1</sub>_ 等于原来的 _θ<sub>1</sub>_ ，因此，如果参数已经处于局部最低点，那么梯度下降法更新其实什么都没做，它不会改变参数的值。这也解释了为什么即使学习速率 _α_ 保持不变时，梯度下降也可以收敛到局部最低点。
 
-我们来看一个例子，这是代价函数 _J(θ)_ 。
+我们再来看下代价函数 _J(θ)_ ，如下图
+
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/4668349e04cf0c4489865e133d112e98.png" />
+</p>
+
+随着接近最低点，导数越来越接近零，所以，梯度下降一步后，新的导数会变小一点点。再梯度下降一步，在这个绿点，会用一个稍微跟刚才在那个品红点时比，再小一点的一步，到了新的红色点，更接近全局最低点了，因此这点的导数会比在绿点时更小。所以，再进行一步梯度下降时，导数项是更小的， _θ<sub>1</sub>_ 更新的幅度就会更小。所以随着梯度下降法的运行，移动的幅度会自动变得越来越小，直到最终移动幅度非常小，这时已经收敛到局部极小值。
+
+总结一下：
+* 在梯度下降法中，当接近局部最低点时，梯度下降法会自动采取更小的幅度，这是因为当接近局部最低点时，导数值会自动变得越来越小，梯度下降将自动采取较小的幅度。所以实际上没有必要再另外减小 _α_。
+* 你可以用它来最小化任何代价函数 _J(θ)_ ，不只是线性回归中的代价函数 _J(θ)_。
+
+#### 梯度下降的线性回归
+这一节介绍如何将梯度下降和代价函数结合。
+
+梯度下降算法和线性回归算法比较如图：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5eb364cc5732428c695e2aa90138b01b.png" />
+</p>
+
+回顾一下之前的线性回归问题的代价函数：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?J(\theta_0,\theta_1)&space;=&space;\frac{1}{2m}\sum\limits_{i=1}^m&space;\left(&space;h_{\theta}(x^{(i)})-y^{(i)}&space;\right)^{2}" title="J(\theta_0,\theta_1) = \frac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)^{2}" />
+</p>
+
+其偏导数为：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;}{\partial&space;{{\theta_j}}}J(\theta_0,\theta_1)&space;=&space;\frac{\partial&space;}{\partial&space;{{\theta_j}}}&space;\frac{1}{2m}\sum\limits_{i=1}^m&space;\left(&space;h_{\theta}(x^{(i)})-y^{(i)}&space;\right)^{2}" title="\frac{\partial }{\partial {{\theta_j}}}J(\theta_0,\theta_1) = \frac{\partial }{\partial {{\theta_j}}} \frac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)^{2}" />
+</p>
+
+* 当 _j = 0_ 时：
+  <p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;}{\partial&space;{{\theta_0}}}J(\theta_0,\theta_1)&space;=&space;\frac{\partial&space;}{\partial&space;{{\theta_0}}}&space;\frac{1}{2m}\sum\limits_{i=1}^m&space;\left(&space;h_{\theta}(x^{(i)})-y^{(i)}&space;\right)" title="\frac{\partial }{\partial {{\theta_0}}}J(\theta_0,\theta_1) = \frac{\partial }{\partial {{\theta_0}}} \frac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)" />
+  </p>
+* 当 _j = 1_ 时：
+  <p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;}{\partial&space;{{\theta_1}}}J(\theta_0,\theta_1)&space;=&space;\frac{\partial&space;}{\partial&space;{{\theta_1}}}&space;\frac{1}{2m}\sum\limits_{i=1}^m&space;\left(&space;h_{\theta}(x^{(i)})-y^{(i)}&space;\right)x^{(i)}" title="\frac{\partial }{\partial {{\theta_1}}}J(\theta_0,\theta_1) = \frac{\partial }{\partial {{\theta_1}}} \frac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right) x^{(i)}" />
+  </p>
+
+所以算法可以写为：
+
+Repeat {
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;{\theta_{0}}&:={\theta_{0}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{&space;\left({{h}_{\theta&space;}}({{x}^{(i)}})-{{y}^{(i)}}&space;\right)}\\&space;{\theta_{1}}&:={\theta_{1}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{&space;\left({{h}_{\theta&space;}}({{x}^{(i)}})-{{y}^{(i)}}&space;\right)\cdot&space;{{x}^{(i)}}}&space;\end{aligned}" title="\begin{aligned} {\theta_{0}}&:={\theta_{0}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{ \left({{h}_{\theta }}({{x}^{(i)}})-{{y}^{(i)}} \right)}\\ {\theta_{1}}&:={\theta_{1}}-a\frac{1}{m}\sum\limits_{i=1}^{m}{ \left({{h}_{\theta }}({{x}^{(i)}})-{{y}^{(i)}} \right)\cdot {{x}^{(i)}}} \end{aligned}" />
+</p>
+}
+
+上述算法有时也称为 **批量梯度下降（Batch Gradient Descent）**。**“批量”是**指在梯度下降的每一步中，我们都用到了所有的训练样本。
+* 在梯度下降，计算微分求导项时，需要求和运算，所以，在每一个单独的梯度下降中，最终都要计算这样一个东西，这个项需要对所有 _m_ 个训练样本求和。
+* 批量梯度下降法这个名字说明需要考虑所有这一"批"训练样本。事实上，也有其他类型的梯度下降法，不是"批量"型的，不考虑整个的训练集，每次只关注训练集中的一些小的子集。后续会介绍。
+
+此外，也许你知道有一种计算代价函数最小值的数值解法，不需要梯度下降这种迭代算法。在后面我们也会谈到这个方法，可以在不需要多步梯度下降的情况下，解出代价函数的最小值，这中方法称为**正规方程(normal equations)**。实际上在数据量较大的情况下，梯度下降法比正规方程要更适用一些。
 
 ## 逻辑回归
 

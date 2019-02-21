@@ -1,0 +1,63 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+function match_github_url(str) {
+  var matches = str.match(/\bhttps\:\/\/github\.com\/\S+/gi);
+
+  if(matches != null && matches.length > 0)
+    return true;
+  return false;
+}
+
+$(document).ready(function(){
+  function updateText() {
+  input = $("#input").val();
+
+  output = $.trim(input);
+  if (match_github_url(output)) {
+    output = output.replace("https://github.com", "https://raw.github.com");
+    output = output.replace("/raw/master/images", "/master/images");
+    output = output.replace("/blob/master/images", "/master/images");
+    output = "<p align=\"center\">\n<img src=\"" + output + "\" />\n</p>";
+  } else if (output.startsWith("<img ")) {
+    output = "<p align=\"center\">\n" + output + "\n</p>";
+  }
+
+  $("#output").val(output);
+
+  $("#output").select();
+  	document.execCommand("copy");
+  }     
+
+  $("#input").keyup(updateText);
+  $("#clear").click(function(){
+    $("#input").val("");
+    $("#output").val("");
+  });
+  $("#convert").click(updateText);
+});
+</script>
+</head>
+
+<body>
+<div align="center">
+  <div>
+  <p align="left">将GitHub显示URL转为为Raw URL：</p>
+  <textarea id="input" rows="5" cols="50"></textarea>
+  </div>
+
+  <div>
+  <p align="left">转换后的URL：</p>
+  <textarea id="output" rows="7" cols="50"></textarea>
+  </div>
+  
+  <p align="right">
+  <button id="clear">Clear</button>
+  <button id="convert">Convert</button>
+  </p>
+</div>
+</body>
+
+</html>

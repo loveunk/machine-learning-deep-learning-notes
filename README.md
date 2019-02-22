@@ -61,8 +61,8 @@
 
 ### 一些好用的工具
 * 机器学习在线环境
-  * [Google Colaboratory](https://colab.research.google.com)：机器学习Jupyter环境
-  * [IBM Cognitive Class Lab](https://labs.cognitiveclass.ai)：机器学习环境
+  * [Google Colaboratory](https://colab.research.google.com)：Jupyter环境
+  * [IBM Cognitive Class Lab](https://labs.cognitiveclass.ai)：Jupyter环境
 * 编辑用工具
   * 一个[识别并转换手写公式为Latex](https://webdemo.myscript.com/views/math/index.html)的网站
   * [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)

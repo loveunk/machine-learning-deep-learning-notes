@@ -373,4 +373,10 @@ def normal_equation(X, y):
 * 特征之间线性相关：
 	* 可以删除这两个重复特征里的其中一个
 
+## Jupter Notebook编程练习
+* 推荐访问Google Drive的共享（需翻墙），直接在Google Colab在线运行ipynb文件
+	* [Google Drive Link](https://drive.google.com/open?id=1VzVxUSOwRYJogJJpdt4EZNuVtJCJZ7FF)
+* 对于不能翻墙的朋友，还是下载文件运行吧
+	* [GitHub Repository Link](https://github.com/loveunk/ml-ipynb/tree/master/1.linear_regression)
+
 [回到顶部](#线性回归)

@@ -1,8 +1,8 @@
-# 逻辑回归 Logistic Regression
+# 逻辑回归
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [逻辑回归 Logistic Regression](#逻辑回归-logistic-regression)
+- [逻辑回归](#逻辑回归)
 	- [Hypothesis 表示](#hypothesis-表示)
 	- [边界判定](#边界判定)
 	- [代价函数](#代价函数)
@@ -406,3 +406,12 @@ plt.show()
 </p>
 
 注：看上去同线性回归一样，但是知道 _h<sub>θ</sub>(x)=g(θ<sup>T</sup>X)_ ，所以与线性回归不同。
+
+
+## Jupter Notebook编程练习
+* 推荐访问Google Drive的共享（需翻墙），直接在Google Colab在线运行ipynb文件
+	* [Google Drive Link](https://drive.google.com/drive/folders/1rsDEXuYeGnFnWiR2d1NKHRJTLRN24XYg)
+* 对于不能翻墙的朋友，还是下载文件运行吧
+	* [GitHub Repository Link](https://github.com/loveunk/ml-ipynb/tree/master/2.logistic_regression)
+
+[回到顶部](#逻辑回归)

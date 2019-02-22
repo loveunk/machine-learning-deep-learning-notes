@@ -335,12 +335,12 @@ plt.show()
 上面的回归问题中如果我们的模型是： _h<sub>θ</sub>(x)=θ<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+θ<sub>2</sub>x<sub>2</sub><sup>2</sup>+θ<sub>3</sub>x<sub>3</sub><sup>3</sup>+θ<sub>4</sub>x<sub>4</sub><sup>4</sup>_。可以从之前事例中看出，是高次项导致过拟合，所以如果能让这些高次项的系数接近于0的话，就能很好的拟合了（避免过拟合）。所以要做的是在一定程度上减小参数 _θ_ 的值，这是正则化的基本方法。我们决定要减少 _θ<sub>3</sub>_ 和 _θ<sub>4</sub>_ 的大小，要做的便是修改代价函数，在其中 _θ<sub>3</sub>_ 和 _θ<sub>4</sub>_ 设置一点惩罚。这样做的话，在尝试最小化代价时也需要将这个惩罚纳入考虑中，并最终导致选择较小一些的 _θ<sub>3</sub>_ 和 _θ<sub>4</sub>_ 。修改后的代价函数如下：
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\underset{\theta&space;}{\mathop{\min&space;}}\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{\left(&space;{{h}_{\theta&space;}}\left(&space;{{x}^{(i)}}&space;\right)-{{y}^{(i)}}&space;\right)}^{2}}&plus;1000\theta&space;_{3}^{2}&plus;10000\theta&space;_{4}^{2}]}" title="\underset{\theta }{\mathop{\min }}\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{\left( {{h}_{\theta }}\left( {{x}^{(i)}} \right)-{{y}^{(i)}} \right)}^{2}}+1000\theta _{3}^{2}+10000\theta _{4}^{2}]}" />
+<img src="https://latex.codecogs.com/gif.latex?\underset{\theta}{\mathop{\min}}\frac{1}{2m}\left[\sum\limits_{i=1}^{m}{{\left({{h}_{\theta}}\left(x^{(i)}\right)-y^{(i)}\right)}^2}&plus;1000\theta_3^2&plus;10000\theta_4^2\right]" title="\underset{\theta}{\mathop{\min}}\frac{1}{2m}\left[\sum\limits_{i=1}^{m}{{\left({{h}_{\theta}}\left(x^{(i)}\right)-y^{(i)}\right)}^2}+1000\theta_3^2+10000\theta_4^2\right]" />
 </p>
 
 通过这个代价函数选择出的 _θ<sub>3</sub>_ 和 _θ<sub>4</sub>_ 对预测结果的影响就比之前要小许多。假如有非常多的特征，并不知道哪些特征我们要惩罚，可以对所有的特征进行惩罚，并且让代价函数最优化的软件来选择这些惩罚的程度。这样的结果是得到了一个较为简单的能防止过拟合问题的假设：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?J\left(&space;\theta&space;\right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}&plus;\lambda&space;\sum\limits_{j=1}^{n}{\theta_{j}^{2}}]}" title="J\left( \theta \right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{\theta_{j}^{2}}]}" />
+<img src="https://latex.codecogs.com/gif.latex?J\left(\theta\right)=\frac{1}{2m}\left[\sum\limits_{i=1}^m{{({h_\theta}({x^{(i)}})-{y}^{(i)})}^2}&plus;\lambda\sum\limits_{j=1}^n{\theta_j^2}\right]" title="J\left(\theta\right)=\frac{1}{2m}\left[\sum\limits_{i=1}^m{{({h_\theta}({x^{(i)}})-{y}^{(i)})}^2}+\lambda\sum\limits_{j=1}^n{\theta_j^2}\right]" />
 </p>
 
 其中 _\lambda_ 又称为**正则化参数**（**RegularizationParameter**）。注：根据惯例，不对 _θ<sub>0</sub>_ 惩罚。经过正则化处理的模型与原模型的可能对比如下图所示：

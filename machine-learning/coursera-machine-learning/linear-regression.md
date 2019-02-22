@@ -201,13 +201,13 @@ Repeat {
 在之前的房价预测问题里，只考虑到房屋尺寸一个特征，这里我们考虑多个特征的问题。比如在房价预测问题中，引入房间数、楼层、年限等。
 
 下表是一个示例数据：
-| 房屋大小  | 房间数 | 楼层 | 年限 | 价格 (_y_) |
-| :---:         | :---:         | :---:         | :---:         |     :---:      |
-| 2104 |  5  |  1  |  45 | 460 |
-| 1416 |  3  |  2  |  40 | 232 |
-| 1534 |  3  |  2  |  30 | 315 |
-| 852  |  2  |  1  |  36 | 178 |
-| ...  | ... | ... | ... | ... |
+| 房屋大小 | 房间数 | 楼层 | 年限 | 价格 (_y_) |
+|:--------:|:------:|:----:|:----:|:----------:|
+|   2104   |    5   |   1  |  45  |     460    |
+|   1416   |    3   |   2  |  40  |     232    |
+|   1534   |    3   |   2  |  30  |     315    |
+|    852   |    2   |   1  |  36  |     178    |
+|    ...   |   ...  |  ... |  ... |     ...    |
 
 介绍更多的问题描述符号：
 * _n_：特征的数量
@@ -225,7 +225,7 @@ Repeat {
 
 在多变量线性回归中，我们也构建一个代价函数，则这个代价函数是所有建模误差的平方和，即：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?J\left( {\theta_{0}},{\theta_{1}}...{\theta_{n}} \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( h_{\theta} \left({x}^{\left( i \right)} \right)-{y}^{\left( i \right)} \right)}^{2}}}" title="J\left( {\theta_{0}},{\theta_{1}}...{\theta_{n}} \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( h_{\theta} \left({x}^{\left( i \right)} \right)-{y}^{\left( i \right)} \right)}^{2}}}" />
+<img src="https://latex.codecogs.com/gif.latex?J\left({\theta_{0}},{\theta_{1}}...{\theta_{n}}\right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left(h_{\theta}\left({x}^{\left(i\right)}\right)-{y}^{\left(i\right)}\right)}^{2}}}" title="J\left({\theta_{0}},{\theta_{1}}...{\theta_{n}}\right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left(h_{\theta}\left({x}^{\left(i\right)}\right)-{y}^{\left(i\right)}\right)}^{2}}}" />
 </p>
 
 计算代价函数的Python代码如下：

@@ -7,6 +7,13 @@
 	- [边界判定](#边界判定)
 	- [代价函数](#代价函数)
 	- [梯度下降算法](#梯度下降算法)
+	- [多类别分类：一对多](#多类别分类一对多)
+	- [正则化 Regularization](#正则化-regularization)
+		- [过拟合的问题](#过拟合的问题)
+		- [代价函数](#代价函数)
+		- [正则化线性回归](#正则化线性回归)
+			- [正则化与逆矩阵](#正则化与逆矩阵)
+		- [正则化的逻辑回归模型](#正则化的逻辑回归模型)
 
 <!-- /TOC -->
 
@@ -231,12 +238,13 @@ def hypothesis_wrapper(theta):
 
 """ 目标函数的梯度 """
 def gradient(theta):
-  ret = (1/X_train.shape[0])*((hypothesis_wrapper(theta) - y_train).T @ X_train)
-  return ret
+  gradient_sum = (hypothesis_wrapper(theta) - y_train).T @ X_train
+  return gradient_sum / X_train.shape[0]
 
 theta_train = np.array([1, 1.,2.])
 
-theta_opt = optimize.minimize(cost_wrapper, theta_train, method='CG', jac=gradient)
+theta_opt = optimize.minimize(cost_wrapper, theta_train,
+                              method='CG', jac=gradient)
 print(theta_opt)
 
 """ 构造预测集数据 """
@@ -263,3 +271,138 @@ ax.set_zlabel('z')
 ax.set_title('classification')
 plt.show()
 ```
+
+## 多类别分类：一对多
+上述讨论都是针对二分类问题，那如何使用逻辑回归 (logistic regression) 解决多类别分类问题?具体来说，是一个叫做"一对多" (one-vs-all) 的分类算法。
+
+* **例子1**：假如现在需要一个学习算法自动地将邮件归到不同文件夹，或者说自动地加上标签。那么，我们就有了这样一个分类问题：其类别有四个，分别用 _y=1_、_y=2_、_y=3_、_y=4_ 来代表。
+
+* **例子2**：是有关药物诊断的，如果一个病人因为鼻塞来到你的诊所，他可能并没有生病，用 _y=1_ 这个类别来代表；或者患了感冒，用 _y=2_ 来代表；或者得了流感用 _y=3_ 来代表。
+
+* **例子3**：如果你正在做有关天气的机器学习分类问题，那么你可能想要区分哪些天是晴天、多云、雨天、或者下雪天，对上述的例子，可以取一个很小的数值，一个相对"谨慎"的数值，比如1 到3、1到4或者其它数值。
+
+对于一个多类分类问题，我们的数据集或许看起来像下图的右图：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/54d7903564b4416305b26f6ff2e13c04.png" />
+</p>
+
+
+用3种不同的符号来代表3个类别，问题是给出3个类型的数据集，我们如何得到一个学习算法来进行分类呢？
+
+下面将介绍如何进行一对多的分类工作，有时这个方法也被称为"一对余"方法。
+
+如下图，训练集有3个类别，用三角形表示 _y=1_ ，方框表示 _y=2_ ，叉叉表示 _y=3_ 。我们下面要做的就是使用一个训练集，将其分成3个二元分类问题。
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/450a83c67732d254dbac2aeeb8ab910c.png" />
+</p>
+
+我们先从用三角形代表的类别1开始，实际上我们可以创建一个，新的"伪"训练集，类型2和类型3定为负类，类型1设定为正类，我们创建一个新的训练集，如下图所示的那样，我们要拟合出一个合适的分类器。见下图：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/b72863ce7f85cd491e5b940924ef5a5f.png" />
+</p>
+
+这里的三角形是正样本，而圆形代表负样本。可以这样想，设置三角形的值为1，圆形的值为0，下面我们来训练一个标准的逻辑回归分类器，这样我们就得到一个正边界。
+
+为了能实现这样的转变，我们将多个类中的一个类标记为正向类（ _y=1_ ），然后将其他所有类都标记为负向类，这个模型记作 _h<sub>θ</sub><sup>(1)</sup>(x)_ 。接着，类似地第我们选择另一个类标记为正向类（ _y=2_ ），再将其它类都标记为负向类，将这个模型记作 _h<sub>θ</sub><sup>(2)</sup>(x)_ ,依此类推。最后我们得到一系列的模型简记为： _h<sub>θ</sub><sup>(i)</sup>(x)=p(y=i|x;θ)_ 其中： _i=(1,2,3....k)_
+
+最后，在做预测时，将所有的分类机都运行一遍，然后对每一个输入变量，选择最高可能性的输出变量。
+
+现在要做的就是训练这个逻辑回归分类器： _h<sub>θ</sub><sup>(i)</sup>(x)_ ，其中 _i_ 对应每一个可能的 _y=i_ ，最后，为了做出预测，我们给出输入一个新的 _x_ 值，用这个做预测。我们要做的就是在我们三个分类器里面输入 _x_ ，然后我们选择一个让 _h<sub>θ</sub><sup>(i)</sup>(x)_ 最大的 _i_ ，即 _max h<sub>θ</sub><sup>(i)</sup>(x)_ 。
+
+## 正则化 Regularization
+### 过拟合的问题
+在这之前，已经介绍了线性回归和逻辑回归，它们能够有效地解决许多问题。但当将它们应用到某些特定的机器学习问题时，可能遇到过拟合(over-fitting)的问题，过拟合可能会导致这些算法的效果很差。
+
+如果我们有非常多的特征，我们通过学习得到的假设可能能够非常好地适应训练集（代价函数可能几乎为0），但是可能会不能推广到新的数据。下图是一个回归问题的例子：
+
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/72f84165fbf1753cd516e65d5e91c0d3.jpg" />
+</p>
+
+上图中，第一个是线性模型，明显欠拟合（under-fitting），因为不能很好地适应训练集；第三个模型是一个四次方的模型，过于强调拟合原始数据，而丢失了算法的本质：预测新数据。可以看出，若给出一个新的值使之预测，它将表现的很差，是过拟合，虽然能非常好地适应训练集，但在新输入变量进行预测时可能效果不好；而中间的模型最合适。
+
+分类问题中也存在这样的问题：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/be39b497588499d671942cc15026e4a2.jpg" />
+</p>
+
+就以多项式理解， _x_ 的次数越高，拟合的越好，但相应的预测的能力就可能变差。
+问题是，如果我们发现了过拟合问题，应该如何处理？
+* 丢弃一些不能帮助正确预测的特征。可以是手工选择保留哪些特征，或者使用一些模型选择的算法来处理（例如PCA）
+* 正则化。保留所有的特征，但是减少参数的大小（magnitude）。
+
+### 代价函数
+上面的回归问题中如果我们的模型是： _h<sub>θ</sub>(x)=θ<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+θ<sub>2</sub>x<sub>2</sub><sup>2</sup>+θ<sub>3</sub>x<sub>3</sub><sup>3</sup>+θ<sub>4</sub>x<sub>4</sub><sup>4</sup>_。可以从之前事例中看出，是高次项导致过拟合，所以如果能让这些高次项的系数接近于0的话，就能很好的拟合了（避免过拟合）。所以要做的是在一定程度上减小参数 _θ_ 的值，这是正则化的基本方法。我们决定要减少 _θ<sub>3</sub>_ 和 _θ<sub>4</sub>_ 的大小，要做的便是修改代价函数，在其中 _θ<sub>3</sub>_ 和 _θ<sub>4</sub>_ 设置一点惩罚。这样做的话，在尝试最小化代价时也需要将这个惩罚纳入考虑中，并最终导致选择较小一些的 _θ<sub>3</sub>_ 和 _θ<sub>4</sub>_ 。修改后的代价函数如下：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\underset{\theta&space;}{\mathop{\min&space;}}\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{\left(&space;{{h}_{\theta&space;}}\left(&space;{{x}^{(i)}}&space;\right)-{{y}^{(i)}}&space;\right)}^{2}}&plus;1000\theta&space;_{3}^{2}&plus;10000\theta&space;_{4}^{2}]}" title="\underset{\theta }{\mathop{\min }}\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{\left( {{h}_{\theta }}\left( {{x}^{(i)}} \right)-{{y}^{(i)}} \right)}^{2}}+1000\theta _{3}^{2}+10000\theta _{4}^{2}]}" />
+</p>
+
+通过这个代价函数选择出的 _θ<sub>3</sub>_ 和 _θ<sub>4</sub>_ 对预测结果的影响就比之前要小许多。假如有非常多的特征，并不知道哪些特征我们要惩罚，可以对所有的特征进行惩罚，并且让代价函数最优化的软件来选择这些惩罚的程度。这样的结果是得到了一个较为简单的能防止过拟合问题的假设：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?J\left(&space;\theta&space;\right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}&plus;\lambda&space;\sum\limits_{j=1}^{n}{\theta_{j}^{2}}]}" title="J\left( \theta \right)=\frac{1}{2m}[\sum\limits_{i=1}^{m}{{{({h_\theta}({{x}^{(i)}})-{{y}^{(i)}})}^{2}}+\lambda \sum\limits_{j=1}^{n}{\theta_{j}^{2}}]}" />
+</p>
+
+其中 _\lambda_ 又称为**正则化参数**（**RegularizationParameter**）。注：根据惯例，不对 _θ<sub>0</sub>_ 惩罚。经过正则化处理的模型与原模型的可能对比如下图所示：
+
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ea76cc5394cf298f2414f230bcded0bd.jpg" />
+</p>
+
+如果选择的正则化参数 _λ_ 过大，则会把所有的参数都最小化了，导致模型变成 _h<sub>θ</sub>(x)=θ<sub>0</sub>_ ，也就是上图中红色直线所示的情况，造成欠拟合。那为什么增加的一项 _λ=Σ<sup>n</sup><sub>j=1</sub>θ<sub>j</sub><sup>2</sup>_ 可以使 _θ_ 的值减小呢？
+
+因为如果我们令 _λ_ 的值很大的话，为了使`CostFunction`尽可能的小，所有的 _θ_ 的值（不包括 _θ<sub>0</sub>_ ）都会在一定程度上减小。但若 _λ_ 的值太大了，那么 _θ_ （不包括 _θ<sub>0</sub>_ ）都会趋近于0，这样我们所得到的只能是一条平行于 _x_ 轴的直线。所以对于正则化，要取一个合理的 _λ_ 值，才能更好的应用正则化。
+
+回顾一下代价函数，为了使用正则化，让我们把这些概念应用到到线性回归和逻辑回归中去，那么我们就可以让他们避免过度拟合了。
+
+### 正则化线性回归
+对于线性回归的求解，我们之前推导了两种学习算法：一种基于梯度下降，一种基于正规方程。
+
+正则化线性回归的代价函数为：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?J\left(&space;\theta&space;\right)=\frac{1}{2m}\left[\sum\limits_{i=1}^{m}{({{{h_\theta}({x^{(i)}})-{y^{(i)}})}^2}&plus;\lambda&space;\sum\limits_{j=1}^n{\theta_j^2}}\right]" title="J\left( \theta \right)=\frac{1}{2m}\left[\sum\limits_{i=1}^{m}{({{{h_\theta}({x^{(i)}})-{y^{(i)}})}^2}+\lambda \sum\limits_{j=1}^n{\theta_j^2}}\right]" />
+</p>
+
+如果我们要用梯度下降法令这个代价函数最小化，因为我们不对 _θ<sub>0</sub>_ 进行正则化，所以梯度下降算法将分两种情形：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;{\theta_0}&:={\theta_0}-a\frac{1}{m}\sum\limits_{i=1}^m{({h_\theta}(x^{(i)})-{y^{(i)}})x_0^{(i)}}\\&space;{\theta_j}&:={\theta_j}-a\frac{1}{m}\left[\sum\limits_{i=1}^m{({h_\theta}(x^{(i)})-{y^{(i)}})x_j^{\left(i\right)}}&plus;\lambda{\theta_j}\right]&space;\text{,&space;for&space;}&space;j=1,2,...,n&space;\end{align*}" title="\begin{align*} {\theta_0}&:={\theta_0}-a\frac{1}{m}\sum\limits_{i=1}^m{({h_\theta}(x^{(i)})-{y^{(i)}})x_0^{(i)}}\\ {\theta_j}&:={\theta_j}-a\frac{1}{m}\left[\sum\limits_{i=1}^m{({h_\theta}(x^{(i)})-{y^{(i)}})x_j^{\left(i\right)}}+\lambda{\theta_j}\right] \text{, for } j=1,2,...,n \end{align*}" />
+</p>
+
+上式可以调整为：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?{\theta_j}:={\theta_j}(1-\alpha\frac{\lambda}{m})-a\frac{1}{m}\sum\limits_{i=1}^m{\left({h_\theta}(x^{(i)})-{y^{(i)}}\right)x_j^{\left(i\right)}}" title="{\theta_j}:={\theta_j}(1-\alpha\frac{\lambda}{m})-a\frac{1}{m}\sum\limits_{i=1}^m{\left({h_\theta}(x^{(i)})-{y^{(i)}}\right)x_j^{\left(i\right)}}" />
+</p>
+
+可以看出，正则化线性回归的梯度下降算法的变化在于，每次都在原有算法更新规则的基础上令值减少了一个额外的值。
+
+我们同样也可以利用正规方程来求解正则化线性回归模型，方法如下所示：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/71d723ddb5863c943fcd4e6951114ee3.png" />
+</p>
+
+图中的矩阵尺寸为 _(n+1)*(n+1)_ 。
+
+#### 正则化与逆矩阵
+之前讲正规方程时讲过，要求 _X<sup>T</sup>X_ 必须是可逆的，那对于不可逆的情况，可以用 `pinv()`来计算伪逆。
+
+而正则化刚好解决了这个问题，如果 _λ > 0_，可以证明 _X<sup>T</sup>X + λI_ 是可逆的。
+
+### 正则化的逻辑回归模型
+针对逻辑回归问题，我们在之前的课程已经学习过两种优化算法：
+1. 梯度下降法来优化代价函数 _J(θ)_
+2. 更高级的优化算法，这些高级优化算法需要你自己设计代价函数 _J(θ)_
+
+例如对于下图的数据，当有很多features时，容易导致过拟合。
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/2726da11c772fc58f0c85e40aaed14bd.png" />
+</p>
+
+类似线性回归正则的处理，我们也给代价函数增加一个正则化的表达式，得到代价函数：
+<img src="https://latex.codecogs.com/gif.latex?J\left(\theta\right)=\frac{1}{m}\sum\limits_{i=1}^m{[-{y^{(i)}}\log\left({h_\theta}\left({x^{(i)}}\right)\right)-\left(1-{y^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)]}&plus;\frac{\lambda}{2m}\sum\limits_{j=1}^n{\theta_j^2}" title="J\left(\theta\right)=\frac{1}{m}\sum\limits_{i=1}^m{[-{y^{(i)}}\log\left({h_\theta}\left({x^{(i)}}\right)\right)-\left(1-{y^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)]}+\frac{\lambda}{2m}\sum\limits_{j=1}^n{\theta_j^2}" />
+
+要最小化该代价函数，求导得梯度下降算法：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}{\theta_0}&:={\theta_0}-\frac{\alpha}{m}\sum\limits_{i=1}^{m}{({h_\theta}({x^{(i)}})-{y^{(i)}})x_0^{(i)}}\\&space;{\theta_j}&:={\theta_j}-\frac{\alpha}{m}\left[\sum\limits_{i=1}^{m}{({h_\theta}({x^{(i)}})-{y^{(i)}})x_{j}^{\left(i\right)}}&plus;\lambda{\theta_j}\right]\text{&space;for&space;}j=1,2,...,n\end{align*}" title="\begin{align*}{\theta_0}&:={\theta_0}-\frac{\alpha}{m}\sum\limits_{i=1}^{m}{({h_\theta}({x^{(i)}})-{y^{(i)}})x_0^{(i)}}\\ {\theta_j}&:={\theta_j}-\frac{\alpha}{m}\left[\sum\limits_{i=1}^{m}{({h_\theta}({x^{(i)}})-{y^{(i)}})x_{j}^{\left(i\right)}}+\lambda{\theta_j}\right]\text{ for }j=1,2,...,n\end{align*}" />
+</p>
+
+注：看上去同线性回归一样，但是知道 _h<sub>θ</sub>(x)=g(θ<sup>T</sup>X)_ ，所以与线性回归不同。

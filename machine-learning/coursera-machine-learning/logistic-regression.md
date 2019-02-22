@@ -1,5 +1,15 @@
 # 逻辑回归 Logistic Regression
 
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [逻辑回归 Logistic Regression](#逻辑回归-logistic-regression)
+	- [Hypothesis 表示](#hypothesis-表示)
+	- [边界判定](#边界判定)
+	- [代价函数](#代价函数)
+	- [梯度下降算法](#梯度下降算法)
+
+<!-- /TOC -->
+
 逻辑回归 (Logistic Regression) 的算法，这是目前最流行使用最广泛的学习算法之一。
 
 首先介绍几种分类问题：
@@ -23,3 +33,233 @@
 逻辑回归算法是分类算法。可能因为算法的名字中出现“回归”让人感到困惑，但逻辑回归算法实际上是一种分类算法，它适用于标签 _y_ 取值离散的情况，如：1 0 0 1。
 
 ## Hypothesis 表示
+逻辑回归的输出变量范围始终在0和1之间。
+逻辑回归模型的假设是： _h<sub>θ</sub> = g(θ<sup>T</sup>X)_ ，其中： _X_ 代表特征向量 _g_ 代表逻辑函数（Logistic function）。
+
+逻辑函数是一个常用的逻辑函数为S形函数（Sigmoid function）:
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?g\left(&space;z&space;\right)=\frac{1}{1&plus;{{e}^{-z}}}" title="g\left( z \right)=\frac{1}{1+{{e}^{-z}}}" />
+</p>
+
+整合上式，得到：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?h_\theta&space;\left(&space;x&space;\right)=\frac{1}{1&plus;{{e}^{-\theta^TX}}}" title="h_\theta \left( x \right)=\frac{1}{1+{{e}^{-\theta^TX}}}" />
+</p>
+
+逻辑函数的示意图：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/1073efb17b0d053b4f9218d4393246cc.jpg" />
+</p>
+
+Python实现：
+``` python
+import numpy as np
+def sigmoid(z):
+  return 1 / (1 + np.exp(-z))
+```
+
+_h<sub>θ</sub>(x)_ 的作用，给定输入变量，计算输出变量 = 1的可能性（estimated probability），即 _h<sub>θ</sub>(x) = P(y=1 | x;θ)_。
+* 例如对一个肿瘤的样本，计算得到 _h<sub>θ</sub>(x) = 0.7_，也就是有70%的可能是恶性的。
+
+## 边界判定
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/6590923ac94130a979a8ca1d911b68a3.png" />
+</p>
+
+* 当 _h<sub>θ</sub>(x) >= 0.5_ 时，预测 _y=1_。
+* 当 _h<sub>θ</sub>(x) < 0.5_ 时，预测 _y=0_ 。
+
+可以总结为：
+* _z=0_ 时 _g(z)=0.5_
+* _z>0_ 时 _g(z)>0.5_
+* _z<0_ 时 _g(z)<0.5_
+
+又 _z=θ<sup>T</sup>x_ ，即： _θ<sup>T</sup>x>=0_ 时，预测 _y=1_  _θ<sup>T</sup>x<0_ 时，预测 _y=0_
+
+举个例子：
+* 假设现在有一个模型，参数 _θ_ 是向量[-3 1 1]。则当 _-3+x<sub>1</sub>+x<sub>2</sub> >= 0_ ，即 _x<sub>1</sub>+x<sub>2</sub> >= 3_ 时，模型将预测 _y=1_ 。我们可以绘制直线 _x<sub>1</sub>+x<sub>2</sub>=3_ ，这条线便是我们模型的分界线，将预测为1的区域和预测为0的区域分隔开。
+如下图：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/58d098bbb415f2c3797a63bd870c3b8f.png" />
+</p>
+
+分类的示意图如下：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f71fb6102e1ceb616314499a027336dc.jpg" />
+</p>
+
+上面的例子还是很明显的，来一个复杂一点的：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/197d605aa74bee1556720ea248bab182.jpg" />
+</p>
+
+上图中的数据需要用曲线才能分隔 _y=0_ 区域和 _y=1_ 区域。
+_y = 0_ 区域接近一个圆形，选用二次多项式： _h<sub>θ</sub>(x)=g(θ<sub>0</sub>+θ<sub>1</sub>x<sub>1</sub>+θ<sub>2</sub>x<sub>2</sub>+θ<sub>3</sub>x<sub>1</sub><sup>2</sup>+θ<sub>4</sub>x<sub>2</sub><sup>2</sup>)_。到这里还未讲过如何自动选取参数，先假设参数向量是[-1 0 0 1 1]，则我们得到的判定边界恰好是圆点在原点且半径为1的圆形。
+
+## 代价函数
+对于一个模型，如何选取参数 _θ_ 了？
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f23eebddd70122ef05baa682f4d6bd0f.png" />
+</p>
+
+首先要定义用来拟合参数的优化目标或者叫代价函数，这便是监督学习问题中的逻辑回归模型的拟合问题。
+
+对于线性回归模型，我们定义的代价函数是所有模型误差的平方和（ _J(θ)=1/(2m) Σ (h<sub>θ</sub>(x<sup>(i)</sup>)-y<sup>(i)</sup>)<sup>2</sup>_ ）。理论上来说，我们也可以对逻辑回归模型沿用这个定义，但是问题在于，当我们将 _h<sub>θ</sub>(x)=(1+e<sup>-θ<sup>T</sup>x</sup>)<sup>-1</sup>_ 带入到这样定义了的代价函数中时，我们得到的代价函数将是一个非凸函数（non-convex function）。
+
+凸函数和非凸函数的示意如下：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/8b94e47b7630ac2b0bcb10d204513810.jpg" />
+</p>
+
+加入代价函数 _J_ 是非凸函数，意味着有许多局部最小值（见上图左图），这将影响梯度下降算法寻找全局最小值。
+
+因此重新定义代价函数为：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?J\left(&space;\theta&space;\right)=\frac{1}{m}\sum\limits_{i=1}^{m}{{Cost}\left(&space;{h_\theta}\left(&space;{x}^{\left(&space;i&space;\right)}&space;\right),{y}^{\left(&space;i&space;\right)}&space;\right)}" title="J\left( \theta \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{{Cost}\left( {h_\theta}\left( {x}^{\left( i \right)} \right),{y}^{\left( i \right)} \right)}" />
+</p>
+
+其中 _Cost()_ 的定义为：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?Cost\left(h_\theta(x),y)\right)&space;=&space;\begin{cases}&space;-log\left(h_\theta(x)&space;\right&space;)&space;&&space;\text{&space;if&space;}&space;y=1&space;\\&space;-log\left(1-h_\theta(x)&space;\right&space;)&space;&&space;\text{&space;if&space;}&space;y=0&space;\end{cases}" title="Cost\left(h_\theta(x),y)\right) = \begin{cases} -log\left(h_\theta(x) \right ) & \text{ if } y=1 \\ -log\left(1-h_\theta(x) \right ) & \text{ if } y=0 \end{cases}" />
+</p>
+
+ _h<sub>θ</sub>(x)_ 与 _Cost(h<sub>θ</sub>(x),y)_ 之间的关系如下图所示：
+ <p align="center">
+ <img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ffa56adcc217800d71afdc3e0df88378.jpg" />
+ </p>
+
+这样构建的 _Cost(h<sub>θ</sub>(x),y)_ 函数的特点是：当实际的 _y=1_ 且 _h<sub>θ</sub>(x)_ 也为1时误差为0，当 _y=1_ 但 _h<sub>θ</sub>(x)_ 不为1时误差随着 _h<sub>θ</sub>(x)_ 变小而变大；当实际的 _y=0_ 且 _h<sub>θ</sub>(x)_ 也为0时代价为0，当 _y=0_ 但 _h<sub>θ</sub>(x)_ 不为0时误差随着 _h<sub>θ</sub>(x)_ 的变大而变大。
+
+将上式整合如下：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?Cost\left(&space;{h_\theta}\left(&space;x&space;\right),y&space;\right)=-y&space;log\left(&space;{h_\theta}\left(&space;x&space;\right)&space;\right)-(1-y)&space;log\left(&space;1-{h_\theta}\left(&space;x&space;\right)&space;\right)" title="Cost\left( {h_\theta}\left( x \right),y \right)=-y log\left( {h_\theta}\left( x \right) \right)-(1-y) log\left( 1-{h_\theta}\left( x \right) \right)" />
+</p>
+
+从而得到
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;J\left(&space;\theta&space;\right)&space;&=\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\log&space;\left(&space;{h_\theta}\left(&space;{{x}^{(i)}}&space;\right)&space;\right)-\left(&space;1-{{y}^{(i)}}&space;\right)\log&space;\left(&space;1-{h_\theta}\left(&space;{{x}^{(i)}}&space;\right)&space;\right)]}\\&space;&=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log&space;\left(&space;{h_\theta}\left(&space;{{x}^{(i)}}&space;\right)&space;\right)&plus;\left(&space;1-{{y}^{(i)}}&space;\right)\log&space;\left(&space;1-{h_\theta}\left(&space;{{x}^{(i)}}&space;\right)&space;\right)]}&space;\end{align*}" title="\begin{align*} J\left( \theta \right) &=\frac{1}{m}\sum\limits_{i=1}^{m}{[-{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}\\ &=-\frac{1}{m}\sum\limits_{i=1}^{m}{[{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]} \end{align*}" />
+</p>
+
+对于这个代价函数，为了拟合 _θ_ ，目标函数为：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\underset{\theta}{\mathbf{min}}J(\theta)" title="\underset{\theta}{\mathbf{min}}J(\theta)" />
+</p>
+
+对于新的样本 _x_，输出为：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?h_\theta(x)&space;=&space;\frac{1}{1&plus;e^{-\theta^Tx}}" title="h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}" />
+</p>
+
+Python代码计算Cost的示例，两种方法是同样的效果：
+``` python
+import numpy as np
+
+def sigmoid(z):
+  return 1/(1 + np.exp(-z))
+
+def cost1(theta, X, y): # 这是第一种方法
+  first = - y.T @ np.log(sigmoid(X @ theta))
+  second = (1 - y.T) @ np.log(1 - sigmoid(X @ theta))
+  return ((first - second) / (len(X))).item()
+
+
+def cost2(theta, X, y): # 这是第二种方法
+  first = np.multiply(-y, np.log(sigmoid(X @ theta)))
+  second = np.multiply((1 - y), np.log(1 - sigmoid(X @ theta)))
+  return np.sum(first - second) / (len(X))
+```
+
+## 梯度下降算法
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;\text{Repeat&space;\{}&space;&&space;\\&space;&\theta_j&space;:=&space;\theta_j&space;-&space;\alpha&space;\frac{1}{m}\sum\limits_{i=1}^{m}&space;\left(&space;h_\theta&space;\left(&space;x^{\left(&space;i&space;\right)}&space;\right)&space;-&space;y^{\left(&space;i&space;\right)}&space;\right)&space;x_{j}^{(i)}&space;\\&space;&\text{(simultaneously&space;update&space;all)}&space;\\&space;\mathbf{\}}&space;\end{align*}" title="\begin{align*} \text{Repeat \{} & \\ &\theta_j := \theta_j - \alpha \frac{1}{m}\sum\limits_{i=1}^{m} \left( h_\theta \left( x^{\left( i \right)} \right) - y^{\left( i \right)} \right) x_{j}^{(i)} \\ &\text{(simultaneously update all)} \\ \mathbf{\}} \end{align*}" />
+</p>
+
+推导过程：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?{{y}^{(i)}}\log&space;\left(&space;{h_\theta}\left(&space;{{x}^{(i)}}&space;\right)&space;\right)&plus;\left(&space;1-{{y}^{(i)}}&space;\right)\log&space;\left(&space;1-{h_\theta}\left(&space;{{x}^{(i)}}&space;\right)&space;\right)\\&space;={{y}^{(i)}}\log&space;\left(&space;\frac{1}{1&plus;{{e}^{-{\theta^T}{{x}^{(i)}}}}}&space;\right)&plus;\left(&space;1-{{y}^{(i)}}&space;\right)\log&space;\left(&space;1-\frac{1}{1&plus;{{e}^{-{\theta^T}{{x}^{(i)}}}}}&space;\right)\\&space;=-{{y}^{(i)}}\log&space;\left(&space;1&plus;{{e}^{-{\theta^T}{{x}^{(i)}}}}&space;\right)-\left(&space;1-{{y}^{(i)}}&space;\right)\log&space;\left(&space;1&plus;{{e}^{{\theta^T}{{x}^{(i)}}}}&space;\right)" title="{{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)\\ ={{y}^{(i)}}\log \left( \frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}} \right)+\left( 1-{{y}^{(i)}} \right)\log \left( 1-\frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}} \right)\\ =-{{y}^{(i)}}\log \left( 1+{{e}^{-{\theta^T}{{x}^{(i)}}}} \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1+{{e}^{{\theta^T}{{x}^{(i)}}}} \right)" />
+</p>
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;\frac{\partial}{\partial{\theta_{j}}}J\left(\theta\right)&=\frac{\partial}{\partial{\theta_{j}}}[-\frac{1}m\sum\limits_{i=1}^m{[-{{y}^{(i)}}\log\left(1&plus;{e^{-{\theta^T}{x^{(i)}}}}\right)-\left(1-{y^{(i)}}\right)\log\left(1&plus;{{e}^{\theta^Tx^{(i)}}}\right)]}]\\&space;&=-\frac{1}{m}\sum\limits_{i=1}^m{y^{(i)}}\frac{x_j^{(i)}}{1&plus;{e^{{\theta^T}{x^{(i)}}}}}-\left(1-y^{(i)}&space;\right)\frac{x_j^{(i)}{e^{{\theta^T}x^{(i)}}}}{1&plus;{e^{{\theta^T}x^{(i)}}}}]\\&space;&=-\frac{1}{m}\sum\limits_{i=1}^m{\frac{{y^{(i)}}x_j^{(i)}-x_j^{(i)}{e^{{\theta^T}{x^{(i)}}}}&plus;{{y}^{(i)}}x_j^{(i)}{{e}^{{\theta^T}{x^(i)}}}}{1&plus;{e^{{\theta^T}{x^{(i)}}}}}}\\&space;&=-\frac{1}{m}\sum\limits_{i=1}^m{(y^{(i)}-\frac{{e^{\theta^Tx^{(i)}}}}{1&plus;{e^{{\theta^T}{{x}^{(i)}}}}})x_j^{(i)}}=-\frac{1}{m}\sum\limits_{i=1}^m{(y^{(i)}-\frac{1}{1&plus;{e^{{-\theta^T}{{x}^{(i)}}}}})x_j^{(i)}}\\&space;&=\frac{1}{m}\sum\limits_{i=1}^m{[{h_\theta}\left(x^{(i)}&space;\right)-{y^{(i)}}]x_j^{(i)}}&space;\end{align*}" title="\begin{align*} \frac{\partial}{\partial{\theta_{j}}}J\left(\theta\right)&=\frac{\partial}{\partial{\theta_{j}}}[-\frac{1}m\sum\limits_{i=1}^m{[-{{y}^{(i)}}\log\left(1+{e^{-{\theta^T}{x^{(i)}}}}\right)-\left(1-{y^{(i)}}\right)\log\left(1+{{e}^{\theta^Tx^{(i)}}}\right)]}]\\ &=-\frac{1}{m}\sum\limits_{i=1}^m{y^{(i)}}\frac{x_j^{(i)}}{1+{e^{{\theta^T}{x^{(i)}}}}}-\left(1-y^{(i)} \right)\frac{x_j^{(i)}{e^{{\theta^T}x^{(i)}}}}{1+{e^{{\theta^T}x^{(i)}}}}]\\ &=-\frac{1}{m}\sum\limits_{i=1}^m{\frac{{y^{(i)}}x_j^{(i)}-x_j^{(i)}{e^{{\theta^T}{x^{(i)}}}}+{{y}^{(i)}}x_j^{(i)}{{e}^{{\theta^T}{x^(i)}}}}{1+{e^{{\theta^T}{x^{(i)}}}}}}\\ &=-\frac{1}{m}\sum\limits_{i=1}^m{(y^{(i)}-\frac{{e^{\theta^Tx^{(i)}}}}{1+{e^{{\theta^T}{{x}^{(i)}}}}})x_j^{(i)}}=-\frac{1}{m}\sum\limits_{i=1}^m{(y^{(i)}-\frac{1}{1+{e^{{-\theta^T}{{x}^{(i)}}}}})x_j^{(i)}}\\ &=\frac{1}{m}\sum\limits_{i=1}^m{[{h_\theta}\left(x^{(i)} \right)-{y^{(i)}}]x_j^{(i)}} \end{align*}" />
+</p>
+
+虽然得到的梯度下降算法表面上看上去与线性回归的梯度下降算法一样，但是这里 _h<sub>θ</sub> = g(θ<sup>T</sup>X)_ 的与线性回归中不同。另外，在运行梯度下降算法之前，进行特征缩放依旧是非常必要的。
+
+然而梯度下降并不是唯一使用的算法，还有其他一些更高级、更复杂的算法。例如共轭梯度法（Conjugate gradient）、BFGS (变尺度法) 和L-BFGS (限制变尺度法) 就是其中更高级的优化算法，它们需要你计算代价函数 _J(θ)_ 和导数项，然后会它们帮你最小化代价函数。
+
+这Conjugate Gradient、BFGS、L-BFGS等算法有许多优点：
+1. 不需要手动选择学习率 _α_。只用给出计算导数项和代价函数的方法，因为算法内有一个智能的内部循环，称为线性搜索(line search)算法，它可以自动尝试不同的学习速率 ，并自动选择一个好的学习速率 ，它甚至可以为每次迭代选择不同的学习速率。
+2. 这些算法实际上在做更复杂的事情，不仅仅是选择一个好的学习速率，所以它们往往最终比梯度下降收敛得快多了，不过关于它们到底做什么的详细讨论，已经超过了这里讨论的范围。
+
+下面是一个关于使用Conjugate Gradient的完整例子，并plot出training和prediction data
+``` python
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import optimize
+from mpl_toolkits.mplot3d import Axes3D
+
+""" X是训练集的数据 """
+X_train = np.array([[1.,  1.],
+              [1.,  2.],
+              [-1., -1.],
+              [-1., -2.]])
+""" y是训练集的label """
+y_train = np.array([1, 1, 0, 0])
+
+""" 处理训练集X，补上x_0 """
+X_train = np.hstack((np.ones((X_train.shape[0], 1)), X_train))
+
+"""Sigmoid 函数公式 """
+def sigmoid(z):
+  return 1/(1 + np.exp(-z))
+
+""" 目标函数，也就是待最小化的 Cost function """
+def cost(theta, X, y):
+  first = - y.T @ np.log(sigmoid(X @ theta))
+  second = (1 - y.T) @ np.log(1 - sigmoid(X @ theta))
+  return ((first - second) / (len(X))).item()
+
+def hypothesis(X, theta):
+  return sigmoid(X @ theta)
+
+def cost_wrapper(theta):
+  return cost(theta, X_train, y_train)
+
+def hypothesis_wrapper(theta):
+  return hypothesis(X_train, theta)
+
+""" 目标函数的梯度 """
+def gradient(theta):
+  ret = (1/X_train.shape[0])*((hypothesis_wrapper(theta) - y_train).T @ X_train)
+  return ret
+
+theta_train = np.array([1, 1.,2.])
+
+theta_opt = optimize.minimize(cost_wrapper, theta_train, method='CG', jac=gradient)
+print(theta_opt)
+
+""" 构造预测集数据 """
+delta = 0.2
+px = np.arange(-3.0, 3.0, delta)
+py = np.arange(-3.0, 3.0, delta)
+px, py = np.meshgrid(px, py)
+px = px.reshape((px.size, 1))
+py = py.reshape((py.size, 1))
+pz = np.hstack((np.hstack((np.ones((px.size, 1)), px)), py))
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+""" plot训练集 """
+ax.scatter(X_train[:, 1], X_train[:, 2], y_train,
+           color='red', marker='^', s=200, label='Traning Data')
+""" plot预测集, 二分类时在hypothesis外加上 np.around """
+ax.scatter(px, py, (hypothesis(pz, theta_opt.x)),
+           color='gray', label='Prediction Data')
+ax.legend(loc=2)
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.set_zlabel('z')
+ax.set_title('classification')
+plt.show()
+```

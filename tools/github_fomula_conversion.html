@@ -1,0 +1,117 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+
+$(document).ready(function(){
+  String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+  };
+  
+  function getIndicesOf(searchStr, str, caseSensitive) {
+    var searchStrLen = searchStr.length;
+    if (searchStrLen == 0) {
+        return [];
+    }
+    var startIndex = 0, index, indices = [];
+    if (!caseSensitive) {
+        str = str.toLowerCase();
+        searchStr = searchStr.toLowerCase();
+    }
+    while ((index = str.indexOf(searchStr, startIndex)) > -1) {
+        indices.push(index);
+        startIndex = index + searchStrLen;
+    }
+    return indices;
+  }
+  
+  function handleSubSupCloseTag(output, openTag, closeTag) {
+    tag_len = openTag.length;
+	var indices = getIndicesOf(openTag, output);
+    for (var i = indices.length - 1; i >= 0; --i) {
+	  output = [output.slice(0, indices[i] + tag_len + 1), closeTag, output.slice(indices[i] + tag_len + 1)].join('');
+	}
+	return output;
+  }
+  
+  function handleUnderlineBlank(output) {
+  	var indices = getIndicesOf("_", output);
+	for (var i = indices.length - 1; i >= 0; --i) {
+	  if (i % 2 == 1) {
+	    output = [output.slice(0, indices[i] + 1), " ", output.slice(indices[i] + 1)].join('');
+	  } else {
+	    output = [output.slice(0, indices[i]), " ", output.slice(indices[i])].join('');
+	  }
+	}
+	return output;
+  }
+
+  function updateText() {
+    input = $("#input").val();
+    
+    output = $.trim(input);
+	
+	if (output.startsWith("import ")) {
+	  output = "``` python\n" + output + "\n```\n";
+	} else {
+      output = output.replace(/\s+/g, "");
+      output = output.replace(/_/g, "<sub>");
+      output = output.replace(/\$/g, "_");
+      output = output.replace(/\\left/g, "");
+      output = output.replace(/\\right/g, "");
+      output = output.replace(/{/g, "");
+      output = output.replace(/}/g, "");
+      output = output.replace(/\^/g, "<sup>");
+      output = output.replace(/\\theta/g, "θ");
+      output = handleSubSupCloseTag(output, "<sub>", "</sub>");
+      output = handleSubSupCloseTag(output, "<sup>", "</sup>");	
+      output = handleUnderlineBlank(output);
+	}
+
+    $("#output").val(output);
+    
+    $("#output").select();
+  	document.execCommand("copy");
+	
+	$("#input").val("");
+	$("#preview").html(output);
+  }     
+
+  $("#input").keyup(updateText);
+  $("#clear").click(function(){
+    $("#input").val("");
+    $("#output").val("");
+	$("#preview").html("");
+  });
+  $("#convert").click(updateText);
+});
+</script>
+</head>
+
+<body>
+<div align="center">
+  <div>
+  <p align="left">将简单的LaTeX公式转换为HTML格式：</p>
+  <textarea id="input" rows="4" cols="50"></textarea>
+  </div>
+
+  <div>
+  <p align="left">转换后的公式：</p>
+  <textarea id="output" rows="5" cols="50"></textarea>
+  </div>
+  
+  <p align="right">
+  <button id="clear">Clear</button>
+  <button id="convert">Convert</button>
+  </p>
+  
+  <div>
+  <p align="center" id="preview" style="font-size: 12px"></p>
+  </div>
+  
+</div>
+</body>
+
+</html>

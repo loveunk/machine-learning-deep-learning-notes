@@ -1,9 +1,9 @@
 # 机器学习
 
-# 介绍
+## 介绍
 本章节将主要基于Coursera Andrew Ng的Machine Learning课程整理传统机器学习算法的内容。
 
-# 线性回归
+## 线性回归
 [线性回归](linear-regression.md)
 
 单变量线性回归 (Linear Regression with One Variable)
@@ -25,7 +25,19 @@
 - 对比梯度下降和正规方程
   - 正规方程及不可逆性
 
-## 逻辑回归
+## 逻辑回归 Logistic Regression
+[线性回归](logistic-regression.md)
+- Hypothesis 表示
+- 边界判定
+- 代价函数
+- 梯度下降算法
+- 多类别分类：一对多
+- 正则化 Regularization
+	- 过拟合的问题
+	- 代价函数
+	- 正则化线性回归
+		- 正则化与逆矩阵
+	- 正则化的逻辑回归模型
 
 ## 神经网络
 

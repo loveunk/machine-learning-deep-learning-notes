@@ -18,13 +18,13 @@
 [机器学习绪论](machine-learning)一文中总结了机器学习领域和其解决的问题介绍，建议先读此文，以便有一个系统认知。
 
 ## 数学基础
-微积分和线性代数的基础是必要掌握的，不然对于理解学习算法的原理会有困难。如果已经有一定的数学基础，可以先跳过这一部分，需要的时候再回来补。这里的Notes是基于Coursera中Mathematics for Machine Learning专题做的总结。
+微积分和线性代数的基础是必须要掌握的，不然对于理解学习算法的原理会有困难。如果已经有一定的数学基础，可以先跳过这一部分，需要的时候再回来补。这里的Notes是基于Coursera中Mathematics for Machine Learning专题做的总结。
   * [Calculus 微积分](calculus)
   * [Linear Algebra 线性代数](linear-algebra)
   * [PCA 主成分分析](pca)
 
 ## Python
-如果有比较好的Python和机器学习相关Library的只是，对于学习算法过程中的代码可以快速理解和调试，一方面节省时间，另一方面也可以更聚焦在算法和模型本身上。
+如果有比较好的Python和机器学习相关Library的知识，对于学习算法过程中的代码可以快速理解和调试，一方面节省时间，另一方面也可以更聚焦在算法和模型本身上。
   * [Python](python/python-basic)
   * [Pandas](python/pandas)
   * [NumPy](python/numpy)
@@ -57,7 +57,7 @@
 * [一些资料电子书](https://1drv.ms/f/s!At5_i2TzOUcnhOxc8mwDzwK8ILf5jg)（OneDrive分享，可能被墙）
 
 ### 推荐的学习环境
-* [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib那些，以及对于深度学习初学者很重要的Jupyter Notebook）。
+* [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib等，以及对于深度学习初学者很重要的Jupyter Notebook）。
 
 ### 一些好用的工具
 * 机器学习在线环境

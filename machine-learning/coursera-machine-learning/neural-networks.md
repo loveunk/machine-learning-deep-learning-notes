@@ -295,12 +295,18 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 <img src="https://latex.codecogs.com/gif.latex?{\frac{\partial&space;g}{\partial&space;z}}=g(1-g)" title="{\frac{\partial g}{\partial z}}=g(1-g)" />
 </p>
 
-首先，我们定义 _δ<sub></sub>j<sup>(l)</sup>_ 为第 _(l)_ 层第 _j_ 个神经元的 误差（Error）。
+首先，我们定义 _δ<sub>j</sub><sup>(l)</sup>_ 为第 _(l)_ 层第 _j_ 个神经元的 误差（Error）。
 根据链式法则，可得：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac&space;{\partial&space;E}{2a^{(l)}}\cdot&space;\dfrac&space;{\partial&space;a^{(l)}}{\partial&space;z^{(1)}}\cdot\dfrac{\partial&space;z^{(l)}}{\partial\theta^{(l)}}" title="\delta^{(l)}=\dfrac {\partial E}{2a^{(l)}}\cdot \dfrac {\partial a^{(l)}}{\partial z^{(1)}}\cdot\dfrac{\partial z^{(l)}}{\partial\theta^{(l)}}" />
+<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac&space;{\partial&space;E}{2a^{(l)}}\cdot&space;\dfrac&space;{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}" title="\delta^{(l)}=\dfrac {\partial E}{2a^{(l)}}\cdot \dfrac {\partial a^{(l)}}{\partial z^{(l)}}" />
 </p>
 
+且有如下递推关系：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac{\partial&space;E}{2a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}=\dfrac{\partial&space;E}{2a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}=\delta^{l&plus;1}\cdot\Theta^{l}\cdot&space;g'(z^{l})" title="\delta^{(l)}=\dfrac{\partial E}{2a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\dfrac{\partial E}{2a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\delta^{l+1}\cdot\Theta^{l}\cdot g'(z^{l})" />
+</p>
+
+对于上面这个简单的神经网络，每一层的 _δ<sup>(l)</sup>_ 计算如下：
 1. 从最后一层的误差开始计算，误差是激活单元的预测（ _a<sup>(4)</sup>_ ）与实际值（ _y<sup></sup>k_ ）之间的误差（ _k=1:k_ ）。则
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\delta^{\left(4\right)}=\dfrac{\partial&space;E}{\partial&space;a^{(4)}}=a^{(4)}-y" title="\delta^{\left(4\right)}=\dfrac{\partial E}{\partial a^{(4)}}=a^{(4)}-y" />

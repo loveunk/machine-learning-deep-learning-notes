@@ -4,40 +4,45 @@
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Python基础](#python基础)
-	- [Types 类型](#types-类型)
-		- [Basic Types 基础变量类型](#basic-types-基础变量类型)
-		- [Type conversion 类型转换](#type-conversion-类型转换)
-	- [Grammar 基本语法](#grammar-基本语法)
-		- [Expression 表达式](#expression-表达式)
-			- [Mathematical Operations 数学运算](#mathematical-operations-数学运算)
-		- [String operations 字符串操作](#string-operations-字符串操作)
-			- [Define a string 定义字符串](#define-a-string-定义字符串)
-			- [String slicing 字符串切片](#string-slicing-字符串切片)
-			- [String Concatenation 字符串连接](#string-concatenation-字符串连接)
-			- [String replication 字符串复制](#string-replication-字符串复制)
-			- [String is immutable 字符串的值是不可变的](#string-is-immutable-字符串的值是不可变的)
-			- [String functions 字符串常用函数](#string-functions-字符串常用函数)
-	- [Lists and Tuple 列表和元组](#lists-and-tuple-列表和元组)
-		- [Tuple 元组](#tuple-元组)
-			- [Tuple properties 元组属性](#tuple-properties-元组属性)
-			- [Tuple Nesting 元组嵌套](#tuple-nesting-元组嵌套)
-		- [List 列表](#list-列表)
-			- [List properties 列表属性](#list-properties-列表属性)
-			- [Covert String to List 转换字符串到列表](#covert-string-to-list-转换字符串到列表)
-			- [List Aliasing 列表别名](#list-aliasing-列表别名)
-			- [List Clone 列表复制](#list-clone-列表复制)
-	- [Dictionary 字典](#dictionary-字典)
-	- [Sets 集合](#sets-集合)
-	- [Conditions and Branching 条件和分支](#conditions-and-branching-条件和分支)
-		- [Conditions 条件](#conditions-条件)
-		- [Branching 分支](#branching-分支)
-	- [Loops 循环](#loops-循环)
-	- [Functions 函数](#functions-函数)
-		- [Build in functions 内置函数](#build-in-functions-内置函数)
-		- [Collecting arguments 多参数](#collecting-arguments-多参数)
-		- [Scope 作用域](#scope-作用域)
-	- [Objects and Classes 对象和类](#objects-and-classes-对象和类)
+- [Python基础](#python%E5%9F%BA%E7%A1%80)
+	- [Types 类型](#types-%E7%B1%BB%E5%9E%8B)
+		- [Basic Types 基础变量类型](#basic-types-%E5%9F%BA%E7%A1%80%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B)
+		- [Type conversion 类型转换](#type-conversion-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2)
+	- [Grammar 基本语法](#grammar-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95)
+		- [Expression 表达式](#expression-%E8%A1%A8%E8%BE%BE%E5%BC%8F)
+			- [Mathematical Operations 数学运算](#mathematical-operations-%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97)
+		- [String operations 字符串操作](#string-operations-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%93%8D%E4%BD%9C)
+			- [Define a string 定义字符串](#define-a-string-%E5%AE%9A%E4%B9%89%E5%AD%97%E7%AC%A6%E4%B8%B2)
+			- [String slicing 字符串切片](#string-slicing-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87)
+			- [String Concatenation 字符串连接](#string-concatenation-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%9E%E6%8E%A5)
+			- [String replication 字符串复制](#string-replication-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%8D%E5%88%B6)
+			- [String is immutable 字符串的值是不可变的](#string-is-immutable-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%80%BC%E6%98%AF%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%9A%84)
+			- [String functions 字符串常用函数](#string-functions-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0)
+	- [Lists and Tuple 列表和元组](#lists-and-tuple-%E5%88%97%E8%A1%A8%E5%92%8C%E5%85%83%E7%BB%84)
+		- [Tuple 元组](#tuple-%E5%85%83%E7%BB%84)
+			- [Tuple properties 元组属性](#tuple-properties-%E5%85%83%E7%BB%84%E5%B1%9E%E6%80%A7)
+			- [Tuple Nesting 元组嵌套](#tuple-nesting-%E5%85%83%E7%BB%84%E5%B5%8C%E5%A5%97)
+		- [List 列表](#list-%E5%88%97%E8%A1%A8)
+			- [List properties 列表属性](#list-properties-%E5%88%97%E8%A1%A8%E5%B1%9E%E6%80%A7)
+			- [Covert String to List 转换字符串到列表](#covert-string-to-list-%E8%BD%AC%E6%8D%A2%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%B0%E5%88%97%E8%A1%A8)
+			- [List Aliasing 列表别名](#list-aliasing-%E5%88%97%E8%A1%A8%E5%88%AB%E5%90%8D)
+			- [List Clone 列表复制](#list-clone-%E5%88%97%E8%A1%A8%E5%A4%8D%E5%88%B6)
+	- [Dictionary 字典](#dictionary-%E5%AD%97%E5%85%B8)
+	- [Sets 集合](#sets-%E9%9B%86%E5%90%88)
+	- [Conditions and Branching 条件和分支](#conditions-and-branching-%E6%9D%A1%E4%BB%B6%E5%92%8C%E5%88%86%E6%94%AF)
+		- [Conditions 条件](#conditions-%E6%9D%A1%E4%BB%B6)
+		- [Branching 分支](#branching-%E5%88%86%E6%94%AF)
+	- [Loops 循环](#loops-%E5%BE%AA%E7%8E%AF)
+	- [Functions 函数](#functions-%E5%87%BD%E6%95%B0)
+		- [Build in functions 内置函数](#build-in-functions-%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0)
+		- [Collecting arguments 多参数](#collecting-arguments-%E5%A4%9A%E5%8F%82%E6%95%B0)
+		- [Scope 作用域](#scope-%E4%BD%9C%E7%94%A8%E5%9F%9F)
+	- [Objects and Classes 对象和类](#objects-and-classes-%E5%AF%B9%E8%B1%A1%E5%92%8C%E7%B1%BB)
+	- [File IO 文件操作](#file-io-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C)
+		- [File open and close 文件打开关闭](#file-open-and-close-%E6%96%87%E4%BB%B6%E6%89%93%E5%BC%80%E5%85%B3%E9%97%AD)
+		- [Reading Files 读文件](#reading-files-%E8%AF%BB%E6%96%87%E4%BB%B6)
+		- [Writting Files 写文件](#writting-files-%E5%86%99%E6%96%87%E4%BB%B6)
+		- [Delete a File or Folder 删除文件或目录](#delete-a-file-or-folder-%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95)
 	- [Reference](#reference)
 
 <!-- /TOC -->
@@ -82,7 +87,7 @@ s2 = 'Kevin' # s2 同 s1
 
 S3 = """Kevin and "K.K".""" # => Kevin and "K.K".
 ```
-* 但三重引号的字符串如果没有复制，其相当于多行注释
+* 三重引号也可以用来实现多行注释
 ``` python
 def add(x, y):
   '''Add two object(x, y) --> object(x + y)
@@ -128,7 +133,7 @@ s2 = 3 * s1 # => "Kevin Kevin Kevin "
 ```
 
 #### String is immutable 字符串的值是不可变的
-不能改变一个字符串里的值，但可以对变量重新负值。
+不能改变一个字符串里的值，但可以对变量重新赋值。
 ``` python
 s1 = "Kevin "
 s1[0] = 'K' # ERROR!!!
@@ -137,7 +142,7 @@ s1 = "Wen"  # OK
 
 #### String functions 字符串常用函数
 * `str.upper()`
-* `str.repleace(from_str, to_str)`
+* `str.replace(from_str, to_str)`
 * `str.find(sub_str)`，返回第一次出现的`index`，没找到返回`-1`
 
 ## Lists and Tuple 列表和元组
@@ -145,6 +150,11 @@ s1 = "Wen"  # OK
 * Tuple是有序的序列
 * Tuple可以含有不同的基本类型，例如`string`、`int`、`float`、`bool`等
 * 使用圆括号 `(*, *)`
+* Tuple里可以只包含一个元素，但此时逗号不可以省略
+```python
+t = ('Kevin',) # 此时t是元组
+s = ('Kevin')  # 此时s是字符串，相当于 s = 'Kevin'
+```
 
 #### Tuple properties 元组属性
 * 可以使用索引的方式访问`tuple[i]`
@@ -185,9 +195,23 @@ tuple0[2][1]  # => "rock"`
 
 #### List Aliasing 列表别名
 如果一个变量`B`指向另一个变量`A` `(B = A)`，那么`B`是`A`的别名。对`A`的任何改动，`B`都可以访问到。
+```python
+l1 = [1, 2, 3]
+l2 = l1
+l1[0] = 0
+print(l1) # [0, 2, 3]
+print(l2) # [0, 2, 3]
+```
 
 #### List Clone 列表复制
 复制一个列表通过 `B = A[:]`的方式，`A`和`B`相互不影响
+```python
+l1 = [1, 2, 3]
+l2 = l1[:]
+l1[0] = 0
+print(l1) # [0, 2, 3]
+print(l2) # [1, 2, 3]
+```
 
 ## Dictionary 字典
 `Dictionary`中的每个元素由`(key, value)`的键值对组成。
@@ -213,7 +237,7 @@ dic = {"k1":1, "k2":"2", "k3":[3,3], "k4":(4,4), ('k5'):5}
 `Sets` 是类似`list`和`tuple`的集合，可以包含任意元素。
 * 使用花括号来表示`{}`来表示。
 * **Unordered**：Sets是无序的
-* **Unique**：Sets里的元素是唯一的
+* **Unique**：Sets里的元素值是唯一的
 * 创建
   * 通过类型转换：`set(a_list)`
 * 新增
@@ -240,11 +264,14 @@ dic = {"k1":1, "k2":"2", "k3":[3,3], "k4":(4,4), ('k5'):5}
 * `if (...), elif(...), else`:
 
 ## Loops 循环
-`range([start], end)`
-* 产生从`0`开始的一个序列知道`end -1`，
+`range([start], end, [step])`
+* 产生从`0`开始的一个序列直到`end -1`，每个值之间相差`step`， `step`可省略，默认为`1`，
 
 `for i in range(N):`
 * 循环`0, 1, ..., N-1`
+
+`for i in range(1, 10, 2):`
+* `1, 3, 5, 7, 9`
 
 `while (condition):`
 

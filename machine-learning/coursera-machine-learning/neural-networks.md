@@ -9,6 +9,9 @@
 		- [前向传播](#前向传播)
 		- [神经网络架构](#神经网络架构)
 	- [神经网络应用](#神经网络应用)
+	- [神经网络解决多分类问题](#神经网络解决多分类问题)
+	- [代价函数 Cost Function](#代价函数-cost-function)
+	- [反向传播算法](#反向传播算法)
 
 <!-- /TOC -->
 
@@ -84,7 +87,7 @@
 神经网络模型的一些符号描述：
 * _a<sub>i</sub><sup>(j)</sup>_ 代表第 _j_ 层的第 _i_ 个激活单元。
 * _Θ<sup>(j)</sup>_ 代表从第 _j_ 层映射到第 _j+1_ 层时的权重的矩阵，例如 _θ<sup>(1)</sup>_ 代表从第一层映射到第二层的权重的矩阵。
-  * 其尺寸为：**以第 _j+1_ 层的激活单元数量为行数，以第 _j_ 层的激活单元数加1为列数的矩阵。例如：上图所示的神经网络中 _θ<sup>(1)</sup>_ 的尺寸为3*4**（搞清楚权重矩阵的大小很重要！）。
+  * 其尺寸为：**以第 _j+1_ 层的激活单元数量为行数，以第 _j_ 层的激活单元数加1为列数的矩阵。例如：上图所示的神经网络中 _θ<sup>(1)</sup>_ 的尺寸为3*4**（列加1是因为要对应 _x<sub>0</sub>_, _a<sub>0</sub>_ 这样的bias，搞清楚权重矩阵的大小很重要！）。
 
 那么对于上图中的神经网络，可得：
 * _a<sub>1</sub><sup>(2)</sup>=g(Θ<sub>10</sub><sup>(1)</sup>x0+Θ<sub>11</sub><sup>(1)</sup>x1+Θ<sub>12</sub><sup>(1)</sup>x2+Θ<sub>13</sub><sup>(1)</sup>x3)_
@@ -199,6 +202,122 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 </p>
 
 这样就得到了一个 _XNOR_ 运算符功能的神经网络。按这种思路你可以逐渐构造出越来越复杂的函数和特征值。这就是神经网络的厉害之处。
+
+---
+一个神经网络做手写数字识别的演示视频
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=yxuRnBEczUU" target="_blank">
+    <img src="https://img.youtube.com/vi/yxuRnBEczUU/0.jpg" />
+  </a>
+</p>
+
+（上面的视频是Youtube的，如果无法翻墙的，可访问[爱奇艺上的链接](https://www.iqiyi.com/w_19rue4wsdl.html)）
+
+## 神经网络解决多分类问题
+当分类问题不止两种分类时（ _y=1,2,3…._ ），比如如果我们要训练一个神经网络算法来识别路人、汽车、摩托车和卡车。
+* 在输出层我们应该有4个值。例如，第一个值为1或0用于预测是否是行人，第二个值用于判断是否为汽车。
+* 输入向量 _x_ 有三个维度，两个中间层，输出层4个神经元分别用来表示4类，也就是每一个数据在输出层都会出现 _[abcd]<sup>T</sup>_ ，且 _a,b,c,d_ 中仅有一个为1，表示当前类。
+
+下面是该神经网络的可能结构示例：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f3236b14640fa053e62c73177b3474ed.jpg" />
+</p>
+
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/685180bf1774f7edd2b0856a8aae3498.png" />
+</p>
+
+神经网络算法的输出结果为四种可能情形之一：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5e1a39d165f272b7f145c68ef78a3e13.png" />
+</p>
+
+## 代价函数 Cost Function
+首先介绍一些符号计法：
+* 假设神经网络的训练样本有 _m_ 个
+* 每个包含一组输入 _x_ 和一组输出信号 _y_
+* _L_ 表示神经网络层数
+* _S<sub>I</sub>_ 表示每层的神经元个数（ _S<sub>l</sub>_ 表示输出层神经元个数）， _S<sub>L</sub>_ 代表最后一层中处理单元的个数
+
+将神经网络的分类定义为两种情况：二类分类和多类分类，
+* 二类分类： _S<sub>L</sub>=0, y=0, or, 1_ 表示哪一类；
+*  _K_ 类分类： _S<sub>L</sub>=k, y<sub>i</sub>=1_ 表示分到第 _i_ 类； _(k>2)_
+
+也可以参考下图：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/8f7c28297fc9ed297f42942018441850.jpg" />
+</p>
+
+我们回顾逻辑回归问题中我们的代价函数为：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?J\left(\theta\right)=\frac{1}{m}\sum\limits_{i=1}^m{[-{y^{(i)}}\log\left({h_\theta}\left({x^{(i)}}\right)\right)-\left(1-{y^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)]}&plus;\frac{\lambda}{2m}\sum\limits_{j=1}^n{\theta_j^2}" title="J\left(\theta\right)=\frac{1}{m}\sum\limits_{i=1}^m{[-{y^{(i)}}\log\left({h_\theta}\left({x^{(i)}}\right)\right)-\left(1-{y^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)]}+\frac{\lambda}{2m}\sum\limits_{j=1}^n{\theta_j^2}" />
+</p>
+
+在逻辑回归中，我们只有一个输出变量，又称标量（scalar），也只有一个因变量 _y_ ，但是在神经网络中，我们可以有很多输出变量，我们的 _h<sub>θ</sub>(x)_ 是一个维度为 _K_ 的向量，并且我们训练集中的因变量也是同样维度的一个向量，因此我们的代价函数会比逻辑回归更加复杂一些，为：
+<img src="https://latex.codecogs.com/gif.latex?h_\theta\left(x\right)\in&space;\mathbb{R}^{K}&space;{\left({h_\theta}\left(x\right)\right)}_{i}={i}^{th}&space;\text{output}" title="h_\theta\left(x\right)\in \mathbb{R}^{K} {\left({h_\theta}\left(x\right)\right)}_{i}={i}^{th} \text{output}" />
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}J(\Theta)=&-\frac{1}{m}\sum\limits_{i=1}^m\sum\limits_{k=1}^K{\left[{y_k^{(i)}}\log\left({h_\Theta}\left({x^{(i)}}\right)\right)_k&plus;\left(1-{y_k^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)_k\right]}\\&space;&&plus;\frac{\lambda}{2m}\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l&plus;1}}{\left(\Theta_{ji}^{(l)})\right)^2}\end{align*}" title="\begin{align*}J(\Theta)=&-\frac{1}{m}\sum\limits_{i=1}^m\sum\limits_{k=1}^K{\left[{y_k^{(i)}}\log\left({h_\Theta}\left({x^{(i)}}\right)\right)_k+\left(1-{y_k^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)_k\right]}\\ &+\frac{\lambda}{2m}\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l+1}{\left(\Theta_{ji}^{(l)})\right)^2}\end{align*}" />
+</p>
+
+但神经网络代价函数的思想还是和逻辑回归代价函数是一样的，希望通过代价函数来观察算法预测的结果与真实情况的误差有多大，唯一不同的是，对于每一行特征，我们都会给出 _K_ 个预测，基本上我们可以利用循环，对每一行特征都预测 _K_ 个不同结果，然后在利用循环在 _K_ 个预测中选择可能性最高的一个，将其与 _y_ 中的实际数据进行比较。
+
+**注意**：正则化的那一项排除了每一层 _Θ<sub>0</sub>​_ 的和。最里层的循环 _j​_ 循环所有的行（由 _s<sub>l</sub>​_ +1层的激活单元数决定），循环 _i​_ 则循环所有的列，由该层（ _s<sub>l</sub>​_ 层）的激活单元数所决定。即： _h<sub>Θ</sub>(x)​_ 与真实值之间的距离为每个样本-每个类输出的加和，对参数进行正则化（Regularization）的Bias项处理所有参数的平方和。
+（注意，_Θ_ 是 以第 _s<sub>l+1</sub>_ 层的激活单元数量为行数，以第 _s<sub>l</sub>+1_ 为列数的矩阵，公式里 i = 1开始，相当于把 _Θ<sub>[:,0]</sub>​_ 忽略了，而 _Θ_ 的行数 _j_ 本身就是从1开始的。）
+
+## 反向传播算法
+
+之前我们在计算神经网络预测结果的时候我们采用了一种正向传播方法，我们从第一层开始正向一层一层进行计算，直到最后一层的 _h<sub>θ</sub>(x)_ 。现在，为了计算代价函数的偏导数 _((∂)/(∂Θ<sup>(l)</sup><sub>ij</sub>)) · J(Θ)_ ，我们需要采用一种反向传播算法，也就是首先计算最后一层的误差，然后再一层一层反向求出各层的误差，直到倒数第二层。以一个例子来说明反向传播算法。假设我们的训练集只有一个样本 _(x<sup>(1)</sup>,y<sup>(1)</sup>)_ ，我们的神经网络是一个四层的神经网络，其中 _K=4，S<sub>L</sub>=4，L=4_ ：
+
+前向传播算法：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/2ea8f5ce4c3df931ee49cf8d987ef25d.jpg" />
+</p>
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/6a0954ad41f959d7f272e8f53d4ee2de.jpg" />
+</p>
+
+由于反向传播使用梯度下降法，需要计算平方误差函数（MSE）对网络权重的导数：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?E=\dfrac{1}{2}(t-y)^{2}" title="E=\dfrac{1}{2}(t-y)^{2}" />
+</p>
+
+其中 _E_ 为平方误差，_t_ 为训练样本的目标输出，_y_ 为输出神经元的实际输出。
+激活函数 _g_ 一般是非线性可微函数。常用作激活函数的是逻辑函数：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?g(z)={\frac{1}{1&plus;e^{{-z}}}}" title="g(z)={\frac{1}{1+e^{{-z}}}}" />
+</p>
+
+其导数的形式为：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?{\frac{\partial&space;g}{\partial&space;z}}=g(1-g)" title="{\frac{\partial g}{\partial z}}=g(1-g)" />
+</p>
+
+首先，我们定义 _δ<sub></sub>j<sup>(l)</sup>_ 为第 _(l)_ 层第 _j_ 个神经元的 误差（Error）。
+根据链式法则，可得：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac&space;{\partial&space;E}{2a^{(l)}}\cdot&space;\dfrac&space;{\partial&space;a^{(l)}}{\partial&space;z^{(1)}}\cdot\dfrac{\partial&space;z^{(l)}}{\partial\theta^{(l)}}" title="\delta^{(l)}=\dfrac {\partial E}{2a^{(l)}}\cdot \dfrac {\partial a^{(l)}}{\partial z^{(1)}}\cdot\dfrac{\partial z^{(l)}}{\partial\theta^{(l)}}" />
+</p>
+
+1. 从最后一层的误差开始计算，误差是激活单元的预测（ _a<sup>(4)</sup>_ ）与实际值（ _y<sup></sup>k_ ）之间的误差（ _k=1:k_ ）。则
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\delta^{\left(4\right)}=\dfrac{\partial&space;E}{\partial&space;a^{(4)}}=a^{(4)}-y" title="\delta^{\left(4\right)}=\dfrac{\partial E}{\partial a^{(4)}}=a^{(4)}-y" />
+</p>
+
+2. 利用这个误差值来计算前一层的误差： **_δ<sup>(3)</sup>=(Θ<sup>(3)</sup>)<sup>T</sup>δ<sup>(4)</sup> * g'(z<sup>(3)</sup>)_**，其中：
+  * _g'(z<sup>(3)</sup>)_ 是 _S_ 形函数的导数， _g'(z<sup>(3)</sup>)=a<sup>(3)</sup> * (1-a<sup>(3)</sup>)_ 。
+  * _(θ<sup>(3)</sup>)<sup>T</sup>δ<sup>(4)</sup>_ 则是权重导致的误差的和。
+
+3. 下一步是继续计算第二层的误差： **_δ<sup>(2)</sup>=(Θ<sup>(2)</sup>)<sup>T</sup>δ<sup>(3)</sup> * g'(z<sup>(2)</sup>)_**
+
+4. 第一层是输入变量，不存在误差。
+
+我们有了所有的误差的表达式后，便可以计算代价函数的偏导数了，假设 _λ=0_ ，即我们不做任何正则化处理时有：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=a_{j}^{(l)}&space;\delta_{i}^{l&plus;1}" title="\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=a_{j}^{(l)} \delta_{i}^{l+1}" />
+</p>
 
 
 [回到顶部](#神经网络)

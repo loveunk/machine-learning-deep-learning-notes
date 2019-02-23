@@ -3,74 +3,137 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>
 <script>
-
 $(document).ready(function(){
   String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
   };
-  
+  String.prototype.replaceAt=function(index, replacement) {
+    return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+  }
+
+  String.prototype.insert=function(index, str) {
+      return this.substr(0, index) + str + this.substr(index);
+  }
+
   function getIndicesOf(searchStr, str, caseSensitive) {
     var searchStrLen = searchStr.length;
     if (searchStrLen == 0) {
-        return [];
+      return [];
     }
     var startIndex = 0, index, indices = [];
     if (!caseSensitive) {
-        str = str.toLowerCase();
-        searchStr = searchStr.toLowerCase();
+      str = str.toLowerCase();
+      searchStr = searchStr.toLowerCase();
     }
     while ((index = str.indexOf(searchStr, startIndex)) > -1) {
-        indices.push(index);
-        startIndex = index + searchStrLen;
+      indices.push(index);
+      startIndex = index + searchStrLen;
     }
     return indices;
   }
   
-  function handleSubSupCloseTag(output, openTag, closeTag) {
+  function handleFracTag(output) {
+    openTag = "\\frac"
     tag_len = openTag.length;
+
 	var indices = getIndicesOf(openTag, output);
+
+	// need to loop backward to avoid the effect of "inserting" to the output
     for (var i = indices.length - 1; i >= 0; --i) {
-      var newBlockBegIndex = indices[i] + tag_len;
-      var newBlockEndIndex = indices[i] + tag_len + 1;
-      if (output[newBlockBegIndex] == '{') {
-        while(output[++newBlockEndIndex] != '}') {
-            // in case encountering error: "}" does not exist
-            if (newBlockEndIndex - newBlockBegIndex >= 10) {
-                newBlockEndIndex = newBlockBegIndex + 1;
+
+      var currIndex = indices[i] + tag_len;
+
+      output = output.insert(currIndex, '(');
+      currIndex++;
+
+      // loop twice since \frac has "{}" pairs
+	  for (var j = 0; j < 2; ++j) {
+        if (output[currIndex] == '{') {
+          output = output.replaceAt(currIndex, '(');
+
+          var leftBrackCount = 1;
+          currIndex++;
+
+          while(currIndex < output.length) {
+            if (output[currIndex] == '{')
+              leftBrackCount++;
+            if (output[currIndex] == '}') {
+              leftBrackCount--;
+              if (leftBrackCount == 0)
                 break;
             }
+            currIndex++;
+          }
+
+          output = output.replaceAt(currIndex, ')');
+          if (j == 1) { // for the last iteration, no need to insert '/'
+            output = output.insert(currIndex + 1, ')');
+            break;
+          }
+
+          output = output.insert(currIndex + 1, '/');
+          currIndex += 2; // to skip '}' and '/';
         }
       }
-	  output = [output.slice(0, newBlockEndIndex), closeTag, output.slice(newBlockEndIndex)].join('');
-	}
-	return output;
+    }
+
+    return output.replace(/\\frac/g, "");
+  }
+
+  function handleSubSupCloseTag(output, openTag, closeTag) {
+    tag_len = openTag.length;
+    var indices = getIndicesOf(openTag, output);
+    for (var i = indices.length - 1; i >= 0; --i) {
+
+      var currIndex = indices[i] + tag_len;
+
+      if (output[currIndex] == '{') {
+
+        var leftBracketCount = 0;
+
+        while(currIndex < output.length) {
+
+          if (output[currIndex] == '{')
+            leftBracketCount++;
+          if (output[currIndex] == '}') {
+            leftBracketCount--;
+            if (leftBracketCount == 0)
+              break;
+          }
+
+          currIndex++;
+        }
+      }
+      output = output.insert(currIndex + 1, closeTag);
+    }
+    return output;
   }
   
   function handleUnderlineBlank(output) {
-  	var indices = getIndicesOf("_", output);
-	for (var i = indices.length - 1; i >= 0; --i) {
-	  if (i % 2 == 1) {
-	    output = [output.slice(0, indices[i] + 1), " ", output.slice(indices[i] + 1)].join('');
-	  } else {
-	    output = [output.slice(0, indices[i]), " ", output.slice(indices[i])].join('');
-	  }
-	}
-	return output;
+    var indices = getIndicesOf("_", output);
+  for (var i = indices.length - 1; i >= 0; --i) {
+    if (i % 2 == 1) {
+      output = [output.slice(0, indices[i] + 1), " ", output.slice(indices[i] + 1)].join('');
+    } else {
+      output = [output.slice(0, indices[i]), " ", output.slice(indices[i])].join('');
+    }
+  }
+  return output;
   }
 
   function updateText() {
     input = $("#input").val();
-    
     output = $.trim(input);
-	
-	if (output.startsWith("import ")) {
-	  output = "``` python\n" + output + "\n```\n";
-	} else {
-      output = output.replace(/\s+/g, "");
+  
+    if (output.startsWith("import ")) {
+      output = "``` python\n" + output + "\n```\n";
+    } else {
+      output = output.replace(/ /g, "");
       output = output.replace(/_/g, "<sub>");
       output = output.replace(/\^/g, "<sup>");
       output = output.replace(/\$/g, "_");
+      output = handleFracTag(output);
       output = output.replace(/\\text/g, "");
       output = output.replace(/\\left/g, "");
       output = output.replace(/\\right/g, "");
@@ -78,31 +141,34 @@ $(document).ready(function(){
       output = output.replace(/\\Theta/g, "Θ");
       output = output.replace(/\\lambda/g, "λ");
       output = output.replace(/\\sum/g, "Σ");
+      output = output.replace(/\\delta/g, "δ");
+      output = output.replace(/\\ast/g, " * ");
+      output = output.replace(/\\partial/g, "∂");
       output = output.replace(/\\limits/g, "lim ");
       output = output.replace(/\\cdot/g, " · ");
-	  output = output.replace(/\\sim/g, " ~ ");
-	  output = output.replace(/\\approx/g, " ≈ ");
+      output = output.replace(/\\sim/g, " ~ ");
+      output = output.replace(/\\approx/g, " ≈ ");
       output = handleSubSupCloseTag(output, "<sub>", "</sub>");
       output = handleSubSupCloseTag(output, "<sup>", "</sup>");
       output = output.replace(/{/g, "");
       output = output.replace(/}/g, "");
       output = handleUnderlineBlank(output);
-	}
+    }
 
     $("#output").val(output);
 
     $("#output").select();
-  	document.execCommand("copy");
+    document.execCommand("copy");
 
-	$("#input").val("");
-	$("#preview").html(output);
+    $("#input").val("");
+    $("#preview").html(output);
   }
 
   $("#input").keyup(updateText);
   $("#clear").click(function(){
     $("#input").val("");
     $("#output").val("");
-	$("#preview").html("");
+    $("#preview").html("");
   });
   $("#convert").click(updateText);
 });
@@ -134,5 +200,4 @@ $(document).ready(function(){
     </div>
   </div>
 </body>
-
 </html>

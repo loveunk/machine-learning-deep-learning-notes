@@ -2,20 +2,30 @@
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [神经网络](#神经网络)
-	- [为什么需要神经网络](#为什么需要神经网络)
-	- [神经元和大脑](#神经元和大脑)
+	- [背景介绍](#背景介绍)
+		- [为什么需要神经网络](#为什么需要神经网络)
+		- [神经元和大脑](#神经元和大脑)
 	- [模型表示](#模型表示)
 		- [神经元模型：逻辑单元](#神经元模型逻辑单元)
 		- [前向传播](#前向传播)
-		- [神经网络架构](#神经网络架构)
-	- [神经网络应用](#神经网络应用)
-	- [神经网络解决多分类问题](#神经网络解决多分类问题)
-	- [代价函数 Cost Function](#代价函数-cost-function)
-	- [反向传播算法](#反向传播算法)
+			- [神经网络架构](#神经网络架构)
+		- [神经网络应用](#神经网络应用)
+			- [神经网络解决多分类问题](#神经网络解决多分类问题)
+	- [反向传播 Backpropagation](#反向传播-backpropagation)
+		- [代价函数 Cost Function](#代价函数-cost-function)
+		- [反向传播算法](#反向传播算法)
+			- [反向传播算法的直观理解](#反向传播算法的直观理解)
+		- [梯度检验 Gradient Checking](#梯度检验-gradient-checking)
+		- [随机初始化](#随机初始化)
+	- [总结](#总结)
+		- [网络结构](#网络结构)
+		- [训练神经网络](#训练神经网络)
+	- [自动驾驶的例子](#自动驾驶的例子)
 
 <!-- /TOC -->
 
-## 为什么需要神经网络
+## 背景介绍
+### 为什么需要神经网络
 我们此前已经学过线性回归和非线性回归，那为什么还需要神经网络了？
 
 因为无论是线性回归还是逻辑回归都有这样一个缺点，即：当特征太多时，计算的负荷会非常大。举个例子：
@@ -34,7 +44,7 @@
 
 假如采用的是50*50像素的图片，则有2500个特征，如果进一步采用两两特征组合构成一个多项式模型，则有 _2500<sup>2</sup>/2 ≈ 3百万_ 个特征。复杂度太高了！逻辑回归已经不能很好处理，这时候就需要神经网络。
 
-## 神经元和大脑
+### 神经元和大脑
 神经网络是一种很古老的算法，发明它最初的目的是制造模拟大脑的机器。
 
 神经网络兴起于二十世纪八九十年代，应用得非常广泛。但在90年代的后期应用减少了。但最近，又东山再起。
@@ -142,14 +152,14 @@
 
 其实神经网络就像是逻辑回归，只不过我们把逻辑回归中的输入向量 _[x<sub>1</sub> ~ x<sub>3</sub>]_ 变成了中间层的 _[a<sub>1</sub><sup>(2)</sup> ~ a<sub>3</sub><sup>(2)</sup>]_ ,即: _h<sub>θ</sub>(x)=g(Θ<sub>0</sub><sup>(2)</sup>a<sub>0</sub><sup>(2)</sup>+Θ<sub>1</sub><sup>(2)</sup>a<sub>1</sub><sup>(2)</sup>+Θ<sub>2</sub><sup>(2)</sup>a<sub>2</sub><sup>(2)</sup>+Θ<sub>3</sub><sup>(2)</sup>a<sub>3</sub><sup>(2)</sup>)_ 我们可以把 _a<sub>0</sub>, a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>_ 看成更为高级的特征值，也就是 _x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>_ 的进化体，并且它们是由 _x_ 与 _Θ_ 决定的，因为是梯度下降的，所以 _a_ 是变化的，并且变得越来越厉害，所以这些更高级的特征值远比仅仅将 _x_ 次方厉害，也能更好的预测新数据。这就是神经网络相比于逻辑回归和线性回归的优势。
 
-### 神经网络架构
+#### 神经网络架构
 神经网络架构是不同层（Layer）之间的链接方式。包括：
 * 有多少层
 * 每一层有多少激活单元
 
 第一层是输入层（Input Layer），最后一层是输出层（Output Layer），中间的是影藏层（Hidden Layer）。
 
-## 神经网络应用
+### 神经网络应用
 神经网络能够通过学习得出其自身的一系列特征。在普通的逻辑回归中，我们被限制为使用数据中的原始特征 _x<sub>1</sub>,x<sub>2</sub>,...,x<sub>n</sub>_ ，我们虽然可以使用一些二项式项来组合这些特征，但是我们仍然受到这些原始特征的限制。在神经网络中，原始特征只是输入层，在我们上面三层的神经网络例子中，第三层也就是输出层做出的预测利用的是第二层的特征，而非输入层中的原始特征，我们可以认为第二层中的特征是神经网络通过学习后自己得出的一系列用于预测输出变量的新特征。
 
 神经网络中，单层神经元（无中间层）的计算可用来表示逻辑运算，比如逻辑与(AND)、逻辑或(OR)。
@@ -214,7 +224,7 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 
 （上面的视频是Youtube的，如果无法翻墙的，可访问[爱奇艺上的链接](https://www.iqiyi.com/w_19rue4wsdl.html)）
 
-## 神经网络解决多分类问题
+#### 神经网络解决多分类问题
 当分类问题不止两种分类时（ _y=1,2,3…._ ），比如如果我们要训练一个神经网络算法来识别路人、汽车、摩托车和卡车。
 * 在输出层我们应该有4个值。例如，第一个值为1或0用于预测是否是行人，第二个值用于判断是否为汽车。
 * 输入向量 _x_ 有三个维度，两个中间层，输出层4个神经元分别用来表示4类，也就是每一个数据在输出层都会出现 _[abcd]<sup>T</sup>_ ，且 _a,b,c,d_ 中仅有一个为1，表示当前类。
@@ -233,7 +243,8 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 <img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5e1a39d165f272b7f145c68ef78a3e13.png" />
 </p>
 
-## 代价函数 Cost Function
+## 反向传播 Backpropagation
+### 代价函数 Cost Function
 首先介绍一些符号计法：
 * 假设神经网络的训练样本有 _m_ 个
 * 每个包含一组输入 _x_ 和一组输出信号 _y_
@@ -266,7 +277,7 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 **注意**：正则化的那一项排除了每一层 _Θ<sub>0</sub>​_ 的和。最里层的循环 _j​_ 循环所有的行（由 _s<sub>l</sub>​_ +1层的激活单元数决定），循环 _i​_ 则循环所有的列，由该层（ _s<sub>l</sub>​_ 层）的激活单元数所决定。即： _h<sub>Θ</sub>(x)​_ 与真实值之间的距离为每个样本-每个类输出的加和，对参数进行正则化（Regularization）的Bias项处理所有参数的平方和。
 （注意，_Θ_ 是 以第 _s<sub>l+1</sub>_ 层的激活单元数量为行数，以第 _s<sub>l</sub>+1_ 为列数的矩阵，公式里 i = 1开始，相当于把 _Θ<sub>[:,0]</sub>​_ 忽略了，而 _Θ_ 的行数 _j_ 本身就是从1开始的。）
 
-## 反向传播算法
+### 反向传播算法
 
 之前我们在计算神经网络预测结果的时候我们采用了一种正向传播方法，我们从第一层开始正向一层一层进行计算，直到最后一层的 _h<sub>θ</sub>(x)_ 。现在，为了计算代价函数的偏导数 <img src="https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial\Theta^{(l)}_{ij}}J\left(\Theta\right)" title="\frac{\partial}{\partial\Theta^{(l)}_{ij}}J\left(\Theta\right)" />
 ，我们需要采用一种反向传播算法，也就是首先计算最后一层的误差，然后再一层一层反向求出各层的误差，直到倒数第二层。以一个例子来说明反向传播算法。假设我们的训练集只有一个样本 _(x<sup>(1)</sup>,y<sup>(1)</sup>)_ ，我们的神经网络是一个四层的神经网络，其中 _K=4，S<sub>L</sub>=4，L=4_ ：
@@ -297,20 +308,20 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 </p>
 
 首先，我们定义 _δ<sub>j</sub><sup>(l)</sup>_ 为第 _(l)_ 层第 _j_ 个神经元对最终结果导致的误差（Error），误差是相对于每个神经元的输入 _z_ 来讲的。
+定义：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac{\partial&space;E}{\partial&space;z^{l}}=\dfrac&space;{\partial&space;E}{\partial&space;a^{(l)}}\cdot&space;\dfrac&space;{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}" title="\delta^{(l)}=\dfrac{\partial E}{\partial z^{l}}=\dfrac {\partial E}{\partial a^{(l)}}\cdot \dfrac {\partial a^{(l)}}{\partial z^{(l)}}" />
+</p>
 
 由根据链式法则可得：
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\dfrac{\partial&space;E}{\partial&space;a^{(l)}}=\dfrac{\partial&space;E}{\partial&space;a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}" title="\dfrac{\partial E}{\partial a^{(l)}}=\dfrac{\partial E}{\partial a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}" />
 </p>
 
-定义：
-<p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac&space;{\partial&space;E}{\partial&space;a^{(l)}}\cdot&space;\dfrac&space;{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}" title="\delta^{(l)}=\dfrac {\partial E}{\partial a^{(l)}}\cdot \dfrac {\partial a^{(l)}}{\partial z^{(l)}}" />
-</p>
 
 可得：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac{\partial&space;E}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}=\dfrac{\partial&space;E}{\partial&space;a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}=\delta^{l&plus;1}\cdot\Theta^{l}\cdot&space;g'(z^{l})" title="\delta^{(l)}=\dfrac{\partial E}{\partial&space;a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\dfrac{\partial E}{\partial&space;a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\delta^{l+1}\cdot\Theta^{l}\cdot g'(z^{l})" />
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}\delta^{(l)}&=\dfrac{\partial&space;E}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}\\&=\dfrac{\partial&space;E}{\partial&space;a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}\\&=\delta^{l&plus;1}\cdot\Theta^{l}\cdot&space;g'(z^{l})\end{align*}" title="\delta^{(l)}=\dfrac{\partial E}{\partial&space;a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\dfrac{\partial E}{\partial&space;a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\delta^{l+1}\cdot\Theta^{l}\cdot g'(z^{l})" />
 </p>
 
 对于上面这个简单的神经网络，每一层的 _δ<sup>(l)</sup>_ 计算如下：
@@ -360,7 +371,93 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 </p>
 
 反向传播算法做的是：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/1542307ad9033e39093e7f28d0c7146c.png" />
+</p>
 
+### 梯度检验 Gradient Checking
+对一个复杂的模型（例如神经网络）使用梯度下降算法时，可能会存在不容易察觉的错误。就是说，虽然代价函数（Cost function）看上去在不断减小，但最终的结果可能并不是最优解。
 
+为了避免这样的问题，我们采取一种叫做梯度的数值检验（Numerical Gradient Checking）方法。这种方法的思想是通过估计梯度值来检验我们计算的导数值是否符合预期。
+
+对梯度的估计采用的方法是在代价函数上沿着切线的方向选择离两个非常近的点，然后计算两个点的平均值用以估计梯度。即对于某个特定的 _θ_ ，我们计算出在 _θ_ - _ϵ_ 处和 _θ_ + _ϵ_ 的代价值（ _ϵ_ 是一个非常小的值，通常选取0.001），然后求两个代价的平均，用以估计在 _θ_ 处的代价值。
+
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5d04c4791eb12a74c843eb5acf601400.png" />
+</p>
+
+``` python
+gradApprox = (J(theta + eps) – J(theta - eps)) / (2*eps)
+```
+
+当 _θ_ 是一个向量时，我们则需要对偏导数进行检验。因为代价函数的偏导数检验只针对一个参数的改变进行检验，下面是一个只针对 _θ<sub>1</sub>_ 进行检验的示例： _((∂)/(∂θ<sub>1</sub>))=((J(θ<sub>1</sub>+ϵ<sub>1</sub>,θ<sub>2</sub>,θ<sub>3</sub>...θ<sub>n</sub>)-J(θ<sub>1</sub>-ϵ<sub>1</sub>,θ<sub>2</sub>,θ<sub>3</sub>...θ<sub>n</sub>))/(2ϵ))_
+
+最后我们还需要对通过反向传播方法计算出的偏导数进行检验。
+
+根据反向传播算法，计算出的偏导数存储在矩阵 _D<sub>ij</sub><sup>(l)</sup>_ 中。检验时，我们要将该矩阵展开成为向量，同时我们也将 _θ_ 矩阵展开为向量，我们针对每一个 _θ_ 都计算一个近似的梯度值，将这些值存储于一个近似梯度矩阵 _gradApprox_ 中，最终将得出的这个矩阵同 _D<sub>ij</sub><sup>(l)</sup>_ 进行比较。预期的情况是： _gradApprox ≈ D_
+
+**注意**：请在开始训练你的模型之前，把梯度检验禁用掉，因为它非常耗时！
+
+### 随机初始化
+任何优化算法都需要一些初始的参数。到目前为止我们都是初始所有参数为0，这样的初始方法对于逻辑回归来说是可行的，**但是对于神经网络来说是不可行的**。**如果我们令所有的初始参数都为0，这将意味着我们第二层的所有激活单元都会有相同的值**。同理，如果我们初始所有的参数都为一个非0的数，结果也是一样的。
+
+我们通常初始参数为正负ε之间的随机值，假设我们要随机初始一个尺寸为10×11的参数矩阵，代码如下：
+``` python
+import numpy as np
+eps = np.power(10, -5)
+Theta1 = np.random.rand(10, 11) * (2*eps) – eps
+```
+
+## 总结
+小结使用神经网络时的步骤：
+
+### 网络结构
+第一件要做的事是选择网络结构，即决定选择多少层以及决定每层分别有多少个单元。
+* 第一层的单元数即我们训练集的特征数量。
+* 最后一层的单元数是我们训练集的结果的类的数量。
+* 如果隐藏层数大于1，（默认情况下）每个隐藏层的单元个数相同，通常情况下隐藏层单元的个数越多越好。
+* 我们真正要决定的是隐藏层的层数和每个中间层的单元数。
+
+### 训练神经网络
+1. 参数的随机初始化
+2. 利用正向传播方法计算所有的 _h<sub>θ</sub>(x)_
+3. 编写计算代价函数 _J_ 的代码
+4. 利用反向传播方法计算所有偏导数
+5. 利用数值检验方法(Gradient Checking)检验这些偏导数
+6. 使用优化算法来最小化代价函数
+
+最后，请记住这张图，它很好的体现了神经网络和梯度下降的原理：
+<p align="center">
+<img src="https://www.antropy.co.uk/files/cache/168a81781286938f754ddb4c76db8f04.jpg" />
+</p>
+
+## 自动驾驶的例子
+一个1992年用神经网络做自动驾驶的的演示视频
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=ilP4aPDTBPE" target="_blank">
+    <img src="https://img.youtube.com/vi/ilP4aPDTBPE/0.jpg" />
+  </a>
+</p>
+
+（上面的视频是Youtube的，如果无法翻墙的暂无墙内地址..）
+
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/cea3f9a181d326681cd7d6ceaf4f2e46.png" />
+</p>
+在图中你依稀能看出一条道路，朝左延伸了一点，又向右了一点，然后上面的这幅图，你可以看到一条水平的菜单栏显示的是驾驶操作人选择的方向。就是这里的这条白亮的区段显示的就是人类驾驶者选择的方向。比如：最左边的区段，对应的操作就是向左急转，而最右端则对应向右急转的操作。因此，稍微靠左的区段，也就是中心稍微向左一点的位置，则表示在这一点上人类驾驶者的操作是慢慢的向左拐。
+
+这幅图的第二部分对应的就是学习算法选出的行驶方向。并且，类似的，这一条白亮的区段显示的就是神经网络在这里选择的行驶方向，是稍微的左转，并且实际上在神经网络开始学习之前，你会看到网络的输出是一条灰色的区段，就像这样的一条灰色区段覆盖着整个区域这些均称的灰色区域，显示出神经网络已经随机初始化了，并且初始化时，我们并不知道汽车如何行驶，或者说我们并不知道所选行驶方向。只有在学习算法运行了足够长的时间之后，才会有这条白色的区段出现在整条灰色区域之中。显示出一个具体的行驶方向这就表示神经网络算法，在这时候已经选出了一个明确的行驶方向，不像刚开始的时候，输出一段模糊的浅灰色区域，而是输出一条白亮的区段，表示已经选出了明确的行驶方向。
+
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/56441d35d8bd4ecfd6d6f32b651c54a6.png" />
+</p>
+ALVINN (Autonomous Land Vehicle In a Neural Network)是一个基于神经网络的智能系统，通过观察人类的驾驶来学习驾驶，ALVINN能够控制NavLab，装在一辆改装版军用悍马，这辆悍马装载了传感器、计算机和驱动器用来进行自动驾驶的导航试验。实现ALVINN功能的第一步，是对它进行训练，也就是训练一个人驾驶汽车。
+
+然后让ALVINN观看，ALVINN每两秒将前方的路况图生成一张数字化图片，并且记录驾驶者的驾驶方向，得到的训练集图片被压缩为30x32像素，并且作为输入提供给ALVINN的三层神经网络，通过使用反向传播学习算法，ALVINN会训练得到一个与人类驾驶员操纵方向基本相近的结果。一开始，我们的网络选择出的方向是随机的，大约经过两分钟的训练后，我们的神经网络便能够准确地模拟人类驾驶者的驾驶方向，对其他道路类型，也重复进行这个训练过程，当网络被训练完成后，操作者就可按下运行按钮，车辆便开始行驶了。
+
+每秒钟ALVINN生成12次数字化图片，并且将图像传送给神经网络进行训练，多个神经网络同时工作，每一个网络都生成一个行驶方向，以及一个预测自信度的参数，预测自信度最高的那个神经网络得到的行驶方向。比如这里，在这条单行道上训练出的网络将被最终用于控制车辆方向，车辆前方突然出现了一个交叉十字路口，当车辆到达这个十字路口时，我们单行道网络对应的自信度骤减，当它穿过这个十字路口时，前方的双车道将进入其视线，双车道网络的自信度便开始上升，当它的自信度上升时，双车道的网络，将被选择来控制行驶方向，车辆将被安全地引导进入双车道路。
+
+这就是基于神经网络的自动驾驶技术。当然，我们还有很多更加先进的试验来实现自动驾驶技术。在美国，欧洲等一些国家和地区，他们提供了一些比这个方法更加稳定的驾驶控制技术。但我认为，使用这样一个简单的基于反向传播的神经网络，训练出如此强大的自动驾驶汽车，的确是一次令人惊讶的成就。
 
 [回到顶部](#神经网络)

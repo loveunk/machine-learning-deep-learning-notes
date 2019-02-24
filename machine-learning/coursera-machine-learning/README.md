@@ -1,4 +1,19 @@
 # 机器学习
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [机器学习](#机器学习)
+	- [介绍](#介绍)
+	- [线性回归](#线性回归)
+	- [逻辑回归 Logistic Regression](#逻辑回归-logistic-regression)
+	- [神经网络](#神经网络)
+	- [打造实用的机器学习系统](#打造实用的机器学习系统)
+	- [支持向量机SVM](#支持向量机svm)
+	- [无监督学习](#无监督学习)
+	- [异常检测与推荐系统](#异常检测与推荐系统)
+	- [大规模机器学习](#大规模机器学习)
+	- [应用案例照片文字识别](#应用案例照片文字识别)
+
+<!-- /TOC -->
 
 ## 介绍
 本章节将主要基于Coursera Andrew Ng的Machine Learning课程整理传统机器学习算法的内容。
@@ -64,7 +79,17 @@
 ## 打造实用的机器学习系统
 [打造实用的机器学习系统](advice-for-appying-and-system-design.md)
 - 应用机器学习算法的建议
+	- 评估一个假设函数 Evaluating a Hypothesis
+	- 模型选择和交叉验证集 Model Selection
+	- 偏差(Bias)和方差(Variance)
+	- 正则化和偏差/方差
+	- 学习曲线
+	- 总结：决定下一步做什么
 - 机器学习系统设计
+	- 误差分析 Error Analysis
+	- 类偏斜的误差度量
+	- 查准率和查全率之间的权衡
+	- 机器学习的数据
 
 ## 支持向量机SVM
 [支持向量机 SVM](support-vector-machines.md)
@@ -87,3 +112,6 @@
 
 ## 应用案例照片文字识别
 [应用案例照片文字识别](photo-ocr.md)
+
+
+[回到顶部](#机器学习)

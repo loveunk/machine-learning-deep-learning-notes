@@ -15,7 +15,7 @@
 因为内容正持续更新中，未完成的部分标识有TBD (To be done)。
 
 ## 绪论
-[机器学习绪论](machine-learning)一文中总结了机器学习领域和其解决的问题介绍，建议先读此文，以便有一个系统认知。
+[机器学习绪论](machine-learning/machine-learning-intro.md)一文中总结了机器学习领域和其解决的问题介绍，建议先读此文，以便有一个系统认知。
 
 ## 数学基础
 微积分和线性代数的基础是必须要掌握的，不然对于理解学习算法的原理会有困难。如果已经有一定的数学基础，可以先跳过这一部分，需要的时候再回来补。这里的Notes是基于Coursera中Mathematics for Machine Learning专题做的总结。

@@ -61,8 +61,29 @@
   - 训练神经网络
 - 自动驾驶的例子
 
-## SVM
+## 打造实用的机器学习系统
+[打造实用的机器学习系统](advice-for-appying-and-system-design.md)
+- 应用机器学习算法的建议
+- 机器学习系统设计
+
+## 支持向量机SVM
+[支持向量机 SVM](support-vector-machines.md)
 
 ## 无监督学习
+[无监督学习](unsupervised-learning.md)
+- 聚类算法
+  - K-Means聚类
+  - DBScan聚类
+- 降维
+  - PCA
 
-## 推荐系统
+## 异常检测与推荐系统
+[异常检测与推荐系统](unsupervised-learning.md)
+- 异常检测
+- 推荐系统
+
+## 大规模机器学习
+[大规模机器学习](large-scale-machine-learning.md)
+
+## 应用案例照片文字识别
+[应用案例照片文字识别](photo-ocr.md)

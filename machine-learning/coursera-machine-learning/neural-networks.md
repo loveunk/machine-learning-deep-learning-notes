@@ -268,7 +268,8 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 
 ## 反向传播算法
 
-之前我们在计算神经网络预测结果的时候我们采用了一种正向传播方法，我们从第一层开始正向一层一层进行计算，直到最后一层的 _h<sub>θ</sub>(x)_ 。现在，为了计算代价函数的偏导数 _((∂)/(∂Θ<sup>(l)</sup><sub>ij</sub>)) · J(Θ)_ ，我们需要采用一种反向传播算法，也就是首先计算最后一层的误差，然后再一层一层反向求出各层的误差，直到倒数第二层。以一个例子来说明反向传播算法。假设我们的训练集只有一个样本 _(x<sup>(1)</sup>,y<sup>(1)</sup>)_ ，我们的神经网络是一个四层的神经网络，其中 _K=4，S<sub>L</sub>=4，L=4_ ：
+之前我们在计算神经网络预测结果的时候我们采用了一种正向传播方法，我们从第一层开始正向一层一层进行计算，直到最后一层的 _h<sub>θ</sub>(x)_ 。现在，为了计算代价函数的偏导数 <img src="https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial\Theta^{(l)}_{ij}}J\left(\Theta\right)" title="\frac{\partial}{\partial\Theta^{(l)}_{ij}}J\left(\Theta\right)" />
+，我们需要采用一种反向传播算法，也就是首先计算最后一层的误差，然后再一层一层反向求出各层的误差，直到倒数第二层。以一个例子来说明反向传播算法。假设我们的训练集只有一个样本 _(x<sup>(1)</sup>,y<sup>(1)</sup>)_ ，我们的神经网络是一个四层的神经网络，其中 _K=4，S<sub>L</sub>=4，L=4_ ：
 
 前向传播算法：
 <p align="center">
@@ -295,19 +296,25 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 <img src="https://latex.codecogs.com/gif.latex?{\frac{\partial&space;g}{\partial&space;z}}=g(1-g)" title="{\frac{\partial g}{\partial z}}=g(1-g)" />
 </p>
 
-首先，我们定义 _δ<sub>j</sub><sup>(l)</sup>_ 为第 _(l)_ 层第 _j_ 个神经元的 误差（Error）。
-根据链式法则，可得：
+首先，我们定义 _δ<sub>j</sub><sup>(l)</sup>_ 为第 _(l)_ 层第 _j_ 个神经元对最终结果导致的误差（Error），误差是相对于每个神经元的输入 _z_ 来讲的。
+
+由根据链式法则可得：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac&space;{\partial&space;E}{2a^{(l)}}\cdot&space;\dfrac&space;{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}" title="\delta^{(l)}=\dfrac {\partial E}{2a^{(l)}}\cdot \dfrac {\partial a^{(l)}}{\partial z^{(l)}}" />
+<img src="https://latex.codecogs.com/gif.latex?\dfrac{\partial&space;E}{\partial&space;a^{(l)}}=\dfrac{\partial&space;E}{\partial&space;a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}" title="\dfrac{\partial E}{\partial a^{(l)}}=\dfrac{\partial E}{\partial a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}" />
 </p>
 
-且有如下递推关系：
+定义：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac{\partial&space;E}{2a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}=\dfrac{\partial&space;E}{2a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}=\delta^{l&plus;1}\cdot\Theta^{l}\cdot&space;g'(z^{l})" title="\delta^{(l)}=\dfrac{\partial E}{2a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\dfrac{\partial E}{2a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\delta^{l+1}\cdot\Theta^{l}\cdot g'(z^{l})" />
+<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac&space;{\partial&space;E}{\partial&space;a^{(l)}}\cdot&space;\dfrac&space;{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}" title="\delta^{(l)}=\dfrac {\partial E}{\partial a^{(l)}}\cdot \dfrac {\partial a^{(l)}}{\partial z^{(l)}}" />
+</p>
+
+可得：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac{\partial&space;E}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}=\dfrac{\partial&space;E}{\partial&space;a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}=\delta^{l&plus;1}\cdot\Theta^{l}\cdot&space;g'(z^{l})" title="\delta^{(l)}=\dfrac{\partial E}{\partial&space;a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\dfrac{\partial E}{\partial&space;a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\delta^{l+1}\cdot\Theta^{l}\cdot g'(z^{l})" />
 </p>
 
 对于上面这个简单的神经网络，每一层的 _δ<sup>(l)</sup>_ 计算如下：
-1. 从最后一层的误差开始计算，误差是激活单元的预测（ _a<sup>(4)</sup>_ ）与实际值（ _y<sup></sup>k_ ）之间的误差（ _k=1:k_ ）。则
+1. 从最后一层的误差开始计算，误差是激活单元的预测（ _a<sup>(4)</sup>_ ）与实际值（ _y<sup>k</sup>_ ）之间的误差（ _k=1:k_ ）。则
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\delta^{\left(4\right)}=\dfrac{\partial&space;E}{\partial&space;a^{(4)}}=a^{(4)}-y" title="\delta^{\left(4\right)}=\dfrac{\partial E}{\partial a^{(4)}}=a^{(4)}-y" />
 </p>
@@ -324,6 +331,36 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=a_{j}^{(l)}&space;\delta_{i}^{l&plus;1}" title="\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=a_{j}^{(l)} \delta_{i}^{l+1}" />
 </p>
+
+注意，上面的公式是由 _δ_ 的定义决定的。
+
+再次说明上式的一些符号：
+* _l_ 代表目前所计算的是第几层。
+* _j_ 代表目前计算层中的激活单元的下标，也将是下一层的第 _j_ 个输入变量的下标。
+* _i_ 代表下一层中误差单元的下标，是受到权重矩阵中第 _i_ 行影响的下一层中的误差单元的下标。
+
+当然上面没考虑正则化，如果考虑正则化处理，并且训练集是一个矩阵而非向量。在上面的特殊情况中，需要计算每一层的误差单元来计算代价函数的偏导数。更为一般的情况，需要为整个训练集计算误差单元，此时的误差单元也是一个矩阵，我们用 _Δ<sup>(l)</sup><sub>ij</sub>_ 来表示这个误差矩阵。第 _l_ 层的第 _i_ 个激活单元受到第 _j_ 个参数影响而导致的误差。
+
+那么上面的算法可以描述为：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5514df14ebd508fd597e552fbadcf053.jpg" />
+</p>
+
+即首先用正向传播方法计算出每一层的激活单元，利用训练集的结果与神经网络预测的结果求出最后一层的误差，然后利用该误差运用反向传播法计算出直至第二层的所有误差。
+
+在求出了 _Δ<sub>ij</sub><sup>(l)</sup>_ 之后，我们便可以计算代价函数的偏导数了，计算方法如下：
+
+* _D<sub>ij</sub><sup>(l)</sup>:=((1)/(m))Δ<sub>ij</sub><sup>(l)</sup>+λΘ<sub>ij</sub><sup>(l)</sup>_,  if _j != 0_
+* _D<sub>ij</sub><sup>(l)</sup>:=((1)/(m))Δ<sub>ij</sub><sup>(l)</sup>_,  if _j=0_
+
+#### 反向传播算法的直观理解
+前向传播算法：
+<p align="center">
+<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/63a0e4aef6d47ba7fa6e07088b61ae68.png" />
+</p>
+
+反向传播算法做的是：
+
 
 
 [回到顶部](#神经网络)

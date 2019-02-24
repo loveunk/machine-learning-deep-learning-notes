@@ -149,6 +149,8 @@ $(document).ready(function(){
       output = output.replace(/\\limits/g, "lim ");
       output = output.replace(/\\cdot/g, " · ");
       output = output.replace(/\\sim/g, " ~ ");
+      output = output.replace(/\\ge/g, " ≥ ");
+      output = output.replace(/\\le/g, " ≤ ");
       output = output.replace(/\\approx/g, " ≈ ");
       output = handleSubSupCloseTag(output, "<sub>", "</sub>");
       output = handleSubSupCloseTag(output, "<sup>", "</sup>");

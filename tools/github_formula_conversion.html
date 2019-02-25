@@ -1,5 +1,15 @@
 <html>
 <head>
+<style type="text/css">
+  ul {
+    /*list-style: none;*/
+    padding-left: 15px;
+    font-size: 14px;
+  }
+  p {
+    font-size: 12px;
+  }
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 </script>
 <script>
@@ -32,7 +42,7 @@ $(document).ready(function(){
     }
     return indices;
   }
-  
+
   function handleFracTag(output) {
     openTag = "\\frac"
     tag_len = openTag.length;
@@ -109,7 +119,7 @@ $(document).ready(function(){
     }
     return output;
   }
-  
+
   function handleUnderlineBlank(output) {
     var indices = getIndicesOf("_", output);
   for (var i = indices.length - 1; i >= 0; --i) {
@@ -122,13 +132,35 @@ $(document).ready(function(){
   return output;
   }
 
+  function match_github_url(str) {
+    var matches = str.match(/\bhttps\:\/\/github\.com\/\S+/gi);
+
+    if(matches != null && matches.length > 0)
+      return true;
+    return false;
+  }
+
   function updateText() {
     input = $("#input").val();
     output = $.trim(input);
-  
-    if (output.startsWith("import ")) {
+
+    // for github image url
+    if (match_github_url(output)) {
+      output = output.replace("https://github.com", "https://raw.github.com");
+      output = output.replace("/raw/master/images", "/master/images");
+      output = output.replace("/blob/master/images", "/master/images");
+      output = "<p align=\"center\">\n<img src=\"" + output + "\" />\n</p>";
+    }
+    // for img tag
+    else if (output.startsWith("<img ")) {
+      output = "<p align=\"center\">\n" + output + "\n</p>";
+    }
+    // for python code
+    else if (output.startsWith("import ")) {
       output = "``` python\n" + output + "\n```\n";
-    } else {
+    }
+    // for latex content
+    else {
       output = output.replace(/ /g, "");
       output = output.replace(/_/g, "<sub>");
       output = output.replace(/\^/g, "<sup>");
@@ -184,29 +216,32 @@ $(document).ready(function(){
 });
 </script>
 </head>
-
 <body>
-  <div align="center">
+  <div>
     <div>
-      <p align="left">
-        Convert LaTeX formulas to Markdown (with HTML tags)：<br/>
-        (only simple formulas with _,^ can be well converted.)
+      <p>
+        <ul>
+          <li>Convert LaTeX formulas to Markdown format</li>
+          <li>Convert Python code to Markdown format</li>
+          <li>Convert GitHub image url to referable url</li>
+          <li>Wrap up img tag with &lt;p align=&ldquo;&gt;&rdquo;</li>
+        </ul>
       </p>
       <textarea id="input" rows="4" cols="50"></textarea>
     </div>
 
     <div>
-      <p align="left">Converted formulas：</p>
-      <textarea id="output" rows="5" cols="50"></textarea>
+      <p>Converted formulas:</p>
+      <textarea id="output" rows="3" cols="50"></textarea>
     </div>
 
-    <p align="right">
+    <p>
       <button id="clear">Clear</button>
       <button id="convert">Convert</button>
     </p>
 
     <div>
-      <p align="center" id="preview" style="font-size: 12px"></p>
+      <p id="preview"></p>
     </div>
   </div>
 </body>

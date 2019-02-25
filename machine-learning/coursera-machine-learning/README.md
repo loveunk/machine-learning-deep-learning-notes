@@ -92,7 +92,7 @@
 	- 机器学习的数据
 
 ## 支持向量机SVM
-[支持向量机 SVM](support-vector-machines.md)
+[支持向量机 SVM](svm.md)
 
 ## 无监督学习
 [无监督学习](unsupervised-learning.md)

@@ -1,4 +1,4 @@
-# 工欲善其事必先利器-写给AI实践者的实验环境指南：Google Colab+Cloudriser
+# 工欲善其事必先利器-写给AI实践者的实验环境指南：Google Colab+Clouderiser
 
 **本文由公众号[凯恩博](https://mp.weixin.qq.com/s?__biz=MzU4NDczNjI0NA==&mid=2247483673&idx=1&sn=c325e1d3fcdffdb09f635124e226c84c&chksm=fd940d82cae384947008aceaa764586865b5c023b08089181f5daa051048f926c1907a2038e7&scene=0&xtrack=1#rd)原创，转载请注明出处**
 
@@ -146,7 +146,7 @@ Clouderizer内置项目模板，包括Tensorflow，Keras，Anaconda，Python，T
 
 <p align="center"><img src="google-colab/clouderizer-start-project-3.png" width="80%" /></p>
 
-6. 此时可以返回Clouderiser了，刷新项目列表，看到刚刚创建的项目已经在运行了。
+8. 此时可以返回Clouderiser了，刷新项目列表，看到刚刚创建的项目已经在运行了。
 
 <p align="center"><img src="google-colab/clouderizer-start-project-4.png" width="80%" /></p>
 
@@ -219,3 +219,7 @@ Google Colab旨在用于交互式使用。可以停止长时间运行的后台�
 
 
 由公众号“凯恩博”原创，转载请注明出处
+
+<p align="center">
+<img src="wx-qr.jpg" />
+</p>

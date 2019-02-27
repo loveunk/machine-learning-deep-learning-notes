@@ -101,8 +101,8 @@
 - 什么时候使用SVM
 
 ## 无监督学习
-[无监督学习](unsupervised-learning.md)
-- 聚类算法
+[无监督学习]
+- [聚类算法](#clustering.md)
   - K-Means聚类
   - DBScan聚类
 - 降维

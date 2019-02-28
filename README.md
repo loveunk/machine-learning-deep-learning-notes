@@ -52,6 +52,10 @@
 ## 强化学习
 * TBD
 
+## 项目和竞赛
+### 竞赛
+[Kaggle](competitions/kaggle.md)
+
 ## 工欲善其事，必先利其器
 ### 一些电子书
 * [一些资料电子书](https://1drv.ms/f/s!At5_i2TzOUcnhOxc8mwDzwK8ILf5jg)（OneDrive分享，可能被墙）

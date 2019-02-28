@@ -1,4 +1,18 @@
-# 聚类算法
+# 聚类算法<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [聚类算法<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->](#聚类算法-toc-depthfrom1-depthto6-withlinks1-updateonsave1-orderedlist0-)
+	- [K-Means](#k-means)
+		- [优化目标](#优化目标)
+		- [随机初始化](#随机初始化)
+		- [选择聚类数](#选择聚类数)
+	- [DBScan](#dbscan)
+		- [复杂度](#复杂度)
+		- [优点](#优点)
+	- [距离计算](#距离计算)
+
+<!-- /TOC -->
 
 在机器学习绪论中讲过，聚类算法属于无监督算法。
 聚类算法在工作中比较常见。其中比较基础的算法包括K-Means，DBScan等等。
@@ -51,7 +65,7 @@ Repeat {
    * 对于每一个类 _K_ ，重新计算该类的质心
 
 
-## 优化目标
+### 优化目标
 K-Means优化目标是最小化所有的数据点与其关联的聚类中心点之间的距离之和，因此K-Means的代价函数（又称畸变函数 Distortion function）为：
 
 <p align="center">
@@ -64,7 +78,7 @@ K-Means优化目标是最小化所有的数据点与其关联的聚类中心点�
 
 K-Means算法，第一个循环是用于减小 _c<sup>(i)</sup>_ 引起的代价，而第二个循环则是用于减小 _μ<sub>i</sub>_ 引起的代价。迭代的过程一定会是每一次迭代都在减小代价函数，不然便是出现了错误。
 
-## 随机初始化
+### 随机初始化
 
 在运行K-Means算法之前，首先要随机初始化所有的聚类中心：
 1. 我们应该选择 _K < m_ ，即聚类中心点的个数要小于所有训练集实例的数量
@@ -78,7 +92,7 @@ K-Means的一个问题在于，它有可能会停留在一个局部最小值处�
 为了解决 局部最小化 的问题，通常需要多次运行K-K-Means算法，每次都重新进行随机初始化，最后再比较多次运行K-Means的结果，选择代价函数最小的结果。
 这种方法在 _K_ 较小的时候（2-10）还是可行的，但是**如果 _K_ 较大，这么做也可能不会有明显地改善**。
 
-## 选择聚类数
+### 选择聚类数
 
 没有最好的选择聚类数的方法，通常是需要根据不同的问题，人工进行选择。
 
@@ -102,3 +116,94 @@ K-Means的一个问题在于，它有可能会停留在一个局部最小值处�
 
 更多的时候划分为多少个Clusters，取决于实际的应用场景：
 > 制造T-恤的例子中，要将用户按照身材聚类，可以分成3个尺寸: _S,M,L_ ，也可以分成5个尺寸 _XS,S,M,L,XL_ ，这样的选择是建立在“聚类后制造的T-恤是否能较好地适合客户”这个问题的基础上。
+
+## DBScan
+> DBScan部分内容主要来源于 https://zh.wikipedia.org/wiki/DBSCAN
+
+如K-Means不同的是，DBScan算法以密度分析为基础：
+* 给定某空间里的一个点集合，DBScan能把附近的点分成一组（有很多相邻点的点），并标记出位于低密度区域的局外点（最接近它的点也十分远）。
+* DBSCAN 是最常用的聚类分析算法之一，也是科学文章中最常引用的聚类分析算法之一。
+
+考虑在某空间里将被聚类的点集合，为了进行 DBSCAN 聚类，所有的点被分为_核心点_，(密度)_可达点_ 及 _局外点_ ，详请如下：
+
+如果一个点 _p_ 在距离 _ε_ 范围内有至少 _minPts_ 个点(包括自己)，则这个点被称为**核心点**，那些 _ε_ 范围内的则被称为由 p 直接可达的。
+同时定义，没有任何点是由非核心点直接可达的。
+如果存在一条道路 _p1, ..., pn_ ，有 _p1 = p_和_pn = q_， 且每个 _pi+1_ 都是由 _pi_ 直接可达的(道路上除了 _q_ 以外所有点都一定是核心点)，则称 _q_ 是由 _p_ 可达的。
+所有不由任何点可达的点都被称为**局外点**。
+如果 _p_ 是核心点，则它与所有由它可达的点(包括核心点和非核心点)形成一个聚类，每个聚类拥有最少一个核心点，非核心点也可以是聚类的一部分，但它是在聚类的“边缘”位置，因为它不能达至更多的点。
+
+<p align="center">
+<img src="img/DBSCAN-Illustration.png" />
+</p>
+在上面的图中，minPts = 4，点 A 和其他红色点是核心点，因为它们的 ε-邻域（图中红色圆圈）里包含最少 4 个点（包括自己），由于它们之间相互相可达，它们形成了一个聚类。点 B 和点 C 不是核心点，但它们可由 A 经其他核心点可达，所以也属于同一个聚类。点 N 是局外点，它既不是核心点，又不由其他点可达。
+
+伪代码如下
+```
+DBSCAN(DB, distFunc, eps, minPts) {
+   C = 0                                                  /* 类别计数 */
+   for each point P in database DB {
+      if label(P) ≠ undefined then continue               /* 此前已经标记过 */
+      Neighbors N = RangeQuery(DB, distFunc, P, eps)      /* 计算可达点集合 */
+      if |N| < minPts then {                              /* 检查密度 */
+         label(P) = Noise                                 /* 标记为 局外点 */
+         continue
+      }
+      C = C + 1                                           /* 下一个聚类标签 */
+      label(P) = C                                        /* 标记起始点 */
+      Seed set S = N \ {P}                                /* 扩展可达点 */
+      for each point Q in S {                             /* 处理每个可达点 */
+         if label(Q) = Noise then label(Q) = C            /* 把局外点归为此类 */
+         if label(Q) ≠ undefined then continue            /* 此前已经标记过 */
+         label(Q) = C                                     /* 标记可达点 */
+         Neighbors N = RangeQuery(DB, distFunc, Q, eps)   /* 计算可达点集合 */
+         if |N| ≥ minPts then {                           /* 检查密度 */
+            S = S ∪ N                                     /* 扩展可达点 */
+         }
+      }
+   }
+}
+```
+### 复杂度
+DBScan的时间复杂度主要受RegionQuery 的调用次数影响，DBSCAN 对每点都进行刚好一次调用，且如果使用了特别的编号结构，则总平均时间复杂度为 O(n log n) ，最差时间复杂度则为 O(n^2) 。可以使用 O(n^2) 空间复杂度的距离矩阵以避免重复计算距离，但若不使用距离矩阵，DBSCAN 的空间复杂度为 O(n)。
+
+### 优点
+1. 相比 K-平均算法，DBSCAN 不需要预先声明聚类数量。
+2. DBSCAN 可以找出任何形状的聚类，甚至能找出一个聚类，它包围但不连接另一个聚类，另外，由于 MinPts 参数，single-link effect （不同聚类以一点或极幼的线相连而被当成一个聚类）能有效地被避免。
+3. DBSCAN 能分辨噪音（局外点）。
+4. DBSCAN 只需两个参数，且对数据库内的点的次序几乎不敏感（两个聚类之间边缘的点有机会受次序的影响被分到不同的聚类，另外聚类的次序会受点的次序的影响）。
+5. DBSCAN 被设计成能配合可加速范围访问的数据库结构，例如 R*树。
+6. 如果对资料有足够的了解，可以选择适当的参数以获得最佳的分类。
+
+下图展示 DBSCAN 分辨非线性可分聚类的能力，上图所示的资料点不能被 K-平均算法 或 Gaussian Mixture EM clustering 正确或足够好地分类。
+<p align="center">
+<img src="img/DBSCAN-density-data.png" />
+</p>
+
+
+## 距离计算
+
+(1). 闵可夫斯基距离Minkowski/（其中欧式距离：$p=2$)
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?dist(X,Y)={{\left({{\sum\limits_{i=1}^n\left|x_i-y_i\right|}^p}\right)}^{\frac{1}{p}}}" title="dist(X,Y)={{\left({{\sum\limits_{i=1}^n\left|x_i-y_i\right|}^p}\right)}^{\frac{1}{p}}}" />
+</p>
+
+(2). 杰卡德相似系数(Jaccard)：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?J(A,B)=\frac{\left|A\cap&space;B\right|}{\left|A\cup&space;B\right|}" title="J(A,B)=\frac{\left|A\cap B\right|}{\left|A\cup B\right|}" />
+</p>
+
+(3). 余弦相似度(cosine similarity)：
+ _n_ 维向量 _x_ 和 _y_ 的夹角记做 _θ_ ，根据余弦定理，其余弦值为：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?cos(\theta)=\frac{{{x}^{T}}y}{\left|x\right|\cdot\left|y&space;\right|}=\frac{\sum\limits_{i=1}^{n}{x_iy_i}}{\sqrt{\sum\limits_{i=1}^{n}{x_i^2}}\sqrt{\sum\limits_{i=1}^{n}{y_i^2}}}" title="cos(\theta)=\frac{{{x}^{T}}y}{\left|x\right|\cdot\left|y \right|}=\frac{\sum\limits_{i=1}^{n}{x_iy_i}}{\sqrt{\sum\limits_{i=1}^{n}{x_i^2}}\sqrt{\sum\limits_{i=1}^{n}{y_i^2}}}" />
+</p>
+
+(4). Pearson皮尔逊相关系数：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?{{\rho&space;}{XY}}=\frac{\operatorname{cov}(X,Y)}{{{\sigma&space;}{X}}{{\sigma&space;}{Y}}}=\frac{E[(X-{\mu_X})(Y-{\mu_Y})]}{{\sigma_X}{\sigma_Y}}=\frac{\sum\limits_{i=1}^{n}{(x-\mu_X)(y-\mu_Y)}}{\sqrt{\sum\limits_{i=1}^{n}{{{(x-\mu_X)}^2}}}\sqrt{\sum\limits_{i=1}^{n}{{{(y-{\mu_Y})}^2}}}}" title="{{\rho }{XY}}=\frac{\operatorname{cov}(X,Y)}{{{\sigma }{X}}{{\sigma }{Y}}}=\frac{E[(X-{\mu_X})(Y-{\mu_Y})]}{{\sigma_X}{\sigma_Y}}=\frac{\sum\limits_{i=1}^{n}{(x-\mu_X)(y-\mu_Y)}}{\sqrt{\sum\limits_{i=1}^{n}{{{(x-\mu_X)}^2}}}\sqrt{\sum\limits_{i=1}^{n}{{{(y-{\mu_Y})}^2}}}}" />
+</p>
+
+Pearson相关系数即将 _x_ 、 _y_ 坐标向量各自平移到原点后的夹角余弦。

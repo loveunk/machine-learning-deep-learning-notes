@@ -19,3 +19,7 @@ Kaggle的目标则是试图通过众包的形式来解决这一难题，进而�
 [Kaggle入门简介](https://zhuanlan.zhihu.com/p/25686876)
 
 [特征工程 Feature Engineering (其实大部分都在机器学习里讲过)](https://www.zhihu.com/question/29316149)
+
+[Kaggle入门指南 - 技术讲解](https://zhuanlan.zhihu.com/p/25742261)
+
+[Kaggle案例 - Digit Recognition](https://fsight.qq.com/insight/excellentInfo/10005152d0f2649e06ac6f6a889d3b6d1ec2daad.html)

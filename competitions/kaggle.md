@@ -16,10 +16,15 @@ Kaggle的目标则是试图通过众包的形式来解决这一难题，进而�
 
 ## 加入进来
 
-[Kaggle入门简介](https://zhuanlan.zhihu.com/p/25686876)
+[Kaggle为什么重要](https://zhuanlan.zhihu.com/p/25686876)（主要是介绍参加Kaggle的背景，及参加Kaggle一些好处）
 
-[特征工程 Feature Engineering (其实大部分都在机器学习里讲过)](https://www.zhihu.com/question/29316149)
+[特征工程 Feature Engineering](https://www.zhihu.com/question/29316149)（特征工程的详细解读，其实大部分都在机器学习里讲过）
 
-[Kaggle入门指南 - 技术讲解](https://zhuanlan.zhihu.com/p/25742261)
+[Kaggle入门指南 - 技术讲解](https://zhuanlan.zhihu.com/p/25742261)（介绍了很多数据分析的技巧）
 
 [Kaggle案例 - Digit Recognition](https://fsight.qq.com/insight/excellentInfo/10005152d0f2649e06ac6f6a889d3b6d1ec2daad.html)
+（整体思路可以参考，但是对于数字识别案例来说，还是需要使用深度学习CNN的方法才会取得比较好的结果）
+
+## 取得好的成绩
+以Digit Recognition为例
+TBD

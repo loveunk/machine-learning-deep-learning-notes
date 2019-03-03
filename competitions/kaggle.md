@@ -26,5 +26,4 @@ Kaggle的目标则是试图通过众包的形式来解决这一难题，进而�
 （整体思路可以参考，但是对于数字识别案例来说，还是需要使用深度学习CNN的方法才会取得比较好的结果）
 
 ## 取得好的成绩
-以Digit Recognition为例
-TBD
+[如何在Kaggle排行榜取得好成绩——Kaggle新人参加Digit Recognition的经历](https://zhuanlan.zhihu.com/p/58199302)

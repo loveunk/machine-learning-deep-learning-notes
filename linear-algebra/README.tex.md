@@ -1,6 +1,5 @@
 # Linear Algebra 线性代数
-这篇笔记总结了线性代数的一些基础知识，包括向量、矩阵及其属性和计算方法。
-内容部分参考[Mathematics for Machine Learning: Linear Algebra](https://www.coursera.org/learn/linear-algebra-machine-learning/)。
+这一章节总结了线性代数的一些基础知识，包括向量、矩阵及其属性和计算方法。
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -165,3 +164,16 @@ $T^n=CD^nC^{-1}$
 >
 > $T=\begin{pmatrix} 1 & 1 \\ 0 & 2 \end{pmatrix}$, $C=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$,  $C^{-1}=\begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix}$, $D = \begin{pmatrix} 1 & 0 \\ 0 & 2\end{pmatrix}$.
 > $T^2=\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 2 \end{pmatrix}^{2}\begin{pmatrix} 1 & -1 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 1 & 3 \\ 0 & 4 \end{pmatrix}$
+
+#### 特征值的属性
+如 _λ_ 为 _A_ 的特征值， _x_ 是 _A_ 的属于 _λ_ 的特征向量：
+* _λ_ 也是 _A<sup>T</sup>_ 的特征值；
+* _λ<sup>m</sup>_ 也是 _A<sup>m</sup>_ 的特征值（m是任意常数）；
+* _A_ 可逆时，_λ<sup>-1</sup>_ 是 _A<sup>-1</sup>_ 的特征值；
+
+## 推荐阅读
+1. [Mathematics for Machine Learning: Linear Algebra](https://www.coursera.org/learn/linear-algebra-machine-learning/)。
+2. [矩阵的特征：特征值，特征向量，行列式，trace](https://zhuanlan.zhihu.com/p/25955676)
+3. [理解矩阵](https://blog.csdn.net/myan/article/details/647511)
+
+[回到顶部](#linear-algebra-线性代数)

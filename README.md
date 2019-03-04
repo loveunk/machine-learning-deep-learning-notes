@@ -1,4 +1,4 @@
-# 机器学习、深度学习笔记
+# 深度学习（机器学习）学习路径
 
 最近几年，尤其是自从2016年Alpha Go打败李世石事件后，人工智能技术受到了各行业极大关注。其中以机器学习技术中深度学习最受瞩目。主要原因是这些技术在科研领域和工业界的应用效果非常好，大幅提升了算法效率、降低了成本。因而市场对相关技术有了如此大的需求。
 
@@ -54,7 +54,10 @@
 
 ## 项目和竞赛
 ### 竞赛
-[Kaggle](competitions/kaggle.md)
+* [Kaggle](competitions/kaggle.md)（全球赛、推荐的平台）
+* [天池](https://tianchi.aliyun.com) - 阿里云（中国）
+* [DataFountain](https://www.datafountain.cn/)（中国）
+* [SODA](http://soda.shdataic.org.cn/) - 开放数据创新应用大赛（中国）
 
 ## 工欲善其事，必先利其器
 ### 一些电子书

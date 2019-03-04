@@ -102,11 +102,17 @@
 
 ## 无监督学习
 [无监督学习]
-- [聚类算法](#clustering.md)
+- [聚类算法](clustering.md)
   - K-Means聚类
   - DBScan聚类
-- 降维
-  - PCA
+- [数据降维](dimension-reduction.md)
+	- 数据降维的动机
+		- 数据降维
+		- 数据可视化
+	- PCA 主成分分析问题
+		- 从压缩数据中恢复
+		- 选择主成分的数量
+		- PCA应用建议
 
 ## 异常检测与推荐系统
 [异常检测与推荐系统](unsupervised-learning.md)

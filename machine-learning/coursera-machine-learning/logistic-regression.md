@@ -387,6 +387,26 @@ plt.show()
 
 而正则化刚好解决了这个问题，如果 _λ > 0_，可以证明 _X<sup>T</sup>X + λI_ 是可逆的。
 
+##### 证明过程
+正定矩阵（positive defined matrix）有一个性质，所有的正定矩阵都是可逆的。因此我们可以通过证明 _X<sup>T</sup>X + λI_ 是正定阵来证明其可逆。
+（此外，正定矩阵特征值全部大于零（半正定矩阵特征值全部大于等于零）
+
+1. _X<sup>T</sup>X_ 是半正定的（positive semi-definited matrix）：
+
+	根据半正定的定义，只需证明，对于不为零的向量 _z_，有  _z<sup>T</sup>(X<sup>T</sup>X)z=(z<sup>T</sup>X<sup>T</sup>)(Xz)=(Xz)<sup>T</sup>(Xz) ≥ 0_ ；
+	_Xz_ 记做 _u_，那么 _(Xz)<sup>T</sup>(Xz) = u<sup>T</sup>u_，根据向量点乘的性质得 _u<sup>T</sup>u ≥ 0_。
+
+	所以X<sup>T</sup>X 是半正定的。
+
+2. _X<sup>T</sup>X + λI_ 是正定的：
+	类似上面的证明 _z<sup>T</sup>(X<sup>T</sup>X + λI) z = (z<sup>T</sup>X<sup>T</sup>)(Xz) + z<sup>T</sup>λIz_。
+	根据第1点的证明，可知 _(Xz)<sup>T</sup>(Xz) ≥ 0_。
+	而对于非零向量z，有 _z<sup>T</sup>λIz > 0_。
+	所以 _z<sup>T</sup>(X<sup>T</sup>X + λI) z > 0_。
+	根据正定矩阵定义，**_X<sup>T</sup>X + λI_ 是正定的。所以 _X<sup>T</sup>X + λI_ 是可逆的**。
+
+关于正定矩阵和半正定矩阵的几何理解，推荐看[这里](https://www.zhihu.com/question/22098422/answer/35874276)。
+
 ### 正则化的逻辑回归模型
 针对逻辑回归问题，我们在之前的课程已经学习过两种优化算法：
 1. 梯度下降法来优化代价函数 _J(θ)_

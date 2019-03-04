@@ -161,3 +161,7 @@ datagen.fit(X_train)
 
 最后，如你想研究一下完整的Code，完整的Notebook请看这里：
 https://www.kaggle.com/loveunk/kaggle-digit-recognizer-keras-cnn-100-accuracy
+
+<p align="center">
+<img src="wx-qr.jpg" />
+</p>

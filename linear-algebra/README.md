@@ -1,5 +1,5 @@
 # Linear Algebra 线性代数
-这篇笔记总结了线性代数的一些基础知识，包括向量、矩阵及其属性和计算方法。
+这一章节总结了线性代数的一些基础知识，包括向量、矩阵及其属性和计算方法。
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -151,3 +151,16 @@ According to the definition of eigenvector, we can have <img src="/linear-algebr
 >
 > <img src="/linear-algebra/tex/46b2bcebab075dce603c1a362cb73836.svg?invert_in_darkmode&sanitize=true" align=middle width=90.88472909999999pt height=47.6716218pt/>, <img src="/linear-algebra/tex/8761f77b33a88c75d7e458569181cf3e.svg?invert_in_darkmode&sanitize=true" align=middle width=91.92005459999999pt height=47.6716218pt/>,  <img src="/linear-algebra/tex/60e78040fd02c95d58bfe94a93fc84cb.svg?invert_in_darkmode&sanitize=true" align=middle width=122.35393995pt height=47.6716218pt/>, <img src="/linear-algebra/tex/0739b208cbbb3d03b3b6be832d720f45.svg?invert_in_darkmode&sanitize=true" align=middle width=93.06164834999998pt height=47.6716218pt/>.
 > <img src="/linear-algebra/tex/f265938112144b63ab3223e48e92a9e2.svg?invert_in_darkmode&sanitize=true" align=middle width=317.04938595pt height=54.374859000000015pt/>
+
+#### 特征值的属性
+如 _λ_ 为 _A_ 的特征值， _x_ 是 _A_ 的属于 _λ_ 的特征向量：
+* _λ_ 也是 _A<sup>T</sup>_ 的特征值；
+* _λ<sup>m</sup>_ 也是 _A<sup>m</sup>_ 的特征值（m是任意常数）；
+* _A_ 可逆时，_λ<sup>-1</sup>_ 是 _A<sup>-1</sup>_ 的特征值；
+
+## 推荐阅读
+1. [Mathematics for Machine Learning: Linear Algebra](https://www.coursera.org/learn/linear-algebra-machine-learning/)。
+2. [矩阵的特征：特征值，特征向量，行列式，trace](https://zhuanlan.zhihu.com/p/25955676)
+3. [理解矩阵](https://blog.csdn.net/myan/article/details/647511)
+
+[回到顶部](#linear-algebra-线性代数)

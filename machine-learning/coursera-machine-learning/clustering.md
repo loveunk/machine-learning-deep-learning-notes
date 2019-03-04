@@ -1,8 +1,8 @@
-# 聚类算法<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+# 聚类算法
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [聚类算法<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->](#聚类算法-toc-depthfrom1-depthto6-withlinks1-updateonsave1-orderedlist0-)
+- [聚类算法](#聚类算法)
 	- [K-Means](#k-means)
 		- [优化目标](#优化目标)
 		- [随机初始化](#随机初始化)
@@ -182,7 +182,7 @@ DBScan的时间复杂度主要受RegionQuery 的调用次数影响，DBSCAN 对�
 
 ## 距离计算
 
-(1). 闵可夫斯基距离Minkowski/（其中欧式距离：$p=2$)
+(1). 闵可夫斯基距离Minkowski/（其中欧式距离：_p = 2_)
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?dist(X,Y)={{\left({{\sum\limits_{i=1}^n\left|x_i-y_i\right|}^p}\right)}^{\frac{1}{p}}}" title="dist(X,Y)={{\left({{\sum\limits_{i=1}^n\left|x_i-y_i\right|}^p}\right)}^{\frac{1}{p}}}" />
 </p>
@@ -207,3 +207,5 @@ DBScan的时间复杂度主要受RegionQuery 的调用次数影响，DBSCAN 对�
 </p>
 
 Pearson相关系数即将 _x_ 、 _y_ 坐标向量各自平移到原点后的夹角余弦。
+
+[回到顶部](#聚类算法)

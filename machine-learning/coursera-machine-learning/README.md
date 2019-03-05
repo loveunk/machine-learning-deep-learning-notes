@@ -114,9 +114,17 @@
 		- PCA应用建议
 
 ## 异常检测与推荐系统
-[异常检测与推荐系统](unsupervised-learning.md)
-- 异常检测
-- 推荐系统
+- [异常检测](anomaly-detection.md)
+	- 高斯分布
+	- 基于高斯分布的异常检测算法
+	- 开发和评价异常检测系统
+	- 异常检测与监督学习对比
+	- 选择特征
+		- 误差分析
+		- 异常检测误差分析
+	- 多元高斯分布
+	- 使用多元高斯分布进行异常检测
+- [推荐系统](recommender-system.md)
 
 ## 大规模机器学习
 [大规模机器学习](large-scale-machine-learning.md)

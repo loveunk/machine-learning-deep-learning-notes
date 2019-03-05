@@ -125,6 +125,8 @@ _z = U<sup>T</sup><sub>reduce</sub> * x_ 即为映射后的数据，其中 _x_ �
 <img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/66544d8fa1c1639d80948006f7f4a8ff.png" />
 </p>
 
+**关于PCA更多的推导和证明：**请见[这里](../../math/pca.md)
+
 ### 选择主成分的数量
 
 主要成分分析是减少投射的平均均方误差 MSE。
@@ -186,5 +188,6 @@ _z = U<sup>T</sup><sub>reduce</sub> * x_ 即为映射后的数据，其中 _x_ �
 然而当我们进行正则化处理时，会考虑到结果变量，不会丢掉重要的数据。
 
 * 默认地将PCA作为学习过程中的一部分，虽然PCA很多时候有效果，最好是从所有原始特征开始，只在有必要的时候（算法运行太慢或者用太多内存）才考虑采用PCA。
+
 
 [回到顶部](#数据降维)

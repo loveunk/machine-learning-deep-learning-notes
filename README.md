@@ -19,9 +19,9 @@
 
 ## 数学基础
 微积分和线性代数的基础是必须要掌握的，不然对于理解学习算法的原理会有困难。如果已经有一定的数学基础，可以先跳过这一部分，需要的时候再回来补。这里的Notes是基于Coursera中Mathematics for Machine Learning专题做的总结。
-  * [Calculus 微积分](calculus)
-  * [Linear Algebra 线性代数](linear-algebra)
-  * [PCA 主成分分析](pca)
+  * [Calculus 微积分](math/calculus.md)
+  * [Linear Algebra 线性代数](math/linear-algebra.md)
+  * [PCA 主成分分析](math/pca.md)
 
 ## Python
 如果有比较好的Python和机器学习相关Library的知识，对于学习算法过程中的代码可以快速理解和调试，一方面节省时间，另一方面也可以更聚焦在算法和模型本身上。
@@ -33,9 +33,8 @@
 
 ## 机器学习算法
 主要基于Machine Learning (Coursera, Andrew Ng) 的课程内容。
-* [机器学习绪论](machine-learning)
-* [吴恩达的机器学习笔记](machine-learning/coursera-machine-learning)
-* [周志华的机器学习笔记（西瓜书）](machine-learning/zhouzhihua-machine-learning)
+* [吴恩达机器学习算法](machine-learning/coursera-machine-learning)
+* [周志华机器学习（西瓜书）]
 * [Applied Machine Learning in Python - 密西根大学]
 
 ## 深度学习

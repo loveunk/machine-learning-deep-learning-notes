@@ -169,16 +169,21 @@ $(document).ready(function(){
       output = output.replace(/\\text/g, "");
       output = output.replace(/\\left/g, "");
       output = output.replace(/\\right/g, "");
-      output = output.replace(/\\theta/g, "θ");
-      output = output.replace(/\\Theta/g, "Θ");
-      output = output.replace(/\\lambda/g, "λ");
-      output = output.replace(/\\sum/g, "Σ");
+	  
+      output = output.replace(/\\alpha/g, "α");
+      output = output.replace(/\\ast/g, " * ");
+      output = output.replace(/\\beta/g, "β");
       output = output.replace(/\\delta/g, "δ");
       output = output.replace(/\\Delta/g, "Δ");
-      output = output.replace(/\\varepsilon/g, "ϵ");
+      output = output.replace(/\\lambda/g, "λ");
       output = output.replace(/\\partial/g, "∂");
+      output = output.replace(/\\pi/g, "π");
       output = output.replace(/\\sigma/g, "σ");
-      output = output.replace(/\\ast/g, " * ");
+      output = output.replace(/\\sum/g, "Σ");
+      output = output.replace(/\\theta/g, "θ");
+      output = output.replace(/\\Theta/g, "Θ");
+      output = output.replace(/\\varepsilon/g, "ϵ");
+	  
       output = output.replace(/\\times/g, "×");
       output = output.replace(/\\limits/g, "lim ");
       output = output.replace(/\\cdots/g, " ... ");
@@ -187,8 +192,13 @@ $(document).ready(function(){
       output = output.replace(/\\sim/g, " ~ ");
       output = output.replace(/\\ge/g, " ≥ ");
       output = output.replace(/\\le/g, " ≤ ");
+      output = output.replace(/\\neq/g, " ≠ ");
+      output = output.replace(/\\in/g, " ∈ ");
       output = output.replace(/\\approx/g, " ≈ ");
+      output = output.replace(/\\langle/g, "〈");
+      output = output.replace(/\\rangle/g, "〉");
       output = output.replace(/\\\|/g, "‖");
+      output = output.replace(/\\Leftrightarrow/g, "⇔");
       output = handleSubSupCloseTag(output, "<sub>", "</sub>");
       output = handleSubSupCloseTag(output, "<sup>", "</sup>");
       output = output.replace(/{/g, "");

@@ -40,19 +40,19 @@
     * Applied Machine Learning in Python - 密西根大学
   * 每章节配套的Jupyter Notebook练习根据网络内容整理
 * 目录结构：
-  * [绪论](machine-learning-intro.md)
-  * [线性回归](linear-regression.md)
-  * [逻辑回归](logistic-regression.md)
-  * [神经网络](neural-networks.md)
-  * [打造实用的机器学习系统](advice-for-appying-and-system-design.md)
-  * [支持向量机 SVM](svm.md)
-  * [聚类算法](clustering.md)
-  * [数据降维](dimension-reduction.md)
-  * [异常检测](anomaly-detection.md)
-  * [推荐系统](recommender-system.md)
-  * [大规模机器学习](large-scale-machine-learning.md)
-  * [应用案例照片文字识别](photo-ocr.md)
-  * [总结](summary.md)
+  * [绪论](machine-learning/machine-learning-intro.md)
+  * [线性回归](machine-learning/linear-regression.md)
+  * [逻辑回归](machine-learning/logistic-regression.md)
+  * [神经网络](machine-learning/neural-networks.md)
+  * [打造实用的机器学习系统](machine-learning/advice-for-appying-and-system-design.md)
+  * [支持向量机 SVM](machine-learning/svm.md)
+  * [聚类算法](machine-learning/clustering.md)
+  * [数据降维](machine-learning/dimension-reduction.md)
+  * [异常检测](machine-learning/anomaly-detection.md)
+  * [推荐系统](machine-learning/recommender-system.md)
+  * [大规模机器学习](machine-learning/large-scale-machine-learning.md)
+  * [应用案例照片文字识别](machine-learning/photo-ocr.md)
+  * [总结](machine-learning/ssummary.md)
 
 ## 深度学习
 ### Deep Learning 专题课程

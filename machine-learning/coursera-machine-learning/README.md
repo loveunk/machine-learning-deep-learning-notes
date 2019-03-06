@@ -2,6 +2,9 @@
 
 内容主要参考吴恩达(Andrew Ng)的Machine Learning、周志华的西瓜书以及网络其他资源整理而成。
 
+如发现错误之处，请在GitHub直接提交Issue或Pull Request，谢谢。
+* GitHub：[https://github.com/loveunk/machine-learning-deep-learning-notes/](https://github.com/loveunk/machine-learning-deep-learning-notes/)
+
 目录结构如下：
 
 ## [线性回归](linear-regression.md)
@@ -80,7 +83,13 @@
 
 ## [聚类算法](clustering.md)
 - K-Means聚类
+	- 优化目标
+	- 随机初始化
+	- 选择聚类数
 - DBScan聚类
+	- 复杂度
+	- 优点
+- 距离计算
 
 ## [数据降维](dimension-reduction.md)
 - 数据降维的动机
@@ -120,8 +129,7 @@
 - 在线学习 Online Learning
 - MapReduce和数据并行
 
-## 应用案例照片文字识别
-- [应用案例照片文字识别](photo-ocr.md)
+## [应用案例照片文字识别](photo-ocr.md)
 	- 图片文字识别
 	- 滑动窗口
 	- 获取更多数据

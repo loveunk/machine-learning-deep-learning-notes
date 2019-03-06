@@ -125,9 +125,23 @@
 	- 多元高斯分布
 	- 使用多元高斯分布进行异常检测
 - [推荐系统](recommender-system.md)
+	- 问题描述
+	- 基于内容的推荐系统
+		- 代价函数
+		- 协同过滤
+		- 协同过滤算法
+		- 向量化：低秩矩阵分解
+		- 均值归一化
 
 ## 大规模机器学习
 [大规模机器学习](large-scale-machine-learning.md)
+- 大型数据集的学习
+   - 确认大规模的训练集是否必要
+- 随机梯度下降法 Stochastic Gradient Descent (SGD)
+- 小批量梯度下降 Mini-Batch Gradient Descent
+- 随机梯度下降收敛
+- 在线学习 Online Learning
+- 映射化简和数据并行
 
 ## 应用案例照片文字识别
 [应用案例照片文字识别](photo-ocr.md)

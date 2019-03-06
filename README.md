@@ -33,9 +33,26 @@
 
 ## 机器学习算法
 主要基于Machine Learning (Coursera, Andrew Ng) 的课程内容。
-* [吴恩达机器学习算法](machine-learning/coursera-machine-learning)
-* [周志华机器学习（西瓜书）]
-* [Applied Machine Learning in Python - 密西根大学]
+* [机器学习算法系列](machine-learning/README.md)
+  * 算法原理内容主要参考的内容包括：
+    * 吴恩达Coursera系列
+    * 周志华机器学习（西瓜书）
+    * Applied Machine Learning in Python - 密西根大学
+  * 每章节配套的Jupyter Notebook练习根据网络内容整理
+* 目录结构：
+  * [绪论](machine-learning-intro.md)
+  * [线性回归](linear-regression.md)
+  * [逻辑回归](logistic-regression.md)
+  * [神经网络](neural-networks.md)
+  * [打造实用的机器学习系统](advice-for-appying-and-system-design.md)
+  * [支持向量机 SVM](svm.md)
+  * [聚类算法](clustering.md)
+  * [数据降维](dimension-reduction.md)
+  * [异常检测](anomaly-detection.md)
+  * [推荐系统](recommender-system.md)
+  * [大规模机器学习](large-scale-machine-learning.md)
+  * [应用案例照片文字识别](photo-ocr.md)
+  * [总结](summary.md)
 
 ## 深度学习
 ### Deep Learning 专题课程

@@ -12,7 +12,9 @@
 * **强化学习**：TBD
 * **实践项目**：这里将结合几个实际的项目来做比较完整的讲解。此外结合`Kaggle`、`阿里云天池`比赛来做讲解。
 
-因为内容正持续更新中，未完成的部分标识有TBD (To be done)。
+> 因为内容正持续更新中，未完成的部分标识有TBD (To be done)。
+>
+> 文中涉及的公式部分是用[CodeCogs](https://codecogs.com/latex/eqneditor.php)的在线LaTeX渲染，如果未加载出来，可以尝试多刷新几次。
 
 ## 绪论
 [机器学习绪论](machine-learning/machine-learning-intro.md)一文中总结了机器学习领域和其解决的问题介绍，建议先读此文，以便有一个系统认知。
@@ -60,7 +62,7 @@
 * TBD
 
 ### Tensorflow
-* TBD
+* 推荐大佬吴恩达公司DeepLearning.ai和Coursera出品的课程[《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)（面向人工智能、机器学习和深度学习的TensorFlow介绍》。课程包括四周内容，练习基于Google Colab平台。讲师是来自Google Brain团队。
 
 ### Keras
 * TBD
@@ -77,18 +79,29 @@
 
 ## 工欲善其事，必先利其器
 ### 一些电子书
-* [一些资料电子书](https://1drv.ms/f/s!At5_i2TzOUcnhOxc8mwDzwK8ILf5jg)（OneDrive分享，可能被墙）
+* [一些资料电子书](https://1drv.ms/f/s!At5_i2TzOUcnhOxc8mwDzwK8ILf5jg)（OneDrive分享，可能被墙，如需请见最后的“科学上网”）
 
 ### 推荐的学习环境
-* [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib等，以及对于深度学习初学者很重要的Jupyter Notebook）。
+* [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib等，以及对于深度学习初学者很重要的Jupyter Notebook）。新人可以参考这篇[完整的Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)。
+* IDE：PyCharm / VS Code / Atom[等等](https://zhuanlan.zhihu.com/p/58178996)。
 
 ### 一些好用的工具
 * 机器学习在线环境
-  * [Google Colaboratory](https://colab.research.google.com)：Jupyter环境
-  * [IBM Cognitive Class Lab](https://labs.cognitiveclass.ai)：Jupyter环境
-* 编辑用工具
-  * 一个[识别并转换手写公式为Latex](https://webdemo.myscript.com/views/math/index.html)的网站
-  * [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+  * [Google Colaboratory](https://colab.research.google.com)：Jupyter环境。[一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)。
+* [科学上网](https://github.com/haoel/haoel.github.io)
 
+## 写在最后
+
+### 一点建议
+
+对于此前不是机器学习/深度学习这个领域的朋友，不管此前在其他领域有多深的积累，还请以一个敬畏之心来对待。
+
+* 持续的投入：三天打鱼两天晒网的故事，我们从小便知，不多说了；
+* 系统的学习：一个学科，知识是一个体系，系统的学习才可以避免死角，或者黑洞；
+* 大量的实战：毕竟机器学习/深度学习属于Engineering & Science的范畴，是用来解决实际的问题的。单纯的理论研究，如果没有实际的项目（包括研究项目）经验做支撑，理论可能不会有很大突破。
+
+### 欢迎反馈
+
+如果发现内容的错误，欢迎在GitHub提交issue或者pull request。
 
 [回到顶部](#机器学习深度学习笔记)

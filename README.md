@@ -6,9 +6,9 @@
 
 主要分为如下几个部分：
 * **数学基础**：包括微积分、线性代数等对理解机器学习算法有帮助的基本数学。
-* **Python**：`Python`提供了非常丰富的工具包，非常适合学习者实现算法，也可以作为工业环境完成项目。主流的深度学习框架，例如`TensorFlow`、`Keras`都把Python作为首选语言。此外，主流的在线课程（比如Andrew Ng在Coursera的深度学习系列课程）用Python作为练习项目的语言。在这部分，我将介绍包括Python语言基础和机器学习常用的几个Library，包括`Numpy`、`Pandas`、`matplotlib`、`Scikit-Learn`等。
+* **Python**：`Python`提供了非常丰富的工具包，非常适合学习者实现算法，也可以作为工业环境完成项目。主流的深度学习框架，例如当前最流行的两个AI框架`TensorFlow`、`PyTorch`都以Python作为首选语言。此外，主流的在线课程（比如Andrew Ng在Coursera的深度学习系列课程）用Python作为练习项目的语言。在这部分，我将介绍包括Python语言基础和机器学习常用的几个Library，包括`Numpy`、`Pandas`、`matplotlib`、`Scikit-Learn`等。
 * **机器学习**：介绍主流的机器学习算法，比如线性回归、逻辑回归、神经网络、SVM、PCA、聚类算法等等。
-* **深度学习**：介绍原理和常见的模型（比如`CNN`、`RNN`、`LSTM`等）和深度学习的框架（`TensorFlow`、`Keras`）。
+* **深度学习**：介绍原理和常见的模型（比如`CNN`、`RNN`、`LSTM`、`GAN`等）和深度学习的框架（`TensorFlow`、`Keras`）。
 * **强化学习**：TBD
 * **实践项目**：这里将结合几个实际的项目来做比较完整的讲解。此外结合`Kaggle`、`阿里云天池`比赛来做讲解。
 
@@ -101,7 +101,7 @@
 * 大量的实战：毕竟机器学习/深度学习属于Engineering & Science的范畴，是用来解决实际的问题的。单纯的理论研究，如果没有实际的项目（包括研究项目）经验做支撑，理论可能不会有很大突破。
 
 ### 欢迎反馈
-
-如果发现内容的错误，欢迎在GitHub提交issue或者pull request。
+* 如果发现内容的错误，欢迎在GitHub提交issue或者pull request
+* 个人精力有限，欢迎感兴趣的朋友一起来完善和补充内容
 
 [回到顶部](#机器学习深度学习笔记)

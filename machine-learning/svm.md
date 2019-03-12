@@ -185,7 +185,6 @@ _u_ 和 _v_ 之间的内积
 <p align="center">
 <img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/44ad37bce4b7e03835095dccbd2a7b7a.png" />
 </p>
-
 ---
 根据此前讨论，下图列出SVM的目标函数：
 <p align="center">
@@ -430,5 +429,9 @@ SVM包会工作得很好，但它们仍然有些慢。
 **算法确实很重要，但是通常更加重要的是数据量、有多熟练是否擅长做误差分析和排除学习算法，指出如何设定新的特征变量和找出其他能决定学习算法的变量等方面，通常这些方面会比你使用逻辑回归还是SVM这方面更加重要。**
 
 当然SVM仍然被广泛认为是一种最强大的学习算法。实际上SVM与逻辑回归、神经网络一起构建了一个很好的机器学习算法武器库。
+
+## 阅读推荐
+* [支持向量机SVM - by Jerrylead](http://www.cnblogs.com/jerrylead/archive/2011/03/13/1982639.html)
+* [支持向量机系列 - by pluskid](http://blog.pluskid.org/?page_id=683)
 
 [回到顶部](#支持向量机)

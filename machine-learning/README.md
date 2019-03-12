@@ -1,6 +1,6 @@
 # 机器学习
 
-内容主要参考吴恩达(Andrew Ng)的Machine Learning以及周志华的西瓜书、网络资源（如Wikipedia）等。
+内容主要参考吴恩达(Andrew Ng)的Machine Learning以及周志华的西瓜书、网络资源（如Wikipedia、GitHub）等。
 
 如发现错误或有需要补充的内容，请在GitHub直接提交Issue或Pull Request，谢谢。
 * GitHub：[https://github.com/loveunk/machine-learning-deep-learning-notes/](https://github.com/loveunk/machine-learning-deep-learning-notes/)

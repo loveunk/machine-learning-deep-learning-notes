@@ -208,4 +208,7 @@ DBScan的时间复杂度主要受RegionQuery 的调用次数影响，DBSCAN 对�
 
 Pearson相关系数即将 _x_ 、 _y_ 坐标向量各自平移到原点后的夹角余弦。
 
+## 更多阅读
+* [Three Popular Clustering Methods and When to Use Each](https://medium.com/predict/three-popular-clustering-methods-and-when-to-use-each-4227c80ba2b6)
+
 [回到顶部](#聚类算法)

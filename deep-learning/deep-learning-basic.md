@@ -1,5 +1,11 @@
 # 深度学习基础
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
+- [深度学习基础](#深度学习基础)
+	- [为什么深度学习在近几年流行起来](#为什么深度学习在近几年流行起来)
+	- [深度学习先驱：Jeff Hinton访谈](#深度学习先驱jeff-hinton访谈)
+
+<!-- /TOC -->
 > 如果还不是很熟悉神经网络，请先去看机器学习里[神经网络](../machine-learning/neural-networks.md)的章节。
 
 ## 为什么深度学习在近几年流行起来

@@ -24,6 +24,7 @@
   * [Calculus 微积分](math/calculus.md)
   * [Linear Algebra 线性代数](math/linear-algebra.md)
   * [PCA 主成分分析](math/pca.md)
+  * 概率论 (TBD)
 
 ## Python
 如果有比较好的Python和机器学习相关Library的知识，对于学习算法过程中的代码可以快速理解和调试，一方面节省时间，另一方面也可以更聚焦在算法和模型本身上。
@@ -61,11 +62,12 @@
 主要基于Deep Learning (Coursera, Andrew Ng) 的专题课程 ，介绍深度学习的各种模型的原理。
 * [深度学习](deep-learning/README.md)（on-going）
 
-### Tensorflow
+### TensorFlow 
 * 推荐大佬吴恩达公司DeepLearning.ai和Coursera出品的课程[《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)（面向人工智能、机器学习和深度学习的TensorFlow介绍》。课程包括四周内容，练习基于Google Colab平台。讲师是来自Google Brain团队。
+* TensorFlow出2.0了，推荐看这篇[《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)对TensorFlow体系有一个完整的认知。
 
 ### PyTorch
-* TBD
+* PyTorch同样是一个优秀的深度学习框架，这里暂不做过多介绍。
 
 ## 强化学习
 * TBD
@@ -79,16 +81,17 @@
 
 ## 工欲善其事，必先利其器
 ### 一些电子书
-* [一些资料电子书](https://1drv.ms/f/s!At5_i2TzOUcnhOxc8mwDzwK8ILf5jg)（OneDrive分享，可能被墙，如需请见最后的“科学上网”）
+* 机器学习相关的资料/电子书：[Dropbox](https://www.dropbox.com/sh/x25apu3vpxfry3c/AABGDLqTTkMkPuey_boL56dma?dl=0) 或 [百度云](https://pan.baidu.com/s/1Hn9Vu2LvTk-WthQhHtdJUA)（提取码:vy3v）
 
 ### 推荐的学习环境
 * [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib等，以及对于深度学习初学者很重要的Jupyter Notebook）。新人可以参考这篇[完整的Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)。
-* IDE：PyCharm / VS Code / Atom[等等](https://zhuanlan.zhihu.com/p/58178996)。
+* IDE：PyCharm（推荐） / VS Code / Atom / Sublime等等，[可以看这篇](https://zhuanlan.zhihu.com/p/58178996)。
 
 ### 一些好用的工具
 * 机器学习在线环境
-  * [Google Colaboratory](https://colab.research.google.com)：Jupyter环境。[一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)。
-* [科学上网](https://github.com/haoel/haoel.github.io)
+  * [Google Colab](https://colab.research.google.com)：Jupyter环境。[一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)。
+* 科学上网
+  * 内地朋友避免不了和China GFW斗智斗勇，建议花小钱省事省心。可看左耳耗子的文章[《科学上网》](https://github.com/haoel/haoel.github.io)。
 
 ## 写在最后
 
@@ -101,7 +104,7 @@
 * 大量的实战：毕竟机器学习/深度学习属于Engineering & Science的范畴，是用来解决实际的问题的。单纯的理论研究，如果没有实际的项目（包括研究项目）经验做支撑，理论可能不会有很大突破。
 
 ### 欢迎反馈
-* 如果发现内容的错误，欢迎在GitHub提交issue或者pull request
+* 如果发现内容的错误，欢迎在GitHub提交Issue或者Pull Request
 * 个人精力有限，欢迎感兴趣的朋友一起来完善和补充内容
 
-[回到顶部](#机器学习深度学习笔记)
+[回到顶部](#深度学习（机器学习）学习路径)

@@ -81,7 +81,7 @@
 
 ## 工欲善其事，必先利其器
 ### 一些电子书
-* 机器学习相关的资料/电子书：[Dropbox](https://www.dropbox.com/sh/x25apu3vpxfry3c/AABGDLqTTkMkPuey_boL56dma?dl=0) 或 [百度云](https://pan.baidu.com/s/1Hn9Vu2LvTk-WthQhHtdJUA)（提取码:vy3v）
+* 几十本机器学习/深度学习/Data Science相关的资料/电子书：[Dropbox](https://www.dropbox.com/sh/x25apu3vpxfry3c/AABGDLqTTkMkPuey_boL56dma?dl=0) 或 [百度云](https://pan.baidu.com/s/1Hn9Vu2LvTk-WthQhHtdJUA)（提取码:vy3v）
 
 ### 推荐的学习环境
 * [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib等，以及对于深度学习初学者很重要的Jupyter Notebook）。新人可以参考这篇[完整的Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)。
@@ -107,4 +107,4 @@
 * 如果发现内容的错误，欢迎在GitHub提交Issue或者Pull Request
 * 个人精力有限，欢迎感兴趣的朋友一起来完善和补充内容
 
-[回到顶部](#深度学习（机器学习）学习路径)
+[回到顶部](#深度学习机器学习学习路径)

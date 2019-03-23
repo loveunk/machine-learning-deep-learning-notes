@@ -183,7 +183,6 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 <p align="center">
 <img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/aa27671f7a3a16545a28f356a2fb98c0.png" />
 </p>
-
 ---
 二元逻辑运算符（BINARY LOGICAL OPERATORS）当输入特征为布尔值（0或1）时，我们可以用一个单一的激活层可以作为二元逻辑运算符，为了表示不同的运算符，我们只需要选择不同的权重即可。
 
@@ -269,8 +268,9 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 <img src="https://latex.codecogs.com/gif.latex?h_\theta\left(x\right)\in&space;\mathbb{R}^{K}&space;{\left({h_\theta}\left(x\right)\right)}_{i}={i}^{th}&space;\text{output}" title="h_\theta\left(x\right)\in \mathbb{R}^{K} {\left({h_\theta}\left(x\right)\right)}_{i}={i}^{th} \text{output}" />
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\begin{align*}J(\Theta)=&-\frac{1}{m}\sum\limits_{i=1}^m\sum\limits_{k=1}^K{\left[{y_k^{(i)}}\log\left({h_\Theta}\left({x^{(i)}}\right)\right)_k&plus;\left(1-{y_k^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)_k\right]}\\&space;&&plus;\frac{\lambda}{2m}\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l&plus;1}}{\left(\Theta_{ji}^{(l)})\right)^2}\end{align*}" title="\begin{align*}J(\Theta)=&-\frac{1}{m}\sum\limits_{i=1}^m\sum\limits_{k=1}^K{\left[{y_k^{(i)}}\log\left({h_\Theta}\left({x^{(i)}}\right)\right)_k+\left(1-{y_k^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)_k\right]}\\ &+\frac{\lambda}{2m}\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l+1}{\left(\Theta_{ji}^{(l)})\right)^2}\end{align*}" />
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}J(\Theta)=&-\frac{1}{m}\sum\limits_{i=1}^m\sum\limits_{k=1}^K{\left[{y_k^{(i)}}\log\left({h_\Theta}\left({x^{(i)}}\right)\right)_k&plus;\left(1-{y_k^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)_k\right]}\\&space;&&plus;\frac{\lambda}{2m}\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l&plus;1}}{\left(\Theta_{ji}^{(l)}\right)^2}\end{align*}" title="\begin{align*}J(\Theta)=&-\frac{1}{m}\sum\limits_{i=1}^m\sum\limits_{k=1}^K{\left[{y_k^{(i)}}\log\left({h_\Theta}\left({x^{(i)}}\right)\right)_k+\left(1-{y_k^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)_k\right]}\\ &+\frac{\lambda}{2m}\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l+1}{\left(\Theta_{ji}^{(l)}\right)^2}\end{align*}" />
 </p>
+
 
 但神经网络代价函数的思想还是和逻辑回归代价函数是一样的，希望通过代价函数来观察算法预测的结果与真实情况的误差有多大，唯一不同的是，对于每一行特征，我们都会给出 _K_ 个预测，基本上我们可以利用循环，对每一行特征都预测 _K_ 个不同结果，然后在利用循环在 _K_ 个预测中选择可能性最高的一个，将其与 _y_ 中的实际数据进行比较。
 
@@ -459,5 +459,14 @@ ALVINN (Autonomous Land Vehicle In a Neural Network)是一个基于神经网络�
 每秒钟ALVINN生成12次数字化图片，并且将图像传送给神经网络进行训练，多个神经网络同时工作，每一个网络都生成一个行驶方向，以及一个预测自信度的参数，预测自信度最高的那个神经网络得到的行驶方向。比如这里，在这条单行道上训练出的网络将被最终用于控制车辆方向，车辆前方突然出现了一个交叉十字路口，当车辆到达这个十字路口时，我们单行道网络对应的自信度骤减，当它穿过这个十字路口时，前方的双车道将进入其视线，双车道网络的自信度便开始上升，当它的自信度上升时，双车道的网络，将被选择来控制行驶方向，车辆将被安全地引导进入双车道路。
 
 这就是基于神经网络的自动驾驶技术。当然，我们还有很多更加先进的试验来实现自动驾驶技术。在美国，欧洲等一些国家和地区，他们提供了一些比这个方法更加稳定的驾驶控制技术。但我认为，使用这样一个简单的基于反向传播的神经网络，训练出如此强大的自动驾驶汽车，的确是一次令人惊讶的成就。
+
+## Jupyter Notebook编程练习
+
+- 推荐访问Google Drive的共享，直接在Google Colab在线运行ipynb文件：
+  - [Google Drive: 3.multi-class_classification_and_neural_network](https://drive.google.com/drive/folders/1UKbhgazhd-vW9hMdrfChPLRu1QfKobAm)
+  - [Google Drive: 4.nurual_network_back_propagation](https://drive.google.com/drive/folders/18nN8NdNJ5_L_HrN0J7IdpDABMOS8Vj1w)
+- 不能翻墙的朋友，可以访问GitHub下载：
+  - [GitHub: 3.multi-class_classification_and_neural_network](https://github.com/loveunk/ml-ipynb/blob/master/3.multi-class_classification_and_neural_network)
+  - [GitHub: 4.nurual_network_back_propagation](https://github.com/loveunk/ml-ipynb/blob/master/4.nurual_network_back_propagation)
 
 [回到顶部](#神经网络)

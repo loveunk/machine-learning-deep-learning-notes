@@ -87,7 +87,7 @@
 
 ## 工欲善其事，必先利其器
 ### 一些电子书
-* [几十本机器学习/深度学习/Data Science相关的资料/电子书](tools/ebooks.md)
+* [机器学习/深度学习/Data Science相关的书籍](https://github.com/loveunk/Deep-learning-books)
 
 ### 推荐的学习环境
 * [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib等，以及对于深度学习初学者很重要的Jupyter Notebook）。新人可以参考这篇[Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)。

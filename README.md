@@ -66,6 +66,7 @@
 ### TensorFlow 
 * 推荐大佬吴恩达公司DeepLearning.ai和Coursera出品的课程[《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)（面向人工智能、机器学习和深度学习的TensorFlow介绍》。课程包括四周内容，练习基于Google Colab平台。讲师是来自Google Brain团队。
 * TensorFlow出2.0了，推荐看这篇[《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)对TensorFlow体系有一个完整的认知。
+* [TensorFlow/Keras的例子](tensorflow)
 
 ### PyTorch
 * PyTorch同样是一个优秀的深度学习框架，这里暂不做过多介绍。

@@ -11,10 +11,11 @@
 * **深度学习**：介绍原理和常见的模型（比如`CNN`、`RNN`、`LSTM`、`GAN`等）和深度学习的框架（`TensorFlow`、`Keras`、`PyTorch`）。
 * **强化学习**：TBD
 * **实践项目**：这里将结合几个实际的项目来做比较完整的讲解。此外结合`Kaggle`、`阿里云天池`比赛来做讲解。
+* **阅读论文**：如果你追求更高和更深入的研究时，看深度学习各细分领域的论文是非常必要的。
 
-> 因为内容正持续更新中，未完成的部分标识有TBD (To be done)。
+> 内容持续更新中，未完成的部分标识有TBD (To be done)。
 >
-> 文中涉及的公式部分是用[CodeCogs](https://codecogs.com/latex/eqneditor.php)的在线LaTeX渲染，如果未加载出来，可以尝试多刷新几次。
+> 文中涉及的公式部分是用[CodeCogs](https://codecogs.com/latex/eqneditor.php)的在线LaTeX渲染，如果公式未正确加载，可以尝试多刷新几次。
 
 ## 绪论
 [机器学习绪论](machine-learning/machine-learning-intro.md)一文中总结了机器学习领域和其解决的问题介绍，建议先读此文，以便有一个系统认知。
@@ -23,8 +24,8 @@
 微积分和线性代数的基础是必须要掌握的，不然对于理解学习算法的原理会有困难。如果已经有一定的数学基础，可以先跳过这一部分，需要的时候再回来补。这里的Notes是基于Coursera中Mathematics for Machine Learning专题做的总结。
   * [Calculus 微积分](math/calculus.md)
   * [Linear Algebra 线性代数](math/linear-algebra.md)
-  * [PCA 主成分分析](math/pca.md)
   * 概率论 (TBD)
+  * [PCA 主成分分析](math/pca.md)
 
 ## Python
 如果有比较好的Python和机器学习相关Library的知识，对于学习算法过程中的代码可以快速理解和调试，一方面节省时间，另一方面也可以更聚焦在算法和模型本身上。
@@ -79,12 +80,16 @@
 * [DataFountain](https://www.datafountain.cn/)（中国）
 * [SODA](http://soda.shdataic.org.cn/) - 开放数据创新应用大赛（中国）
 
+## 深度学习论文
+
+* [深度学习论文的阅读路径](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap)
+
 ## 工欲善其事，必先利其器
 ### 一些电子书
 * [几十本机器学习/深度学习/Data Science相关的资料/电子书](tools/ebooks.md)
 
 ### 推荐的学习环境
-* [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib等，以及对于深度学习初学者很重要的Jupyter Notebook）。新人可以参考这篇[完整的Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)。
+* [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib等，以及对于深度学习初学者很重要的Jupyter Notebook）。新人可以参考这篇[Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)。
 * IDE：PyCharm（推荐） / VS Code / Atom / Sublime等等，[可以看这篇](https://zhuanlan.zhihu.com/p/58178996)。
 
 ### 一些好用的工具

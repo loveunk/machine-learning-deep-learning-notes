@@ -396,7 +396,7 @@ Python的特性允许你使用广播（broadcasting）特性，这是Python的nu
 
 我写代码时还有一件做的事：如果我不完全确定一个向量的维度(dimension)，我经常会扔进一个断言语句(assertion statement)。
 <p align="center">
-<img src="https://raw.github.com/loveunk/deeplearning<sub>a</sub>i<sub>b</sub>ooks/master/images/147d3a15b0a4dae283662b2c44f91778.png"/>
+<img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/147d3a15b0a4dae283662b2c44f91778.png"/>
 </p>
 
 像这样，去确保在这种情况下是一个 _(5,1)_ 向量，或者说是一个列向量。

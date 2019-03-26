@@ -13,8 +13,9 @@
 		- [向量化 Vectorization](#向量化-vectorization)
 		- [向量化的更多例子](#向量化的更多例子)
 		- [Python 中的广播](#python-中的广播)
-		- [关于 python_numpy 向量的说明](#关于-pythonnumpy-向量的说明)
+		- [关于 Python Numpy 向量的说明](#关于-python-numpy-向量的说明)
 		- [Jupyter/iPython Notebooks快速入门](#jupyteripython-notebooks快速入门)
+		- [深度学习先驱：Pieter Abbeel访谈](#深度学习先驱pieter-abbeel访谈)
 	- [浅层神经网络](#浅层神经网络)
 		- [神经网络概述](#神经网络概述)
 		- [神经网络的表示](#神经网络的表示)
@@ -29,6 +30,16 @@
 		- [神经网络的梯度下降](#神经网络的梯度下降)
 		- [直观理解反向传播](#直观理解反向传播)
 		- [随机初始化](#随机初始化)
+		- [深度学习先驱：Ian Goodfellow访谈](#深度学习先驱ian-goodfellow访谈)
+	- [深层神经网络](#深层神经网络)
+		- [深层神经网络](#深层神经网络)
+		- [前向传播和反向传播](#前向传播和反向传播)
+		- [深层网络中的前向传播](#深层网络中的前向传播)
+		- [核对矩阵的维数](#核对矩阵的维数)
+		- [为什么使用深层表示？](#为什么使用深层表示)
+		- [搭建神经网络块](#搭建神经网络块)
+		- [参数VS超参数](#参数vs超参数)
+		- [深度学习和大脑的关联性](#深度学习和大脑的关联性)
 
 <!-- /TOC -->
 
@@ -968,19 +979,19 @@ ReLU定义为：_g(z) = max(0,z)_
 </p>
 所以前向传播的步骤可以写成：
 
-* _z<sup>[l]</sup> = W<sup>[l]</sup> · a<sup>[l-1]</sup> + b<sup>[l]</sup>_ 
-* _a<sup>[l]</sup> = g<sup>[l]</sup>(z<sup>[l]</sup>)_ 
+* _z<sup>[l]</sup> = W<sup>[l]</sup> · a<sup>[l-1]</sup> + b<sup>[l]</sup>_
+* _a<sup>[l]</sup> = g<sup>[l]</sup>(z<sup>[l]</sup>)_
 
 向量化实现过程可以写成：
 
-* _Z<sup>[l]</sup> = W<sup>[l]</sup> · A<sup>[l-1]</sup> + b<sup>[l]</sup>_ 
-* _A<sup>[l]</sup> = g<sup>[l]</sup>(Z<sup>[l]</sup>)_ 
+* _Z<sup>[l]</sup> = W<sup>[l]</sup> · A<sup>[l-1]</sup> + b<sup>[l]</sup>_
+* _A<sup>[l]</sup> = g<sup>[l]</sup>(Z<sup>[l]</sup>)_
 
 前向传播需要喂入 _A<sup>[0]</sup>_ 也就是 _X_ ，来初始化；初始化的是第一层的输入值。 _a<sup>[0]</sup>_ 对应于一个训练样本的输入特征，而 _A<sup>[0]</sup>_ 对应于一整个训练样本的输入特征，所以这就是这条链的第一个前向函数的输入，重复这个步骤就可以从左到右计算前向传播。
 
 反向传播的步骤：
 
-输入为 _da<sup>[l]</sup>_ ，输出为 _da<sup>[l-1]</sup>_ ， _dw<sup>[l]</sup>_ , _db<sup>[l]</sup>_ 
+输入为 _da<sup>[l]</sup>_ ，输出为 _da<sup>[l-1]</sup>_ ， _dw<sup>[l]</sup>_ , _db<sup>[l]</sup>_
 
 <p align="center">
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/c13d2a8fa258125a5398030c97101ee1.png" />
@@ -988,27 +999,27 @@ ReLU定义为：_g(z) = max(0,z)_
 
 所以反向传播的步骤可以写成：
 
-（1） _dz<sup>[l]</sup> = da<sup>[l]</sup>*g<sup>[l]</sup>'(z<sup>[l]</sup>)_ 
+（1） _dz<sup>[l]</sup> = da<sup>[l]</sup>*g<sup>[l]</sup>'(z<sup>[l]</sup>)_
 
 （2） _dw<sup>[l]</sup> = dz<sup>[l]</sup> · a<sup>[l-1]</sup>_
 
-（3） _db<sup>[l]</sup> = dz<sup>[l]</sup>_ 
+（3） _db<sup>[l]</sup> = dz<sup>[l]</sup>_
 
-（4） _da<sup>[l-1]</sup> = w<sup>[l]T</sup> · dz<sup>[l]</sup>_ 
+（4） _da<sup>[l-1]</sup> = w<sup>[l]T</sup> · dz<sup>[l]</sup>_
 
-（5） _dz<sup>[l]</sup> = w<sup>[l+1]T</sup>dz<sup>[l+1]</sup> · g<sup>[l]</sup>'(z<sup>[l]</sup>)_ 
+（5） _dz<sup>[l]</sup> = w<sup>[l+1]T</sup>dz<sup>[l+1]</sup> · g<sup>[l]</sup>'(z<sup>[l]</sup>)_
 
 式子（5）由式子（4）带入式子（1）得到，前四个式子就可实现反向函数。
 
 向量化实现过程可以写成：
 
-（6） _dZ<sup>[l]</sup>=dA<sup>[l]</sup>*g<sup>[l]</sup>'(Z<sup>[l]</sup>)_ 
+（6） _dZ<sup>[l]</sup>=dA<sup>[l]</sup>*g<sup>[l]</sup>'(Z<sup>[l]</sup>)_
 
-（7） _dW<sup>[l]</sup>=((1)/(m))dZ<sup>[l]</sup> · A<sup>[l-1]T</sup>_ 
+（7） _dW<sup>[l]</sup>=((1)/(m))dZ<sup>[l]</sup> · A<sup>[l-1]T</sup>_
 
-（8） _db<sup>[l]</sup>=((1)/(m))np.sum(dz<sup>[l]</sup>,axis=1,keepdims=True)_ 
+（8） _db<sup>[l]</sup>=((1)/(m))np.sum(dz<sup>[l]</sup>,axis=1,keepdims=True)_
 
-（9） _dA<sup>[l-1]</sup>=W<sup>[l]T</sup>.dZ<sup>[l]</sup>_ 
+（9） _dA<sup>[l-1]</sup>=W<sup>[l]T</sup>.dZ<sup>[l]</sup>_
 
 总结一下：
 
@@ -1024,11 +1035,11 @@ ReLU定义为：_g(z) = max(0,z)_
 
 第一层需要计算 _z<sup>[1]</sup> = w<sup>[1]</sup>x + b<sup>[1]</sup>_ ， _a<sup>[1]</sup> = g<sup>[1]</sup>(z<sup>[1]</sup>)_ （ _x_ 可以看做 _a<sup>[0]</sup>_ ）
 
-第二层需要计算 _z<sup>[2]</sup> = w<sup>[2]</sup>a<sup>[1]</sup> + b<sup>[2]</sup>_ ， _a<sup>[2]</sup> = g<sup>[2]</sup>(z<sup>[2]</sup>)_ 
+第二层需要计算 _z<sup>[2]</sup> = w<sup>[2]</sup>a<sup>[1]</sup> + b<sup>[2]</sup>_ ， _a<sup>[2]</sup> = g<sup>[2]</sup>(z<sup>[2]</sup>)_
 
 以此类推，
 
-第四层为 _z<sup>[4]</sup> = w<sup>[4]</sup>a<sup>[3]</sup> + b<sup>[4]</sup>_ ， _a<sup>[4]</sup> = g<sup>[4]</sup>(z<sup>[4]</sup>)_ 
+第四层为 _z<sup>[4]</sup> = w<sup>[4]</sup>a<sup>[3]</sup> + b<sup>[4]</sup>_ ， _a<sup>[4]</sup> = g<sup>[4]</sup>(z<sup>[4]</sup>)_
 
 前向传播可以归纳为多次迭代 _z<sup>[l]</sup> = w<sup>[l]</sup>a<sup>[l-1]</sup> + b<sup>[l]</sup>_ ， _a<sup>[l]</sup> = g<sup>[l]</sup>(z<sup>[l]</sup>)_ 。
 
@@ -1037,7 +1048,7 @@ ReLU定义为：_g(z) = max(0,z)_
 </p>
 向量化实现过程可以写成：
 
- _Z<sup>[l]</sup> = W<sup>[l]</sup>a<sup>[l-1]</sup> + b<sup>[l]</sup>_ ， _A<sup>[l]</sup> = g<sup>[l]</sup>(Z<sup>[l]</sup>)_ ( _A<sup>[0]</sup>=X)_ 
+ _Z<sup>[l]</sup> = W<sup>[l]</sup>a<sup>[l-1]</sup> + b<sup>[l]</sup>_ ， _A<sup>[l]</sup> = g<sup>[l]</sup>(Z<sup>[l]</sup>)_ ( _A<sup>[0]</sup>=X)_
 
 这里只能用一个显式**for**循环， _l_ 从1到 _L_ ，然后一层接着一层去计算。
 
@@ -1064,7 +1075,7 @@ _Z<sup>[l]</sup>_ 可以看成由每一个单独的 _Z<sup>[l]</sup>_ 叠加而�
 
 _m_ 为训练集大小，所以 _Z<sup>[l]</sup>_ 的维度不再是 _(n<sup>[l]</sup>,1)_ ，而是 _(n<sup>[l]</sup>, m)_ 。
 
-_A<sup>[l]</sup>_ ： _(n<sup>[l]</sup>,m)_ ， _A<sup>[0]</sup>=X=(n<sup>[l]</sup>,m)_ 
+_A<sup>[l]</sup>_ ： _(n<sup>[l]</sup>,m)_ ， _A<sup>[0]</sup>=X=(n<sup>[l]</sup>,m)_
 
 <p align="center">
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/fb680729409dc3912fd5a3d0c13b620a.png" />
@@ -1212,10 +1223,5 @@ _A<sup>[l]</sup>_ ： _(n<sup>[l]</sup>,m)_ ， _A<sup>[0]</sup>=X=(n<sup>[l]</s
 
 所以虽然深度学习的确是个很好的工具，能学习到各种很灵活很复杂的函数来学到从x到y的映射。在监督学习中，学到输入到输出的映射，但这种和人类大脑的类比，在这个领域的早期也许值得一提。但现在这种类比已经逐渐过时了，我自己也在尽量少用这样的说法。
 
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=pWAc9B2zJS4" target="_blank">
-    <img src="https://img.youtube.com/vi/pWAc9B2zJS4/0.jpg" />
-  </a>
-</p>
 
 [回到顶部](#深度学习基础)

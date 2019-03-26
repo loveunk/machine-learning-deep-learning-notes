@@ -4,6 +4,7 @@
 
 如发现错误或有需要补充的内容，请在GitHub直接提交Issue或Pull Request，谢谢。
 * GitHub：[https://github.com/loveunk/machine-learning-deep-learning-notes/](https://github.com/loveunk/machine-learning-deep-learning-notes/)
+* 配套的练习（Jupyter Notebook/Python）地址：https://github.com/loveunk/ml-ipynb
 
 内容目录结构：
 

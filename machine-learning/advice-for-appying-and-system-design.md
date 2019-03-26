@@ -349,4 +349,11 @@ Andrew说他开始研究一个机器学习问题时，最多只会花一天的�
 
 如果都能得到肯定答案，那么你很可能可以得到一个性能很好的学习算法。
 
+## Jupyter Notebook编程练习
+
+- 推荐访问Google Drive的共享，直接在Google Colab在线运行ipynb文件：
+  - [Google Drive: 5.bias_vs_variance](https://drive.google.com/drive/folders/12J41Z4SUASmxJCbQEnp8rM8JKSWkrhn1?usp=sharing)
+- 不能翻墙的朋友，可以访问GitHub下载：
+  - [GitHub: 5.bias_vs_variance](https://github.com/loveunk/ml-ipynb/tree/master/5.bias_vs_variance)
+
 [回到顶部](#打造实用的机器学习系统)

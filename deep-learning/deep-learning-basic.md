@@ -402,7 +402,7 @@ Jupyter 的使用比较简单，略过
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_1.png" />
 </p>
 
-讨论了逻辑回归，我们了解了上图的模型如何与下面公式建立联系。
+此前我们讨论了逻辑回归，了解了上图的模型如何与下面公式建立联系。
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\left.\begin{matrix}x\\w\\b\end{matrix}\right\}\Rightarrow{z={w}^Tx&plus;b}" title="\left.\begin{matrix}x\\w\\b\end{matrix}\right\}\Rightarrow{z={w}^Tx+b}" />
 </p>
@@ -411,23 +411,35 @@ Jupyter 的使用比较简单，略过
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\left.\begin{matrix}x\\w\\b\end{matrix}\right\}\Rightarrow{z={w}^Tx&plus;b}\Rightarrow{a=\sigma(z)}\Rightarrow{{L}(a,y)}" title="\left.\begin{matrix}x\\w\\b\end{matrix}\right\}\Rightarrow{z={w}^Tx+b}\Rightarrow{a=\sigma(z)}\Rightarrow{{L}(a,y)}" />
 </p>
+接下来使用 _z_ 就可以计算出 _a_ 。我们定义符号：
 
-接下来使用 _z_ 就可以计算出 _a_ 。我们将的符号换为表示输出 _ŷ = a = σ(z)_ ,然后可以计算出**loss function** _L(a,y)_
+* **输出**： _ŷ = a = σ(z)_ 
+* **代价函数(loss function)**： _L(a,y)_
 
-神经网络看起来是如下样子。
-如之前提到，可以把许多**sigmoid**单元堆叠起来形成一个神经网络。
-对于上图中的节点，它包含了之前讲的计算的两个步骤：
-1. 通过上述公式计算出值 _z_
-2. 通过 _σ(z)_ 计算值 _a_
+
+
+一个简单神经网络看起来如下图：
 
 <p align="center">
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_2.png" />
 </p>
-在上图的神经网络对应的3个节点，首先计算第一层网络中的各个节点相关的数 _z<sup>[1]</sup>_ ，接着计算 _α<sup>[1]</sup>_ ，在计算下一层网络同理；
-我们会使用符号 _<sup>[m]</sup>_ 表示第 _m_ 层网络中节点相关的数，这些节点的集合被称为第 _m_ 层网络。
-这样可以保证 _<sup>[m]</sup>_ 不会和我们之前用来表示单个的训练样本的 _<sup>(i)</sup>_ (即我们使用表示第 _i_ 个训练样本)混淆；
+如之前提到，可以把许多Sigmoid单元堆叠起来形成一个神经网络。对于图中的节点，它包含了之前讲的两个步骤：
 
-整个计算过程如下:
+- 计算 _z_
+- 通过 _σ(z)_ 计算 _a_
+
+上图的神经网络对应的3个节点，首先计算第一层网络中的各个节点相关的数 _z<sup>[1]</sup>_ ，接着计算 _α<sup>[1]</sup>_ ，再计算下一层网络。
+
+定义符号：
+
+-  _<sup>[m]</sup>_ 表示第 _m_ 层网络中节点相关的数
+
+这些节点的集合被称为第 _m_ 层网络。这样可以保证 _<sup>[m]</sup>_ 不会和我们之前用来表示单个的训练样本的 _<sup>(i)</sup>_ (即我们使用表示第 _i_ 个训练样本)混淆。
+
+
+
+计算过程如下:
+
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\left.\begin{matrix}x\\w^{[1]}\\b^{[1]}\end{matrix}\right\}\Rightarrow{z^{[1]}=w^{[1]}x&plus;b^{[1]}}\Rightarrow{a^{[1]}=\sigma(z^{[1]})}" title="\left.\begin{matrix}x\\w^{[1]}\\b^{[1]}\end{matrix}\right\}\Rightarrow{z^{[1]}=w^{[1]}x+b^{[1]}}\Rightarrow{a^{[1]}=\sigma(z^{[1]})}" />
 </p>
@@ -437,9 +449,10 @@ Jupyter 的使用比较简单，略过
 <img src="https://latex.codecogs.com/gif.latex?\left.\begin{matrix}a^{[1]}=\sigma(z^{[1]})\\w^{[2]}\\b^{[2]}\end{matrix}\right\}\Rightarrow{z^{[2]}=w^{[2]}x&plus;b^{[2]}}\Rightarrow{a^{[2]}=\sigma(z^{[2]})}\Rightarrow&space;L\left(a^{[2]},&space;y\right)" title="\left.\begin{matrix}a^{[1]}=\sigma(z^{[1]})\\w^{[2]}\\b^{[2]}\end{matrix}\right\}\Rightarrow{z^{[2]}=w^{[2]}x+b^{[2]}}\Rightarrow{a^{[2]}=\sigma(z^{[2]})}\Rightarrow L\left(a^{[2]}, y\right)" />
 </p>
 
-知道这其中有很多细节，其中有一点非常难以理解，即在逻辑回归中，通过直接计算 _z_ 得到结果 _a_ 。而这个神经网络中，我们反复的计算 _z_ 和 _a_ ，计算 _a_ 和 _z_ ，最后得到了最终的输出**loss function**。
 
-应该记得逻辑回归中，有一些从后向前的计算用来计算导数 _da_ 、 _dz_ 。同样，在神经网络中我们也有从后向前的计算，看起来就像这样，最后会计算 _da<sup>[2]</sup>_ 、 _dz<sup>[2]</sup>_ ，计算出来之后，然后计算计算 _dW<sup>[2]</sup>_ 、 _db<sup>[2]</sup>_ 等，从右到左反向计算。
+在逻辑回归中，通过直接计算 _z_ 得到结果 _a_ 。而神经网络中，需要反复的计算 _z_ 和 _a_ ，计算 _a_ 和 _z_ ，最后得到了最终的输出**loss function**。
+
+此外，在逻辑回归中，有一些从后向前的计算用来计算导数 _da_ 、 _dz_ 。同样在神经网络中也有从后向前的计算，对于这个例子会先计算 _da<sup>[2]</sup>_ 、 _dz<sup>[2]</sup>_ ，计算出来之后，然后计算 _dW<sup>[2]</sup>_ 、 _db<sup>[2]</sup>_ ，然后是_da<sup>[1]</sup>_ 、_dW<sup>[1]</sup>_ 、 _db<sup>[1]</sup>_ ，从右到左反向计算，如下图所示：
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\left.\begin{array}{r}{da^{[1]}&space;=&space;{d}\sigma(z^{[1]})}\\&space;{dW^{[2]}}\\&space;{db^{[2]}}\\&space;\end{array}&space;\right\}&space;\Leftarrow{{dz}^{[2]}={d}(W^{[2]}\alpha^{[1]}&plus;b^{[2]}})&space;\Leftarrow{{{da}^{[2]}}&space;=&space;{d}\sigma(z^{[2]})}&space;\Leftarrow{{dL}\left(a^{[2]},y&space;\right)}" title="\left.\begin{array}{r}{da^{[1]} = {d}\sigma(z^{[1]})}\\ {dW^{[2]}}\\ {db^{[2]}}\\ \end{array} \right\} \Leftarrow{{dz}^{[2]}={d}(W^{[2]}\alpha^{[1]}+b^{[2]}}) \Leftarrow{{{da}^{[2]}} = {d}\sigma(z^{[2]})} \Leftarrow{{dL}\left(a^{[2]},y \right)}" />
@@ -447,65 +460,78 @@ Jupyter 的使用比较简单，略过
 
 ### 神经网络的表示
 
-首先关注一个例子，本例中的神经网络只包含一个隐藏层。这是一张神经网络的图片，让我们给此图的不同部分取一些名字。
+首先看一个例子（见下图），本例中的神经网络只包含一个隐藏层。让我们先给此图的不同部分取一些名字。
 <p align="center">
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_3.png" />
 </p>
 
-* 输入层：输入特征包括 _x<sub>1</sub>_ 、 _x<sub>2</sub>_ 、 _x<sub>3</sub>_ ，它们被竖直地堆叠起来，叫做神经网络的**输入层**。
-* 隐藏层：它包含了神经网络的输入；然后有另外一层我们称之为**隐藏层**（图中四个结点）。
-* 输出层：最后一层只由一个结点构成，只有一个结点的层被称为**输出层**，它负责产生预测值。
+* **输入层**：输入特征包括 _x<sub>1</sub>_ 、 _x<sub>2</sub>_ 、 _x<sub>3</sub>_ ，它们被竖直地堆叠起来，叫做神经网络的**输入层**。
+* **隐藏层**：它包含了神经网络的输入；然后有另外一层我们称之为**隐藏层**（图中中间的四个结点）。
+* **输出层**：最后一层只由一个结点构成，只有一个结点的层被称为**输出层**，它负责产生预测值。
 
-**隐藏层的含义**：在一个神经网络中，当使用监督学习训练它的时候，训练集包含了输入 _x_ 也包含了目标输出 _y_ ，所以隐藏层的含义是在训练集中，这些中间结点的准确值我们是不知道到的，也就是说你看不见它们在训练集中应具有的值。你能看见输入的值，你也能看见输出的值，但是隐藏层中的东西，在训练集中你是无法看到的。所以这也解释了词语隐藏层，只是表示你无法在训练集中看到他们。
 
-现在再引入几个符号，就像之前用向量 _X_ 表示输入特征。这里，也可使用符号 _a<sup>[0]</sup>_ 可以用来表示输入层的值。_a_ 表示激活的意思，它意味着网络中不同层的值会传递到它们后面的层中，输入层将 _x_ 传递给隐藏层，所以我们将输入层的激活值称为 _a<sup>[0]</sup>_ ；
 
-下一层即隐藏层也同样会产生一些激活值，我将其记作 _a<sup>[1]</sup>_。具体地，这里的第一个单元或结点我们将其表示为 _a<sup>[1]</sup><sub>1</sub>_ ，第二个结点的值我们记为 _a<sup>[1]</sup><sub>2</sub>_，以此类推。
+**隐藏层的含义**：在一个神经网络中，当使用监督学习训练它的时候，训练集包含了输入 _x_ 也包含了目标输出 _y_ 。在训练过程中，隐藏层这些中间结点的准确值我们是不知道到的，也就是说你看不见它们在训练集中应具有的值。所以这也解释了词语隐藏层，只是表示你无法在训练中看到他们。
 
-所以 _a<sup>[1]</sup>_ 是个四维的向量，在Python中是一个4x1的矩阵或一个大小为4的列向量：
+这里，也可**用符号 _a<sup>[0]</sup>_ 来表示输入层的值**。_a_ 是activation的首字母，表示激活的意思，它意味着网络中不同层的值会传递到它们后面的层中。输入层将 _x_ 传递给隐藏层，所以我们将输入层的激活值称为 _a<sup>[0]</sup>_ 。下一层即隐藏层也同样会产生一些激活值，我将其记作 _a<sup>[1]</sup>_。
+
+具体地，这里的第一个单元我们将其表示为 _a<sup>[1]</sup><sub>1</sub>_ ，第二个结点的值我们记为 _a<sup>[1]</sup><sub>2</sub>_，以此类推。所以 _a<sup>[1]</sup>_ 是个四维的向量，在Python中是一个4x1的矩阵或一个大小为4的列向量：
+
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?a^{[1]}=\left[\begin{array}{ccc}a^{[1]}_{1}\\a^{[1]}_{2}\\a^{[1]}_{3}\\a^{[1]}_{4}\end{array}\right]" title="a^{[1]}=\left[\begin{array}{ccc}a^{[1]}_{1}\\a^{[1]}_{2}\\a^{[1]}_{3}\\a^{[1]}_{4}\end{array}\right]" />
 </p>
-最后输出层将产生某个数值 _a_ ，它只是一个单独的实数，所以的 _ŷ_ 将取为 _a<sup>[2]</sup>_ 。
-这与逻辑回归很相似，在逻辑回归中，_ŷ_ 直接等于 _a_ ，逻辑回归中只有一个输出层，所以没有用带方括号的上标。
+最后输出层将产生某个数值 _a_ ，它只是一个单独的实数，所以的 _ŷ_ 将取为 _a<sup>[2]</sup>_ 。这与逻辑回归很相似，在逻辑回归中，_ŷ_ 直接等于 _a_ ，逻辑回归中只有一个输出层，所以没有用带方括号的上标。
 
-但是在神经网络中，将使用这种带上标的形式来明确地指出这些值来自于哪一层，有趣的是在约定俗成的符号传统中，这里的例子是个两层的神经网络。原因是当我们计算网络的层数时，输入层是不算入总层数内，所以隐藏层是第一层，输出层是第二层。第二个惯例是我们将输入层称为第零层，所以在技术上，这仍然是一个三层的神经网络，因为这里有输入层、隐藏层，还有输出层。但是在传统的符号使用中，如果你阅读研究论文或者在这门课中，你会看到人们将这个神经网络称为一个两层的神经网络，因为我们不将输入层看作一个标准的层。
-<p align="center">
-<img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_4.png" />
-</p>
-
-最后，我们看到的隐藏层以及最后的输出层是带有参数的，这里的隐藏层将拥有两个参数 _W_ 和 _b_ ，将给它们加上上标 _<sup>[1]</sup>_ ( _W<sup>[1]</sup>_ , _b<sup>[1]</sup>_ )，表示这些参数是和第一层这个隐藏层有关系的。之后在这个例子中会看到 _W_ 是一个4x3的矩阵，而 _b_ 是一个4x1的向量，第一个数字4源自于我们有四个结点或隐藏层单元，然后数字3源自于这里有三个输入特征，我们之后会更加详细地讨论这些矩阵的维数，到那时你可能就更加清楚了。相似的输出层也有一些与之关联的参数 _W<sup>[2]</sup>_ 以及 _b<sup>[2]</sup>_ 。从维数上来看，它们的规模分别是1x4以及1x1。1x4是因为隐藏层有四个隐藏层单元而输出层只有一个单元，之后我们会对这些矩阵和向量的维度做出更加深入的解释，所以现在你已经知道一个两层的神经网络什么样的了，即它是一个只有一个隐藏层的神经网络。
-
-### 计算神经网络的输出
-
-在上一节中，我们介绍只有一个隐藏层的神经网络的结构与符号表示。在这节中我们了解神经网络的输出究竟是如何计算出来的。
-
-首先，回顾下只有一个隐藏层的简单两层**神经网络结构**：
 <p align="center">
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_5.png" />
 </p>
 
-其中， _x_ 表示输入特征， _a_ 表示每个神经元的输出， _W_ 表示特征的权重，上标表示神经网络的层数（隐藏层为1），下标表示该层的第几个神经元。这是神经网络的**符号惯例**。
+在神经网络中，将使用这种带上标的形式来明确地指出这些值来自于哪一层。
+
+* 有趣的是，在约定俗成的符号传统中，上面这个神经网络被认为是两层网络。原因是当我们计算网络的层数时，输入层是不算入总层数内。所以隐藏层是第一层，输出层是第二层。
+* 第二个惯例是我们将输入层称为第0层，所以在技术上，这仍然是一个三层的神经网络，因为这里有输入层、隐藏层，还有输出层。但是在传统的符号使用中，如果你阅读研究论文或者在这门课中，你会看到人们将这个神经网络称为一个两层的神经网络，因为我们也不把输入层看作一个标准的层。
+* 最后，我们看到的隐藏层以及最后的输出层是带参数的，这里的隐藏层将拥有两个参数 _W_ 和 _b_ ，将给它们加上上标 _<sup>[1]</sup>_ ( _W<sup>[1]</sup>_ , _b<sup>[1]</sup>_ )，表示这些参数是和第一层这个隐藏层有关系的。之后在这个例子中会看到 _W_ 是一个4x3的矩阵，而 _b_ 是一个4x1的向量，第一个数字4源自于我们有四个结点或隐藏层单元，然后数字3源自于这里有三个输入特征，我们之后会更加详细地讨论这些矩阵的维数。相似的输出层也有一些与之关联的参数 _W<sup>[2]</sup>_ 以及 _b<sup>[2]</sup>_ 。从维数上来看，它们的规模分别是1x4以及1x1。1x4是因为隐藏层有四个隐藏层单元而输出层只有一个单元。
+
+现在你已经知道一个两层的神经网络什么样的了，即它是一个只有一个隐藏层的神经网络。
+
+### 计算神经网络的输出
+
+上一节中，我们介绍只有一个隐藏层的神经网络的结构与符号表示。在这节中我们了解神经网络的输出究竟是如何计算出来的。
+
+首先，回顾下只有一个隐藏层的**简单两层神经网络结构**（如上节的图）。
+- _x_ 表示输入特征
+
+- _a_ 表示每个神经元的输出
+
+-  _W_ 表示特征的权重
+
+- 上标表示神经网络的层数（隐藏层为1），下标表示该层的第几个神经元。
+
+这是神经网络的符号惯例。
 
 #### 神经网络的计算
-从之前提及的逻辑回归开始，如下图所示。用圆圈表示神经网络的计算单元，逻辑回归的计算有两个步骤，首先你按步骤计算出 _z_ ，然后在第二步中你以**sigmoid**函数为激活函数计算 _z_ （得出 _a_ ），一个神经网络只是多次重复计算。
+从之前提及的逻辑回归开始，如下图所示。用圆圈表示神经网络的计算单元，逻辑回归的计算有两个步骤，首先你按步骤计算出 _z_ ，然后在第二步中你以**Sigmoid**函数为激活函数计算 _z_ （得出 _a_ ），一个神经网络只是多次重复计算。
 <p align="center">
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_6.png" />
 </p>
 回到两层的神经网络，我们从隐藏层的第一个神经元开始计算，如上图第一个最上面的箭头所指。
 从上图可以看出，输入与逻辑回归相似，这个神经元的计算与逻辑回归一样分为两步，小圆圈代表了计算的两个步骤。
 
-* 第一步，计算 _z<sup>[1]</sup><sub>1</sub>, z<sup>[1]</sup><sub>1</sub> = w<sup>[1]T</sup><sub>1</sub>x + b<sup>[1]</sup><sub>1</sub>_ 。
-* 第二步，通过激活函数计算 _a<sup>[1]</sup><sub>1</sub>, a<sup>[1]</sup><sub>1</sub> = σ(z<sup>[1]</sup><sub>1</sub>)_ 。
+* 第一步：计算 _z<sup>[1]</sup><sub>1</sub>, z<sup>[1]</sup><sub>1</sub> = w<sup>[1]T</sup><sub>1</sub>x + b<sup>[1]</sup><sub>1</sub>_ 。
+* 第二步：通过激活函数计算 _a<sup>[1]</sup><sub>1</sub>, a<sup>[1]</sup><sub>1</sub> = σ(z<sup>[1]</sup><sub>1</sub>)_ 。
 
-隐藏层的第二个以及后面两个神经元的计算过程一样，只是符号表不同，最终分别得到 _a<sup>[1]</sup><sub>2</sub>、a<sup>[1]</sup><sub>3</sub>、a<sup>[1]</sup><sub>4</sub>_ ，详细结果如下:
+隐藏层的第二个以及后面两个神经元的计算过程一样，只是符号表不同，最终分别得到 _a<sup>[1]</sup><sub>2</sub>、a<sup>[1]</sup><sub>3</sub>、a<sup>[1]</sup><sub>4</sub>_ :
 * _z<sup>[1]</sup><sub>1</sub> = w<sup>[1]T</sup><sub>1</sub> x + b<sup>[1]</sup><sub>1</sub>, a<sup>[1]</sup><sub>1</sub> = σ(z<sup>[1]</sup><sub>1</sub>)_
 * _z<sup>[1]</sup><sub>2</sub> = w<sup>[1]T</sup><sub>2</sub> x + b<sup>[1]</sup><sub>2</sub>, a<sup>[1]</sup><sub>2</sub> = σ(z<sup>[1]</sup><sub>2</sub>)_
 * _z<sup>[1]</sup><sub>3</sub> = w<sup>[1]T</sup><sub>3</sub> x + b<sup>[1]</sup><sub>3</sub>, a<sup>[1]</sup><sub>3</sub> = σ(z<sup>[1]</sup><sub>3</sub>)_
 * _z<sup>[1]</sup><sub>4</sub> = w<sup>[1]T</sup><sub>4</sub> x + b<sup>[1]</sup><sub>4</sub>, a<sup>[1]</sup><sub>4</sub> = σ(z<sup>[1]</sup><sub>4</sub>)_
 
 #### 向量化计算
-如果你执行神经网络的程序，用for循环来做这些看起来真的很低效。所以接下来我们要做的就是把这四个等式向量化。向量化的过程是将神经网络中的一层神经元参数纵向堆积起来，例如隐藏层中的 _w_ 纵向堆积起来变成一个 _(4, 3)_ 的矩阵，用符号 _W<sup>[1]</sup>_ 表示。另一个看待这个的方法是我们有四个逻辑回归单元，且每一个逻辑回归单元都有相对应的参数——向量 _w_ ，把这四个向量堆积在一起，你会得出这4×3的矩阵。
+如果你执行神经网络的程序，可以选择用for循环来做上述的计算，但是会很低效。
+
+接下来我会介绍上述四个等式向量化。向量化的过程是将神经网络中的一层神经元参数纵向堆积起来，例如隐藏层中的 _w_ 纵向堆积起来变成一个 _(4, 3)_ 的矩阵，用符号 _W<sup>[1]</sup>_ 表示。
+
+另一个看待这个的方法是我们有四个逻辑回归单元，且每一个逻辑回归单元都有相对应的参数——向量 _w_ ，把这四个向量堆积在一起，你会得出这4×3的矩阵。
 
 因此，
 * _z<sup>[n]</sup> = w<sup>[n]</sup>x + b<sup>[n]</sup>_
@@ -520,21 +546,15 @@ Jupyter 的使用比较简单，略过
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\left[\begin{array}{c}z^{[1]}_{1}\\z^{[1]}_{2}\\z^{[1]}_{3}\\z^{[1]}_{4}\\\end{array}\right]=\overbrace{\left[\begin{array}c...W^{[1]T}_1...\\...W^{[1]T}_{2}...\\...W^{[1]T}_{3}...\\...W^{[1]T}_{4}...\end{array}\right]}^{W^{[1]}}*\overbrace{\left[\begin{array}{c}x_1\\x_2\\x_3\\\end{array}\right]}^{input}&plus;\overbrace{\left[\begin{array}{c}b^{[1]}_1\\b^{[1]}_2\\b^{[1]}_3\\b^{[1]}_4\\\end{array}\right]}^{b^{[1]}}" title="\left[\begin{array}{c}z^{[1]}_{1}\\z^{[1]}_{2}\\z^{[1]}_{3}\\z^{[1]}_{4}\\\end{array}\right]=\overbrace{\left[\begin{array}c...W^{[1]T}_1...\\...W^{[1]T}_{2}...\\...W^{[1]T}_{3}...\\...W^{[1]T}_{4}...\end{array}\right]}^{W^{[1]}}*\overbrace{\left[\begin{array}{c}x_1\\x_2\\x_3\\\end{array}\right]}^{input}+\overbrace{\left[\begin{array}{c}b^{[1]}_1\\b^{[1]}_2\\b^{[1]}_3\\b^{[1]}_4\\\end{array}\right]}^{b^{[1]}}" />
 </p>
-对于神经网络的第一层，给予一个输入 _x_ ，得到 _a<sup>[1]</sup>_ ， _x_ 可以表示为 _a<sup>[0]</sup>_ 。
-通过相似的衍生你会发现，后一层的表示同样可以写成类似的形式，得到 _a<sup>[2]</sup>_ ， _ŷ = a<sup>[2]</sup>_。
+对于第一层，给予输入 _x_ ，得到 _a<sup>[1]</sup>_ ， _x_ 可以表示为 _a<sup>[0]</sup>_ 。后一层可以写成类似的形式，得到 _a<sup>[2]</sup>_ ， _ŷ = a<sup>[2]</sup>_。
 
 <p align="center">
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_7.png" />
 </p>
-如上图左半部分所示为神经网络，把网络左边部分盖住先忽略，那么最后的输出单元就相当于一个逻辑回归的计算单元。
-当有一个包含一层隐藏层的神经网络，你需要去实现以计算得到输出的是右边的四个等式，并且可以看成是一个向量化的计算过程，计算出隐藏层的四个逻辑回归单元和整个隐藏层的输出结果，如果编程实现需要的也只是这四行代码。
+如上图左半部分所示为神经网络，把网络左边部分盖住先忽略，那么最后的输出单元就相当于一个逻辑回归的计算单元。当有一个包含一层隐藏层的神经网络，你需要去实现以计算得到输出的是右边的四个等式，并且可以看成是一个向量化的计算过程，计算出隐藏层的四个逻辑回归单元和整个隐藏层的输出结果，如果编程实现需要的也只是这四行代码（上图右侧）。
 
 ### 多样本向量化
-逻辑回归是将各个训练样本组合成矩阵，对矩阵的各列进行计算。
-
-神经网络是通过对逻辑回归中的等式简单的变形，让神经网络计算出输出值。
-
-这种计算是所有的训练样本同时进行的，以下是实现它具体的步骤：
+逻辑回归是将各个训练样本组合成矩阵，对矩阵的各列进行计算。神经网络是通过对逻辑回归中的等式简单的变形，让神经网络计算出输出值。这种计算是所有的训练样本同时进行的，以下是实现它具体的步骤：
 
 <p align="center">
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_8.png" />
@@ -542,13 +562,15 @@ Jupyter 的使用比较简单，略过
 
 上一节中得到的四个等式，它们给出如何计算出 _z<sup>[1]</sup>_ ， _a<sup>[1]</sup>_ ， _z<sup>[2]</sup>_ ， _a<sup>[2]</sup>_ 。
 
-对于一个给定的输入特征向量 _X_ ，这四个等式可以计算出 _a<sup>[2]</sup>_ 等于 _ŷ_ 。这是针对于单一的训练样本。如果有 _m_ 个训练样本，就需要重复这个过程。
+对于一个给定的输入特征向量 _X_ ，这四个等式可以计算出 _a<sup>[2]</sup>_ 等于 _ŷ_ 。但是这是针对于单一的训练样本。
 
-* 用第一个训练样本 _x<sup>(1)</sup>_ 来计算出预测值 _ŷ<sup>(1)</sup>_ ，就是第一个训练样本上得出的结果。
+如果有 _m_ 个训练样本，就需要重复这个过程：
+
+* 用第一个训练样本 _x<sup>(1)</sup>_ 来计算出预测值 _ŷ<sup>(1)</sup>_ ，得到第一个训练样本上的结果。
 * 用 _x<sup>(2)</sup>_ 来计算出预测值 _ŷ<sup>(2)</sup>_ ，循环往复，直至用 _x<sup>(m)</sup>_ 计算出 _ŷ<sup>(m)</sup>_ 。
 * 用激活函数表示法，如上图左下所示，它写成 _a<sup>[2] (1)</sup>_ 、 _a<sup>[2] (2)</sup>_ 和 _a<sup>[2] (m)</sup>_ 。
 
-对于_a<sup>[2] (i)</sup>_ ， _(i)_ 是指第 _i_ 个训练样本，_[2]_ 是指第二层。
+**对于_a<sup>[2] (i)</sup>_ ， _(i)_ 是指第 _i_ 个训练样本，_[2]_ 是指第二层。**
 
 如果有一个非向量化形式的实现，要计算出它的预测值，对于所有训练样本，需要让 _i_ 从1到 _m_ 实现这四个等式：
 
@@ -557,10 +579,10 @@ Jupyter 的使用比较简单，略过
 * _z<sup>[2] (i)</sup> = W<sup>[2] (i)</sup> a<sup>[1] (i)</sup> + b<sup>[2] (i)</sup>_
 * _a<sup>[2] (i)</sup> = σ(z<sup>[2] (i)</sup>)_
 
-对于上面的这个方程中的 _<sup>(i)</sup>_ ，是所有依赖于训练样本的变量，即将 _(i)_ 添加到 _x_ ，_z_ 和 _a_ 。
-如果想计算 _m_ 个训练样本上的所有输出，就应该向量化整个计算，以简化这列。
+对于上面的这个方程中的 _<sup>(i)</sup>_ ，是所有依赖于训练样本的变量，即将 _(i)_ 添加到 _x_ ，_z_ 和 _a_ 。如果想计算 _m_ 个训练样本上的所有输出，就应该向量化整个计算，以简化这列。
 
 接下来讲讲如何向量化这些：
+
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?x=\begin{bmatrix}&space;\vdots&space;&&space;\vdots&space;&&space;\vdots&space;&&space;\vdots\\&space;x^{(1)}&space;&&space;x^{(2)}&space;&&space;\cdots&space;&&space;x^{(m)}\\&space;\vdots&space;&&space;\vdots&space;&&space;\vdots&space;&&space;\vdots\\&space;\end{bmatrix}" title="x=\begin{bmatrix} \vdots & \vdots & \vdots & \vdots\\ x^{(1)} & x^{(2)} & \cdots & x^{(m)}\\ \vdots & \vdots & \vdots & \vdots\\ \end{bmatrix}" />
 </p>
@@ -576,7 +598,8 @@ Jupyter 的使用比较简单，略过
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\left.\begin{matrix}&space;z^{[1](i)}=&W^{[1](i)}x^{(i)}&plus;b^{[1]}\\&space;\alpha^{[1](i)}=&\sigma(z^{[1](i)})\\&space;z^{[2](i)}=&W^{[2](i)}\alpha^{[1](i)}&plus;b^{[2]}\\&space;\alpha^{[2](i)}=&\sigma(z^{[2](i)})&space;\end{matrix}\right\}&space;\Rightarrow&space;\left\{&space;\begin{matrix}&space;A^{[1]}=&\sigma(z^{[1]})\\&space;z^{[2]}=&W^{[2]}A^{[1]}&plus;b^{[2]}\\&space;A^{[2]}=&\sigma(z^{[2]})&space;\end{matrix}&space;\right." title="\left.\begin{matrix} z^{[1](i)}=&W^{[1](i)}x^{(i)}+b^{[1]}\\ \alpha^{[1](i)}=&\sigma(z^{[1](i)})\\ z^{[2](i)}=&W^{[2](i)}\alpha^{[1](i)}+b^{[2]}\\ \alpha^{[2](i)}=&\sigma(z^{[2](i)}) \end{matrix}\right\} \Rightarrow \left\{ \begin{matrix} A^{[1]}=&\sigma(z^{[1]})\\ z^{[2]}=&W^{[2]}A^{[1]}+b^{[2]}\\ A^{[2]}=&\sigma(z^{[2]}) \end{matrix} \right." />
 </p>
-前一张幻灯片中的`for`循环是来遍历所有个训练样本。定义矩阵 _X_ 等于训练样本，将它们组合成矩阵的各列，形成一个 _n_ 维或 _n_ 乘以 _m_ 维矩阵。
+
+前一张幻灯片中的 `for` 循环是来遍历所有个训练样本。定义矩阵 _X_ 等于训练样本，将它们组合成矩阵的各列，形成一个 _n_ 维或 _n_ 乘以 _m_ 维矩阵。
 
 以此类推，从小写的向量 _x_ 到这个大写的矩阵 _X_ ，只是通过组合 _x_ 向量在矩阵的各列中。
 
@@ -586,16 +609,12 @@ Jupyter 的使用比较简单，略过
 
 这种符号其中一个作用就是，可以通过训练样本来进行索引。
 
-在垂直方向，这个垂直索引对应于神经网络中的不同节点。
+* 在垂直方向，这个垂直索引对应于神经网络中的不同节点。
+  * 例如，一个节点位于矩阵的最左上角对应于激活单元，它是位于第一个训练样本上的第一个隐藏单元。它的下一个值对应于第二个隐藏单元的激活值。它是位于第一个训练样本上的，以及第一个训练示例中第三个隐藏单元，等等。
+  * 从竖直上看，矩阵 _A_ 的不同的索引对应于不同的隐藏单元。
 
-* 例如，一个节点位于矩阵的最左上角对应于激活单元，它是位于第一个训练样本上的第一个隐藏单元。它的下一个值对应于第二个隐藏单元的激活值。它是位于第一个训练样本上的，以及第一个训练示例中第三个隐藏单元，等等。
-
-当垂直扫描，是索引到隐藏单位的数字。
-
-当水平扫描，将从第一个训练示例中从第一个隐藏的单元到第二个训练样本，第三个训练样本……直到节点对应于第一个隐藏单元的激活值，且这个隐藏单元是位于这 _m_ 个训练样本中的最终训练样本。
-
-* 从水平上看，矩阵 _A​_ 代表了各个训练样本。
-* 从竖直上看，矩阵 _A​_ 的不同的索引对应于不同的隐藏单元。
+* 当水平扫描，将从第一个训练示例中从第一个隐藏的单元到第二个训练样本，第三个训练样本……直到节点对应于第一个隐藏单元的激活值，且这个隐藏单元是位于这 _m_ 个训练样本中的最终训练样本。
+  * 从水平上看，矩阵 _A​_ 代表了各个训练样本。
 
 对于矩阵 _Z，X_ 情况也类似。神经网络上通过在多样本情况下的向量化来使用这些等式。
 
@@ -609,59 +628,47 @@ Jupyter 的使用比较简单，略过
 * _z<sup>[1] (2)</sup> = W<sup>[1]</sup> x<sup>(2)</sup> + b<sup>[1]</sup>_
 * _z<sup>[1] (3)</sup> = W<sup>[1]</sup> x<sup>(3)</sup> + b<sup>[1]</sup>_
 
-这里，为了描述的简便，我们先忽略掉 _b<sup>[1]</sup>_ ，后面你将会看到利用**Python**的广播机制，可以很容易的将 _b<sup>[1]</sup>_ 加进来。
+这里，为了描述的简便，我们先忽略掉 _b<sup>[1]</sup>_ ，后面你将会看到利用Python的广播机制，可以很容易的将 _b<sup>[1]</sup>_ 加进来。
 
-现在 _W<sup>[1]</sup>_ 是一个矩阵， _x<sup>(1)</sup>,x<sup>(2)</sup>,x<sup>(3)</sup>_ 都是列向量，矩阵乘以列向量得到列向量，下面将它们用图形直观的表示出来:
+现在 _W<sup>[1]</sup>_ 是一个矩阵， _x<sup>(1)</sup>, x<sup>(2)</sup>, x<sup>(3)</sup>_ 都是列向量，矩阵乘以列向量得到列向量，下面将它们用图形直观的表示出来:
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?W^{[1]}x=&space;\left[\begin{matrix}&space;\cdots&space;\\&space;\cdots&space;\\&space;\cdots&space;\end{matrix}&space;\right]&space;\left[\begin{matrix}&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\\&space;x^{(1)}&space;&&space;x^{(2)}&x^{(3)}&space;&&space;\vdots\\\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\end{matrix}&space;\right]&space;=&space;\left[\begin{matrix}&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\\&space;w^{(1)}x^{(1)}&w^{(1)}x^{(2)}&space;&&space;w^{(1)}x^{(3)}&space;&&space;\vdots\\&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\end{matrix}\right]&space;=&space;\left[&space;\begin{matrix}&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\\&space;z^{[1](1)}&space;&&space;z^{[1](2)}&z^{[1](3)}&space;&&space;\vdots\\&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\end{matrix}&space;\right]=Z^{[1]}" title="W^{[1]}x= \left[\begin{matrix} \cdots \\ \cdots \\ \cdots \end{matrix} \right] \left[\begin{matrix} \vdots &\vdots & \vdots & \vdots \\ x^{(1)} & x^{(2)}&x^{(3)} & \vdots\\\vdots &\vdots & \vdots & \vdots \end{matrix} \right] = \left[\begin{matrix} \vdots &\vdots & \vdots & \vdots \\ w^{(1)}x^{(1)}&w^{(1)}x^{(2)} & w^{(1)}x^{(3)} & \vdots\\ \vdots &\vdots & \vdots & \vdots \end{matrix}\right] = \left[ \begin{matrix} \vdots &\vdots & \vdots & \vdots \\ z^{[1](1)} & z^{[1](2)}&z^{[1](3)} & \vdots\\ \vdots &\vdots & \vdots & \vdots \end{matrix} \right]=Z^{[1]}" />
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;W^{[1]}x&space;&&space;=&space;\left[\begin{matrix}&space;\cdots&space;\\&space;\cdots&space;\\&space;\cdots&space;\end{matrix}&space;\right]&space;\left[\begin{matrix}&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\\&space;x^{(1)}&space;&&space;x^{(2)}&x^{(3)}&space;&&space;\vdots\\\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\end{matrix}&space;\right]&space;=\left[\begin{matrix}&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\\&space;w^{(1)}x^{(1)}&w^{(1)}x^{(2)}&space;&&space;w^{(1)}x^{(3)}&space;&&space;\vdots\\&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\end{matrix}\right]&space;=&space;\left[&space;\begin{matrix}&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\\&space;z^{[1](1)}&space;&&space;z^{[1](2)}&z^{[1](3)}&space;&&space;\vdots\\&space;\vdots&space;&\vdots&space;&&space;\vdots&space;&&space;\vdots&space;\end{matrix}&space;\right]&space;=Z^{[1]}&space;\end{align*}" title="\begin{align*} W^{[1]}x & = \left[\begin{matrix} \cdots \\ \cdots \\ \cdots \end{matrix} \right] \left[\begin{matrix} \vdots &\vdots & \vdots & \vdots \\ x^{(1)} & x^{(2)}&x^{(3)} & \vdots\\\vdots &\vdots & \vdots & \vdots \end{matrix} \right] =\left[\begin{matrix} \vdots &\vdots & \vdots & \vdots \\ w^{(1)}x^{(1)}&w^{(1)}x^{(2)} & w^{(1)}x^{(3)} & \vdots\\ \vdots &\vdots & \vdots & \vdots \end{matrix}\right] = \left[ \begin{matrix} \vdots &\vdots & \vdots & \vdots \\ z^{[1](1)} & z^{[1](2)}&z^{[1](3)} & \vdots\\ \vdots &\vdots & \vdots & \vdots \end{matrix} \right] =Z^{[1]} \end{align*}" />
 </p>
 
-从这里我们也可以了解到，为什么之前我们对单个样本的计算要写成 _z<sup>[1] (i)</sup> = W<sup>[1]</sup> x<sup>(i)</sup> + b<sup>[1]</sup>_ 。
 
-这种形式，因为当有不同的训练样本时，将它们堆到矩阵 _X_ 的各列中，那么它们的输出也就会相应的堆叠到矩阵 _Z<sup>[1]</sup>_ 的各列中。
+从这里我们也可以明白，为什么之前我们对单个样本的计算要写成 _z<sup>[1] (i)</sup> = W<sup>[1]</sup> x<sup>(i)</sup> + b<sup>[1]</sup>_ 。这种形式表示时，当有不同的训练样本时，将它们堆到矩阵 _X_ 的各列中，那么它们的输出也就会相应的堆叠到矩阵 _Z<sup>[1]</sup>_ 的各列中。
 
-现在就可以直接计算矩阵 _Z<sup>[1]</sup>_ 加上 _b<sup>[1]</sup>_ ，因为列向量 _b<sup>[1]</sup>_ 和矩阵 _Z<sup>[1]</sup>_ 的列向量有着相同的尺寸，而Python的广播机制对于这种矩阵与向量直接相加的处理方式是，将向量与矩阵的每一列相加。
+现在可以直接计算矩阵 _Z<sup>[1]</sup>_ 加上 _b<sup>[1]</sup>_ ，因为列向量 _b<sup>[1]</sup>_ 和矩阵 _Z<sup>[1]</sup>_ 的列向量有着相同的尺寸，而Python的广播机制对于这种矩阵与向量直接相加的处理方式是，将向量与矩阵的每一列相加。
 
 这一节只是说明了为什么公式 _Z<sup>[1]</sup> = W<sup>[1]</sup>X + b<sup>[1]</sup>_ 是前向传播的第一步计算的正确向量化实现。类似的分析可以发现，前向传播的其它步也可以使用非常相似的逻辑，即如果将输入按列向量横向堆叠进矩阵，那么通过公式计算之后，也能得到成列堆叠的输出。
 
-**做一个总结:**
-
-由上述公式可以看出，使用向量化的方法，可以不需要显示循环，而直接通过矩阵运算从 _X​_ 就可以计算出 _A<sup>[1]</sup>​_ ，实际上 _X_ 可以记为 _A<sup>[0]</sup>_ 。使用同样的方法就可以由神经网络中的每一层的输入 _A<sup>[i-1]</sup>​_ 计算输出 _A<sup>[i]</sup>_ 。这些方程有一定对称性，其中第一个方程也可以写成 _Z<sup>[1]</sup> = W<sup>[1]</sup>A<sup>[0]</sup> + b<sup>[1]</sup>_ ，还有这对方程形式其实很类似，只不过这里所有指标加了1。所以这样就显示出神经网络的不同层次，你知道大概每一步做的都是一样的，或者只不过同样的计算不断重复而已。
-
-这里的例子只是一个双层神经网络，在之后会讲更深层的神经网络，会看到随着网络的深度变大，基本上也还是重复这两步运算，只不过是比这里你看到的重复次数更多。
+总结：由上述公式可以看出，使用向量化的方法，可以不需要显示循环，而直接通过矩阵运算从 _X​_ 就可以计算出 _A<sup>[1]</sup>​_ ，实际上 _X_ 可以记为 _A<sup>[0]</sup>_ 。使用同样的方法就可以由神经网络中的每一层的输入 _A<sup>[i-1]</sup>​_ 计算输出 _A<sup>[i]</sup>_ 。这些方程有一定对称性，其中第一个方程也可以写成 _Z<sup>[1]</sup> = W<sup>[1]</sup>A<sup>[0]</sup> + b<sup>[1]</sup>_ ，还有这对方程形式其实很类似，只不过这里所有指标加了1。所以这样就显示出神经网络的不同层次，你知道大概每一步做的都是一样的，或者只不过同样的计算不断重复而已。这里的例子只是一个双层神经网络，在之后会讲更深层的神经网络，会看到随着网络的深度变大，基本上也还是重复这两步运算，只不过是比这里你看到的重复次数更多。
 
 ### 激活函数
 
-使用一个神经网络时，需要决定使用哪种激活函数用隐藏层上，哪种用在输出节点上。到目前为止，只用过`sigmoid`激活函数，但是，有时其他的激活函数效果会更好。
+使用一个神经网络时，需要决定使用哪种激活函数用隐藏层上，哪种用在输出节点上。到目前为止，只介绍过`sigmoid`激活函数，但很多情况下其他激活函数效果会更好。
 
 在神经网路前向传播的 _a<sup>[1]</sup> = σ(z<sup>[1]</sup>)_ 和 _a<sup>[2]</sup> = σ(z<sup>[2]</sup>)_ 这两步会使用到`sigmoid`函数。`sigmoid`函数在这被称为激活函数。其表达式写作：
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?a=\sigma(z)=\frac{1}{{1&space;&plus;&space;e}^{-&space;z}}" title="a=\sigma(z)=\frac{1}{{1 + e}^{- z}}" />
 </p>
-通常的情况下，使用不同的函数 _g(z<sup>[1]</sup>)_ ， _g_ 可以是除了`sigmoid`函数以外的非线性函数。`tanh`函数或者双曲正切函数是总体上都优于`sigmoid`函数的激活函数。
+不同的情况下，会使用不同的函数 _g(z<sup>[1]</sup>)_ 。 _g_ 可以是除了`sigmoid`函数以外的非线性函数。
 
-_a = tan(z)_ 的值域是位于+1和-1之间。
+`tanh`函数或者双曲正切函数是总体上都优于`sigmoid`函数的激活函数。事实上，`tanh`函数是 `sigmoid` 的向下平移和伸缩后的结果。对它进行了变形后，穿过了 _(0,0)_ 点，并且值域介于+1和-1之间。
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?a=tanh(z)=\frac{e^z-e^{-z}}{e^z&plus;e^{-z}}" title="a=tanh(z)=\frac{e^z-e^{-z}}{e^z+e^{-z}}" />
 </p>
-事实上，`tanh`函数是 `sigmoid` 的向下平移和伸缩后的结果。对它进行了变形后，穿过了 _(0,0)_ 点，并且值域介于+1和-1之间。
-
 结果表明，如果在隐藏层上使用函数  _g(z<sup>[1]</sup>) = tanh(z<sup>[1]</sup>)_ ，效果总是优于sigmoid函数。因为函数值域在-1和+1的激活函数，其均值是更接近零均值的。在训练一个算法模型时，如果使用tanh函数代替sigmoid函数中心化数据，使得数据的平均值更接近0而不是0.5.
 
-因此，**很多研究者基本已经不用sigmoid激活函数了，tanh函数在几乎所有场合都优于sigmoid函数**。
+因此，**很多研究者基本已经不用sigmoid激活函数了，tanh函数在几乎所有场合都优于sigmoid函数**。但在特殊的情况下，例如二分类的问题中，对于输出层，因为 _y​_ 的值是0或1，所以想让 _ŷ​_ 的数值介于0和1之间，而不是在-1和+1之间。所以需要使用sigmoid激活函数。这里的 _g(z<sup>[2]</sup>)=σ(z<sup>[2]</sup>)​_ 。在这个例子里看到的是，对隐藏层使用tanh激活函数，输出层使用sigmoid函数。
 
-但有一个例外，在二分类的问题中，对于输出层，因为 _y​_ 的值是0或1，所以想让 _ŷ​_ 的数值介于0和1之间，而不是在-1和+1之间。所以需要使用sigmoid激活函数。这里的 _g(z<sup>[2]</sup>)=σ(z<sup>[2]</sup>)​_ 。在这个例子里看到的是，对隐藏层使用tanh激活函数，输出层使用sigmoid函数。
-
-**所以，在不同的神经网络层中，激活函数可以不同。**
-为了表示不同的激活函数，在不同的层中，使用方括号上标来指出 _g_ 上标为 _[1]_ 的激活函数，可能会跟 _g_ 上标为 _[2]_ 不同。方括号上标 _[1]_ 代表隐藏层，方括号上标 _[2]_ 表示输出层。
+**所以，在不同的神经网络层中，激活函数可以不同。**为了表示不同的激活函数，在不同的层中，使用方括号上标来指出 _g_ 上标为 _[1]_ 的激活函数，可能会跟 _g_ 上标为 _[2]_ 不同。方括号上标 _[1]_ 代表隐藏层，方括号上标 _[2]_ 表示输出层。
 
 sigmoid函数和tanh函数两者共同的缺点是：在 _z_ 特别大或者特别小的情况下，导数的梯度或者函数的斜率会变得特别小，最后就会接近于0，导致降低梯度下降的速度。
 
-在机器学习**另一个很流行的函数是：修正线性单元的函数（ReLU）**，ReLU函数为 _a = max(0, z)_。
-
-所以，只要 _z_ 是正值的情况下，ReLU的导数恒等于1，当 _z_ 是负值的时候，导数恒等于0。当使用 _z_ 的导数时， _z_ =0的导数是没有定义的。但是当编程实现的时候， _z_ 的取值刚好等于0.00000001，这个值相当小，所以，在实践中，不需要担心这个值， _z_ 是等于0的时候，假设一个导数是1或者0效果都可以。
+在机器学习**另一个很流行的函数是：修正线性单元的函数（ReLU）**，ReLU函数为 _a = max(0, z)_。只要 _z_ 是正值的情况下，ReLU的导数恒等于1，当 _z_ 是负值的时候，导数恒等于0。当使用 _z_ 的导数时， _z_ =0的导数是没有定义的。但是当编程实现的时候， _z_ 的取值刚好等于0.00000001，这个值相当小，所以，在实践中，不需要担心这个值， _z_ 是等于0的时候，假设一个导数是1或者0效果都可以。
 
 这有一些**选择激活函数的经验法则**：
 * 如果输出是0、1值（二分类问题），则输出层选择sigmoid函数，然后其它的所有单元都选择ReLU函数。
@@ -691,23 +698,19 @@ _z_ 在ReLu的梯度一半都是0，但是，有足够的隐藏层使得z值大�
 
 对于Leaky Relu，一个例子是_a = max(0.01z, z)_，为什么常数是0.01？当然，可以选择不同的参数。
 
-在编写神经网络的时候，会有很多选择，例如隐藏层单元的个数、激活函数的选择、初始化权值等等。想得到一个对比较好的指导原则是挺困难的。
-
-你可以提前知道哪一种方法工业界用的多，哪一种用的少。但是，对于特定的神经网络的应用，因为其特殊性，是很难提前知道选择哪些效果更好。所以建议如果不确定哪一个激活函数效果更好，可以把它们都试试，然后在验证集或者开发数据集上进行评价。看哪一种表现的更好，就去使用它。
-
-为自己的神经网络的应用测试这些不同的选择，会在以后检验自己的神经网络或者评估算法的时候，看到不同的效果。如果仅仅遵守使用默认的ReLU激活函数，而不要用其他的激励函数，这可能对于你未来的问题不适用。
+在编写神经网络的时候，你会有很多选择，例如隐藏层单元的个数、激活函数的选择、初始化权值等等。想得到一个可以适用所有场景的指导原则是挺困难的。你可以提前知道哪一种方法工业界用的多，哪一种用的少。但是，对于特定的神经网络的应用，因为其特殊性，是很难提前知道选择哪些效果更好。所以建议如果不确定哪一个激活函数效果更好，可以把它们都试试，然后在验证集或者开发数据集上进行评价。看哪一种表现的更好，就去使用它。为自己的神经网络的应用测试这些不同的选择，会在以后检验自己的神经网络或者评估算法的时候，看到不同的效果。如果仅仅遵守使用默认的ReLU激活函数，而不要用其他的激励函数，这可能对于你未来的问题不适用。
 
 ### 为什么需要非线性激活函数？
-要让你的神经网络能够计算出有意义的函数，必须使用非线性激活函数，证明如下：
+要让你的神经网络能够计算出有意义的函数，必须使用非线性激活函数，看如下的证明：
 
-对于神经网络正向传播的方程，现在我们去掉函数 _g_ ，然后令 _a<sup>[1]</sup>=z<sup>[1]</sup>_ ，或者我们也可以令 _g(z)=z_ ，这个有时被叫做线性激活函数（更学术点的名字是恒等激励函数，因为它们就是把输入值输出）。为了说明问题我们把 _a<sup>[2]</sup>=z<sup>[2]</sup>_ ，那么这个模型的输出 _y_ 或仅仅只是输入特征 _x_ 的线性组合。
+对于神经网络正向传播的方程，如果去掉函数 _g_ ，令 _a<sup>[1]</sup>=z<sup>[1]</sup>_ ，或者令 _g(z)=z_ ，这个有时被叫做线性激活函数（更学术点的名字是恒等激励函数，因为它们就是把输入值输出）。为了说明问题我们把 _a<sup>[2]</sup>=z<sup>[2]</sup>_ ，那么这个模型的输出 _y_ 或仅仅只是输入特征 _x_ 的线性组合。
 
 如果我们改变前面的式子，令：
-* (1): _a<sup>[1]</sup> = z<sup>[1]</sup> = W<sup>[1]</sup>x + b<sup>[1]</sup>_
+* _a<sup>[1]</sup> = z<sup>[1]</sup> = W<sup>[1]</sup>x + b<sup>[1]</sup>_
 * (2):_a<sup>[2]</sup> = z<sup>[2]</sup> = W<sup>[2]</sup>a<sup>[1]</sup> + b<sup>[2]</sup>_
 
 将式子(1)代入式子(2)中，则：
-* (3): _a<sup>[2]</sup> = z<sup>[2]</sup> = W<sup>[2]</sup>W<sup>[1]</sup>x + W<sup>[2]</sup>b<sup>[1]</sup> + b<sup>[2]</sup>_
+* _a<sup>[2]</sup> = z<sup>[2]</sup> = W<sup>[2]</sup>W<sup>[1]</sup>x + W<sup>[2]</sup>b<sup>[1]</sup> + b<sup>[2]</sup>_
 
 简化多项式得 _a<sup>[2]</sup> = z<sup>[2]</sup> = W<sup>'</sup>x + b<sup>'</sup>_，如果你是用线性激活函数或者叫恒等激励函数，那么神经网络只是把输入线性组合再输出。
 
@@ -715,7 +718,7 @@ _z_ 在ReLu的梯度一半都是0，但是，有足够的隐藏层使得z值大�
 
 在这里线性隐层一点用也没有，因为这两个线性函数的组合本身就是线性函数，所以除非你引入非线性，否则你无法计算更有意义的函数，即使你的网络层数再多也不行。
 
-只有一个地方可以使用线性激活函数 _g(z)=z_ ，就是你在做机器学习中的线性回归问题，其中_y_ 是一个实数。举个例子，比如你想预测房地产价格， _y_ 就不是二分类任务0或1，而是一个实数，从0到正无穷。如果 _y_ 是个实数，那么在输出层用线性激活函数也许可行，你的输出也是一个实数，从负无穷到正无穷。
+只有一个地方可以使用线性激活函数 _g(z) = z_ ，就是你在做机器学习中的线性回归问题，其中_y_ 是一个实数。举个例子，比如你想预测房地产价格， _y_ 就不是二分类任务0或1，而是一个实数，从0到正无穷。如果 _y_ 是个实数，那么在输出层用线性激活函数也许可行，你的输出也是一个实数，从负无穷到正无穷。
 
 **总而言之，不能在隐藏层用线性激活函数**，可以用ReLU或者tanh或者Leaky ReLU或者其他的非线性激活函数，唯一可以用线性激活函数的通常就是输出层；除了这种情况，会在隐层用线性函数的，除了一些特殊情况，比如与压缩有关的，那方面在这里将不深入讨论。在这之外，在隐层使用线性激活函数非常少见。因为房价都是非负数，所以我们也可以在输出层使用ReLU函数这样你的 _ŷ_ 都大于等于0。
 
@@ -729,13 +732,12 @@ _z_ 在ReLu的梯度一半都是0，但是，有足够的隐藏层使得z值大�
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_10.png" />
 </p>
 
-其具体的求导如下：
+
+求导如下：
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\frac{d}{dz}g(z)={\frac{1}{1&plus;e^{-z}}(1-\frac{1}{1&plus;e^{-z}})}=g(z)(1-g(z))" title="\frac{d}{dz}g(z)={\frac{1}{1+e^{-z}}(1-\frac{1}{1+e^{-z}})}=g(z)(1-g(z))" />
 </p>
-
-注：
-* 当 _z_ =10或 _z  =-10_ ; _(d/dz)g(z) ≈ 0_
+* 当 _z_ =10或 _z  = -10_ ; _(d/dz)g(z) ≈ 0_
 * 当 _z_ =0, _(d/dz)g(z) = g(z)(1-g(z)) = 1/4_
 * 在神经网络中 _a = g(z)_ ; _g(z)' = (d/dz) g(z) = a(1-a)_
 
@@ -745,7 +747,7 @@ _z_ 在ReLu的梯度一半都是0，但是，有足够的隐藏层使得z值大�
 <img src="https://raw.github.com/loveunk/deeplearning_ai_books/master/images/L1_week3_11.png" />
 </p>
 
-其具体的求导如下：
+求导如下：
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?g(z)=tanh(z)=\frac{e^{z}-e^{-z}}{e^{z}&plus;e^{-z}}" title="g(z)=tanh(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}" />
 </p>
@@ -753,8 +755,6 @@ _z_ 在ReLu的梯度一半都是0，但是，有足够的隐藏层使得z值大�
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\frac{d}{{d}z}g(z)=1-(tanh(z))^{2}" title="\frac{d}{{d}z}g(z)=1-(tanh(z))^{2}" />
 </p>
-
-注：
 * 当 _z_ = 10 或 _z = -10_，_(d/dz)g(z) ≈ 0_
 * 当 _z_ = 0, _(d/dz)g(z) = 1 - 0 = 1_
 
@@ -792,13 +792,11 @@ ReLU定义为：_g(z) = max(0,z)_
 <img src="https://latex.codecogs.com/gif.latex?J(W^{[1]},b^{[1]},W^{[2]},b^{[2]})={\frac{1}{m}}\sum_{i=1}^mL(\hat{y},y)" title="J(W^{[1]},b^{[1]},W^{[2]},b^{[2]})={\frac{1}{m}}\sum_{i=1}^mL(\hat{y},y)" />
 </p>
 
-成本函数和之前做logistic回归完全一样。
-
-训练参数需要做梯度下降，在训练神经网络的时候，随机初始化参数很重要，而不是初始化成全零。当你参数初始化成某些值后，每次梯度下降都会循环计算以下预测值：
+成本函数和之前做Logistic回归完全一样。训练参数需要做梯度下降，在训练神经网络的时候，随机初始化参数很重要，而不是初始化成全零。当你参数初始化成某些值后，每次梯度下降都会循环计算以下预测值：
 
 * _ŷ<sup>(i)</sup>, (i=1, 2, …, m)_
 * _dW<sup>[1]</sup> = (dJ/dW<sup>[1]</sup>), db<sup>[1]</sup> = (dJ/db<sup>[1]</sup>)_
-* _dW<sup>[2]</sup> = (dJ/(dW<sup>[2]</sup>)), db<sup>[2]</sup> = (dJ/db<sup>[2]</sup>)_
+* _dW<sup>[2]</sup> = (dJ/dW<sup>[2]</sup>), db<sup>[2]</sup> = (dJ/db<sup>[2]</sup>)_
 
 其中
 
@@ -812,10 +810,10 @@ ReLU定义为：_g(z) = max(0,z)_
 * _z<sup>[2]</sup> = W<sup>[2]</sup>a<sup>[1]</sup> + b<sup>[2]</sup>_
 * _a<sup>[2]</sup> = g<sup>[2]</sup>(z<sup>[z]</sup>) = σ(z<sup>[2]</sup>)_
 
-反向传播方程:
+反向传播方程：
 * _dZ<sup>[2]</sup> = A<sup>[2]</sup> - Y_, _Y = [y<sup>[1]</sup> y<sup>[2]</sup> ... y<sup>[4]</sup>]_
 * _dW<sup>[2]</sup> = dz<sup>[2]</sup> A<sup>[1]</sup> / m_
-* _db<sup>[2]</sup> = np.sum(dz<sup>[2]</sup>, axis=1, keepdims=True) / m_
+* _db<sup>[2]</sup> = np.sum(dZ<sup>[2]</sup>, axis=1, keepdims=True) / m_
 * _dZ<sup>[1]</sup> = W<sup>[2]T</sup> dZ<sup>[2]</sup> * g<sup>[1]</sup>'(Z<sup>[1]</sup>)_
 * _dW<sup>[1]</sup> = dz<sup>[1]</sup> x<sup>T</sup> / m_
 * _db<sup>[1]</sup> = np.sum(dZ<sup>[1]</sup>, axis=1, keepdims=True) / m_
@@ -826,28 +824,40 @@ ReLU定义为：_g(z) = max(0,z)_
 
 还有一种防止Python输出奇怪的秩数，需要显式地调用`reshape`把`np.sum`输出结果写成矩阵形式。
 
-以上就是正向传播的4个方程和反向传播的6个方程，这里我是直接给出的，在下一节中，会讲如何导出反向传播的这6个式子。如果你要实现这些算法，你必须正确执行正向和反向传播运算，你必须能计算所有需要的导数，用梯度下降来学习神经网络的参数；你也可以和许多成功的深度学习从业者一样直接实现这个算法，不去了解其中的知识。
+以上就是正向传播的4个方程和反向传播的6个方程，在下一节中，会讲如何导出反向传播的这6个式子。如果你要实现这些算法，你必须正确执行正向和反向传播运算，能计算所有需要的导数，用梯度下降来学习神经网络的参数。
 
 ### 直观理解反向传播
 
-回想一下逻辑回归的公式
+回想一下逻辑回归的公式：
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\left.&space;\begin{array}{l}x\\w\\b\end{array}\right\}&space;\Rightarrow{z={w}^Tx&plus;b}&space;\Rightarrow{a=\sigma(z)}&space;\Rightarrow{L\left(a,y\right)}" title="\left. \begin{array}{l}x\\w\\b\end{array}\right\} \Rightarrow{z={w}^Tx+b} \Rightarrow{a=\sigma(z)} \Rightarrow{L\left(a,y\right)}" />
+<img src="https://latex.codecogs.com/gif.latex?\left.\begin{array}{l}x\\w\\b\end{array}\right\}&space;\rightarrow\boxed{z=w^Tx&plus;b}\rightarrow\boxed{a=\sigma(z)}\rightarrow\boxed{L\left(a,y\right)}" title="\left.\begin{array}{l}x\\w\\b\end{array}\right\} \rightarrow\boxed{z=w^Tx+b}\rightarrow\boxed{a=\sigma(z)}\rightarrow\boxed{L\left(a,y\right)}" />
+</p>
+
+当时我们讨论逻辑回归的时候，有这个正向传播步骤，其中我们计算 _z_ ，然后 _a_ ，然后损失函数 _L_ 。
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\underbrace{\left.\begin{array}{l}x\\w\\b\end{array}\right\}}_{dw={dz}\cdot&space;x,db&space;=dz}\leftarrow\underbrace{\boxed{z={w}^Tx&plus;b}}_{dz=a-y}\leftarrow\underbrace{\boxed{a=\sigma(z)}}_{da=(-y\log{\alpha}-(1-y)\log(1-a))^{'}={-\frac{y}{a}}&plus;{\frac{1-y}{1-a}}}\leftarrow\boxed{L(a,y)}" title="\underbrace{\left.\begin{array}{l}x\\w\\b\end{array}\right\}}_{dw={dz}\cdot x,db =dz}\leftarrow\underbrace{\boxed{z={w}^Tx+b}}_{dz=a-y}\leftarrow\underbrace{\boxed{a=\sigma(z)}}_{da=(-y\log{\alpha}-(1-y)\log(1-a))^{'}={-\frac{y}{a}}+{\frac{1-y}{1-a}}}\leftarrow\boxed{L(a,y)}" />
+</p>
+
+证明如下：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;L&space;&=&space;-y\log{\alpha}-(1-y)\log(1-a)\\&space;\dfrac{\partial&space;L}{\partial&space;a}&space;&=&space;(-y\log{\alpha}-(1-y)\log(1-a))^{'}\\&space;\dfrac{\partial&space;a}{\partial&space;z}&space;&=&space;a(1-a)\\&space;\dfrac{\partial&space;a}{\partial&space;z}&space;&=&space;a(1-a)\left(&space;-\frac{y}{a}&plus;\frac{1-y}{1-a}&space;\right)=a-y&space;\end{align*}" title="\begin{align*} L &= -y\log{\alpha}-(1-y)\log(1-a)\\ \dfrac{\partial L}{\partial a} &= (-y\log{\alpha}-(1-y)\log(1-a))^{'}\\ \dfrac{\partial a}{\partial z} &= a(1-a)\\ \dfrac{\partial a}{\partial z} &= a(1-a)\left( -\frac{y}{a}+\frac{1-y}{1-a} \right)=a-y \end{align*}" />
 </p>
 
 
-所以回想当时我们讨论逻辑回归的时候，我们有这个正向传播步骤，其中我们计算 _z_ ，然后 _a_ ，然后损失函数 _L_ 。
+
+神经网络的计算中，与逻辑回归十分类似，但中间会有多层的计算。
+
+下面是一个双层神经网络，有一个输入层，一个隐藏层和一个输出层。
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\underbrace{\left.\begin{array}{l}x\\w\\b\end{array}\right\}}_{dw={dz}\cdot&space;x,&space;db&space;=dz}&space;\Leftarrow\underbrace{{z={w}^Tx&plus;b}}_{dz=da\cdot&space;g'(z)=a-y,&space;g(z)=\sigma(z),{\frac{{dL}}{dz}}={\frac{{dL}}{da}}\cdot{\frac{da}{dz}}}&space;\Leftarrow\underbrace{{a=\sigma(z)}\Leftarrow{L(a,y)}}_{da={\frac{d}{da}}{L}\left(a,y\right)=(-y\log{\alpha}-(1-y)\log(1-a))^{'}={-\frac{y}{a}}&plus;{\frac{1-y}{1-a}}}" title="\underbrace{\left.\begin{array}{l}x\\w\\b\end{array}\right\}}_{dw={dz}\cdot x, db =dz} \Leftarrow\underbrace{{z={w}^Tx+b}}_{dz=da\cdot g'(z)=a-y, g(z)=\sigma(z),{\frac{{dL}}{dz}}={\frac{{dL}}{da}}\cdot{\frac{da}{dz}}} \Leftarrow\underbrace{{a=\sigma(z)}\Leftarrow{L(a,y)}}_{da={\frac{d}{da}}{L}\left(a,y\right)=(-y\log{\alpha}-(1-y)\log(1-a))^{'}={-\frac{y}{a}}+{\frac{1-y}{1-a}}}" />
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;\left.\begin{array}{l}x\\w\\b\end{array}\right\}&space;&\rightarrow\boxed{z^{[1]}=w^{[1]}x&plus;b^{[1]}}\rightarrow\boxed{a^{[1]}=\sigma(z^{[1]})}&space;\\&space;&\rightarrow\boxed{z^{[2]}=w^{[2]}x&plus;b^{[2]}}\rightarrow\boxed{a^{[2]}=\sigma(z^{[2]})}\rightarrow\boxed{L\left(a^{[2]},y\right)}&space;\end{align*}" title="\begin{align*} \left.\begin{array}{l}x\\w\\b\end{array}\right\} &\rightarrow\boxed{z^{[1]}=w^{[1]}x+b^{[1]}}\rightarrow\boxed{a^{[1]}=\sigma(z^{[1]})} \\ &\rightarrow\boxed{z^{[2]}=w^{[2]}x+b^{[2]}}\rightarrow\boxed{a^{[2]}=\sigma(z^{[2]})}\rightarrow\boxed{L\left(a^{[2]},y\right)} \end{align*}" />
 </p>
-
-
-神经网络的计算中，与逻辑回归十分类似，但中间会有多层的计算。下图是一个双层神经网络，有一个输入层，一个隐藏层和一个输出层。
 
 **前向传播：**
-计算 _z<sup>[1]</sup>_ ， _a<sup>[1]</sup>_ ，再计算 _z<sup>[2]</sup>_ ， _a<sup>[2]</sup>_ ，最后得到loss function。
+这个过程比较好理解，先计算 _z<sup>[1]</sup>_ ， _a<sup>[1]</sup>_ ，再计算 _z<sup>[2]</sup>_ ， _a<sup>[2]</sup>_ ，最后得到loss function。
 
 **反向传播：**
 向后推算出 _da<sup>[2]</sup>_ ，然后推算出 _dz<sup>[2]</sup>_ ，接着推算出 _da<sup>[1]</sup>_ ，然后推算出 _dz<sup>[1]</sup>_ 。我们不需要对 _x_ 求导，因为 _x_ 是固定的，我们也不是想优化 _x_ 。向后推算出 _da<sup>[2]</sup>_ ，然后推算出 _dz<sup>[2]</sup>_ 的步骤可以合为一步：

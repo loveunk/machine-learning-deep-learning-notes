@@ -125,6 +125,6 @@ PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得�
 ### 欢迎反馈
 * 如果发现内容的错误，欢迎在GitHub提交Issue或者Pull Request
 * 个人精力有限，欢迎感兴趣的朋友一起来完善和补充内容
-* 欢迎Star 和Share 此Repository :)
+* 欢迎Star 和Share 此Repository :stuck_out_tongue_winking_eye:
 
 [回到顶部](#深度学习机器学习学习路径)

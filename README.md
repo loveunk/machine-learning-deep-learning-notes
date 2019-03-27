@@ -42,7 +42,7 @@
     * 吴恩达Coursera系列
     * 周志华机器学习（西瓜书）
     * Applied Machine Learning in Python - 密西根大学
-  * 每章节配套的Jupyter Notebook练习根据网络内容整理
+  * 每章节配套的[Jupyter Notebook练习(GitHub)](https://github.com/loveunk/ml-ipynb)根据网络内容修订
 * 目录结构：
   * [绪论](machine-learning/machine-learning-intro.md)
   * [线性回归](machine-learning/linear-regression.md)
@@ -62,14 +62,23 @@
 ### Deep Learning 专题课程
 主要基于Deep Learning (Coursera, Andrew Ng) 的专题课程 ，介绍深度学习的各种模型的原理。
 * [深度学习](deep-learning/README.md)（on-going）
+  * [深度学习基础](deep-learning/deep-learning-basic.md)
+  * 深度神经网络调参和优化
+  * 深度学习的工程实践
+  * 卷积神经网络（CNN）
+  * 序列模型（RNN、LSTM）
+  * 进阶讨论（待补充）
 
 ### TensorFlow 
-* 推荐大佬吴恩达公司DeepLearning.ai和Coursera出品的课程[《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)（面向人工智能、机器学习和深度学习的TensorFlow介绍》。课程包括四周内容，练习基于Google Colab平台。讲师是来自Google Brain团队。
-* TensorFlow出2.0了，推荐看这篇[《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)对TensorFlow体系有一个完整的认知。
+* 推荐吴恩达DeepLearning.ai和Coursera出品课程[《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)（面向人工智能、机器学习和深度学习的TensorFlow介绍》。
+  * 课程包括四周内容，练习基于Google Colab平台，讲师是来自Google Brain团队。
+* TensorFlow出2.0了，推荐阅读[《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)对TensorFlow体系有个完整认知。
 * [TensorFlow/Keras的例子](tensorflow)
 
 ### PyTorch
-* PyTorch同样是一个优秀的深度学习框架，这里暂不做过多介绍。
+PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得关注
+* 文章：[PyTorch的安装与Tutorial](https://zhuanlan.zhihu.com/p/60526007)
+* GitHub：[PyTorch 中文手册](https://github.com/zergtant/pytorch-handbook)
 
 ## 强化学习
 * TBD
@@ -83,15 +92,19 @@
 
 ## 深度学习论文
 
+对于一些问题的深入研究，最终是离不开阅读论文的，这里推荐一个GitHub：
+
 * [深度学习论文的阅读路径](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap)
 
 ## 工欲善其事，必先利其器
 ### 一些电子书
-* [机器学习/深度学习/Data Science相关的书籍](https://github.com/loveunk/Deep-learning-books)
+* GitHub：[机器学习/深度学习/Data Science相关的书籍](https://github.com/loveunk/Deep-learning-books)
 
 ### 推荐的学习环境
-* [**Anaconda**](https://www.anaconda.com)：Python懒人包，除了Python本身还包含了Python常用的资料分析、机器学习、视觉化的套件（例如上面列的Numpy、Matplotlib等，以及对于深度学习初学者很重要的Jupyter Notebook）。新人可以参考这篇[Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)。
-* IDE：PyCharm（推荐） / VS Code / Atom / Sublime等等，[可以看这篇](https://zhuanlan.zhihu.com/p/58178996)。
+* Anaconda
+  * [Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)
+* IDE
+  * PyCharm（推荐） / VS Code / Atom 等：[参考阅读](https://zhuanlan.zhihu.com/p/58178996)。
 
 ### 一些好用的工具
 * 机器学习在线环境
@@ -107,10 +120,11 @@
 
 * 持续的投入：三天打鱼两天晒网的故事，我们从小便知，不多说了；
 * 系统的学习：一个学科，知识是一个体系，系统的学习才可以避免死角，或者黑洞；
-* 大量的实战：毕竟机器学习/深度学习属于Engineering & Science的范畴，是用来解决实际的问题的。单纯的理论研究，如果没有实际的项目（包括研究项目）经验做支撑，理论可能不会有很大突破。
+* 大量的练习：毕竟机器学习/深度学习属于Engineering & Science的范畴，是用来解决实际的问题的。单纯的理论研究，如果没有实际的项目（包括研究项目）经验做支撑，理论可能不会有很大突破。
 
 ### 欢迎反馈
 * 如果发现内容的错误，欢迎在GitHub提交Issue或者Pull Request
 * 个人精力有限，欢迎感兴趣的朋友一起来完善和补充内容
+* 欢迎Star 和Share 此Repository :)
 
 [回到顶部](#深度学习机器学习学习路径)

@@ -430,6 +430,13 @@ SVM包会工作得很好，但它们仍然有些慢。
 
 当然SVM仍然被广泛认为是一种最强大的学习算法。实际上SVM与逻辑回归、神经网络一起构建了一个很好的机器学习算法武器库。
 
+## Jupyter Notebook编程练习
+
+- 推荐访问Google Drive的共享，直接在Google Colab在线运行ipynb文件：
+  - [Google Drive: 6.svm](https://drive.google.com/drive/folders/1hX0dDsGCphlFbMOwCaHYF91LYrbBRY-c?usp=sharing)
+- 不能翻墙的朋友，可以访问GitHub下载：
+  - [GitHub: 6.svm](https://github.com/loveunk/ml-ipynb/tree/master/6.svm)
+
 ## 阅读推荐
 * [支持向量机SVM - by Jerrylead](http://www.cnblogs.com/jerrylead/archive/2011/03/13/1982639.html)
 * [支持向量机系列 - by pluskid](http://blog.pluskid.org/?page_id=683)

@@ -183,11 +183,17 @@ _z = U<sup>T</sup><sub>reduce</sub> * x_ 即为映射后的数据，其中 _x_ �
 错误的PCA用法：
 
 * 将其用于减少过拟合（减少了特征的数量）。
-非常不好，不如尝试正则化处理。
-原因在于PCA只是近似地丢弃掉一些特征，它并不考虑任何与结果变量有关的信息，因此可能会丢失非常重要的特征。
-然而当我们进行正则化处理时，会考虑到结果变量，不会丢掉重要的数据。
-
+  非常不好，不如尝试正则化处理。
+  原因在于PCA只是近似地丢弃掉一些特征，它并不考虑任何与结果变量有关的信息，因此可能会丢失非常重要的特征。
+  然而当我们进行正则化处理时，会考虑到结果变量，不会丢掉重要的数据。
 * 默认地将PCA作为学习过程中的一部分，虽然PCA很多时候有效果，最好是从所有原始特征开始，只在有必要的时候（算法运行太慢或者用太多内存）才考虑采用PCA。
+
+## Jupyter Notebook编程练习
+
+- 推荐访问Google Drive的共享，直接在Google Colab在线运行ipynb文件：
+  - [Google Drive: 7.kmeans_and_PCA](https://drive.google.com/drive/folders/1VNdwdcxeRGViyg9lsz8TyOVq39VhjiYg?usp=sharing)
+- 不能翻墙的朋友，可以访问GitHub下载：
+  - [GitHub: 7.kmeans_and_PCA](https://github.com/loveunk/ml-ipynb/tree/master/7.kmeans_and_PCA)
 
 
 [回到顶部](#数据降维)

@@ -205,8 +205,14 @@ DBScan的时间复杂度主要受RegionQuery 的调用次数影响，DBSCAN 对�
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?{{\rho&space;}{XY}}=\frac{\operatorname{cov}(X,Y)}{{{\sigma&space;}{X}}{{\sigma&space;}{Y}}}=\frac{E[(X-{\mu_X})(Y-{\mu_Y})]}{{\sigma_X}{\sigma_Y}}=\frac{\sum\limits_{i=1}^{n}{(x-\mu_X)(y-\mu_Y)}}{\sqrt{\sum\limits_{i=1}^{n}{{{(x-\mu_X)}^2}}}\sqrt{\sum\limits_{i=1}^{n}{{{(y-{\mu_Y})}^2}}}}" title="{{\rho }{XY}}=\frac{\operatorname{cov}(X,Y)}{{{\sigma }{X}}{{\sigma }{Y}}}=\frac{E[(X-{\mu_X})(Y-{\mu_Y})]}{{\sigma_X}{\sigma_Y}}=\frac{\sum\limits_{i=1}^{n}{(x-\mu_X)(y-\mu_Y)}}{\sqrt{\sum\limits_{i=1}^{n}{{{(x-\mu_X)}^2}}}\sqrt{\sum\limits_{i=1}^{n}{{{(y-{\mu_Y})}^2}}}}" />
 </p>
-
 Pearson相关系数即将 _x_ 、 _y_ 坐标向量各自平移到原点后的夹角余弦。
+
+## Jupyter Notebook编程练习
+
+- 推荐访问Google Drive的共享，直接在Google Colab在线运行ipynb文件：
+  - [Google Drive: 7.kmeans_and_PCA](https://drive.google.com/drive/folders/1VNdwdcxeRGViyg9lsz8TyOVq39VhjiYg?usp=sharing)
+- 不能翻墙的朋友，可以访问GitHub下载：
+  - [GitHub: 7.kmeans_and_PCA](https://github.com/loveunk/ml-ipynb/tree/master/7.kmeans_and_PCA)
 
 ## 更多阅读
 * [Three Popular Clustering Methods and When to Use Each](https://medium.com/predict/three-popular-clustering-methods-and-when-to-use-each-4227c80ba2b6)

@@ -280,6 +280,12 @@
 <tr><td><i>m</i>很小时也适用</td><td>需要 <i>m > n</i>，否则协方差矩阵不可逆</td></tr>
 </table>
 
+## Jupyter Notebook编程练习
+
+- 推荐访问Google Drive的共享，直接在Google Colab在线运行ipynb文件：
+  - [Google Drive: 8.anomaly_detection_and_recommendation](https://drive.google.com/drive/folders/1DECp5ajQ9bs7oMQ7Ob0AbKXgkz1zS9zY?usp=sharing)
+- 不能翻墙的朋友，可以访问GitHub下载：
+  - [GitHub: 8.anomaly_detection_and_recommendation](https://github.com/loveunk/ml-ipynb/blob/master/8.anomaly_detection_and_recommendation)
 
 
 [回到顶部](#异常检测)

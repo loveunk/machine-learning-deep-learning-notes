@@ -201,8 +201,14 @@
 <p align="center">
 <img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/9ec5cb55e14bd1462183e104f8e02b80.png" />
 </p>
-
 然后利用这个新的 _Y_ 矩阵来训练算法。
 如果要用新训练出的算法来预测评分，则需要将平均值重新加回去，预测 _(θ<sup>(j)</sup>)<sup>T</sup>x<sup>(i)</sup> + μ<sub>i</sub>_ ，对于**Eve**，新模型会认为她给每部电影的评分都是该电影的平均分。
+
+## Jupyter Notebook编程练习
+
+- 推荐访问Google Drive的共享，直接在Google Colab在线运行ipynb文件：
+  - [Google Drive: 8.anomaly_detection_and_recommendation](https://drive.google.com/drive/folders/1DECp5ajQ9bs7oMQ7Ob0AbKXgkz1zS9zY?usp=sharing)
+- 不能翻墙的朋友，可以访问GitHub下载：
+  - [GitHub: 8.anomaly_detection_and_recommendation](https://github.com/loveunk/ml-ipynb/blob/master/8.anomaly_detection_and_recommendation)
 
 [回到顶部](#推荐系统)

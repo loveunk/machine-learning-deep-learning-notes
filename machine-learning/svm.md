@@ -307,7 +307,7 @@ _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示�
 <img src="https://latex.codecogs.com/gif.latex?{\left\|x-l^{(1)}\right\|}^{2}=\sum_{j=1}^n{(x_j-l_j^{(1)})}^{2}" title="{\left\|x-l^{(1)}\right\|}^{2}=\sum_{j=1}^n{(x_j-l_j^{(1)})}^{2}" />
 </p>
 
-是实例 _x_ 中所有特征与地标 _l<sup>(1)</sup>_ 之间的距离的和。上例中的 _similarity(x, l<sup>(1)</sup>)_ 就是核函数，具体来讲，是**高斯核函数（Gaussian Kernel）_，但是还有其他类型的核函数存在。（但是和高斯分布没什么关系，只是看起来像）
+是实例 _x_ 中所有特征与地标 _l<sup>(1)</sup>_ 之间的距离的和。上例中的 _similarity(x, l<sup>(1)</sup>)_ 就是核函数，具体来讲，是**高斯核函数（Gaussian Kernel）**，但是还有其他类型的核函数存在。（但是和高斯分布没什么关系，只是看起来像）
 
 地标的不同决定了 _x_ 和 _l_ 之间的距离：
 * 如果距离趋近0，那么 _f ≈ e<sup>-0</sup> = 1_

@@ -30,6 +30,7 @@
 <p align="center">
 <img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/c2822f2c28b343d7e6ade5bd40f3a1fc.png" />
 </p>
+
 在讨论解决方案前，定义如下符号：
 * _n<sub>u</sub>_ 代表用户的数量
 * _n<sub>m</sub>_ 代表电影的数量
@@ -195,6 +196,7 @@
 <p align="center">
 <img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/9ec5cb55e14bd1462183e104f8e02b80.png" />
 </p>
+
 然后利用这个新的 _Y_ 矩阵来训练算法。
 如果要用新训练出的算法来预测评分，则需要将平均值重新加回去，预测 _(θ<sup>(j)</sup>)<sup>T</sup>x<sup>(i)</sup> + μ<sub>i</sub>_ ，对于**Eve**，新模型会认为她给每部电影的评分都是该电影的平均分。
 

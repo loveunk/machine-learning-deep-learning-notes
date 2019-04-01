@@ -124,7 +124,7 @@ K-Means的一个问题在于，它有可能会停留在一个局部最小值处�
 * 给定某空间里的一个点集合，DBScan能把附近的点分成一组（有很多相邻点的点），并标记出位于低密度区域的局外点（最接近它的点也十分远）。
 * DBSCAN 是最常用的聚类分析算法之一，也是科学文章中最常引用的聚类分析算法之一。
 
-考虑在某空间里将被聚类的点集合，为了进行 DBSCAN 聚类，所有的点被分为_核心点_，(密度)_可达点_ 及 _局外点_ ，详请如下：
+考虑在某空间里将被聚类的点集合，为了进行 DBSCAN 聚类，所有的点被分为 _核心点_，_(密度)可达点_ 及 _局外点_ ，详请如下：
 
 如果一个点 _p_ 在距离 _ε_ 范围内有至少 _minPts_ 个点(包括自己)，则这个点被称为**核心点**，那些 _ε_ 范围内的则被称为由 p 直接可达的。
 同时定义，没有任何点是由非核心点直接可达的。
@@ -205,6 +205,7 @@ DBScan的时间复杂度主要受RegionQuery 的调用次数影响，DBSCAN 对�
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?{{\rho&space;}{XY}}=\frac{\operatorname{cov}(X,Y)}{{{\sigma&space;}{X}}{{\sigma&space;}{Y}}}=\frac{E[(X-{\mu_X})(Y-{\mu_Y})]}{{\sigma_X}{\sigma_Y}}=\frac{\sum\limits_{i=1}^{n}{(x-\mu_X)(y-\mu_Y)}}{\sqrt{\sum\limits_{i=1}^{n}{{{(x-\mu_X)}^2}}}\sqrt{\sum\limits_{i=1}^{n}{{{(y-{\mu_Y})}^2}}}}" title="{{\rho }{XY}}=\frac{\operatorname{cov}(X,Y)}{{{\sigma }{X}}{{\sigma }{Y}}}=\frac{E[(X-{\mu_X})(Y-{\mu_Y})]}{{\sigma_X}{\sigma_Y}}=\frac{\sum\limits_{i=1}^{n}{(x-\mu_X)(y-\mu_Y)}}{\sqrt{\sum\limits_{i=1}^{n}{{{(x-\mu_X)}^2}}}\sqrt{\sum\limits_{i=1}^{n}{{{(y-{\mu_Y})}^2}}}}" />
 </p>
+
 Pearson相关系数即将 _x_ 、 _y_ 坐标向量各自平移到原点后的夹角余弦。
 
 ## Jupyter Notebook编程练习

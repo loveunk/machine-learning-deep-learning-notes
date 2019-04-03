@@ -23,7 +23,7 @@
 也许只用1000个samples也能获得好的效果，可以绘制学习曲线来帮助判断。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/bdf069136b4b661dd14158496d1d1419.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/bdf069136b4b661dd14158496d1d1419.png" />
 </p>
 
 * 上图左，体现了高方差（variance），增加数据是有用的。
@@ -47,7 +47,7 @@
 但是这样的算法存在的问题是，不是每一步都是朝着“正确”的方向。
 因此算法虽然会逐渐走向全局最小值的位置，但可能无法到最小值的那一点，而在最小值点附近徘徊。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/9710a69ba509a9dcbca351fccc6e7aae.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/9710a69ba509a9dcbca351fccc6e7aae.jpg" />
 </p>
 
 ## 小批量梯度下降 Mini-Batch Gradient Descent
@@ -81,7 +81,7 @@ for i = 1: m, repeat
 在随机梯度下降中，在每一次更新 _θ_ 之前都计算一次代价，然后每 _x_ 次迭代后，求出这 _x_ 次对训练实例计算代价的平均值，然后绘制这些平均值与 _x_ 次迭代的次数之间的函数图表。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/76fb1df50bdf951f4b880fa66489e367.png"/>
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/76fb1df50bdf951f4b880fa66489e367.png"/>
 </p>
 
 当绘制这样的图时，可能会得到一个颠簸不平但不会明显减少的函数图像（如上面左下图中蓝线所示）。
@@ -97,7 +97,7 @@ _α = (const1/(iterationNumber + const2))_
 随着不断地靠近全局最小值，通过减小学习率，迫使算法收敛而非在最小值附近徘徊。但是通常不需要这样做便能有非常好的效果。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f703f371dbb80d22fd5e4aec48aa9fd4.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/f703f371dbb80d22fd5e4aec48aa9fd4.jpg" />
 </p>
 
 ## 在线学习 Online Learning
@@ -139,7 +139,7 @@ _θ<sub>j</sub> := θ<sub>j</sub> - α(h<sub>θ</sub>(x) - y) x<sub>j</sub>_, (f
 例如，有400个训练实例，可以将批量梯度下降的求和任务分配给4台计算机进行处理：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/919eabe903ef585ec7d08f2895551a1f.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/919eabe903ef585ec7d08f2895551a1f.jpg" />
 </p>
 
 很多高级的线性代数函数库已经能够利用多核CPU的多个核心来并行地处理矩阵运算，这也是算法的向量化实现如此重要的缘故（比调用循环快）。

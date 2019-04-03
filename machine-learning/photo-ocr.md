@@ -18,7 +18,7 @@
 
 如下图，是从一张街拍照片里提取店铺名等信息：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/095e4712376c26ff7ffa260125760140.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/095e4712376c26ff7ffa260125760140.jpg" />
 </p>
 
 思路如下：
@@ -32,7 +32,7 @@
 可以用任务流程图（pipeline）来拆分问题，每一项子任务可以由一个单独的小队来负责解决：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/610fffb413d8d577882d6345c166a9fb.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/610fffb413d8d577882d6345c166a9fb.png" />
 </p>
 
 ## 滑动窗口
@@ -44,7 +44,7 @@
 3. **缩放窗口，重复上一步**：按比例放大剪裁的区域，再以新的尺寸对图片进行剪裁，将新剪裁的切片按比例缩小至模型所采纳的尺寸，交给模型进行判断，如此循环。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/1e00d03719e20eeaf1f414f99d7f4109.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/1e00d03719e20eeaf1f414f99d7f4109.jpg" />
 </p>
 
 滑动窗口技术也被用于文字识别：
@@ -56,18 +56,18 @@
 
 下图中绿色的区域是经过这些步骤后被认为是文字的区域，而红色的区域是被忽略的。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/bc48a4b0c7257591643eb50f2bf46db6.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/bc48a4b0c7257591643eb50f2bf46db6.jpg" />
 </p>
 
 **二、分割字符**
 1. 训练一个模型来完成将文字分割成一个个字符的任务，需要的训练集由单个字符的图片和两个相连字符之间的图片来训练模型。
 2. 使用滑动窗口技术来进行字符识别。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/0a930f2083bbeb85837f018b74fd0a02.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/0a930f2083bbeb85837f018b74fd0a02.jpg" />
 </p>
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/0bde4f379c8a46c2074336ecce1a955f.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/0bde4f379c8a46c2074336ecce1a955f.jpg" />
 </p>
 
 
@@ -101,7 +101,7 @@
 
 回到文字识别应用中，**任务流程图**如下：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/610fffb413d8d577882d6345c166a9fb.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/610fffb413d8d577882d6345c166a9fb.png" />
 </p>
 
 流程图中每一部分的输出都是下一部分的输入。
@@ -115,7 +115,7 @@
 最后手工选择数据，让`Character Recognition`输出的结果100%正确，系统的总体效果又提升了10%，这意味着可能也会应该投入更多的时间和精力来提高应用的总体表现。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f1ecee10884098f98032648da08f8937.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/f1ecee10884098f98032648da08f8937.jpg" />
 </p>
 
 总的思想是，确定哪个子模块对整体的性能影响最大。花最多的时间和人力在这个模块上。然后是下一个最值得投入的模块，依次类推。

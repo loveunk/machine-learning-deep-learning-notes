@@ -30,7 +30,7 @@
 
 首先，你可以构建一个模型（假设是条直线，如下图）。根据数据模型，你可以告诉你的朋友，他的房子大约值220000美元。
 <p align="center">
-<img src="https://raw.githubusercontent.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/8e76e65ca7098b74a2e9bc8e9577adfc.png" />
+<img src="https://raw.githubusercontent.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/8e76e65ca7098b74a2e9bc8e9577adfc.png" />
 </p>
 
 上述例子是个**监督学习**的例子，同时是一个**回归问题**。**回归**指根据之前的数据预测出一个准确的输出值，对于这个例子预测的值是价格。
@@ -74,7 +74,7 @@
 
 定义**建模误差**（modeling error）为模型所预测的值与训练集中实际值之间的差距（下图中蓝线所指）。
 <p align="center">
-<img src="https://raw.githubusercontent.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/6168b654649a0537c67df6f2454dc9ba.png" />
+<img src="https://raw.githubusercontent.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/6168b654649a0537c67df6f2454dc9ba.png" />
 </p>
 
 ### 代价函数
@@ -87,12 +87,12 @@
 
 我们绘制一个等高线图，三个坐标分别为 _θ<sub>0</sub>_ 和 _θ<sub>1</sub>_、_J(θ<sub>0</sub>, θ<sub>1</sub>)_，可以看到在三维空间中存在一个使得 _J(θ<sub>0</sub>, θ<sub>1</sub>)_ 最小的点：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/27ee0db04705fb20fab4574bb03064ab.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/27ee0db04705fb20fab4574bb03064ab.png" />
 </p>
 
 下右图是把代价函数呈现为等高线图（Contour Plot），以便我们观察 _θ<sub>0</sub>_ 和 _θ<sub>1</sub>_ 对 _J(θ<sub>0</sub>, θ<sub>1</sub>)_ 的影响。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/86c827fe0978ebdd608505cd45feb774.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/86c827fe0978ebdd608505cd45feb774.png" />
 </p>
 
 根据上图，人工的方法很容易找到 代价函数最小值时对应的 _θ<sub>0</sub>_ 和 _θ<sub>1</sub>_，但我们真正需要的是一种有效的算法，能够自动地找出这些使代价函数 _J_ 取最小值的参数  _θ<sub>0</sub>_ 和 _θ<sub>1</sub>_。也就是下面要降到的[梯度下降](#梯度下降)。
@@ -104,7 +104,7 @@
 
 如下图所示，不同的起始参数导致了不同的局部最小值。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/db48c81304317847870d486ba5bb2015.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/db48c81304317847870d486ba5bb2015.jpg" />
 </p>
 
 为了理解梯度下降，可以想象一下你正站立在山的一点上（上图中的红色起始点），并且希望用最短的时间下山。在梯度下降算法中，要做的就是旋转360度，看看周围，并问自己要在某个方向上，用小碎步尽快下山。这些小碎步需要朝什么方向？如果我们站在山坡上的这一点，看一下周围，你会发现最佳的下山方向，按照自己的判断迈出一步；重复上面的步骤，从新的位置，环顾四周，并决定从什么方向将会最快下山，然后又迈进了一小步，并依此类推，直到你接近局部最低点的位置。
@@ -112,14 +112,14 @@
 批量梯度下降（batch gradient descent）算法可以抽象为公式：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/7da5a5f635b1eb552618556f1b4aac1a.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/7da5a5f635b1eb552618556f1b4aac1a.png" />
 </p>
 
 其中 _α_ 是**学习率**（Learning rate），它决定了沿着能让代价函数下降程度最大的方向向下迈出的步子有多大；在批量梯度下降中，每一次都同时让所有的参数减去学习速率乘以代价函数的导数。
 
 上面的公式展开如下：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ef4227864e3cabb9a3938386f857e938.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/ef4227864e3cabb9a3938386f857e938.png" />
 </p>
 
 **重点**：更新上述式子需要同时更新一组参数 _(θ<sub>0</sub>, θ<sub>1</sub>, ..., θ<sub>n</sub>)_ ，之后再开始下一轮迭代。 这里先不解释为什么需要同时更新。但请记住，同时更新是梯度下降中常用方法。之后会讲到，同步更新也是更自然的实现方法。人们谈到梯度下降时，意思就是同步更新。
@@ -128,7 +128,7 @@
 考虑上图中关于梯度下降的公式，其中求导，是取红点的切线，就是下图中红色的直线，其与函数相切于红色的点。红色直线的斜率，正好是下图红色三角形的高度除以这个水平长度，这条线有一个正斜率，也就是说它有正导数，因此，为了得到更新的 _J_，_θ<sub>1</sub>_ 更新后等于 _θ<sub>1</sub>_ 减去一个正数乘以 _α_。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ee916631a9f386e43ef47efafeb65b0f.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/ee916631a9f386e43ef47efafeb65b0f.png" />
 </p>
 
  _α_ 的取值有怎么的影响？
@@ -146,7 +146,7 @@
 我们再来看下代价函数 _J(θ)_ ，如下图
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/4668349e04cf0c4489865e133d112e98.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/4668349e04cf0c4489865e133d112e98.png" />
 </p>
 
 随着接近最低点，导数越来越接近零，所以，梯度下降一步后，新的导数会变小一点点。再梯度下降一步，在这个绿点，会用一个稍微跟刚才在那个品红点时比，再小一点的一步，到了新的红色点，更接近全局最低点了，因此这点的导数会比在绿点时更小。所以，再进行一步梯度下降时，导数项是更小的， _θ<sub>1</sub>_ 更新的幅度就会更小。所以随着梯度下降法的运行，移动的幅度会自动变得越来越小，直到最终移动幅度非常小，这时已经收敛到局部极小值。
@@ -160,7 +160,7 @@
 
 梯度下降算法和线性回归算法比较如图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5eb364cc5732428c695e2aa90138b01b.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/5eb364cc5732428c695e2aa90138b01b.png" />
 </p>
 
 回顾一下之前的线性回归问题的代价函数：
@@ -239,12 +239,12 @@ def compute_cost(X, y, theta):
 ### 多变量梯度下降
 多变量梯度下降的目标和单变量线性回归问题中一样，要找出使得代价函数最小的一系列参数。多变量线性回归的批量梯度下降算法为：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/41797ceb7293b838a3125ba945624cf6.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/41797ceb7293b838a3125ba945624cf6.png" />
 </p>
 
 求导后得到：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/dd33179ceccbd8b0b59a5ae698847049.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/dd33179ceccbd8b0b59a5ae698847049.png" />
 </p>
 
 可以看出，有 _n_ 个特诊的梯度下降算法和算法 单特征的梯度下降算法的区别是 _θ_ 变量的个数及在每一步更新 _θ_ 变量的个数。
@@ -254,12 +254,12 @@ def compute_cost(X, y, theta):
 
 以房价问题为例，假如有两个特征，房屋尺寸和房间数量。尺寸值为 0-2000平方英尺，房间数量取值0-5，以两个参数分别为横纵坐标，绘制代价函数的等高线图能，看出图像会显得很扁，梯度下降算法需要非常多次的迭代才能收敛。如下图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/966e5a9b00687678374b8221fdd33475.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/966e5a9b00687678374b8221fdd33475.jpg" />
 </p>
 
 解决的方法是尝试将所有特征的尺度都尽量缩放到-1到1之间。如图右图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/b8167ff0926046e112acf789dba98057.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/b8167ff0926046e112acf789dba98057.png" />
 </p>
 
 ##### 数据的标准化 (Normalization)
@@ -283,7 +283,7 @@ X = X / std
 梯度下降算法收敛所需要的迭代次数根据模型的不同而不同，虽不能提前预知，但可以画出迭代次数和代价函数 _J_ 的图表来观测算法在何时趋于收敛。如下图所示，可以看到 _J_ 是随着迭代次数增加而不断的减小。当迭代次数达到300之后， _J_ 降低的趋势已经非常小了，说明已经收敛。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/cd4e3df45c34f6a8e2bb7cd3a2849e6c.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/cd4e3df45c34f6a8e2bb7cd3a2849e6c.jpg" />
 </p>
 
 也有一些自动测试是否收敛的方法，例如将代价函数的变化值与某个阀值（例如0.001）进行比较，如果比阈值小，就认为已经收敛。但通常看上面这样的图表更好。
@@ -299,7 +299,7 @@ X = X / std
 ### 特征和多项式回归
 仍然是以房价预测为例：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/8ffaa10ae1138f1873bc65e1e3657bd4.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/8ffaa10ae1138f1873bc65e1e3657bd4.png" />
 </p>
 
 按照此前的线性回归模型可得：
@@ -315,7 +315,7 @@ _h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub> × frontage + θ<sub>2</sub
 线性回归并不适用于所有数据，有时我们需要曲线来适应我们的数据，比如一个二次方模型：_h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sup>2</sup>_ 或者三次方模型： _h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub>x<sub>1</sub> + θ<sub>2</sub>x<sup>2</sup> + θ<sub>3</sub>x<sup>3</sup>_。如下图所示：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/3a47e15258012b06b34d4e05fb3af2cf.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/3a47e15258012b06b34d4e05fb3af2cf.jpg" />
 </p>
 
 通常我们需要先观察数据然后再决定模型的类型。此外，可以令 _x2 = x<sup>2</sup>_，_x3 = x<sup>3</sup>_，从而将多项式回归转换为线性回归。
@@ -323,7 +323,7 @@ _h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub> × frontage + θ<sub>2</sub
 ## 正规方程 Normal Equations
 我们都在使用梯度下降算法，但是对于某些线性回归问题，正规方程方法是更好的解决方案。如：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/a47ec797d8a9c331e02ed90bca48a24b.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/a47ec797d8a9c331e02ed90bca48a24b.png" />
 </p>
 
 正规方程是通过求解下面的方程来找出使得代价函数最小的参数的：
@@ -340,12 +340,12 @@ _h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub> × frontage + θ<sub>2</sub
 
 举个例子：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/261a11d6bce6690121f26ee369b9e9d1.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/261a11d6bce6690121f26ee369b9e9d1.png" />
 </p>
 
 运用正规方程方法求解参数：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/b62d24a1f709496a6d7c65f87464e911.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/b62d24a1f709496a6d7c65f87464e911.jpg" />
 </p>
 
 上面的正规方程用Python的实现如下：

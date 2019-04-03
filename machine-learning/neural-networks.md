@@ -31,7 +31,7 @@
 因为无论是线性回归还是逻辑回归都有这样一个缺点，即：当特征太多时，计算的负荷会非常大。举个例子：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5316b24cd40908fb5cb1db5a055e4de5.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/5316b24cd40908fb5cb1db5a055e4de5.png" />
 </p>
 
 当使用 _x<sub>1</sub>_ , _x<sub>2</sub>_ 的多次项式进行预测时，回归算法可以很好地工作。之前已经看到过，使用非线性的多项式项，能够建立更好的分类模型。
@@ -58,14 +58,14 @@
 为了构建神经网络模型，我们先思考大脑中的神经网络是怎样的：每个神经元都被认为是一个处理单元，即神经核（Nucleus），它含有许多输入，即树突（Dendrite），并且有一个输出，即轴突（Axon）。神经网络是大量神经元相互链接并通过电脉冲来交流的一个网络。如下图：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/3d93e8c1cd681c2b3599f05739e3f3cc.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/3d93e8c1cd681c2b3599f05739e3f3cc.jpg" />
 </p>
 
 神经元利用微弱的电流进行沟通。这些弱电流也称作动作电位。所以如果神经元想要传递一个消息，它会通过它的轴突，发送一段微弱电流给其他神经元。
 
 下图是一条连接到输入神经，或者连接另一个神经元树突的神经。右上角的神经元 A 通过轴突把消息传递给左下角的神经元 B，B有可能会把消息再传给其他神经元。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/7dabd366525c7c3124e844abce8c2dd6.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/7dabd366525c7c3124e844abce8c2dd6.png" />
 </p>
 
 这就是所有人类思考的模型：神经元把收到的消息进行计算，并向其他神经元传递消息。这也是感觉和肌肉运转的原理。
@@ -76,7 +76,7 @@
 神经网络模型建立在很多神经元之上，每一个神经元又是一个个学习模型。这些神经元（也叫激活单元，activation unit）采纳一些特征作为输出，并且根据本身的模型提供一个输出。下图是一个以逻辑回归模型作为自身学习模型的神经元示例，在神经网络中，参数又可被成为权重（weight）。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/c2233cd74605a9f8fe69fd59547d3853.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/c2233cd74605a9f8fe69fd59547d3853.jpg" />
 </p>
 
 其中 _x<sub>1</sub>_ , _x<sub>2</sub>_ , _x<sub>3</sub>_ 是输入单元（input units），我们将原始数据输入给它们。 _a<sub>1</sub>_ , _a<sub>2</sub>_ , _a<sub>3</sub>_ 是中间单元，它们负责将数据进行处理，然后呈递到下一层。最后是输出单元，它负责计算 _h<sub>θ</sub>(x)_ 。
@@ -84,13 +84,13 @@
 
 神经元的神经网络，效果如下：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/fbb4ffb48b64468c384647d45f7b86b5.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/fbb4ffb48b64468c384647d45f7b86b5.png" />
 </p>
 
 神经网络模型是许多逻辑单元按照不同层级组织起来的网络，每一层的输出变量都是下一层的输入变量。上图为一个3层的神经网络，第一层成为输入层（**Input Layer**），最后一层称为输出层（**Output Layer**），中间一层成为隐藏层（**Hidden Layers**）。我们为每一层都增加一个偏差单位（**Bias unit**），如下图所示。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/8293711e1d23414d0a03f6878f5a2d91.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/8293711e1d23414d0a03f6878f5a2d91.jpg" />
 </p>
 
 ### 前向传播
@@ -112,7 +112,7 @@
 
 把 _x_ , _Θ_ , _a_ 分别用矩阵表示：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/20171101224053.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/20171101224053.png" />
 </p>
 
 我们可以得到 _a = Θ · X_ 。
@@ -125,17 +125,17 @@
 
 那么上面的例子可以描述如下：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/303ce7ad54d957fca9dbb6a992155111.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/303ce7ad54d957fca9dbb6a992155111.png" />
 </p>
 
 我们令 _z<sup>(2)</sup>=Θ<sup>(1)</sup>x_ ，则 _a<sup>(2)</sup>=g(z<sup>(2)</sup>)_ ，计算后添加 _a<sub>0</sub><sup>(2)</sup>=1_ 。展开过程也就是：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/2e17f58ce9a79525089a1c2e0b4c0ccc.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/2e17f58ce9a79525089a1c2e0b4c0ccc.png" />
 </p>
 
 我们令 _z<sup>(3)</sup>=Θ<sup>(2)</sup>a<sup>(2)</sup>_ ，则 _h<sub>Θ</sub>(x)=a<sup>(3)</sup>=g(z<sup>(3)</sup>)_ 。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/43f1cb8a2a7e9a18f928720adc1fac22.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/43f1cb8a2a7e9a18f928720adc1fac22.png" />
 </p>
 
 上面的过程只讨论了对训练集中一个训练实例的计算。如果要对整个训练集计算，需要将训练集特征矩阵进行转置，使得同一个实例的特征都在同一列里。即
@@ -145,7 +145,7 @@
 ----
 为了更好了了解神经网络的原理，我们把上面示例网络的左半部分遮住：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/6167ad04e696c400cb9e1b7dc1e58d8a.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/6167ad04e696c400cb9e1b7dc1e58d8a.png" />
 </p>
 
 可以看到，右半部分其实就是一个逻辑回归模型：以 _a<sub>0</sub>,a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>_ 作为输入，并按照LogisticRegression的方式输出 _h<sub>θ</sub>(x)_ 。
@@ -170,7 +170,7 @@
 
 我们可以用这样的一个神经网络表示AND 函数：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/809187c1815e1ec67184699076de51f2.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/809187c1815e1ec67184699076de51f2.png" />
 </p>
 
 其中 _θ<sub>0</sub>=-30,θ<sub>1</sub>=20,θ<sub>2</sub>=20_ 我们的输出函数 _h<sub>θ</sub>(x)_ 即为： _h<sub>Θ</sub>(x)=g(-30+20x<sub>1</sub>+20x<sub>2</sub>)_
@@ -181,33 +181,33 @@
 
 OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/aa27671f7a3a16545a28f356a2fb98c0.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/aa27671f7a3a16545a28f356a2fb98c0.png" />
 </p>
 ---
 二元逻辑运算符（BINARY LOGICAL OPERATORS）当输入特征为布尔值（0或1）时，我们可以用一个单一的激活层可以作为二元逻辑运算符，为了表示不同的运算符，我们只需要选择不同的权重即可。
 
 下图的神经元（三个权重分别为-30，20，20）可以被视为作用同于逻辑与（AND）：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/57480b04956f1dc54ecfc64d68a6b357.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/57480b04956f1dc54ecfc64d68a6b357.jpg" />
 </p>
 下图的神经元（三个权重分别为-10，20，20）可以被视为作用等同于逻辑或（OR）：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/7527e61b1612dcf84dadbcf7a26a22fb.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/7527e61b1612dcf84dadbcf7a26a22fb.jpg" />
 </p>
 下图的神经元（两个权重分别为 10，-20）可以被视为作用等同于逻辑非（NOT）：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/1fd3017dfa554642a5e1805d6d2b1fa6.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/1fd3017dfa554642a5e1805d6d2b1fa6.jpg" />
 </p>
 
 可以利用神经元来组合更为复杂的神经网络以实现复杂的运算。例如要实现XNOR功能（输入的两个值必须一样，均为1或均为0），即 _XNOR=(x<sub>1</sub>,AND,x<sub>2</sub>) OR((NOT,x<sub>1</sub>) AND(NOT,x<sub>2</sub>))_
 1. 首先构造一个能表达 _(NOT,x<sub>1</sub>)AND(NOT,x<sub>2</sub>)_ 部分的神经元：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/4c44e69a12b48efdff2fe92a0a698768.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/4c44e69a12b48efdff2fe92a0a698768.jpg" />
 </p>
 
 2. 然后将表示AND的神经元和表示 _(NOT,x<sub>1</sub>)AND(NOT,x<sub>2</sub>)_ 的神经元以及表示OR的神经元进行组合：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/432c906875baca78031bd337fe0c8682.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/432c906875baca78031bd337fe0c8682.jpg" />
 </p>
 
 这样就得到了一个 _XNOR_ 运算符功能的神经网络。按这种思路你可以逐渐构造出越来越复杂的函数和特征值。这就是神经网络的厉害之处。
@@ -230,16 +230,16 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 
 下面是该神经网络的可能结构示例：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f3236b14640fa053e62c73177b3474ed.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/f3236b14640fa053e62c73177b3474ed.jpg" />
 </p>
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/685180bf1774f7edd2b0856a8aae3498.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/685180bf1774f7edd2b0856a8aae3498.png" />
 </p>
 
 神经网络算法的输出结果为四种可能情形之一：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5e1a39d165f272b7f145c68ef78a3e13.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/5e1a39d165f272b7f145c68ef78a3e13.png" />
 </p>
 
 ## 反向传播 Backpropagation
@@ -256,7 +256,7 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 
 也可以参考下图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/8f7c28297fc9ed297f42942018441850.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/8f7c28297fc9ed297f42942018441850.jpg" />
 </p>
 
 我们回顾逻辑回归问题中我们的代价函数为：
@@ -284,10 +284,10 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 
 前向传播算法：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/2ea8f5ce4c3df931ee49cf8d987ef25d.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/2ea8f5ce4c3df931ee49cf8d987ef25d.jpg" />
 </p>
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/6a0954ad41f959d7f272e8f53d4ee2de.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/6a0954ad41f959d7f272e8f53d4ee2de.jpg" />
 </p>
 
 由于反向传播使用梯度下降法，需要计算平方误差函数（MSE）对网络权重的导数：
@@ -354,7 +354,7 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 
 那么上面的算法可以描述为：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5514df14ebd508fd597e552fbadcf053.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/5514df14ebd508fd597e552fbadcf053.jpg" />
 </p>
 
 即首先用正向传播方法计算出每一层的激活单元，利用训练集的结果与神经网络预测的结果求出最后一层的误差，然后利用该误差运用反向传播法计算出直至第二层的所有误差。
@@ -367,12 +367,12 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 #### 反向传播算法的直观理解
 前向传播算法：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/63a0e4aef6d47ba7fa6e07088b61ae68.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/63a0e4aef6d47ba7fa6e07088b61ae68.png" />
 </p>
 
 反向传播算法做的是：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/1542307ad9033e39093e7f28d0c7146c.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/1542307ad9033e39093e7f28d0c7146c.png" />
 </p>
 
 ### 梯度检验 Gradient Checking
@@ -383,7 +383,7 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 对梯度的估计采用的方法是在代价函数上沿着切线的方向选择离两个非常近的点，然后计算两个点的平均值用以估计梯度。即对于某个特定的 _θ_ ，我们计算出在 _θ_ - _ϵ_ 处和 _θ_ + _ϵ_ 的代价值（ _ϵ_ 是一个非常小的值，通常选取0.001），然后求两个代价的平均，用以估计在 _θ_ 处的代价值。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5d04c4791eb12a74c843eb5acf601400.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/5d04c4791eb12a74c843eb5acf601400.png" />
 </p>
 
 ``` python
@@ -443,14 +443,14 @@ Theta1 = np.random.rand(10, 11) * (2*eps) – eps
 （上面的视频是Youtube的，如果无法翻墙的暂无墙内地址..）
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/cea3f9a181d326681cd7d6ceaf4f2e46.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/cea3f9a181d326681cd7d6ceaf4f2e46.png" />
 </p>
 在图中你依稀能看出一条道路，朝左延伸了一点，又向右了一点，然后上面的这幅图，你可以看到一条水平的菜单栏显示的是驾驶操作人选择的方向。就是这里的这条白亮的区段显示的就是人类驾驶者选择的方向。比如：最左边的区段，对应的操作就是向左急转，而最右端则对应向右急转的操作。因此，稍微靠左的区段，也就是中心稍微向左一点的位置，则表示在这一点上人类驾驶者的操作是慢慢的向左拐。
 
 这幅图的第二部分对应的就是学习算法选出的行驶方向。并且，类似的，这一条白亮的区段显示的就是神经网络在这里选择的行驶方向，是稍微的左转，并且实际上在神经网络开始学习之前，你会看到网络的输出是一条灰色的区段，就像这样的一条灰色区段覆盖着整个区域这些均称的灰色区域，显示出神经网络已经随机初始化了，并且初始化时，我们并不知道汽车如何行驶，或者说我们并不知道所选行驶方向。只有在学习算法运行了足够长的时间之后，才会有这条白色的区段出现在整条灰色区域之中。显示出一个具体的行驶方向这就表示神经网络算法，在这时候已经选出了一个明确的行驶方向，不像刚开始的时候，输出一段模糊的浅灰色区域，而是输出一条白亮的区段，表示已经选出了明确的行驶方向。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/56441d35d8bd4ecfd6d6f32b651c54a6.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/56441d35d8bd4ecfd6d6f32b651c54a6.png" />
 </p>
 ALVINN (Autonomous Land Vehicle In a Neural Network)是一个基于神经网络的智能系统，通过观察人类的驾驶来学习驾驶，ALVINN能够控制NavLab，装在一辆改装版军用悍马，这辆悍马装载了传感器、计算机和驱动器用来进行自动驾驶的导航试验。实现ALVINN功能的第一步，是对它进行训练，也就是训练一个人驾驶汽车。
 

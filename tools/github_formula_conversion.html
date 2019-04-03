@@ -219,8 +219,7 @@ $(document).ready(function(){
     $("#output").select();
     document.execCommand("copy");
 
-    $("#input").val("");
-    $("#input").select();
+    $("#input").focus();
     $("#preview").html(output);
   }
 

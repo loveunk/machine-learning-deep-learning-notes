@@ -23,13 +23,13 @@
 一个简单的例子如下，把二维（ _x<sub>1</sub>_,  _x<sub>2</sub>_）映射到图中直线上，因而可以用一维数据来表示：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/8274f0c29314742e9b4f15071ea7624a.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/8274f0c29314742e9b4f15071ea7624a.png" />
 </p>
 
 稍微复杂点的例子，把三位数据映射到一个平面上，因而可以用二维坐标来表示：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/67e2a9d760300d33ac5e12ad2bd5523c.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/67e2a9d760300d33ac5e12ad2bd5523c.jpg" />
 </p>
 
 类似的处理过程可以用来把任何维度 (_m_) 的数据降到任何想要的维度 (_n_)，例如将1000维的特征降至100维。
@@ -39,12 +39,12 @@
 
 例如有许多国家的数据，每一个特征向量都有50个特征（如GDP，人均GDP，平均寿命等）。如果要将50维数据可视化是不现实的。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/789d90327121d3391735087b9276db2a.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/789d90327121d3391735087b9276db2a.png" />
 </p>
 
 而使用降维的方法将其降至2维，我们便可以将其可视化了。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ec85b79482c868eddc06ba075465fbcf.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/ec85b79482c868eddc06ba075465fbcf.png" />
 </p>
 
 ## PCA 主成分分析问题
@@ -56,7 +56,7 @@ PCA是其中一个很常见的方法。
 方向向量是一个经过原点的向量，而投射误差是从特征向量向该方向向量作垂线的长度。如下图中蓝色线段所示：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/a93213474b35ce393320428996aeecd9.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/a93213474b35ce393320428996aeecd9.jpg" />
 </p>
 
 **问题描述：**
@@ -65,7 +65,7 @@ PCA是其中一个很常见的方法。
 对于上图的例子，看起来是不是很像线性回归？
 但PCA和线性回归是不同的算法。PCA最小化的是投射误差（Projected Error），而线性回归最小化的是预测误差。线性回归的目的是预测结果，而主成分分析不作任何预测。下左图是线性回归的误差（垂直于横轴投影），下右图是PCA的误差（垂直于红线投影）：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/7e1389918ab9358d1432d20ed20f8142.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/7e1389918ab9358d1432d20ed20f8142.png" />
 </p>
 
 PCA将 _n_ 个特征降维到 _k_ 个，可以用来数据压缩，如果100维的向量最后用10维来表示，那么压缩率为90%。同样图像处理领域的KL变换使用PCA做图像压缩。但PCA要保证降维后，还要保证数据的特性损失最小。
@@ -102,7 +102,7 @@ U, S, vh = np.linalg.svd(a) # ((3, 3), (3,), (3, 3))
 其中 _U_ 是特征向量、 _S_ 是特征值。其实 _S_ 是按照特征值从大到小排序的，U的每一列 _u<sub>j</sub>_ 与对应位置的 _s<sub>j</sub>_ 对应的特征向量。其中 _U<sup>T</sup>U = I_。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/0918b38594709705723ed34bb74928ba.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/0918b38594709705723ed34bb74928ba.png" />
 </p>
 
 所以，如果要把数据从 _n_ 维映射到 _k_ 维，只需要取特征向量 _U_ 的前 _k_ 维度列向量，构成映射矩阵 _U<sub>reduce</sub> = U[:, k]_。
@@ -122,7 +122,7 @@ _z = U<sup>T</sup><sub>reduce</sub> * x_ 即为映射后的数据，其中 _x_ �
 
 下图中为一个恢复的例子：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/66544d8fa1c1639d80948006f7f4a8ff.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/66544d8fa1c1639d80948006f7f4a8ff.png" />
 </p>
 
 **关于PCA更多的推导和证明：**请见[这里](../../math/pca.md)
@@ -155,7 +155,7 @@ _z = U<sup>T</sup><sub>reduce</sub> * x_ 即为映射后的数据，其中 _x_ �
 
 其中的 _S_ 是一个 _n×n_ 的矩阵，只有对角线上有值，而其它单元都是0（如下图）。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/a4477d787f876ae4e72cb416a2cb0b8a.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/a4477d787f876ae4e72cb416a2cb0b8a.jpg" />
 </p>
 
 可以用这个矩阵来计算平均均方误差与训练集方差的比例：

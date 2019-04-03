@@ -23,7 +23,7 @@
 
 这样就有了一个数据集，从 _x<sup>(1)</sup>_ 到 _x<sup>(m)</sup>_ ，如果生产了 _m_ 个引擎的话，将这些数据绘制成图表，看起来就是这个样子：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/fe4472adbf6ddd9d9b51d698cc750b68.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/fe4472adbf6ddd9d9b51d698cc750b68.png" />
 </p>
 
 上图中的每个点（红叉），都是无标签数据。
@@ -37,7 +37,7 @@
 所构建的模型应能根据该测试数据的位置告诉其属于一组数据的可能性 _p(x)_ 。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/65afdea865d50cba12d4f7674d599de5.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/65afdea865d50cba12d4f7674d599de5.png" />
 </p>
 
 上图中，在蓝色圈内的数据属于该组数据的可能性较高，而越是偏远的数据，其属于该组数据的可能性就越低。
@@ -69,7 +69,7 @@
 
 高斯分布样例：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/fcb35433507a56631dde2b4e543743ee.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/fcb35433507a56631dde2b4e543743ee.png" />
 </p>
 
 机器学习中对于方差通常只除以 _m_ 而非统计学中的 _(m-1)_ 。
@@ -95,12 +95,12 @@
 
 下图这个例子是一个由两个特征的训练集，以及特征的分布情况：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ba47767a11ba39a23898b9f1a5a57cc5.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/ba47767a11ba39a23898b9f1a5a57cc5.png" />
 </p>
 
 下面的三维图表表示的是密度估计函数， _z_ 轴为根据两个特征的值所估计 _p(x)_ 值：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/82b90f56570c05966da116c3afe6fc91.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/82b90f56570c05966da116c3afe6fc91.jpg" />
 </p>
 
 选择一个 _ϵ_ ，将 _p(x)=ϵ_ 作为判定边界，当 _p(x) > ϵ_ 时预测数据为正常数据，否则为异常。
@@ -144,7 +144,7 @@
 * 在 `Python` 中，通常用 `np.log1p()`函数，`log1p()` 就是 `log(x+1)` ，可以避免出现负数结果，反向函数是`np.expm1()`。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/0990d6b7a5ab3c0036f42083fe2718c6.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/0990d6b7a5ab3c0036f42083fe2718c6.jpg" />
 </p>
 
 ### 误差分析
@@ -170,7 +170,7 @@
 其原因在于，一般的高斯分布模型尝试的是去同时抓住两个特征的偏差，因此创造出一个比较大的判定边界。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/598db991a7c930c9021cec5f6ab9beb9.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/598db991a7c930c9021cec5f6ab9beb9.png" />
 </p>
 
 上图中是两个相关特征，洋红色的线（根据 _ε_ 的不同其范围可大可小）是一般的高斯分布模型获得的判定边界，很明显绿色的 _X_ 所代表的数据点很可能是异常值，但是其 _p(x)_ 值却仍然在正常范围内。多元高斯分布将创建像图中蓝色曲线所示的判定边界。
@@ -197,7 +197,7 @@
 
 下面看看协方差矩阵是如何影响模型的：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/29df906704d254f18e92a63173dd51e7.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/29df906704d254f18e92a63173dd51e7.jpg" />
 </p>
 
 上图是5个不同的模型，从左往右依次分析：
@@ -224,7 +224,7 @@
 先回顾一下多元高斯分布和多元正态分布：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/3dbee365617e9264831400e4de247adc.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/3dbee365617e9264831400e4de247adc.png" />
 </p>
 
 上面的多元高斯分布公式中有两个参数， _μ_ 和 _Σ_ 。
@@ -242,7 +242,7 @@
 </p>
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/d1a228f2bec262f2206379ed844c7f4a.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/d1a228f2bec262f2206379ed844c7f4a.png" />
 </p>
 
 1. 首先，根据训练集计算 _μ_ 和 _Σ_；
@@ -250,7 +250,7 @@
 3. 比较 _p(x)_ 和 _ϵ_；
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/015cee3a224dde6da0181215cf91a23d.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/015cee3a224dde6da0181215cf91a23d.png" />
 </p>
 
 如图
@@ -260,7 +260,7 @@
 
 几个二元高斯分布和的协方差矩阵 _Σ_ 的关系图如下：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/7104dd2548f1251e4c423e059d1d2594.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/7104dd2548f1251e4c423e059d1d2594.png" />
 </p>
 
 如上图，如果多元高斯分布模型的 _Σ_ 仅对角线上的元素为非零值，那么它就是与原始高斯分布模型一样。

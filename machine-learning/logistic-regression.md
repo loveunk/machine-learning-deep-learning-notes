@@ -32,7 +32,7 @@
 
 对于肿瘤分类是否为良性的问题：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f86eacc2a74159c068e82ea267a752f7.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/f86eacc2a74159c068e82ea267a752f7.png" />
 </p>
 
 对于二分类问题，_y_ 取值为 0 或者1，但如果使用的是线性回归，那么 _h_ 的输出值可能 远大于1，或者远小于。但数据的标签应该取值0 或者1。所以在接下来的要研究一种新算法**逻辑回归算法**，这个算法的性质是：它的输出值永远在0到 1 之间。
@@ -55,7 +55,7 @@
 
 逻辑函数的示意图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/1073efb17b0d053b4f9218d4393246cc.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/1073efb17b0d053b4f9218d4393246cc.jpg" />
 </p>
 
 Python实现：
@@ -70,7 +70,7 @@ _h<sub>θ</sub>(x)_ 的作用，给定输入变量，计算输出变量 = 1的�
 
 ## 边界判定
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/6590923ac94130a979a8ca1d911b68a3.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/6590923ac94130a979a8ca1d911b68a3.png" />
 </p>
 
 * 当 _h<sub>θ</sub>(x) >= 0.5_ 时，预测 _y=1_。
@@ -87,17 +87,17 @@ _h<sub>θ</sub>(x)_ 的作用，给定输入变量，计算输出变量 = 1的�
 * 假设现在有一个模型，参数 _θ_ 是向量[-3 1 1]。则当 _-3+x<sub>1</sub>+x<sub>2</sub> >= 0_ ，即 _x<sub>1</sub>+x<sub>2</sub> >= 3_ 时，模型将预测 _y=1_ 。我们可以绘制直线 _x<sub>1</sub>+x<sub>2</sub>=3_ ，这条线便是我们模型的分界线，将预测为1的区域和预测为0的区域分隔开。
 如下图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/58d098bbb415f2c3797a63bd870c3b8f.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/58d098bbb415f2c3797a63bd870c3b8f.png" />
 </p>
 
 分类的示意图如下：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f71fb6102e1ceb616314499a027336dc.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/f71fb6102e1ceb616314499a027336dc.jpg" />
 </p>
 
 上面的例子还是很明显的，来一个复杂一点的：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/197d605aa74bee1556720ea248bab182.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/197d605aa74bee1556720ea248bab182.jpg" />
 </p>
 
 上图中的数据需要用曲线才能分隔 _y=0_ 区域和 _y=1_ 区域。
@@ -106,7 +106,7 @@ _y = 0_ 区域接近一个圆形，选用二次多项式： _h<sub>θ</sub>(x)=g
 ## 代价函数
 对于一个模型，如何选取参数 _θ_ 了？
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f23eebddd70122ef05baa682f4d6bd0f.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/f23eebddd70122ef05baa682f4d6bd0f.png" />
 </p>
 
 首先要定义用来拟合参数的优化目标或者叫代价函数，这便是监督学习问题中的逻辑回归模型的拟合问题。
@@ -115,7 +115,7 @@ _y = 0_ 区域接近一个圆形，选用二次多项式： _h<sub>θ</sub>(x)=g
 
 凸函数和非凸函数的示意如下：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/8b94e47b7630ac2b0bcb10d204513810.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/8b94e47b7630ac2b0bcb10d204513810.jpg" />
 </p>
 
 加入代价函数 _J_ 是非凸函数，意味着有许多局部最小值（见上图左图），这将影响梯度下降算法寻找全局最小值。
@@ -132,7 +132,7 @@ _y = 0_ 区域接近一个圆形，选用二次多项式： _h<sub>θ</sub>(x)=g
 
  _h<sub>θ</sub>(x)_ 与 _Cost(h<sub>θ</sub>(x),y)_ 之间的关系如下图所示：
  <p align="center">
- <img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ffa56adcc217800d71afdc3e0df88378.jpg" />
+ <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/ffa56adcc217800d71afdc3e0df88378.jpg" />
  </p>
 
 这样构建的 _Cost(h<sub>θ</sub>(x),y)_ 函数的特点是：当实际的 _y=1_ 且 _h<sub>θ</sub>(x)_ 也为1时误差为0，当 _y=1_ 但 _h<sub>θ</sub>(x)_ 不为1时误差随着 _h<sub>θ</sub>(x)_ 变小而变大；当实际的 _y=0_ 且 _h<sub>θ</sub>(x)_ 也为0时代价为0，当 _y=0_ 但 _h<sub>θ</sub>(x)_ 不为0时误差随着 _h<sub>θ</sub>(x)_ 的变大而变大。
@@ -283,7 +283,7 @@ plt.show()
 
 对于一个多类分类问题，我们的数据集或许看起来像下图的右图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/54d7903564b4416305b26f6ff2e13c04.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/54d7903564b4416305b26f6ff2e13c04.png" />
 </p>
 
 
@@ -293,12 +293,12 @@ plt.show()
 
 如下图，训练集有3个类别，用三角形表示 _y=1_ ，方框表示 _y=2_ ，叉叉表示 _y=3_ 。我们下面要做的就是使用一个训练集，将其分成3个二元分类问题。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/450a83c67732d254dbac2aeeb8ab910c.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/450a83c67732d254dbac2aeeb8ab910c.png" />
 </p>
 
 我们先从用三角形代表的类别1开始，实际上我们可以创建一个，新的"伪"训练集，类型2和类型3定为负类，类型1设定为正类，我们创建一个新的训练集，如下图所示的那样，我们要拟合出一个合适的分类器。见下图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/b72863ce7f85cd491e5b940924ef5a5f.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/b72863ce7f85cd491e5b940924ef5a5f.png" />
 </p>
 
 这里的三角形是正样本，而圆形代表负样本。可以这样想，设置三角形的值为1，圆形的值为0，下面我们来训练一个标准的逻辑回归分类器，这样我们就得到一个正边界。
@@ -316,14 +316,14 @@ plt.show()
 如果我们有非常多的特征，我们通过学习得到的假设可能能够非常好地适应训练集（代价函数可能几乎为0），但是可能会不能推广到新的数据。下图是一个回归问题的例子：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/72f84165fbf1753cd516e65d5e91c0d3.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/72f84165fbf1753cd516e65d5e91c0d3.jpg" />
 </p>
 
 上图中，第一个是线性模型，明显欠拟合（under-fitting），因为不能很好地适应训练集；第三个模型是一个四次方的模型，过于强调拟合原始数据，而丢失了算法的本质：预测新数据。可以看出，若给出一个新的值使之预测，它将表现的很差，是过拟合，虽然能非常好地适应训练集，但在新输入变量进行预测时可能效果不好；而中间的模型最合适。
 
 分类问题中也存在这样的问题：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/be39b497588499d671942cc15026e4a2.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/be39b497588499d671942cc15026e4a2.jpg" />
 </p>
 
 就以多项式理解， _x_ 的次数越高，拟合的越好，但相应的预测的能力就可能变差。
@@ -346,7 +346,7 @@ plt.show()
 其中 _\lambda_ 又称为**正则化参数**（**RegularizationParameter**）。注：根据惯例，不对 _θ<sub>0</sub>_ 惩罚。经过正则化处理的模型与原模型的可能对比如下图所示：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ea76cc5394cf298f2414f230bcded0bd.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/ea76cc5394cf298f2414f230bcded0bd.jpg" />
 </p>
 
 如果选择的正则化参数 _λ_ 过大，则会把所有的参数都最小化了，导致模型变成 _h<sub>θ</sub>(x)=θ<sub>0</sub>_ ，也就是上图中红色直线所示的情况，造成欠拟合。那为什么增加的一项 _λ=Σ<sup>n</sup><sub>j=1</sub>θ<sub>j</sub><sup>2</sup>_ 可以使 _θ_ 的值减小呢？
@@ -377,7 +377,7 @@ plt.show()
 
 我们同样也可以利用正规方程来求解正则化线性回归模型，方法如下所示：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/71d723ddb5863c943fcd4e6951114ee3.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/71d723ddb5863c943fcd4e6951114ee3.png" />
 </p>
 
 图中的矩阵尺寸为 _(n+1)*(n+1)_ 。
@@ -414,7 +414,7 @@ plt.show()
 
 例如对于下图的数据，当有很多features时，容易导致过拟合。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/2726da11c772fc58f0c85e40aaed14bd.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/2726da11c772fc58f0c85e40aaed14bd.png" />
 </p>
 
 类似线性回归正则的处理，我们也给代价函数增加一个正则化的表达式，得到代价函数：

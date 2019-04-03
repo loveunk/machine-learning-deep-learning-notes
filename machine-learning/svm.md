@@ -18,7 +18,7 @@
 ## 优化目标
 为了描述SVM，我们先从逻辑回归开始展示如何一点一点修改来得到SVM：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/3d12b07f13a976e916d0c707fd03153c.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/3d12b07f13a976e916d0c707fd03153c.png" />
 </p>
 
 在逻辑回归中我们已经熟悉了这里的假设函数形式，和右边的S型激励函数。
@@ -32,7 +32,7 @@
     * 这对应于 _θ<sup>T</sup>x << 0_ ，或者就是 _z << 0_，因为对应的假设函数的输出值趋近0。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/66facb7fa8eddc3a860e420588c981d5.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/66facb7fa8eddc3a860e420588c981d5.png" />
 </p>
 
 对于逻辑回归的代价函数，考虑两种情况：
@@ -49,7 +49,7 @@
 * 右边的函数称为 _cost<sub>0</sub>(z)_ 。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/59541ab1fda4f92d6f1b508c8e29ab1c.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/59541ab1fda4f92d6f1b508c8e29ab1c.png" />
 </p>
 
 因此，对于SVM，我们得到了这里的最小化问题，即:
@@ -68,7 +68,7 @@
 从直观的角度看看优化目标，实际上是在做什么，以及SVM的假设函数将会学习什么，同时也会谈谈如何做些许修改，学习更加复杂、非线性的函数。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/cc66af7cbd88183efc07c8ddf09cbc73.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/cc66af7cbd88183efc07c8ddf09cbc73.png" />
 </p>
 
 这是SVM模型的代价函数，横轴表示 _z_ ：
@@ -93,7 +93,7 @@
 具体而言，接下来考虑一个特例。将这个常数 _C_ 设置成一个非常大的值。比如我们假设 _C = 100000_，然后观察SVM会给出什么结果？
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/12ebd5973230e8fdf279ae09e187f437.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/12ebd5973230e8fdf279ae09e187f437.png" />
 </p>
 
 如果 _C_ 非常大，则最小化代价函数的时候，我们将会很希望找到一个使第一项为0的最优解。因此，让我们尝试在代价项的第一项为0的情形下理解该优化问题。比如我们可以把$C$设置成了非常大的常数，这将给我们一些关于SVM模型的直观感受。
@@ -111,7 +111,7 @@
 ---
 具体而言，如果你考察这样一个数据集，其中有正样本，也有负样本，可以看到这个数据集是线性可分的。我的意思是，存在一条直线把正负样本分开。当然有多条不同的直线，可以把正样本和负样本完全分开。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/01105c3afd1315acf0577f8493137dcc.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/01105c3afd1315acf0577f8493137dcc.png" />
 </p>
 
 上图的例子，画了很多条决策边界，都可以将正样本和负样本分开。但绿色和红色的仅仅是勉强分开，看起来都不是特别好的选择。
@@ -122,7 +122,7 @@
 数学上来讲，这条黑线有更大的距离，这个距离叫做**间距（margin）**。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/e68e6ca3275f433330a7981971eb4f16.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/e68e6ca3275f433330a7981971eb4f16.png" />
 </p>
 
 当画出这两条额外的蓝线，看到黑色的决策界和训练样本之间有更大的最短距离。
@@ -131,13 +131,13 @@
 ---
 上面的例子中将大间距分类器中的正则化因子常数 _C_ 设置的非常大（100000），因此对这样的一个数据集，也许我们将选择这样的决策界，从而最大间距地分离开正样本和负样本。那么在让代价函数最小化的过程中，我们希望找出在 _y=1_ 和 _y=0_ 两种情况下都使得代价函数中左边的这一项尽量为零的参数。如果我们找到了这样的参数，则我们的最小化问题便转变成：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f4b6dee99cfb4352b3cac5287002e8de.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/f4b6dee99cfb4352b3cac5287002e8de.png" />
 </p>
 
 事实上，SVM现在要比这个大间距分类器所体现得更成熟，尤其是当你使用大间距分类器的时候，你的学习算法会受异常点(outlier)的影响。比如我们加入一个额外的正样本。如下图：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/b8fbe2f6ac48897cf40497a2d034c691.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/b8fbe2f6ac48897cf40497a2d034c691.png" />
 </p>
 
 为了将样本用最大间距分开，也许最终会得到一条上图粉色的决策界
@@ -154,7 +154,7 @@ _C_ 的作用类似于 _1/λ_ ， _λ_ 是我们之前使用过的正则化参�
 
 ## 大边界分类背后的数学
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/55e05845c636c8c99c03e6e29337d8c4.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/55e05845c636c8c99c03e6e29337d8c4.png" />
 </p>
 
 先复习一下向量内积：假设有两个向量， _u_ 和 _v_ ，两个都是二维向量， _u<sup>T</sup>v_ 的结果 _u<sup>T</sup>v_ 也叫做向量 _u_ 和 _v_ 之间的内积。
@@ -183,12 +183,12 @@ _u_ 和 _v_ 之间的内积
 * _u<sup>T</sup>v = v<sup>T</sup>u = p·‖u‖_
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/44ad37bce4b7e03835095dccbd2a7b7a.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/44ad37bce4b7e03835095dccbd2a7b7a.png" />
 </p>
 ---
 根据此前讨论，下图列出SVM的目标函数：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/03bd4b3ff69e327f7949c3d2a73eed8a.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/03bd4b3ff69e327f7949c3d2a73eed8a.png" />
 </p>
 
 先忽略掉截距，令 _θ<sub>0</sub>=0_ ，这样更容易画示意图。
@@ -201,7 +201,7 @@ _u_ 和 _v_ 之间的内积
 
 _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示意图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/4510b8fbc90ba2b233bb6996529f2df1.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/4510b8fbc90ba2b233bb6996529f2df1.png" />
 </p>
 
 上面的示意图里，用一红叉表示正样本 _x<sup>(i)</sup>​_
@@ -221,13 +221,13 @@ _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示�
 
 ---
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/912cb43058cee46ddf51598b7538968c.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/912cb43058cee46ddf51598b7538968c.png" />
 </p>
 
 现在考虑上图中的训练样本。继续使用之前的简化，即 _θ<sub>0</sub>=0_ ，来看下SVM会选择什么样的决策界。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/20725ba601c1c90d1024e50fc24c579b.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/20725ba601c1c90d1024e50fc24c579b.png" />
 </p>
 上图左图中绿色直线可以是一种边界的选择。假设SVM选择了这个决策边界。当然这是不好的选择，因为它的间距很小。这个决策界离训练样本的距离很近。我们来看一下为什么SVM不会选择它。
 
@@ -245,7 +245,7 @@ _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示�
 
 ---
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/5eab58ad9cb54b3b6fda8f6c96efff24.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/5eab58ad9cb54b3b6fda8f6c96efff24.png" />
 </p>
 
 相反的，看一个不同的决策边界。
@@ -280,7 +280,7 @@ _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示�
 
 之前讨论过可以使用```高级数的多项式模型```来解决无法用```直线```进行分隔的分类问题，如下图的分类问题：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/529b6dbc07c9f39f5266bd0b3f628545.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/529b6dbc07c9f39f5266bd0b3f628545.png" />
 </p>
 
 为了获得上图所示的判定边界，我们的模型可能是 _θ<sub>0</sub>+θ<sub>1</sub>x1+θ<sub>2</sub>x2+θ<sub>3</sub>x1x2+θ<sub>4</sub>x1<sup>2</sup>+θ<sub>5</sub>x2<sup>2</sup>+ ..._ 的形式。
@@ -294,7 +294,7 @@ _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示�
 ---
 给定一个训练样本 _x_ ，我们利用 _x_ 的各个特征与我们预先选定的地标(landmarks) _l<sup>(1)</sup>, l<sup>(2)</sup>, l<sup>(3)</sup>_ 的近似程度来选取新的特征 _f<sub>1</sub>, f<sub>2</sub>, f<sub>3</sub>_ 。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/2516821097bda5dfaf0b94e55de851e0.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/2516821097bda5dfaf0b94e55de851e0.png" />
 </p>
 
 例如：
@@ -316,7 +316,7 @@ _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示�
 假设我们的训练样本含有两个特征 _[x<sub>1</sub> x<sub>2</sub>]_，给定地标 _l<sup>(1)</sup>_ 与不同的 _σ_，见下图：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/b9acfc507a54f5ca13a3d50379972535.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/b9acfc507a54f5ca13a3d50379972535.jpg" />
 </p>
 
 图中水平左边为 _x<sub>1</sub>,x<sub>2</sub>_，z轴代表 _f_。可以总结出：
@@ -324,7 +324,7 @@ _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示�
 * 随着x的变化，f值改变的速率受到 _σ<sub>2</sub>_ 的控制
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/3d8959d0d12fe9914dc827d5a074b564.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/3d8959d0d12fe9914dc827d5a074b564.jpg" />
 </p>
 
 举个例子，在上图中，有三个样本点：
@@ -341,11 +341,11 @@ _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示�
 
 这样做的好处在于：现在我们得到的新特征是建立在原有特征与训练集中所有其他特征之间距离的基础之上的，即：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/eca2571849cc36748c26c68708a7a5bd.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/eca2571849cc36748c26c68708a7a5bd.png" />
 </p>
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ea31af620b0a0132fe494ebb4a362465.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/ea31af620b0a0132fe494ebb4a362465.png" />
 </p>
 
 下面将核函数运用到SVM中，修改SVM假设为：

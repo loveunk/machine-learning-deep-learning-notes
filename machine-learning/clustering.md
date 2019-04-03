@@ -32,17 +32,17 @@ K-Means是一个迭代算法，假设我们想要将数据聚类成 _n_ 个组�
 
 第一步，随机选择三个初始点（蓝色叉的位置），并依次计算每个数据点距离哪个初始点的位置最近。其实被聚类的数据分别标识红色绿色和蓝色：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/ff1db77ec2e83b592bbe1c4153586120.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/ff1db77ec2e83b592bbe1c4153586120.jpg" />
 </p>
 
 重新计算了一次中心点，并且重新对每个数据划分类之后，再次计算了中心点。结果如下图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/acdb3ac44f1fe61ff3b5a77d5a4895a1.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/acdb3ac44f1fe61ff3b5a77d5a4895a1.jpg" />
 </p>
 
 之后，再次对每个数据计算其所属分类，并重新计算中心点，重复这个过程两次后就得到下图的结果。可以看到分类效果还是不错的。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/fe6dd7acf1a1eddcd09da362ecdf976f.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/fe6dd7acf1a1eddcd09da362ecdf976f.jpg" />
 </p>
 
 下面，将算法用代码表示：
@@ -86,7 +86,7 @@ K-Means算法，第一个循环是用于减小 _c<sup>(i)</sup>_ 引起的代价
 
 K-Means的一个问题在于，它有可能会停留在一个局部最小值处，而这取决于初始化的情况。例如下图的情况：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/d4d2c3edbdd8915f4e9d254d2a47d9c7.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/d4d2c3edbdd8915f4e9d254d2a47d9c7.png" />
 </p>
 
 为了解决 局部最小化 的问题，通常需要多次运行K-K-Means算法，每次都重新进行随机初始化，最后再比较多次运行K-Means的结果，选择代价函数最小的结果。
@@ -105,7 +105,7 @@ K-Means的一个问题在于，它有可能会停留在一个局部最小值处�
  _K_ 代表聚类数字。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f3ddc6d751cab7aba7a6f8f44794e975.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/f3ddc6d751cab7aba7a6f8f44794e975.png" />
 </p>
 
 应用这种方法，可能会得到一条类似于左上图这样的曲线。像一个人的肘部。

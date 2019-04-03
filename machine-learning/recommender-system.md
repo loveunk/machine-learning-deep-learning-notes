@@ -7,8 +7,8 @@
 	- [基于内容的推荐系统](#基于内容的推荐系统)
 		- [代价函数](#代价函数)
 		- [协同过滤](#协同过滤)
-		- [协同过滤算法](#协同过滤算法)
-		- [向量化：低秩矩阵分解](#向量化低秩矩阵分解)
+		- [协同过滤算法总结](#协同过滤算法总结)
+		- [协同过滤向量化实现：低秩矩阵分解](#协同过滤向量化实现低秩矩阵分解)
 		- [均值归一化](#均值归一化)
 
 <!-- /TOC -->
@@ -28,7 +28,7 @@
 假使一个电影供应商，有 5 部电影和 4 个用户，要求用户为电影打分。前三部电影是爱情片，后两部则是动作片。可以看出Alice和Bob更倾向与爱情片， 而 Carol 和 Dave 似乎更倾向与动作片。并且没有用户给所有的电影都打过分。希望构建一个算法来预测每个人可能会给没看过的电影打多少分，并以此作为推荐的依据。
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/c2822f2c28b343d7e6ade5bd40f3a1fc.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/c2822f2c28b343d7e6ade5bd40f3a1fc.png" />
 </p>
 
 在讨论解决方案前，定义如下符号：
@@ -44,7 +44,7 @@
 
 例子中，假设每部电影都有两个特征，如 _x<sub>1</sub>_ 代表电影的浪漫程度， _x<sub>2</sub>_ 代表电影的动作程度。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/747c1fd6bff694c6034da1911aa3314b.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/747c1fd6bff694c6034da1911aa3314b.png" />
 </p>
 
 则每部电影都有一个特征向量，如 _x<sup>(1)</sup>_ 是第一部电影的特征向量为[0.9 0]。
@@ -55,7 +55,13 @@
 * _θ<sup>(j)</sup>_ 用户 _j_ 的参数向量
 * _x<sup>(i)</sup>_ 电影 _i_ 的特征向量
 
-对于用户 _j_ 和电影 _i_ ，预测评分为： _(θ<sup>(j)</sup>)<sup>T</sup>x<sup>(i)</sup>_
+对于用户 _j_ 和电影 _i_ ，预测评分为： _(θ<sup>(j)</sup>)<sup>T</sup>x<sup>(i)</sup>_。
+
+这种方法的一个假设是每个用户会依据其对电影各个特征的喜好程度来给每个电影打分。其中：
+
+* 评分表 _(θ<sup>(j)</sup>)<sup>T</sup>x<sup>(i)</sup>_的维度：(n<sub>m</sub>, n<sub>u</sub>)
+* 电影特征 _X_的维度：(n<sub>m</sub>, n<sub>x</sub>)
+* 用户的喜好表 θ的维度：(n<sub>u</sub>, n<sub>x</sub>)
 
 ### 代价函数
 
@@ -116,18 +122,21 @@
 
 例如，如果一位用户正在观看电影 _x<sup>(i)</sup>_ ，算法可以寻找另一部电影 _x<sup>(j)</sup>_ ，依据两部电影的特征向量之间的距离 _‖x<sup>(i)</sup>-x<sup>(j)</sup>‖_ 的大小。
 
-### 协同过滤算法
+### 协同过滤算法总结
 
-协同过滤优化目标：
+总结协同过滤优化目标的三种情况：
 * 给定 _x<sup>(1)</sup>, ..., x<sup>(n<sub>m</sub>)</sup>_ ，估计 _θ<sup>(1)</sup>, ..., θ<sup>(n<sub>u</sub>)</sup>_ ：
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\min_{\theta^{(1)},...,\theta^{(n_u)}}\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2&plus;\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" title="\min_{\theta^{(1)},...,\theta^{(n_u)}}\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" />
 </p>
+* 给定 _θ<sup>(1)</sup>, ..., θ<sup>(n<sub>u</sub>)</sup>_ ，估计 _x<sup>(1)</sup>, ..., x<sup>(n<sub>m</sub>)</sup>_ ：
 
-给定 _θ<sup>(1)</sup>, ..., θ<sup>(n<sub>u</sub>)</sup>_ ，估计 _x<sup>(1)</sup>, ..., x<sup>(n<sub>m</sub>)</sup>_ ：
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\mathop{min}\limits_{x^{(1)},...,x^{(n_m)}}\frac{1}{2}\sum_{i=1}^{n_m}\sum_{j{r(i,j)=1}}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2&plus;\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2" title="\mathop{min}\limits_{x^{(1)},...,x^{(n_m)}}\frac{1}{2}\sum_{i=1}^{n_m}\sum_{j{r(i,j)=1}}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2" />
+</p>
 
-同时最小化 _x<sup>(1)</sup>, ..., x<sup>(n<sub>m</sub>)</sup>_ 和 _θ<sup>(1)</sup>, ..., θ<sup>(n<sub>u</sub>)</sup>_ ：
+* 同时最小化 _x<sup>(1)</sup>, ..., x<sup>(n<sub>m</sub>)</sup>_ 和 _θ<sup>(1)</sup>, ..., θ<sup>(n<sub>u</sub>)</sup>_ ：
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?J(x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})\\&space;=\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2&plus;\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2&plus;\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" title="J(x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})\\ =\frac{1}{2}\sum_{(i,j):r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" />
@@ -137,19 +146,18 @@
 <img src="https://latex.codecogs.com/gif.latex?\min_{x^{(1)},...,x^{(n_m)}&space;\theta^{(1)},...,\theta^{(n_u)}}J(x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})" title="\min_{x^{(1)},...,x^{(n_m)} \theta^{(1)},...,\theta^{(n_u)}}J(x^{(1)},...,x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})" />
 </p>
 
-### 向量化：低秩矩阵分解
+### 协同过滤的向量化实现：低秩矩阵分解
 
-有关该算法的向量化实现，以及说说有关该算法你可以做的其他事情。
+这里介绍有关协同过滤算法的向量化实现，和利用协同过滤可以做的其他事情，例如：
 
-举例子：
-1. 当给出一件产品时，你能否找到与之相关的其它产品。
-2. 一位用户最近看上一件产品，有没有其它相关的产品，你可以推荐给他。
+* 当给出一件产品时，你能否找到与之相关的其它产品。
+* 一位用户最近看上一件产品，有没有其它相关的产品，你可以推荐给他。
 
-我将要做的是：实现一种选择的方法，写出协同过滤算法的预测情况。
+我将要做的是，实现一种选择的方法，写出协同过滤算法的预测情况。
 
-有关于五部电影的数据集，我将要做的是，将这些用户的电影评分，进行分组并存到一个矩阵中。
+一个电影评分的例子，有关于一个电影的数据集，将这些用户的电影评分，进行分组并存到一个矩阵中。
 
-有五部电影，以及四位用户，那么这个矩阵 _Y_ 就是一个5行4列的矩阵，它将这些电影的用户评分数据都存在矩阵里：
+假设有五部电影、四位用户，那么这个矩阵 _Y_ 就是一个5行4列的矩阵，它将这些电影的用户评分数据都存在矩阵里：
 
 | **Movie**            | **Alice (1)** | **Bob (2)** | **Carol (3)** | **Dave (4)** |
 | -------------------- | ------------- | ----------- | ------------- | ------------ |
@@ -160,24 +168,29 @@
 | Swords vs. karate    | 0             | 0           | 5             | ?            |
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/42a92e07b32b593bb826f8f6bc4d9eb3.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/42a92e07b32b593bb826f8f6bc4d9eb3.png" />
 </p>
+
 
 推出评分：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/c905a6f02e201a4767d869b3791e8aeb.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/c905a6f02e201a4767d869b3791e8aeb.png" />
 </p>
+上面这个矩阵的计算只需要计算  _XΘ<sup>T</sup>_  即可，也就算是向量化的计算方法。
 
-找到相关影片：
+对于矩阵_XΘ<sup>T</sup>_，它有一个数学属性就是低秩（Low Rank），上述计算的逆过程（ _XΘ<sup>T</sup> = X * Θ<sup>T</sup>_ ）也可以理解为低秩矩阵分解，可参考[推荐阅读][1]。
 
-<p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/0a8b49da1ab852f2996a02afcaca2322.png" />
-</p>
+找到相关电影：
 
-现在已经对特征参数向量进行了学习，就会有一个很方便的方法来度量两部电影之间的相似性。
-例如：电影 _i_ 有一个特征向量 _x<sup>(i)</sup>_ ，是否能找到一部不同的电影 _j_ ，保证两部电影的特征向量之间的距离 _x<sup>(i)</sup>_ 和 _x<sup>(j)</sup>_ 很小，那就能很有力地表明电影 _i_ 和电影 _j_ 在某种程度上有相似，至少在某种意义上，某些人喜欢电影 _i_ ，或许更有可能也对电影 _j_ 感兴趣。
-总结一下，当用户在看某部电影 _i_ 的时候，如果你想找5部与电影非常相似的电影，为了能给用户推荐5部新电影，你需要做的是找出电影 _j_ ，在这些不同的电影中与要找的电影 _i_ 的距离最小，这样你就能给你的用户推荐几部不同的电影了。
+1. 对于每个影片 _i_，学习特征的向量 _x<sup>(i)</sup> ∈ R<sup>n</sup>_：
+   * 例如 _x<sub>1</sub> = 爱情片_， _x<sub>2</sub> = 动作片_，_x<sub>3</sub> = 喜剧片_，等等
+2. 给定电影 _j_，如何找到相关电影 _i_？
+   * 如果电影 _j_ 和电影 _i_的距离 _||x<sup>(i)</sup> - x<sup>(j)</sup>||_ 很小，那么认为两部电影是相似的
+
+现在已经学习根据特征参数向量来度量两部电影之间的相似性。例如：电影 _i_ 有一个特征向量 _x<sup>(i)</sup>_ ，是否能找到一部不同的电影 _j_ ，保证两部电影的特征向量之间的距离 _x<sup>(i)</sup>_ 和 _x<sup>(j)</sup>_ 很小，那就能很有力地表明电影 _i_ 和电影 _j_ 在某种程度上有相似，至少在某种意义上，某些人喜欢电影 _i_ ，或许更有可能也对电影 _j_ 感兴趣。
+
+总结一下，当用户在看某部电影 _i_ 的时候，如果你想找5部与电影非常相似的电影，为了能给用户推荐5部新电影，你需要找出电影 _j_ ，使得 _j_ 在这些不同的电影中与要找的电影 _i_ 的距离最小，这样你就能给你的用户推荐几部不同的电影了。
 
 通过这个方法，希望你能知道，如何进行一个向量化的计算来对所有的用户和所有的电影进行评分计算。同时希望你也能掌握，通过学习特征参数，来找到相关电影和产品的方法。
 
@@ -185,7 +198,7 @@
 
 来看下面的用户评分数据：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/54b1f7c3131aed24f9834d62a6835642.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/54b1f7c3131aed24f9834d62a6835642.png" />
 </p>
 
 如果新增一个用户 **Eve**，并且 **Eve** 没有为任何电影评分，那么以什么为依据为**Eve**推荐电影呢？
@@ -193,11 +206,14 @@
 首先需要对结果 _Y_ 矩阵进行均值归一化处理，将每一个用户对某一部电影的评分减去所有用户对该电影评分的平均值：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/9ec5cb55e14bd1462183e104f8e02b80.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/9ec5cb55e14bd1462183e104f8e02b80.png" />
 </p>
-
 然后利用这个新的 _Y_ 矩阵来训练算法。
 如果要用新训练出的算法来预测评分，则需要将平均值重新加回去，预测 _(θ<sup>(j)</sup>)<sup>T</sup>x<sup>(i)</sup> + μ<sub>i</sub>_ ，对于**Eve**，新模型会认为她给每部电影的评分都是该电影的平均分。
+
+## 推荐阅读
+
+[1]: https://wenku.baidu.com/view/7128ca3014791711cc791765.html "矩阵低秩分解理论及其应用分析"
 
 ## Jupyter Notebook编程练习
 

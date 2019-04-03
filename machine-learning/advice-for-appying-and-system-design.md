@@ -37,7 +37,7 @@
 ### 评估一个假设函数 Evaluating a Hypothesis
 对于一个训练集，在计算算法的参数的时候，考虑的是选择参数以使训练误差（Cost function）最小化，有人认为得到一个非常小的训练误差一定是一件好事，但仅仅是因为这个假设具有很小的训练误差，并不能说明它是一个好的假设函数。尤其是考虑到过拟合的假设函数，所以所以这这个方法推广到新的训练集上是不适用的。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/f49730be98810b869951bbe38b6319ba.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/f49730be98810b869951bbe38b6319ba.png" />
 </p>
 
 对于这个简单的例子，可以对假设函数 _h(x)_ 进行画图，然后观察图形趋势，但对于特征变量不止一个的这种一般情况，还有像有很多特征变量的问题，想要通过画出假设函数来进行观察，就会变得很难甚至是不可能实现。
@@ -49,7 +49,7 @@
 
 **注意**训练集和测试集均要含有各种类型的数据，通常要对数据进行“洗牌”（随机排序），然后再分成训练集和测试集。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/9c769fd59c8a9c9f92200f538d1ab29c.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/9c769fd59c8a9c9f92200f538d1ab29c.png" />
 </p>
 
 测试集评估在通过训练集让模型学习得出其参数后，对测试集运用该模型，有两种方式计算误差：
@@ -73,7 +73,7 @@
 ### 模型选择和交叉验证集 Model Selection
 假设要在10个不同次数的二项式模型间选择：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/1b908480ad78ee54ba7129945015f87f.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/1b908480ad78ee54ba7129945015f87f.jpg" />
 </p>
 
 显然越高次数的多项式模型越能够适应训练数据集，但也可能意味着过拟合（Overfitting），应该选择一个更能适应一般情况的模型。
@@ -112,12 +112,12 @@
 
 例如下图，依次对应的是欠拟合、正常、过拟合：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/20c6b0ba8375ca496b7557def6c00324.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/20c6b0ba8375ca496b7557def6c00324.jpg" />
 </p>
 
 为了分析模型性能，通常会将训练集和交叉验证集的代价函数误差与多项式的次数绘制在同一张图表上来帮助分析：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/bca6906add60245bbc24d71e22f8b836.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/bca6906add60245bbc24d71e22f8b836.png" />
 </p>
 
 上图可看出：
@@ -134,7 +134,7 @@
 在训练模型时，一般会用正则化方法来防止过拟合。但是可能会正则化程度太高或太小，即在选择λ的值时也需要思考与此前选择多项式模型次数类似的问题。如下图是不同的 _λ_ 对应不同拟合程度：
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/2ba317c326547f5b5313489a3f0d66ce.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/2ba317c326547f5b5313489a3f0d66ce.png" />
 </p>
 
 通常会尝试一系列的 _λ_ 值，以测试最佳选择：
@@ -143,12 +143,12 @@
   1. 选择得出**交叉验证误差最小**的模型
   1. 运用步骤3中选出模型对测试集计算得出推广误差
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/8f557105250853e1602a78c99b2ef95b.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/8f557105250853e1602a78c99b2ef95b.png" />
 </p>
 
 也可以同时将训练集和交叉验证集模型的代价函数误差与λ的值绘制在一张图表上（如下图），可以看出训练集误差和 _λ_ 的关系如下：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/38eed7de718f44f6bb23727c5a88bf5d.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/38eed7de718f44f6bb23727c5a88bf5d.png" />
 </p>
 
 总结：
@@ -160,7 +160,7 @@
 
 学习曲线是将训练集误差和交叉验证集误差作为训练集样本数量（ _m_ ）的函数绘制的图表。
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/973216c7b01c910cfa1454da936391c6.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/973216c7b01c910cfa1454da936391c6.png" />
 </p>
 
 例如，如果有100行数据，从1行数据开始，逐渐学习更多行。
@@ -171,14 +171,14 @@
 * **即：在高偏差/欠拟合的情况下，增加训练集不一定有帮助。**
 
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/4a5099b9f4b6aac5785cb0ad05289335.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/4a5099b9f4b6aac5785cb0ad05289335.jpg" />
 </p>
 
 如何利用学习曲线识别```高方差/过拟合```：
 * 假设使用一个非常高次的多项式模型，并且正则化非常小，可以看出，当交叉验证集误差远大于训练集误差时，往训练集增加更多数据可以提高模型的效果。
 * **即：在高方差/过拟合的情况下，增加训练集可能提高算法效果。**
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/2977243994d8d28d5ff300680988ec34.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/2977243994d8d28d5ff300680988ec34.jpg" />
 </p>
 
 ### 总结：决定下一步做什么
@@ -191,7 +191,7 @@
 
 神经网络的方差和偏差：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/c5cd6fa2eb9aea9c581b2d78f2f4ea57.png" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/c5cd6fa2eb9aea9c581b2d78f2f4ea57.png" />
 </p>
 
 神经网络神经元个数选择：
@@ -310,7 +310,7 @@ Andrew说他开始研究一个机器学习问题时，最多只会花一天的�
 什么时候会希望获得更多数据，而非修改算法？
 他们改变训练数据集的大小，并尝试将这些算法用于不同大小训练集，结果如图：
 <p align="center">
-<img src="https://raw.github.com/fengdu78/Coursera-ML-AndrewNg-Notes/master/images/befe860fd4b1aef2f6eebf617baf5877.jpg" />
+<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/befe860fd4b1aef2f6eebf617baf5877.jpg" />
 </p>
 
 图中趋势非常明显。

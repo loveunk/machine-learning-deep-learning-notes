@@ -92,6 +92,7 @@
 ### 协同过滤
 
 在之前的基于内容的推荐系统中，对于每一部电影，都掌握了可用的特征，使用这些特征训练出了每一个用户的参数。相反地，如果拥有用户的参数，可以学习得出电影的特征。
+
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\mathop{min}\limits_{x^{(1)},...,x^{(n_m)}}\frac{1}{2}\sum_{i=1}^{n_m}\sum_{j{r(i,j)=1}}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2&plus;\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2" title="\mathop{min}\limits_{x^{(1)},...,x^{(n_m)}}\frac{1}{2}\sum_{i=1}^{n_m}\sum_{j{r(i,j)=1}}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(i)})^2" />
 </p>
@@ -102,6 +103,7 @@
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?J(x^{(1)},...x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})\\&space;=\frac{1}{2}\sum_{(i:j):r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2&plus;\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(j)})^2&plus;\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" title="J(x^{(1)},...x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})\\ =\frac{1}{2}\sum_{(i:j):r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(j)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" />
 </p>
+
 对代价函数求偏导数如下，对于 _j = 1, ..., n<sub>u</sub>, i = 1, ..., n<sub>m</sub>_，有：
 
 <p align="center">
@@ -111,6 +113,7 @@
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\theta_k^{(i)}:=\theta_k^{(i)}-\alpha\left(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}&plus;\lambda&space;\theta_k^{(j)}\right)" title="\theta_k^{(i)}:=\theta_k^{(i)}-\alpha\left(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}+\lambda \theta_k^{(j)}\right)" />
 </p>
+
 注：在协同过滤从算法中，通常不使用方差项，如果需要的话，算法会自动学得。
 协同过滤算法使用步骤如下：
 
@@ -130,6 +133,7 @@
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\min_{\theta^{(1)},...,\theta^{(n_u)}}\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2&plus;\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" title="\min_{\theta^{(1)},...,\theta^{(n_u)}}\frac{1}{2}\sum_{j=1}^{n_u}\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" />
 </p>
+
 * 给定 _θ<sup>(1)</sup>, ..., θ<sup>(n<sub>u</sub>)</sup>_ ，估计 _x<sup>(1)</sup>, ..., x<sup>(n<sub>m</sub>)</sup>_ ：
 
 <p align="center">
@@ -171,15 +175,15 @@
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/42a92e07b32b593bb826f8f6bc4d9eb3.png" />
 </p>
 
-
 推出评分：
 
 <p align="center">
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/c905a6f02e201a4767d869b3791e8aeb.png" />
 </p>
+
 上面这个矩阵的计算只需要计算  _XΘ<sup>T</sup>_  即可，也就算是向量化的计算方法。
 
-对于矩阵_XΘ<sup>T</sup>_，它有一个数学属性就是低秩（Low Rank），上述计算的逆过程（ _XΘ<sup>T</sup> = X * Θ<sup>T</sup>_ ）也可以理解为低秩矩阵分解，可参考[推荐阅读][1]。
+对于矩阵_XΘ<sup>T</sup>_，它有一个数学属性就是低秩（Low Rank），上述计算的逆过程（ _XΘ<sup>T</sup> = X * Θ<sup>T</sup>_ ）也可以理解为低秩矩阵分解，可参考[推荐阅读](#推荐阅读)。
 
 找到相关电影：
 
@@ -208,12 +212,12 @@
 <p align="center">
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/9ec5cb55e14bd1462183e104f8e02b80.png" />
 </p>
+
 然后利用这个新的 _Y_ 矩阵来训练算法。
 如果要用新训练出的算法来预测评分，则需要将平均值重新加回去，预测 _(θ<sup>(j)</sup>)<sup>T</sup>x<sup>(i)</sup> + μ<sub>i</sub>_ ，对于**Eve**，新模型会认为她给每部电影的评分都是该电影的平均分。
 
 ## 推荐阅读
-
-[1]: https://wenku.baidu.com/view/7128ca3014791711cc791765.html "矩阵低秩分解理论及其应用分析"
+* [矩阵低秩分解理论及其应用分析](https://wenku.baidu.com/view/7128ca3014791711cc791765.html)
 
 ## Jupyter Notebook编程练习
 

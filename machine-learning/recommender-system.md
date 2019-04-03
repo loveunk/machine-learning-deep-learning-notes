@@ -96,16 +96,15 @@
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?J(x^{(1)},...x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})\\&space;=\frac{1}{2}\sum_{(i:j):r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2&plus;\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(j)})^2&plus;\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" title="J(x^{(1)},...x^{(n_m)},\theta^{(1)},...,\theta^{(n_u)})\\ =\frac{1}{2}\sum_{(i:j):r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2}\sum_{i=1}^{n_m}\sum_{k=1}^{n}(x_k^{(j)})^2+\frac{\lambda}{2}\sum_{j=1}^{n_u}\sum_{k=1}^{n}(\theta_k^{(j)})^2" />
 </p>
+对代价函数求偏导数如下，对于 _j = 1, ..., n<sub>u</sub>, i = 1, ..., n<sub>m</sub>_，有：
 
-对代价函数求偏导数的结果如下：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?x_k^{(i)}:=x_k^{(i)}-\alpha\left(\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\theta_k^{j}&plus;\lambda&space;x_k^{(i)}\right)" title="x_k^{(i)}:=x_k^{(i)}-\alpha\left(\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}\theta_k^{j}+\lambda x_k^{(i)}\right)" />
+<img src="https://latex.codecogs.com/gif.latex?x_k^{(i)}:=x_k^{(i)}-\alpha\left(\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})\theta_k^{j}&plus;\lambda&space;x_k^{(i)}\right)" title="x_k^{(i)}:=x_k^{(i)}-\alpha\left(\sum_{j:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})\theta_k^{j}+\lambda x_k^{(i)}\right)" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\theta_k^{(i)}:=\theta_k^{(i)}-\alpha\left(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}x_k^{(i)}&plus;\lambda&space;\theta_k^{(j)}\right)" title="\theta_k^{(i)}:=\theta_k^{(i)}-\alpha\left(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)}x_k^{(i)}+\lambda \theta_k^{(j)}\right)" />
+<img src="https://latex.codecogs.com/gif.latex?\theta_k^{(i)}:=\theta_k^{(i)}-\alpha\left(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}&plus;\lambda&space;\theta_k^{(j)}\right)" title="\theta_k^{(i)}:=\theta_k^{(i)}-\alpha\left(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}+\lambda \theta_k^{(j)}\right)" />
 </p>
-
 注：在协同过滤从算法中，通常不使用方差项，如果需要的话，算法会自动学得。
 协同过滤算法使用步骤如下：
 

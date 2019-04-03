@@ -62,11 +62,23 @@
 ### Deep Learning 专题课程
 主要基于Deep Learning (Coursera, Andrew Ng) 的专题课程 ，介绍深度学习的各种模型的原理。
 * [深度学习](deep-learning/README.md)（on-going）
-  * [深度学习基础](deep-learning/deep-learning-basic.md)
+  * [深度学习基础](deep-learning/1.deep-learning-basic.md)
   * 深度神经网络调参和优化
+    1. [深度学习的实践层面](deep-learning/2.improving-deep-neural-networks-1.practical-aspects.md)
+    2. 深度学习优化算法
+    3. 超参数调试、批量正则化和程序框架
   * 深度学习的工程实践
+    1. 机器学习策略（1）
+    2. 机器学习策略（2）
   * 卷积神经网络（CNN）
+    1. 卷积神经网络
+    2. 深度卷积网络：实例探究
+    3. 目标检测
+    4. 特殊应用：人脸识别和神经风格转换
   * 序列模型（RNN、LSTM）
+    1. 循环序列模型（RNN）
+    2. 自然语言处理与词嵌入
+    3. 序列模型和注意力机制
   * 进阶讨论（待补充）
 
 ### TensorFlow 
@@ -125,6 +137,6 @@ PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得�
 ### 欢迎反馈
 * 如果发现内容的错误，欢迎在GitHub提交Issue或者Pull Request
 * 个人精力有限，欢迎感兴趣的朋友一起来完善和补充内容
-* 欢迎Star 和Share 此Repository :stuck_out_tongue_winking_eye:
+* 欢迎Star 和Share 此Repository ​
 
 [回到顶部](#深度学习机器学习学习路径)

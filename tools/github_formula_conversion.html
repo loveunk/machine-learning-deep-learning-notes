@@ -64,7 +64,9 @@ $(document).ready(function(){
       // loop twice since \frac has "{}" pairs
 	  for (var j = 0; j < 2; ++j) {
         if (output[currIndex] == '{') {
-          output = output.replaceAt(currIndex, '(');
+          output = output.replaceAt(currIndex, ' ');
+		  output = output.insert(currIndex, j == 1 ? '<sub>' : '<sup>');
+		  currIndex += 5;
 
           var leftBrackCount = 1;
           currIndex++;
@@ -80,7 +82,10 @@ $(document).ready(function(){
             currIndex++;
           }
 
-          output = output.replaceAt(currIndex, ')');
+          output = output.replaceAt(currIndex, ' ');
+		  output = output.insert(currIndex + 1, j == 1 ? '</sub>' : '</sup>');
+		  currIndex += 6;
+		  
           if (j == 1) { // for the last iteration, no need to insert '/'
             output = output.insert(currIndex + 1, ')');
             break;
@@ -169,7 +174,6 @@ $(document).ready(function(){
       output = output.replace(/_/g, "<sub>");
       output = output.replace(/\^/g, "<sup>");
       output = output.replace(/\$/g, "_");
-      output = handleFracTag(output);
       output = output.replace(/\\text/g, "");
       output = output.replace(/\\left/g, "");
       output = output.replace(/\\right/g, "");
@@ -208,6 +212,7 @@ $(document).ready(function(){
       output = output.replace(/\\Leftrightarrow/g, "⇔");
       output = handleSubSupCloseTag(output, "<sub>", "</sub>");
       output = handleSubSupCloseTag(output, "<sup>", "</sup>");
+      output = handleFracTag(output);
       output = output.replace(/{/g, "");
       output = output.replace(/}/g, "");
       output = output.replace(/\\/g, "");

@@ -11,18 +11,18 @@
 1. [深度学习基础](1.deep-learning-basic.md)
 2. 深度神经网络调参和优化
    1. [深度学习的实践层面](2.improving-deep-neural-networks-1.practical-aspects.md)
-   2. 深度学习优化算法
-   3. 超参数调试、批量正则化和程序框架
+   2. [深度学习优化算法](2.improving-deep-neural-networks-2.optimization-algorithms.md)
+   3. [超参数调试、批量正则化和程序框架](2.improving-deep-neural-networks-3.pyperparameter-tuning.md)
 3. 深度学习的工程实践
-   1. 机器学习策略（1）
-   2. 机器学习策略（2）
+   1. [机器学习策略（1）](3.structuring-machine-learning-1.ml-strategy.md)
+   2. [机器学习策略（2）](3.structuring-machine-learning-2.ml-strategy.md)
 4. 卷积神经网络（CNN）
-   1. 卷积神经网络
-   2. 深度卷积网络：实例探究
-   3. 目标检测
-   4. 特殊应用：人脸识别和神经风格转换
+   1. [卷积神经网络](4.convolutional-neural-network-1.foundations-of-cnn.md)
+   2. [深度卷积网络：实例探究](4.convolutional-neural-network-2.deep-convolutional-models.md)
+   3. [目标检测](4.convolutional-neural-network-3.object-detection.md)
+   4. [特殊应用：人脸识别和神经风格转换](4.convolutional-neural-network-4.face-recognition-and-neural-style-transfer.md)
 5. 序列模型（RNN、LSTM）
-   1. 循环序列模型（RNN）
-   2. 自然语言处理与词嵌入
-   3. 序列模型和注意力机制
+   1. [循环序列模型（RNN）](5.sequence-model-1.recurrent-neural-netoworks.md)
+   2. [自然语言处理与词嵌入](5.sequence-model-2.nlp-and-word-embeddings.md)
+   3. [序列模型和注意力机制](5.sequence-model-3.sequence-models-and-attention-machanism.md)
 6. 进阶讨论（待补充）

@@ -38,48 +38,46 @@
 ## 机器学习算法
 主要基于Machine Learning (Coursera, Andrew Ng) 的课程内容。
 * [机器学习算法系列](machine-learning/README.md)
-  * 算法原理内容主要参考的内容包括：
-    * 吴恩达Coursera系列
-    * 周志华机器学习（西瓜书）
-    * Applied Machine Learning in Python - 密西根大学
-  * 每章节配套的[Jupyter Notebook练习(GitHub)](https://github.com/loveunk/ml-ipynb)根据网络内容修订
+  * 内容参考包括：吴恩达Coursera系列、周志华《机器学习》、密西根大学Applied Machine Learning in Python
+  * 每章节配套的[Jupyter Notebook练习(GitHub)](https://github.com/loveunk/ml-ipynb) 参考网络内容修订
 * 目录结构：
-  * [绪论](machine-learning/machine-learning-intro.md)
-  * [线性回归](machine-learning/linear-regression.md)
-  * [逻辑回归](machine-learning/logistic-regression.md)
-  * [神经网络](machine-learning/neural-networks.md)
-  * [打造实用的机器学习系统](machine-learning/advice-for-appying-and-system-design.md)
-  * [支持向量机 SVM](machine-learning/svm.md)
-  * [聚类算法](machine-learning/clustering.md)
-  * [数据降维](machine-learning/dimension-reduction.md)
-  * [异常检测](machine-learning/anomaly-detection.md)
-  * [推荐系统](machine-learning/recommender-system.md)
-  * [大规模机器学习](machine-learning/large-scale-machine-learning.md)
-  * [应用案例照片文字识别](machine-learning/photo-ocr.md)
-  * [总结](machine-learning/ssummary.md)
+  1. [绪论](machine-learning/machine-learning-intro.md)
+  1. [线性回归](machine-learning/linear-regression.md)
+  1. [逻辑回归](machine-learning/logistic-regression.md)
+  1. [神经网络](machine-learning/neural-networks.md)
+  1. [打造实用的机器学习系统](machine-learning/advice-for-appying-and-system-design.md)
+  1. [支持向量机 SVM](machine-learning/svm.md)
+  1. [聚类算法](machine-learning/clustering.md)
+  1. [数据降维](machine-learning/dimension-reduction.md)
+  1. [异常检测](machine-learning/anomaly-detection.md)
+  1. [推荐系统](machine-learning/recommender-system.md)
+  1. [大规模机器学习](machine-learning/large-scale-machine-learning.md)
+  1. [应用案例照片文字识别](machine-learning/photo-ocr.md)
+  1. [总结](machine-learning/ssummary.md)
 
 ## 深度学习
 ### Deep Learning 专题课程
 主要基于Deep Learning (Coursera, Andrew Ng) 的专题课程 ，介绍深度学习的各种模型的原理。
-* [深度学习](deep-learning/README.md)（on-going）
-  * [深度学习基础](deep-learning/1.deep-learning-basic.md)
-  * 深度神经网络调参和优化
-    1. [深度学习的实践层面](deep-learning/2.improving-deep-neural-networks-1.practical-aspects.md)
-    2. 深度学习优化算法
-    3. 超参数调试、批量正则化和程序框架
-  * 深度学习的工程实践
-    1. 机器学习策略（1）
-    2. 机器学习策略（2）
-  * 卷积神经网络（CNN）
-    1. 卷积神经网络
-    2. 深度卷积网络：实例探究
-    3. 目标检测
-    4. 特殊应用：人脸识别和神经风格转换
-  * 序列模型（RNN、LSTM）
-    1. 循环序列模型（RNN）
-    2. 自然语言处理与词嵌入
-    3. 序列模型和注意力机制
-  * 进阶讨论（待补充）
+* [深度学习](deep-learning/README.md)
+  1. 深度学习基础
+     - [深度学习基础](deep-learning/1.deep-learning-basic.md)
+  2. 深度神经网络调参和优化
+     - [深度学习的实践层面](deep-learning/2.improving-deep-neural-networks-1.practical-aspects.md)
+     - [深度学习优化算法](deep-learning/2.improving-deep-neural-networks-2.optimization-algorithms.md)
+     - [超参数调试、批量正则化和程序框架](deep-learning/2.improving-deep-neural-networks-3.pyperparameter-tuning.md)
+  3. 深度学习的工程实践
+     - [机器学习策略（1）](deep-learning/3.structuring-machine-learning-1.ml-strategy.md)
+     - [机器学习策略（2）](deep-learning/3.structuring-machine-learning-2.ml-strategy.md)
+  4. 卷积神经网络（CNN）
+     - [卷积神经网络](deep-learning/4.convolutional-neural-network-1.foundations-of-cnn.md)
+     - [深度卷积网络：实例探究](deep-learning/4.convolutional-neural-network-2.deep-convolutional-models.md)
+     - [目标检测](deep-learning/4.convolutional-neural-network-3.object-detection.md)
+     - [特殊应用：人脸识别和神经风格转换](deep-learning/4.convolutional-neural-network-4.face-recognition-and-neural-style-transfer.md)
+  5. 序列模型（RNN、LSTM）
+     - [循环序列模型（RNN）](deep-learning/5.sequence-model-1.recurrent-neural-netoworks.md)
+     - [自然语言处理与词嵌入](deep-learning/5.sequence-model-2.nlp-and-word-embeddings.md)
+     - [序列模型和注意力机制](deep-learning/5.sequence-model-3.sequence-models-and-attention-machanism.md)
+  6. 进阶讨论（待补充）
 
 ### TensorFlow 
 * 推荐吴恩达DeepLearning.ai和Coursera出品课程[《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)（面向人工智能、机器学习和深度学习的TensorFlow介绍》。

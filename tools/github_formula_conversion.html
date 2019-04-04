@@ -170,7 +170,7 @@ $(document).ready(function(){
     }
     // for latex content
     else {
-      output = output.replace(/ /g, "");
+      //output = output.replace(/ /g, "");
       output = output.replace(/_/g, "<sub>");
       output = output.replace(/\^/g, "<sup>");
       output = output.replace(/\$/g, "_");
@@ -217,6 +217,12 @@ $(document).ready(function(){
       output = output.replace(/}/g, "");
       output = output.replace(/\\/g, "");
       output = handleUnderlineBlank(output);
+	  
+	  // restore blanks
+      output = output.replace(/\=/g, " = ");
+      output = output.replace(/\+/g, " + ");
+      output = output.replace(/\-/g, " - ");
+      output = output.replace(/\*/g, " * ");
     }
 
     $("#output").val(output);

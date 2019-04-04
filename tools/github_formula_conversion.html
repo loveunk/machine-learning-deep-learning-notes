@@ -131,14 +131,14 @@ $(document).ready(function(){
 
   function handleUnderlineBlank(output) {
     var indices = getIndicesOf("_", output);
-  for (var i = indices.length - 1; i >= 0; --i) {
-    if (i % 2 == 1) {
-      output = [output.slice(0, indices[i] + 1), " ", output.slice(indices[i] + 1)].join('');
-    } else {
-      output = [output.slice(0, indices[i]), " ", output.slice(indices[i])].join('');
+    for (var i = indices.length - 1; i >= 0; --i) {
+      if (i % 2 == 1) {
+        output = [output.slice(0, indices[i] + 1), " ", output.slice(indices[i] + 1)].join('');
+      } else {
+        output = [output.slice(0, indices[i]), " ", output.slice(indices[i])].join('');
+      }
     }
-  }
-  return output;
+    return output;
   }
 
   function match_github_url(str) {
@@ -148,81 +148,100 @@ $(document).ready(function(){
       return true;
     return false;
   }
+  
+  function handle_latex_line(input) {
+    output = input;
+    //output = output.replace(/ /g, "");
+    output = output.replace(/_/g, "<sub>");
+    output = output.replace(/\^/g, "<sup>");
+    output = output.replace(/\$/g, "_");
+    output = output.replace(/\\text/g, "");
+    output = output.replace(/\\left/g, "");
+    output = output.replace(/\\right/g, "");
+    output = output.replace(/\\hat\{y\}/g, "ŷ");
+  
+    output = output.replace(/\\alpha/g, "α");
+    output = output.replace(/\\ast/g, " * ");
+    output = output.replace(/\\beta/g, "β");
+    output = output.replace(/\\delta/g, "δ");
+    output = output.replace(/\\Delta/g, "Δ");
+    output = output.replace(/\\lambda/g, "λ");
+    output = output.replace(/\\mu/g, "μ");
+    output = output.replace(/\\partial/g, "∂");
+    output = output.replace(/\\pi/g, "π");
+    output = output.replace(/\\sigma/g, "σ");
+    output = output.replace(/\\Sigma/g, "Σ");
+    output = output.replace(/\\sum/g, "Σ");
+    output = output.replace(/\\theta/g, "θ");
+    output = output.replace(/\\Theta/g, "Θ");
+    output = output.replace(/\\varepsilon/g, "ϵ");
+  
+    output = output.replace(/\\times/g, "×");
+    output = output.replace(/\\limits/g, "lim ");
+    output = output.replace(/\\cdots/g, " ... ");
+    output = output.replace(/\\ldots/g, " ... ");
+    output = output.replace(/\\cdot/g, " · ");
+    output = output.replace(/\\centerdot/g, " · ");
+    output = output.replace(/\\sim/g, " ~ ");
+    output = output.replace(/\\ge/g, " ≥ ");
+    output = output.replace(/\\le/g, " ≤ ");
+    output = output.replace(/\\neq/g, " ≠ ");
+    output = output.replace(/\\in/g, " ∈ ");
+    output = output.replace(/\\approx/g, " ≈ ");
+    output = output.replace(/\\langle/g, "〈");
+    output = output.replace(/\\rangle/g, "〉");
+    output = output.replace(/\\\|/g, "‖");
+    output = output.replace(/\\Leftrightarrow/g, "⇔");
+    output = handleSubSupCloseTag(output, "<sub>", "</sub>");
+    output = handleSubSupCloseTag(output, "<sup>", "</sup>");
+    output = handleFracTag(output);
+    output = output.replace(/{/g, "");
+    output = output.replace(/}/g, "");
+    output = output.replace(/\\/g, "");
+    output = handleUnderlineBlank(output);
+  
+    // restore blanks
+    output = output.replace(/\=/g, " = ");
+    output = output.replace(/\+/g, " + ");
+    output = output.replace(/\-/g, " - ");
+    //output = output.replace(/\*/g, " * ");
+    return output;
+  }
+  
+  function handle_img_url(input) {
+    output = input;
+    output = output.replace("https://github.com", "https://raw.github.com");
+    output = output.replace("/raw/master/images", "/master/images");
+    output = output.replace("/blob/master/images", "/master/images");
+    output = "<p align=\"center\">\n<img src=\"" + output + "\" />\n</p>";
+    return output;
+  }
 
   function updateText() {
     input = $("#input").val();
     output = $.trim(input);
 
-    // for github image url
-    if (match_github_url(output)) {
-      output = output.replace("https://github.com", "https://raw.github.com");
-      output = output.replace("/raw/master/images", "/master/images");
-      output = output.replace("/blob/master/images", "/master/images");
-      output = "<p align=\"center\">\n<img src=\"" + output + "\" />\n</p>";
-    }
-    // for img tag
-    else if (output.startsWith("<img ")) {
-      output = "<p align=\"center\">\n" + output + "\n</p>";
-    }
     // for python code
-    else if (output.startsWith("import ")) {
+    if (output.startsWith("import ")) {
       output = "``` python\n" + output + "\n```\n";
     }
-    // for latex content
     else {
-      //output = output.replace(/ /g, "");
-      output = output.replace(/_/g, "<sub>");
-      output = output.replace(/\^/g, "<sup>");
-      output = output.replace(/\$/g, "_");
-      output = output.replace(/\\text/g, "");
-      output = output.replace(/\\left/g, "");
-      output = output.replace(/\\right/g, "");
-      output = output.replace(/\\hat\{y\}/g, "ŷ");
-	  
-      output = output.replace(/\\alpha/g, "α");
-      output = output.replace(/\\ast/g, " * ");
-      output = output.replace(/\\beta/g, "β");
-      output = output.replace(/\\delta/g, "δ");
-      output = output.replace(/\\Delta/g, "Δ");
-      output = output.replace(/\\lambda/g, "λ");
-      output = output.replace(/\\mu/g, "μ");
-      output = output.replace(/\\partial/g, "∂");
-      output = output.replace(/\\pi/g, "π");
-      output = output.replace(/\\sigma/g, "σ");
-      output = output.replace(/\\Sigma/g, "Σ");
-      output = output.replace(/\\sum/g, "Σ");
-      output = output.replace(/\\theta/g, "θ");
-      output = output.replace(/\\Theta/g, "Θ");
-      output = output.replace(/\\varepsilon/g, "ϵ");
-	  
-      output = output.replace(/\\times/g, "×");
-      output = output.replace(/\\limits/g, "lim ");
-      output = output.replace(/\\cdots/g, " ... ");
-      output = output.replace(/\\cdot/g, " · ");
-      output = output.replace(/\\centerdot/g, " · ");
-      output = output.replace(/\\sim/g, " ~ ");
-      output = output.replace(/\\ge/g, " ≥ ");
-      output = output.replace(/\\le/g, " ≤ ");
-      output = output.replace(/\\neq/g, " ≠ ");
-      output = output.replace(/\\in/g, " ∈ ");
-      output = output.replace(/\\approx/g, " ≈ ");
-      output = output.replace(/\\langle/g, "〈");
-      output = output.replace(/\\rangle/g, "〉");
-      output = output.replace(/\\\|/g, "‖");
-      output = output.replace(/\\Leftrightarrow/g, "⇔");
-      output = handleSubSupCloseTag(output, "<sub>", "</sub>");
-      output = handleSubSupCloseTag(output, "<sup>", "</sup>");
-      output = handleFracTag(output);
-      output = output.replace(/{/g, "");
-      output = output.replace(/}/g, "");
-      output = output.replace(/\\/g, "");
-      output = handleUnderlineBlank(output);
-	  
-	  // restore blanks
-      output = output.replace(/\=/g, " = ");
-      output = output.replace(/\+/g, " + ");
-      output = output.replace(/\-/g, " - ");
-      output = output.replace(/\*/g, " * ");
+      var lines = output.split("\n");
+      for (var i = 0; i < lines.length; ++i) {
+        // for github image url
+        if (match_github_url(lines[i])) {
+          lines[i] = handle_img_url(lines[i]);
+        }
+        // for img tag
+        else if (lines[i].startsWith("<img ")) {
+          lines[i] = "<p align=\"center\">\n" + lines[i] + "\n</p>";
+        }
+        // for latex content
+        else {
+          lines[i] = handle_latex_line(lines[i]);
+        }
+      }
+      output = lines.join('\n');
     }
 
     $("#output").val(output);

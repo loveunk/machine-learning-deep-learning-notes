@@ -271,10 +271,9 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 <img src="https://latex.codecogs.com/gif.latex?\begin{align*}J(\Theta)=&-\frac{1}{m}\sum\limits_{i=1}^m\sum\limits_{k=1}^K{\left[{y_k^{(i)}}\log\left({h_\Theta}\left({x^{(i)}}\right)\right)_k&plus;\left(1-{y_k^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)_k\right]}\\&space;&&plus;\frac{\lambda}{2m}\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l&plus;1}}{\left(\Theta_{ji}^{(l)}\right)^2}\end{align*}" title="\begin{align*}J(\Theta)=&-\frac{1}{m}\sum\limits_{i=1}^m\sum\limits_{k=1}^K{\left[{y_k^{(i)}}\log\left({h_\Theta}\left({x^{(i)}}\right)\right)_k+\left(1-{y_k^{(i)}}\right)\log\left(1-{h_\theta}\left({x^{(i)}}\right)\right)_k\right]}\\ &+\frac{\lambda}{2m}\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l+1}{\left(\Theta_{ji}^{(l)}\right)^2}\end{align*}" />
 </p>
 
-
 但神经网络代价函数的思想还是和逻辑回归代价函数是一样的，希望通过代价函数来观察算法预测的结果与真实情况的误差有多大，唯一不同的是，对于每一行特征，我们都会给出 _K_ 个预测，基本上我们可以利用循环，对每一行特征都预测 _K_ 个不同结果，然后在利用循环在 _K_ 个预测中选择可能性最高的一个，将其与 _y_ 中的实际数据进行比较。
 
-**注意**：正则化的那一项排除了每一层 _Θ<sub>0</sub>​_ 的和。最里层的循环 _j​_ 循环所有的行（由 _s<sub>l</sub>​_ +1层的激活单元数决定），循环 _i​_ 则循环所有的列，由该层（ _s<sub>l</sub>​_ 层）的激活单元数所决定。即： _h<sub>Θ</sub>(x)​_ 与真实值之间的距离为每个样本-每个类输出的加和，对参数进行正则化（Regularization）的Bias项处理所有参数的平方和。
+**注意**：正则化的那一项排除了每一层 _Θ<sub>0</sub>_ 的和。最里层的循环 _j​_ 循环所有的行（由 _s<sub>l+1</sub>​_ 层的激活单元数决定），循环 _i​_ 则循环所有的列，由该层（ _s<sub>l</sub>​_ 层）的激活单元数所决定。即： _h<sub>Θ</sub>(x)​_ 与真实值之间的距离为每个样本-每个类输出的加和，对参数进行正则化（Regularization）的Bias项处理所有参数的平方和。
 （注意，_Θ_ 是 以第 _s<sub>l+1</sub>_ 层的激活单元数量为行数，以第 _s<sub>l</sub>+1_ 为列数的矩阵，公式里 i = 1开始，相当于把 _Θ<sub>[:,0]</sub>​_ 忽略了，而 _Θ_ 的行数 _j_ 本身就是从1开始的。）
 
 ### 反向传播算法

@@ -39,7 +39,7 @@
 主要基于Machine Learning (Coursera, Andrew Ng) 的课程内容。
 * [机器学习算法系列](machine-learning/README.md)
   * 内容参考包括：吴恩达Coursera系列、周志华《机器学习》、密西根大学Applied Machine Learning in Python
-  * 每章节配套的[Jupyter Notebook练习(GitHub)](https://github.com/loveunk/ml-ipynb) 参考网络内容修订
+  * 每章节配套的[<img src="img/github32.png" width="28" />Jupyter Notebook练习](https://github.com/loveunk/ml-ipynb) 参考网络内容修订
 * 目录结构：
   1. [绪论](machine-learning/machine-learning-intro.md)
   1. [线性回归](machine-learning/linear-regression.md)
@@ -88,7 +88,7 @@
 ### PyTorch
 PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得关注
 * 文章：[PyTorch的安装与Tutorial](https://zhuanlan.zhihu.com/p/60526007)
-* GitHub：[PyTorch 中文手册](https://github.com/zergtant/pytorch-handbook)
+* [<img src="img/github32.png" width="28" />PyTorch 中文手册](https://github.com/zergtant/pytorch-handbook)
 
 ## 强化学习
 * TBD
@@ -102,13 +102,15 @@ PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得�
 
 ## 深度学习论文
 
-对于一些问题的深入研究，最终是离不开阅读论文的，这里推荐一个GitHub：
+对于一些问题的深入研究，最终是离不开阅读优秀论文，推荐如下GitHub：
 
-* [深度学习论文的阅读路径](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap)
+* [<img src="img/github32.png" width="28" />深度学习论文的阅读路径](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap)：适合深度学习领域新人，循序渐进带你读论文
+
+* [<img src="img/github32.png" width="26" />Papers with code](https://github.com/zziz/pwc)：总结了近 10 年来顶会（包括NIPS/CVPR/ECCV/ICML）优秀论文和复现代码
 
 ## 工欲善其事，必先利其器
 ### 一些电子书
-* GitHub：[机器学习/深度学习/Data Science相关的书籍](https://github.com/loveunk/Deep-learning-books)
+* [<img src="img/github32.png" width="28" />机器学习/深度学习/Data Science相关的书籍](https://github.com/loveunk/Deep-learning-books)
 
 ### 推荐的学习环境
 * Anaconda

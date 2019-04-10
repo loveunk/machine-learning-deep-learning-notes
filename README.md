@@ -82,13 +82,13 @@
 ### TensorFlow 
 * 推荐吴恩达DeepLearning.ai和Coursera出品课程[《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)（面向人工智能、机器学习和深度学习的TensorFlow介绍》。
   * 课程包括四周内容，练习基于Google Colab平台，讲师是来自Google Brain团队。
-* TensorFlow出2.0了，推荐阅读[《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)对TensorFlow体系有个完整认知。
+* TensorFlow出2.0了，推荐阅读[<img src="img/zhihu32.png" width="18" />《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)对TensorFlow体系有个完整认知。
 * [TensorFlow/Keras的例子](tensorflow)
 
 ### PyTorch
 PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得关注
-* 文章：[PyTorch的安装与Tutorial](https://zhuanlan.zhihu.com/p/60526007)
-* [<img src="img/github32.png" width="18" target="_blank" />PyTorch 中文手册](https://github.com/zergtant/pytorch-handbook)
+* [<img src="img/zhihu32.png" width="18" />PyTorch的安装与Tutorial](https://zhuanlan.zhihu.com/p/60526007)
+* [<img src="img/github32.png" width="18" />PyTorch 中文手册](https://github.com/zergtant/pytorch-handbook)
 
 ## 强化学习
 * TBD
@@ -104,9 +104,9 @@ PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得�
 
 对于一些问题的深入研究，最终是离不开阅读优秀论文，推荐如下GitHub：
 
-* [<img src="img/github32.png" width="18" target="_blank" />深度学习论文的阅读路径](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap)：适合深度学习领域新人，循序渐进带你读论文
+* [<img src="img/github32.png" width="18" />深度学习论文的阅读路径](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap)：适合深度学习领域新人，循序渐进带你读论文
 
-* [<img src="img/github32.png" width="18" target="_blank" />Papers with code](https://github.com/zziz/pwc)：总结了近 10 年来顶会（包括NIPS/CVPR/ECCV/ICML）优秀论文和复现代码
+* [<img src="img/github32.png" width="18" />Papers with code](https://github.com/zziz/pwc)：总结了近 10 年来顶会（包括NIPS/CVPR/ECCV/ICML）优秀论文和复现代码
 
 ## 工欲善其事，必先利其器
 ### 一些电子书
@@ -114,13 +114,13 @@ PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得�
 
 ### 推荐的学习环境
 * Anaconda
-  * [Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)
+  * [<img src="img/zhihu32.png" width="18" />Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)
 * IDE
-  * PyCharm（推荐） / VS Code / Atom 等：[参考阅读](https://zhuanlan.zhihu.com/p/58178996)。
+  * PyCharm（推荐） / VS Code / Atom 等：[<img src="img/zhihu32.png" width="18" />参考阅读](https://zhuanlan.zhihu.com/p/58178996)。
 
 ### 一些好用的工具
 * 机器学习在线环境
-  * [Google Colab](https://colab.research.google.com)：Jupyter环境。[一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)。
+  * [Google Colab](https://colab.research.google.com)：Jupyter环境。[<img src="img/zhihu32.png" width="18" />一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)。
 * 科学上网
   * 内地朋友避免不了和China GFW斗智斗勇，建议花小钱省事省心。可看左耳耗子的文章[《科学上网》](https://github.com/haoel/haoel.github.io)。
 

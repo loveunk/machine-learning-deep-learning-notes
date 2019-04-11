@@ -95,7 +95,7 @@ f'(x) = ab x<sup>(b-1)</sup>
 
 雅克比矩阵是一阶偏导数的排列成的矩阵。其行列式称为雅克比行列式。
 
-假设一个函数由 _m_ 个实函数组成：_y<sub>1</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>), ..., y<sub>n</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，这些函数的偏导数可以组成 _m_ 行 _n_ 列的矩阵，矩阵就是雅克比矩阵 (Jacobians Matrix)：
+假设某函数从 _R<sup>n</sup>_ 映射到 _R<sup>m</sup>_，其雅克比矩阵是从 _R<sup>n</sup>_ 到 _R<sup>m</sup>_的线性映射，其意义在于它表现了一个多变量函数的最佳线性逼近。因此，雅可比矩阵类似于单变数函数的导数。 假设_F : R<sub>n</sub> →  R<sub>m</sub>_ 是一个从 _n_ 维欧氏空间映射到到  _m_ 维欧氏空间的函数。假设一个函数由 _m_ 个实函数组成：_y<sub>1</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>), ..., y<sub>n</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，这些函数的偏导数可以组成 _m_ 行 _n_ 列的矩阵，矩阵就是雅克比矩阵 (Jacobians Matrix)：
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\left[&space;\begin{array}{ccc}{\frac{\partial&space;y_{1}}{\partial&space;x_{1}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial&space;y_{1}}{\partial&space;x_{n}}}&space;\\&space;{\vdots}&space;&&space;{\ddots}&space;&&space;{\vdots}&space;\\&space;{\frac{\partial&space;y_{m}}{\partial&space;x_{1}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial&space;y_{m}}{\partial&space;x_{n}}}\end{array}\right]" title="\left[ \begin{array}{ccc}{\frac{\partial y_{1}}{\partial x_{1}}} & {\cdots} & {\frac{\partial y_{1}}{\partial x_{n}}} \\ {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial y_{m}}{\partial x_{1}}} & {\cdots} & {\frac{\partial y_{m}}{\partial x_{n}}}\end{array}\right]" />
@@ -103,9 +103,28 @@ f'(x) = ab x<sup>(b-1)</sup>
 
 矩阵符号写作：
 
-_J<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup> ∂ (y<sub>1</sub>,  ... , y<sub>n</sub>) </sup>/<sub> ∂ (x<sub>1</sub>,  ... , x<sub>n</sub>) </sub>)
+<p align="center"><i>
+J<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup> ∂ (y<sub>1</sub>,  ... , y<sub>n</sub>) </sup>/<sub> ∂ (x<sub>1</sub>,  ... , x<sub>n</sub>) </sub>)
+</i></p>
+如果 _m = n_，那么 _F_ 是从 _n_ 维空间到 _n_ 维度空间的函数，它的雅克比矩阵是一个方块矩阵。
 
-### 例子
+### 直观感受
+
+对于下图中的函数_F_和其Jacobians矩阵，可以看出 _J_ 的两个数值分别对应着函数 _F_ 在 *(x, y)*的变化趋势。
+
+<p align="center"><img src="img/Jacobians-intuition.png" width="600px"></p>
+
+把这个图画成热力图和三维形式，更容易理解：
+
+<p align="center"><img src="img/Jacobians-intuition-2.png" width="600px"></p>
+
+上面只是讨论了 _m = 1, n = 2_ 为一个函数的情况，下面看 _m = n = 2_的情况：
+
+<p align="center"><img src="img/Jacobians-intuition-3.png" width="600px"></p>
+
+你会发现 Jacobians Matrix _J_ 是从*(x, y)*空间往 _(u, v)_ 空间变化的矩阵。
+
+### 例子1
 
 函数如下：
 
@@ -117,7 +136,9 @@ _J<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;J&space;&=\left[\begin{array}{ll}{\frac{\partial&space;x}{\partial&space;r}}&{\frac{\partial&space;x}{\partial\theta}}&space;\\&space;{\frac{\partial&space;y}{\partial&space;r}}&{\frac{\partial&space;y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)}&space;&&space;{-r\sin(\theta)}&space;\\&space;{\sin(\theta)}&{r\cos(\theta)}\end{array}\right]&space;\end{aligned}" title="\begin{aligned} J &=\left[\begin{array}{ll}{\frac{\partial x}{\partial r}}&{\frac{\partial x}{\partial\theta}} \\ {\frac{\partial y}{\partial r}}&{\frac{\partial y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)} & {-r\sin(\theta)} \\ {\sin(\theta)}&{r\cos(\theta)}\end{array}\right] \end{aligned}" />
 </p>
-另一个例子：
+### 例子2
+
+函数如下：
 
 * _x(r, θ) = r cos(θ)_
 * _y(r, θ) = r sin(θ)_
@@ -133,16 +154,57 @@ Jacobians Det为
 <p align="center"><i>
  |J|  =  r(cos<sup>2</sup>(θ)  +  sin<sup>2</sup>(θ))  =  r
  </i></p>
+这里 _n = 2_ ，函数如下图：
 
-## Hessian
+<p align="center"><img src="img/Jacobians-demo-1.png" width="280px"></p>
 
-# Neural Networks
-## Simple neural networks
-## Backpropagation
+回忆一下行列式的几何意义：一个 _n_维方阵对应着_n_维欧式空间到自身的一个线性变换，而这个线性变换把欧式空间的体积元变成多少倍就是它的行列式。
+
+所以一个小的面积，沿着 _r_移动时，其体积的变化是以 _r_ 为函数。（如下图中红色区域）
+
+<p align="center"><img src="img/Jacobians-demo-2.png" width="280px"></p>
+
+## Hessian Matrix 海森矩阵
+
+在一些情况下Jacobians Matrix没法很好的解决问题，比如对于 _F_：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?z(x,y)=3(1-x)^{2}e^{-x^{2}-(y&plus;1)^{2}}-10\left(\frac{x}{5}-x^{3}\right)e^{-x^{2}-y^{2}}-\frac{1}{3}e^{-(x&plus;1)^{2}-y^{2}}" title="z(x,y)=3(1-x)^{2}e^{-x^{2}-(y+1)^{2}}-10\left(\frac{x}{5}-x^{3}\right)e^{-x^{2}-y^{2}}-\frac{1}{3}e^{-(x+1)^{2}-y^{2}}" />
+</p>
+
+它的Jacobians Matrix可视化之后如下图：
+
+<p align="center"><img src="img/Hessian-1.png"></p>
+
+可以看到 _z(x, y)_ 在有很多局部最大、最小值。对于其Jacobians Matrix，你会发现有多个为0的值，但是无法判断是否是最大值或最小值。因此需要通过定义二阶导数来观察。就需要引入Hessian Matrix。
+
+Hessian Matrix是一个以德国数学家**Ludwig Otto Hesse**命名的多变量实值函数的二阶偏导数组成的方块矩阵。假设_F : R<sub>n</sub> →  R<sub>m</sub>_ 是一个从 _n_ 维欧氏空间映射到到  _m_ 维欧氏空间的函数。假设一个函数由 _m_ 个实函数组成：_y<sub>1</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>), ..., y<sub>n</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，这些函数的二阶偏导数可以组成 _m_ 行 _n_ 列的矩阵，矩阵就是Hessian矩阵：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\mathbf{H}=\left[\begin{array}{cccc}{\frac{\partial^{2}f}{\partial&space;x_{1}^{2}}}&{\frac{\partial^{2}&space;f}{\partial&space;x_{1}&space;\partial&space;x_{2}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial^{2}&space;f}{\partial&space;x_{1}\partial&space;x_{n}}}\\&space;{\frac{\partial^{2}f}{\partial&space;x_{2}\partial&space;x_{1}}}&{\frac{\partial^{2}f}{\partial&space;x_{2}^{2}}}&{\cdots}&space;&&space;{\frac{\partial^{2}f}{\partial&space;x_{2}\partial&space;x_{n}}}\\&space;{\vdots}&{\vdots}&{\ddots}&{\vdots}\\&space;{\frac{\partial^{2}f}{\partial&space;x_{n}\partial&space;x_{1}}}&{\frac{\partial^{2}f}{\partial&space;x_{n}\partial&space;x_{2}}}&space;&&space;{\cdots}&{\frac{\partial^{2}&space;f}{\partial&space;x_{n}^{2}}}\end{array}\right]" title="\mathbf{H}=\left[\begin{array}{cccc}{\frac{\partial^{2}f}{\partial x_{1}^{2}}}&{\frac{\partial^{2} f}{\partial x_{1} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f}{\partial x_{1}\partial x_{n}}}\\ {\frac{\partial^{2}f}{\partial x_{2}\partial x_{1}}}&{\frac{\partial^{2}f}{\partial x_{2}^{2}}}&{\cdots} & {\frac{\partial^{2}f}{\partial x_{2}\partial x_{n}}}\\ {\vdots}&{\vdots}&{\ddots}&{\vdots}\\ {\frac{\partial^{2}f}{\partial x_{n}\partial x_{1}}}&{\frac{\partial^{2}f}{\partial x_{n}\partial x_{2}}} & {\cdots}&{\frac{\partial^{2} f}{\partial x_{n}^{2}}}\end{array}\right]" />
+</p>
+
+矩阵符号写作：
+
+<p align="center"><i>
+H<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup> ∂<sup>2</sup> (y<sub>1</sub>,  ... , y<sub>n</sub>) </sup>/<sub> ∂<sup>2</sup> (x<sub>1</sub>,  ... , x<sub>n</sub>) </sub>)
+</i></p>
+
+如果 _m = n_，那么 _F_ 是从 _n_ 维空间到 _n_ 维度空间的函数，它的Hessian矩阵是一个方块矩阵。
+
+### Hessian Matrix性质
+
+* _|H| > 0_：
+  *  如果 _H<sub>[0,0]</sub> > 0_，则 _(x<sub>0</sub>, y<sub>0</sub>)_ 为局部最小值
+  *  如果 _H<sub>[0,0]</sub> < 0_，则 _(x<sub>0</sub>, y<sub>0</sub>)_ 为局部最大值
+* _|H| < 0_：
+  * 则 _(x<sub>0</sub>, y<sub>0</sub>)_ 为鞍点
+* _|H| < 0_：
+  * 二阶导数无法判断该临界点的性质，得从更高阶的导数以泰勒公式来判断
 
 # 泰勒级数 (Taylor series)
+
 当 x = 0, 可得
-$$\sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( 0\right) }{n!}x^{n}$$
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\sum&space;^{\infty&space;}_{n=0}\dfrac&space;{f^{\left(&space;n\right)&space;}\left(&space;0\right)&space;}{n!}x^{n}" title="\sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( 0\right) }{n!}x^{n}" />
 </p>

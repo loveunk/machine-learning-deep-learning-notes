@@ -32,12 +32,12 @@
 <!-- /TOC -->
 
 ## Derivative 导数
-定义:
+导数的定义:
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\frac{df}{dx}&space;=&space;f'(x)&space;=&space;\lim&space;_{\Delta&space;x\rightarrow&space;0}\left(&space;\dfrac&space;{f\left(&space;x&space;&plus;&space;\Delta&space;x&space;\right)&space;-f(x)}{\Delta&space;x}\right)" title="\frac{df}{dx} = f'(x) = \lim _{\Delta x\rightarrow 0}\left( \dfrac {f\left( x + \Delta x \right) -f(x)}{\Delta x}\right)" />
 </p>
 
-### 基本规则
+### 导数基本规则
 #### 线性法则 (Sum / Subtraction rule)
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\begin{aligned}\dfrac{d}{dx}\left(f\left(x\right)&plus;g\left(x\right)\right)=\dfrac{df\left(x\right)}{dx}&plus;\dfrac{dg\left(x\right)}{dx}\end{aligned}" title="\begin{aligned}\dfrac{d}{dx}\left(f\left(x\right)+g\left(x\right)\right)=\dfrac{df\left(x\right)}{dx}+\dfrac{dg\left(x\right)}{dx}\end{aligned}" />
@@ -45,41 +45,95 @@
 
 #### 指数法则 (Power rule)
 
-如果
+函数为
 <p align="center"><i>
-f(x)=ax<sup>b</sup>
+f(x) = a x<sup>b</sup>
 </i></p>
+
 则
 <p align="center"><i>
-f'(x)=abx<sup>(b-1)</sup>
+f'(x) = ab x<sup>(b-1)</sup>
 </i></p>
 
 #### 其他规则
-* <img src="https://latex.codecogs.com/gif.latex?\inline&space;f(x)=\dfrac{1}{x},&space;f'(x)=-\dfrac{1}{x^{2}}" title="f(x)=\dfrac{1}{x}, f'(x)=-\dfrac{1}{x^{2}}" />
-* _f(x) = e<sup>x</sup>, f'(x) = e<sup>x</sup>_
-* _f(x) = log<sub>a</sub>(x), f'(x) = ((1)/(xln(a)))_
-* _f(x) = sin(x), f'(x) = cos(x)_
-* _f(x) = cos(x), f'(x) = -sin(x)_
 
-### 乘积法则 (Product rule)
-* _f(x) · g(x)=f(x)g'(x)+f'(x)g(x)_
-> <p align="center"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\begin&space;{aligned}&space;\lim&space;_{\Delta&space;x\rightarrow&space;0}(\Delta&space;A(x))&space;&&space;=&space;\lim_{\Delta&space;x\rightarrow&space;0}(f(x)&space;(g(x&plus;\Delta&space;x)&space;-&space;g(x))&space;&plus;&space;(f(x&plus;\Delta&space;x)&space;-&space;f(x)))&space;\\&space;&=&space;f(x)&space;g'(x)&space;&plus;&space;f'(x)&space;g(x)&space;\end{aligned}" title="\begin {aligned} \lim _{\Delta x\rightarrow 0}(\Delta A(x)) & = \lim_{\Delta x\rightarrow 0}(f(x) (g(x+\Delta x) - g(x)) + (f(x+\Delta x) - f(x))) \\ &= f(x) g'(x) + f'(x) g(x) \end{aligned}" /></p>
+| 函数                                     | 导数                                                     |
+| ---------------------------------------- | -------------------------------------------------------- |
+| _f(x) = (<sup> 1 </sup>/<sub> x </sub>)_ | _f'(x) =  - (<sup> 1 </sup>/<sub> x<sup>2</sup> </sub>)_ |
+| _f(x) = e<sup>x</sup>_                   | _f'(x) = e<sup>x</sup>_                                  |
+| _f(x) = log<sub>a</sub>(x)_              | _f'(x) = (<sup> 1 </sup>/<sub> xln(a) </sub>)_           |
+| _f(x) = sin(x)_                          | _f'(x) = cos(x)_                                         |
+| _f(x) = cos(x)_                          | _f'(x) = -sin(x)_                                        |
 
-> 需要说明上面的等式忽略了 _(f(x+Δx)-f(x))(g(x+Δx)-g(x))_ ，结合下图就可以更好理解，被忽略的部分是右下角白色的小框，随着  _lim<sub>Δx→0</sub>_ ，这部分可以忽略不计了。
-> <p align="center"><img src="./img/derivative-product-rule-explanation.png" width="300" /> </p>
+### 乘积法则 (Product Rule)
+函数为 _f(x) · g(x) = f(x) g'(x) + f'(x) g(x)_，则：
+
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\begin&space;{aligned}&space;\lim&space;_{\Delta&space;x\rightarrow&space;0}(\Delta&space;A(x))&space;&&space;=&space;\lim_{\Delta&space;x\rightarrow&space;0}(f(x)&space;(g(x&plus;\Delta&space;x)&space;-&space;g(x))&space;&plus;&space;(f(x&plus;\Delta&space;x)&space;-&space;f(x)))&space;\\&space;&=&space;f(x)&space;g'(x)&space;&plus;&space;f'(x)&space;g(x)&space;\end{aligned}" title="\begin {aligned} \lim _{\Delta x\rightarrow 0}(\Delta A(x)) & = \lim_{\Delta x\rightarrow 0}(f(x) (g(x+\Delta x) - g(x)) + (f(x+\Delta x) - f(x))) \\ &= f(x) g'(x) + f'(x) g(x) \end{aligned}" /></p>
+
+需要说明上面的等式忽略了 _(f(x+Δx) - f(x)) (g(x+Δx) - g(x))_ ，结合下图就可以更好理解，被忽略的部分是右下角白色的小框，随着  _lim<sub>Δx→0</sub>_ ，这部分可以忽略不计了。
+
+<p align="center"><img src="./img/derivative-product-rule-explanation.png" width="300" /> </p>
 
 ### 链式法则 (Chain rule)
-* _f(g(x))'=f'(g(x))g'(x)_
-> 可以想象成两个函数分别求导，再求乘积，例子如下图 <p align="center"><img src="./img/derivative-chain-rule-explanation.png" width="300" /> </p>
+对于函数 _f(g), g(x)_，有：
+
+<p align="center"><i>f(g(x))' = f'(g(x)) g'(x)</i></p>
+
+可以想象成两个函数分别求导，再求乘积，例子如下图 
+
+<p align="center"><img src="./img/derivative-chain-rule-explanation.png" width="300" /> </p>
 
 ## 偏导数 (Partial Derivative)
 ### 定义
 一个多变量的函数的偏导数是它关于其中一个变量的导数，而保持其他变量恒定。
 
-表示为
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;f'_x,f_x,\partial_x&space;f,D_xf,D_1f,\frac{\partial}{\partial&space;x}f,\text{&space;or&space;}&space;\frac{\partial&space;f}{\partial&space;x}.\text{&space;or&space;}f_x(x,&space;y,\ldots),\frac{\partial&space;f}{\partial&space;x}(x,y,\ldots)" title="f'_x,f_x,\partial_x f,D_xf,D_1f,\frac{\partial}{\partial x}f,\text{ or } \frac{\partial f}{\partial x}.\text{ or }f_x(x, y,\ldots),\frac{\partial f}{\partial x}(x,y,\ldots)" />
+表示为：
 
-## Jacobians - vectors of derivatives
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?\inline&space;f'_x,f_x,\partial_x&space;f,D_xf,D_1f,\frac{\partial}{\partial&space;x}f,\text{&space;or&space;}&space;\frac{\partial&space;f}{\partial&space;x}.\text{&space;or&space;}f_x(x,&space;y,\ldots),\frac{\partial&space;f}{\partial&space;x}(x,y,\ldots)" title="f'_x,f_x,\partial_x f,D_xf,D_1f,\frac{\partial}{\partial x}f,\text{ or } \frac{\partial f}{\partial x}.\text{ or }f_x(x, y,\ldots),\frac{\partial f}{\partial x}(x,y,\ldots)" /></p>
+
+## 雅可比矩阵(Jacobians Matrix)
+
+雅克比矩阵是一阶偏导数的排列成的矩阵。其行列式称为雅克比行列式。
+
+假设一个函数由 _m_ 个实函数组成：_y<sub>1</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>), ..., y<sub>n</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，这些函数的偏导数可以组成 _m_ 行 _n_ 列的矩阵，矩阵就是雅克比矩阵 (Jacobians Matrix)：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\left[&space;\begin{array}{ccc}{\frac{\partial&space;y_{1}}{\partial&space;x_{1}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial&space;y_{1}}{\partial&space;x_{n}}}&space;\\&space;{\vdots}&space;&&space;{\ddots}&space;&&space;{\vdots}&space;\\&space;{\frac{\partial&space;y_{m}}{\partial&space;x_{1}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial&space;y_{m}}{\partial&space;x_{n}}}\end{array}\right]" title="\left[ \begin{array}{ccc}{\frac{\partial y_{1}}{\partial x_{1}}} & {\cdots} & {\frac{\partial y_{1}}{\partial x_{n}}} \\ {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial y_{m}}{\partial x_{1}}} & {\cdots} & {\frac{\partial y_{m}}{\partial x_{n}}}\end{array}\right]" />
+</p>
+
+矩阵符号写作：
+
+_J<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup> ∂ (y<sub>1</sub>,  ... , y<sub>n</sub>) </sup>/<sub> ∂ (x<sub>1</sub>,  ... , x<sub>n</sub>) </sub>)
+
+### 例子
+
+函数如下：
+
+* u(x, y) = x - 2y
+* v(x, y) = 3y - 2x
+
+则Jacobians Matrix为：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;J&space;&=\left[\begin{array}{ll}{\frac{\partial&space;x}{\partial&space;r}}&{\frac{\partial&space;x}{\partial\theta}}&space;\\&space;{\frac{\partial&space;y}{\partial&space;r}}&{\frac{\partial&space;y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)}&space;&&space;{-r\sin(\theta)}&space;\\&space;{\sin(\theta)}&{r\cos(\theta)}\end{array}\right]&space;\end{aligned}" title="\begin{aligned} J &=\left[\begin{array}{ll}{\frac{\partial x}{\partial r}}&{\frac{\partial x}{\partial\theta}} \\ {\frac{\partial y}{\partial r}}&{\frac{\partial y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)} & {-r\sin(\theta)} \\ {\sin(\theta)}&{r\cos(\theta)}\end{array}\right] \end{aligned}" />
+</p>
+另一个例子：
+
+* _x(r, θ) = r cos(θ)_
+* _y(r, θ) = r sin(θ)_
+
+则Jacobians Matrix为：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;J&space;&=\left[\begin{array}{ll}{\frac{\partial&space;x}{\partial&space;r}}&{\frac{\partial&space;x}{\partial\theta}}&space;\\&space;{\frac{\partial&space;y}{\partial&space;r}}&{\frac{\partial&space;y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)}&space;&&space;{-r\sin(\theta)}&space;\\&space;{\sin(\theta)}&{r\cos(\theta)}\end{array}\right]&space;\end{aligned}" title="\begin{aligned} J &=\left[\begin{array}{ll}{\frac{\partial x}{\partial r}}&{\frac{\partial x}{\partial\theta}} \\ {\frac{\partial y}{\partial r}}&{\frac{\partial y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)} & {-r\sin(\theta)} \\ {\sin(\theta)}&{r\cos(\theta)}\end{array}\right] \end{aligned}" />
+</p>
+
+Jacobians Det为
+
+<p align="center"><i>
+ |J|  =  r(cos<sup>2</sup>(θ)  +  sin<sup>2</sup>(θ))  =  r
+ </i></p>
+
 ## Hessian
 
 # Neural Networks

@@ -203,13 +203,25 @@ H<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 * _|H| < 0_：
   * 二阶导数无法判断该临界点的性质，得从更高阶的导数以泰勒公式来判断
 
-# 泰勒级数 (Taylor series)
-
-### 指数级数
+## 幂级数
 
 - _g(x)  =  a  +  bx  +  cx<sup>2</sup>  +  dx<sup>3</sup>  +   ..._
 - _g<sub>1</sub>(x)  =  a  +  bx_
-- _g<sub>2</sub>(x)  =  a  +  bx  +  cx<sup>2</sup>_ 
+- _g<sub>2</sub>(x)  =  a  +  bx  +  cx<sup>2</sup>_
+- _g<sub>3</sub>(x)  =  a  +  bx  +  cx<sup>2</sup> +  dx<sup>3</sup>_ 
+
+### 幂级数求导
+
+- _g<sub>0</sub>(x)  =  f(0)_ 
+- _g<sub>1</sub>(x)  =  f(0)  +  f<sup>'</sup>(0)x_ 
+- _g<sub>2</sub>(x)  =  f(0)  +  f<sup>'</sup>(0)x  +  (<sup> 1 </sup>/<sub> 2 </sub>)f<sup>''</sup>(0)x<sup>2</sup>_ 
+- _g<sub>3</sub>(x)  =  f(0)  +  f<sup>'</sup>(0)x  +  (<sup> 1 </sup>/<sub> 2 </sub>)f<sup>''</sup>(0)x<sup>2</sup>  +  (<sup> 1 </sup>/<sub> 6 </sub>)f<sup>(3)</sup>x<sup>3</sup>_
+- ...
+-  _g(x)  =  Σ<sub>n = 0</sub><sup>∞</sup> (<sup> 1 </sup>/<sub> n! </sub>)f<sup>(n)</sup>(0)x<sup>n</sup>_ 
+
+这种级数又称为 麦克劳林级数（**Maclaurin Series**），实际是泰勒级数的一种特殊情况。
+
+## 泰勒级数 (Taylor series)
 
 ### 泰勒级数
 

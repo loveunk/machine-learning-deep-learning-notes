@@ -136,6 +136,7 @@ J<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;J&space;&=\left[\begin{array}{ll}{\frac{\partial&space;x}{\partial&space;r}}&{\frac{\partial&space;x}{\partial\theta}}&space;\\&space;{\frac{\partial&space;y}{\partial&space;r}}&{\frac{\partial&space;y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)}&space;&&space;{-r\sin(\theta)}&space;\\&space;{\sin(\theta)}&{r\cos(\theta)}\end{array}\right]&space;\end{aligned}" title="\begin{aligned} J &=\left[\begin{array}{ll}{\frac{\partial x}{\partial r}}&{\frac{\partial x}{\partial\theta}} \\ {\frac{\partial y}{\partial r}}&{\frac{\partial y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)} & {-r\sin(\theta)} \\ {\sin(\theta)}&{r\cos(\theta)}\end{array}\right] \end{aligned}" />
 </p>
+
 ### 例子2
 
 函数如下：
@@ -204,7 +205,16 @@ H<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 
 # 泰勒级数 (Taylor series)
 
+### 指数级数
+
+- _g(x)  =  a  +  bx  +  cx<sup>2</sup>  +  dx<sup>3</sup>  +   ..._
+- _g<sub>1</sub>(x)  =  a  +  bx_
+- _g<sub>2</sub>(x)  =  a  +  bx  +  cx<sup>2</sup>_ 
+
+### 泰勒级数
+
 当 x = 0, 可得
+
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\sum&space;^{\infty&space;}_{n=0}\dfrac&space;{f^{\left(&space;n\right)&space;}\left(&space;0\right)&space;}{n!}x^{n}" title="\sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( 0\right) }{n!}x^{n}" />
 </p>

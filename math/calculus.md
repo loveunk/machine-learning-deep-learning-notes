@@ -217,7 +217,7 @@ H<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 - _g<sub>2</sub>(x)  =  f(0)  +  f<sup>'</sup>(0)x  +  (<sup> 1 </sup>/<sub> 2 </sub>)f<sup>''</sup>(0)x<sup>2</sup>_ 
 - _g<sub>3</sub>(x)  =  f(0)  +  f<sup>'</sup>(0)x  +  (<sup> 1 </sup>/<sub> 2 </sub>)f<sup>''</sup>(0)x<sup>2</sup>  +  (<sup> 1 </sup>/<sub> 6 </sub>)f<sup>(3)</sup>x<sup>3</sup>_
 - ...
--  _g(x)  =  Σ<sub>n = 0</sub><sup>∞</sup> (<sup> 1 </sup>/<sub> n! </sub>)f<sup>(n)</sup>(0)x<sup>n</sup>_ 
+- <img src="https://latex.codecogs.com/gif.latex?g(x)=\sum&space;^{\infty&space;}_{n=0}\dfrac&space;{f^{\left(&space;n\right)&space;}\left(&space;0\right)&space;}{n!}x^{n}" title="g(x) = \sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( 0\right) }{n!}x^{n}" /> 
 
 这种级数又称为 麦克劳林级数（**Maclaurin Series**），实际是泰勒级数的一种特殊情况。
 
@@ -235,17 +235,33 @@ H<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;f(x)&=f(p)\\&space;f(x)&=f(p)&plus;f'(p)(x-p)\\&space;f(x)&=f(p)&plus;f'(p)(x-p)&plus;\frac{1}{2}f''(p-p)(x-p)^2\\&space;f(x)&=\sum^{\infty&space;}_{n=0}\dfrac{f^{\left(n\right)}\left(p\right)}{n!}(x-p)^{n}&space;\end{aligned}" title="\begin{aligned} f(x)&=f(p)\\ f(x)&=f(p)+f'(p)(x-p)\\ f(x)&=f(p)+f'(p)(x-p)+\frac{1}{2}f''(p-p)(x-p)^2\\ f(x)&=\sum^{\infty }_{n=0}\dfrac{f^{\left(n\right)}\left(p\right)}{n!}(x-p)^{n} \end{aligned}" />
 </p>
+对于 _cos(x)_ 这样的函数泰勒级数可以很好的拟合，但是对于 _<sup>1</sup>/<sub>x</sub>_ 这样的函数拟合的很糟糕。
 
 ## 多变量泰勒级数 Multivariable Taylor Series
 
-# 约束最大最小值的优化方法
+当函数有多变量时，就需要用到多变量泰勒级数，一个例子：
+
+![](img\multivariate-taylor.png)
+
+多变量泰勒级数的公式：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;f(x&plus;\partial_x,&space;y&plus;\partial_y)&={f(x,y)}\\&space;&{&plus;\left(\partial_{x}f(x,y)\Delta&space;x&plus;\partial_{y}&space;f(x,y)&space;\Delta&space;y\right)}\\&space;&{&plus;\frac{1}{2}\left(\partial_{x&space;x}&space;f(x,y)&space;\Delta&space;x^{2}&plus;2&space;\partial_{x&space;y}&space;f(x,y)&space;\Delta&space;x&space;\Delta&space;y&plus;\partial_{y&space;y}&space;f(x,y)&space;\Delta&space;y^{2}\right)}&space;\end{align*}" title="\begin{align*} f(x+\partial_x, y+\partial_y)&={f(x,y)}\\ &{+\left(\partial_{x}f(x,y)\Delta x+\partial_{y} f(x,y) \Delta y\right)}\\ &{+\frac{1}{2}\left(\partial_{x x} f(x,y) \Delta x^{2}+2 \partial_{x y} f(x,y) \Delta x \Delta y+\partial_{y y} f(x,y) \Delta y^{2}\right)} \end{align*}" />
+</p>
+
+
+实际上：
+
+* 第二行可以写作 _J<sub>f</sub> Δx_
+* 第三行可以写作_Δx<sup>t</sup> H<sub>f</sub> Δx_
+
+## 约束最大最小值的优化方法
 ## 牛顿-拉弗森方法 Newton-Raphson
-## Gradient Descent
 ## 拉格朗日乘数 Lagrange multipliers
 
-# 线性回归Linear Regression
+## 线性回归Linear Regression
 
-# 非线性回归 Non-linear Regression
+## 非线性回归 Non-linear Regression
 ## 快速下降法 Steepest Descent
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\mathbf{J}=\left[\frac{\partial(\chi^2)}{\partial\mu},\frac{\partial(\chi^2)}{\partial\sigma}\right]" title="\mathbf{J}=\left[\frac{\partial(\chi^2)}{\partial\mu},\frac{\partial(\chi^2)}{\partial\sigma}\right]" />

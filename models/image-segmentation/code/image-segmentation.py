@@ -1,3 +1,17 @@
+"""
+Author: Kevin
+Link: www.kaikai.ai
+Github: github.com/loveunk
+
+这是一个image segmentation的例子，使用
+Felzenszwalb, Pedro F., and Daniel P. Huttenlocher. 
+"Efficient graph-based image segmentation." 
+International journal of computer vision 59.2 (2004): 167-181.
+中介绍的方法。
+
+关键API：skimage.segmentation.felzenszwalb()
+"""
+
 import scipy
 import skimage.segmentation
 from matplotlib import pyplot as plt

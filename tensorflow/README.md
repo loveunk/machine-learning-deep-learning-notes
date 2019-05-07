@@ -19,4 +19,8 @@
    1. 保存一个模型到存储
    2. 加载已有模型
    3. 使用已有的模型做分类
+3. [tensorflow-2.0-Alpha0-helloworld.py](code/tensorflow-2.0-Alpha0-helloworld.py)：基于TensorFlow2.0版本的2个完整的mnist分类demo。涉及：
+   1. TensorFlow dataset minist的加载
+   2. 创建自定义Model
+   3. 对测试集做预测
 

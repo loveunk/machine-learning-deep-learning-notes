@@ -96,7 +96,7 @@
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/12ebd5973230e8fdf279ae09e187f437.png" />
 </p>
 
-如果 _C_ 非常大，则最小化代价函数的时候，我们将会很希望找到一个使第一项为0的最优解。因此，让我们尝试在代价项的第一项为0的情形下理解该优化问题。比如我们可以把$C$设置成了非常大的常数，这将给我们一些关于SVM模型的直观感受。
+如果 _C_ 非常大，则最小化代价函数的时候，我们将会很希望找到一个使第一项为0的最优解。因此，让我们尝试在代价项的第一项为0的情形下理解该优化问题。比如我们可以把 _C_ 设置成了非常大的常数，这将给我们一些关于SVM模型的直观感受。
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\min_{\theta}C\sum&space;^{m}_{i=1}\left[&space;y^{(i)}cost_{1}\left(&space;\theta&space;^{T}x^{(i)}\right)&space;&plus;&space;(1-y^{(i)})cost_{1}\left(&space;\theta&space;^{T}x^{(i)}\right)\right]&space;&plus;\dfrac&space;{1}{2}\sum&space;^{n}_{i=1}\theta&space;^{2}_{j}" title="\min_{\theta}C\sum ^{m}_{i=1}\left[ y^{(i)}cost_{1}\left( \theta ^{T}x^{(i)}\right) + (1-y^{(i)})cost_{1}\left( \theta ^{T}x^{(i)}\right)\right] +\dfrac {1}{2}\sum ^{n}_{i=1}\theta ^{2}_{j}" />
 </p>
@@ -190,34 +190,31 @@ _u_ 和 _v_ 之间的内积
 <p align="center">
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/03bd4b3ff69e327f7949c3d2a73eed8a.png" />
 </p>
-
 先忽略掉截距，令 _θ<sub>0</sub>=0_ ，这样更容易画示意图。
 将特征数 _n_ 置为2，仅有两个特征 _x<sub>1</sub>,x<sub>2</sub>_
 
-看一下SVM的优化目标函数。当仅有两个特征，即 _n=2_ 时，需要最小化 _((1)/(2))(θ<sub>1</sub><sup>2</sup>+θ<sub>2</sub><sup>2</sup>)_ 。
+看一下SVM的优化目标函数。当仅有两个特征，即 _n=2_ 时，需要最小化 _(<sup>1</sup>/<sub>2</sub>)(θ<sub>1</sub><sup>2</sup>+θ<sub>2</sub><sup>2</sup>)_ 。
 
-现在我将要看看这些项： _θ<sup>T</sup>x_ 更深入地理解它们的含义。
-给定参数向量 _θ_ 给定一个样本 _x_ ，这等于什么呢?
+现在我将要看看 _θ<sup>T</sup>、x_ ，更深入地理解它们的含义。给定参数向量 _θ_ 给定一个样本 _x_ ，这等于什么呢?
 
 _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示意图：
 <p align="center">
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/4510b8fbc90ba2b233bb6996529f2df1.png" />
 </p>
 
-上面的示意图里，用一红叉表示正样本 _x<sup>(i)</sup>​_
-*（水平轴上取值为 _x<sub>1</sub><sup>(i)</sup>​_ ，在竖直轴上取值为 _x<sub>2</sub><sup>(i)</sup>​_）。
+上面的示意图里，用一红叉表示正样本 _x<sup>(i)</sup>​_（水平轴上取值为 _x<sub>1</sub><sup>(i)</sup>​_ ，在竖直轴上取值为 _x<sub>2</sub><sup>(i)</sup>​_）。
 
 将 _θ<sub>1</sub>​_ 画在横轴这里，将 _θ<sub>2</sub>​_ 画在纵轴这里，那么内积 _θ<sup>T</sup>x<sup>(i)</sup>_
 
 使用之前的方法，计算的方式是我将训练样本投影到参数向量 _θ_ ，然后看这个线段的长度，图中红色。
 将它称为 _p<sup>(i)</sup>_ 用来表示这是第 _i_ 个训练样本在参数向量 _θ_ 上的投影。根据之前的内容，知道
+
 * _θ<sup>T</sup>x<sup>(i)</sup> = p × ‖θ‖_，也等于
 * _θ<sub>1</sub> · x<sub>1</sub><sup>(i)</sup>+θ<sub>2</sub> · x<sub>2</sub><sup>(i)</sup>_ 。
 
 这两种方式是等价的，都可以用来计算 _θ_ 和 _x<sup>(i)</sup>_ 之间的内积。
 
-表达的意思是：
-这个 _θ<sup>T</sup>x<sup>(i)</sup> >= 1_ 或者 _θ<sup>T</sup>x<sup>(i)</sup> < -1_ 的约束是可以被 _p<sup>(i)</sup> · ‖θ‖ >= 1_ 代替。
+表达的意思是：这个 _θ<sup>T</sup>x<sup>(i)</sup> >= 1_ 或者 _θ<sup>T</sup>x<sup>(i)</sup> < -1_ 的约束是可以被 _p<sup>(i)</sup> · ‖θ‖ >= 1_ 代替。
 
 ---
 <p align="center">
@@ -298,11 +295,14 @@ _θ_ 和 _x<sup>(i)</sup>_ 就类似于 _u_ 和 _v_ 的向量，如下面的示�
 </p>
 
 例如：
+
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?f_1=similarity(x,{l^{(1)}})=e(-\frac{{{\left\|x-{l^{(1)}}\right\|}^2}}{2\sigma^2})" title="f_1=similarity(x,{l^{(1)}})=e(-\frac{{{\left\|x-{l^{(1)}}\right\|}^2}}{2\sigma^2})" />
+<img src="img/svm-f1.png" width="250px"/>
 </p>
 
+
 其中：
+
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?{\left\|x-l^{(1)}\right\|}^{2}=\sum_{j=1}^n{(x_j-l_j^{(1)})}^{2}" title="{\left\|x-l^{(1)}\right\|}^{2}=\sum_{j=1}^n{(x_j-l_j^{(1)})}^{2}" />
 </p>

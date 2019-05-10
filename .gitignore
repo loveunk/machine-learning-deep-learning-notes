@@ -1,2 +1,7 @@
 .idea
 *.h5
+.ipynb_checkpoints
+tensorflow/introduction-to-tensorflow-for-AI-ML-DL/h-or-s/
+tensorflow/introduction-to-tensorflow-for-AI-ML-DL/*.zip
+tensorflow/introduction-to-tensorflow-for-AI-ML-DL/cats-v-dogs
+tensorflow/introduction-to-tensorflow-for-AI-ML-DL/sign-language-mnist

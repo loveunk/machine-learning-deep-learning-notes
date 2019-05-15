@@ -80,9 +80,11 @@
   6. 进阶讨论（待补充）
 
 ### TensorFlow 
-* 推荐吴恩达DeepLearning.ai和Coursera出品课程[《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)（面向人工智能、机器学习和深度学习的TensorFlow介绍》。
-  * 课程包括四周内容，练习基于Google Colab平台，讲师是来自Google Brain团队。
-* TensorFlow出2.0了，推荐阅读[<img src="img/zhihu32.png" width="18" />《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)对TensorFlow体系有个完整认知。
+* 推荐吴恩达DeepLearning.ai和Coursera推出的系列TensoFlow课程。每门课均包括四周内容，Exercise基于Google Colab平台，讲师是来自Google Brain团队的Laurence Moroney：
+  1. [《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)：TF入门
+  2. [《Convolutional Neural Networks in TensorFlow》](https://www.coursera.org/learn/convolutional-neural-networks-tensorflow)：CNN, Transfer Learning
+  3. [还未发布]：TensorFlow.js
+* 关于TensorFlow 2.0，推荐阅读[<img src="img/zhihu32.png" width="18" />《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)以便对TensorFlow体系有个完整认知。
 * [TensorFlow/Keras的例子](tensorflow)
 
 ### PyTorch

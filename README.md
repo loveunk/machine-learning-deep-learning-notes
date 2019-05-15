@@ -5,7 +5,7 @@
 我在思考传统行业与这些新兴技术结合并转型的过程中，亦系统的回顾了深度学习及其相关技术。本文正是我在学习过程中所作的总结。我将按照我所理解的学习路径来呈现各部分内容，希望对你亦有帮助。欢迎一起交流。
 
 主要分为如下几个部分：
-* **数学基础**：包括微积分、线性代数等对理解机器学习算法有帮助的基本数学。
+* **数学基础**：包括微积分、线性代数、概率论等对理解机器学习算法有帮助的基本数学。
 * **Python**：`Python`提供了非常丰富的工具包，非常适合学习者实现算法，也可以作为工业环境完成项目。主流的深度学习框架，例如当前最流行的两个AI框架`TensorFlow`、`PyTorch`都以Python作为首选语言。此外，主流的在线课程（比如Andrew Ng在Coursera的深度学习系列课程）用Python作为练习项目的语言。在这部分，我将介绍包括Python语言基础和机器学习常用的几个Library，包括`Numpy`、`Pandas`、`matplotlib`、`Scikit-Learn`等。
 * **机器学习**：介绍主流的机器学习算法，比如线性回归、逻辑回归、神经网络、SVM、PCA、聚类算法等等。
 * **深度学习**：介绍原理和常见的模型（比如`CNN`、`RNN`、`LSTM`、`GAN`等）和深度学习的框架（`TensorFlow`、`Keras`、`PyTorch`）。
@@ -14,7 +14,6 @@
 * **阅读论文**：如果你追求更高和更深入的研究时，看深度学习各细分领域的论文是非常必要的。
 
 > 内容持续更新中，未完成的部分标识有TBD (To be done)。
->
 > 文中涉及的公式部分是用[CodeCogs](https://codecogs.com/latex/eqneditor.php)的在线LaTeX渲染，如果公式未正确加载，可以尝试多刷新几次。
 
 ## 绪论
@@ -102,7 +101,7 @@ PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得�
 * [DataFountain](https://www.datafountain.cn/)（中国）
 * [SODA](http://soda.shdataic.org.cn/) - 开放数据创新应用大赛（中国）
 
-## 深度学习论文
+## 相关论文
 
 对于一些问题的深入研究，最终是离不开阅读优秀论文，推荐如下GitHub：
 
@@ -111,14 +110,18 @@ PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得�
 * [<img src="img/github32.png" width="18" />Papers with code](https://github.com/zziz/pwc)：总结了近 10 年来顶会（包括NIPS/CVPR/ECCV/ICML）优秀论文和复现代码
 
 ## 工欲善其事，必先利其器
-### 一些电子书
-* [<img src="img/github32.png" width="18" target="_blank" />机器学习/深度学习/Data Science相关的书籍](https://github.com/loveunk/Deep-learning-books)
+### 推荐的书
 
-### 推荐的学习环境
+* 《机器学习》（别名《西瓜书》周志华）
+* 《Deepleanrning》（别名《花书》作者Ian Goodfellow）
+* 《Hands on Machine Learning with Scikit Learn Keras and TensorFlow》（已经出了第二版，作者Aurélien Géron）
+* 非常推荐购买纸质书，关于电子版可参考这个的Repo：[<img src="img/github32.png" width="18" target="_blank" />机器学习/深度学习/Data Science相关的书籍](https://github.com/loveunk/Deep-learning-books)
+
+### 推荐的实践环境
 * Anaconda
   * [<img src="img/zhihu32.png" width="18" />Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)
 * IDE
-  * PyCharm（推荐） / VS Code / Atom 等：[<img src="img/zhihu32.png" width="18" />参考阅读](https://zhuanlan.zhihu.com/p/58178996)。
+  * PyCharm（推荐） / VS Code（推荐）/ Atom 等：[<img src="img/zhihu32.png" width="18" />参考阅读《Python的几款IDE》](https://zhuanlan.zhihu.com/p/58178996)。
 
 ### 一些好用的工具
 * 机器学习在线环境

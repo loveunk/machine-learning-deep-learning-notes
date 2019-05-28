@@ -192,6 +192,8 @@ $(document).ready(function(){
     output = output.replace(/\\rbrack/g, "]");
     output = output.replace(/\\langle/g, "〈");
     output = output.replace(/\\rangle/g, "〉");
+    output = output.replace(/\\lfloor/g, "⌊");
+    output = output.replace(/\\rfloor/g, "⌋");
     output = output.replace(/\\\|/g, "‖");
     output = output.replace(/\\Leftrightarrow/g, "⇔");
     output = handleSubSupCloseTag(output, "<sub>", "</sub>");

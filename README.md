@@ -9,7 +9,7 @@
 * **Python**：`Python`提供了非常丰富的工具包，非常适合学习者实现算法，也可以作为工业环境完成项目。主流的深度学习框架，例如当前最流行的两个AI框架`TensorFlow`、`PyTorch`都以Python作为首选语言。此外，主流的在线课程（比如Andrew Ng在Coursera的深度学习系列课程）用Python作为练习项目的语言。在这部分，我将介绍包括Python语言基础和机器学习常用的几个Library，包括`Numpy`、`Pandas`、`matplotlib`、`Scikit-Learn`等。
 * **机器学习**：介绍主流的机器学习算法，比如线性回归、逻辑回归、神经网络、SVM、PCA、聚类算法等等。
 * **深度学习**：介绍原理和常见的模型（比如`CNN`、`RNN`、`LSTM`、`GAN`等）和深度学习的框架（`TensorFlow`、`Keras`、`PyTorch`）。
-* **强化学习**：TBD
+* **强化学习**：介绍强化学习的简单原理和实例。
 * **实践项目**：这里将结合几个实际的项目来做比较完整的讲解。此外结合`Kaggle`、`阿里云天池`比赛来做讲解。
 * **阅读论文**：如果你追求更高和更深入的研究时，看深度学习各细分领域的论文是非常必要的。
 
@@ -92,7 +92,9 @@ PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得�
 * [<img src="img/github32.png" width="18" />PyTorch 中文手册](https://github.com/zergtant/pytorch-handbook)
 
 ## 强化学习
-* TBD
+* Reinforcement learning (RL) is a type of machine learning, in which an agent explores an environment to learn how to perform desired tasks by taking actions with good outcomes and avoiding actions with bad outcomes.
+
+  A reinforcement learning model will learn from its experience and over time will be able to identify which actions lead to the best rewards.
 
 ## 项目和竞赛
 ### 竞赛

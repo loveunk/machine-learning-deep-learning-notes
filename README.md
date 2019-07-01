@@ -80,9 +80,10 @@
 
 ### TensorFlow 
 * 推荐吴恩达DeepLearning.ai和Coursera推出的系列TensoFlow课程。每门课均包括四周内容，Exercise基于Google Colab平台，讲师是来自Google Brain团队的Laurence Moroney：
-  1. [《Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning》](https://www.coursera.org/learn/introduction-tensorflow)：TF入门
-  2. [《Convolutional Neural Networks in TensorFlow》](https://www.coursera.org/learn/convolutional-neural-networks-tensorflow)：CNN, Transfer Learning
-  3. [还未发布]：TensorFlow.js
+  1. 《[Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning](https://www.coursera.org/learn/introduction-tensorflow)》：TF入门
+  2. 《[Convolutional Neural Networks in TensorFlow](https://www.coursera.org/learn/convolutional-neural-networks-tensorflow)》：CNN, Transfer Learning
+  3. 《[Natural Language Processing in TensorFlow](https://www.coursera.org/learn/natural-language-processing-tensorflow)》：构建NLP系统，涉及RNN, GRU, and LSTM等
+  4. 《[Sequences, Time Series and Prediction](https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction)》：用RNNs/ConvNets/WaveNet解决时序和预测问题
 * 关于TensorFlow 2.0，推荐阅读[<img src="img/zhihu32.png" width="18" />《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)以便对TensorFlow体系有个完整认知。
 * [TensorFlow/Keras的例子](tensorflow)
 

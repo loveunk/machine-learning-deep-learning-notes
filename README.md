@@ -93,8 +93,9 @@ PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得�
 
 ## 强化学习
 * Reinforcement learning (RL) is a type of machine learning, in which an agent explores an environment to learn how to perform desired tasks by taking actions with good outcomes and avoiding actions with bad outcomes.
-
-  A reinforcement learning model will learn from its experience and over time will be able to identify which actions lead to the best rewards.
+A reinforcement learning model will learn from its experience and over time will be able to identify which actions lead to the best rewards.
+  
+* TBD
 
 ## 项目和竞赛
 ### 竞赛

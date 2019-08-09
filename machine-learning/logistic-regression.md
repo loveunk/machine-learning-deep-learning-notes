@@ -169,7 +169,6 @@ def cost1(theta, X, y): # 这是第一种方法
   second = (1 - y.T) @ np.log(1 - sigmoid(X @ theta))
   return ((first - second) / (len(X))).item()
 
-
 def cost2(theta, X, y): # 这是第二种方法
   first = np.multiply(-y, np.log(sigmoid(X @ theta)))
   second = np.multiply((1 - y), np.log(1 - sigmoid(X @ theta)))
@@ -303,7 +302,7 @@ plt.show()
 
 这里的三角形是正样本，而圆形代表负样本。可以这样想，设置三角形的值为1，圆形的值为0，下面我们来训练一个标准的逻辑回归分类器，这样我们就得到一个正边界。
 
-为了能实现这样的转变，我们将多个类中的一个类标记为正向类（ _y=1_ ），然后将其他所有类都标记为负向类，这个模型记作 _h<sub>θ</sub><sup>(1)</sup>(x)_ 。接着，类似地第我们选择另一个类标记为正向类（ _y=2_ ），再将其它类都标记为负向类，将这个模型记作 _h<sub>θ</sub><sup>(2)</sup>(x)_ ,依此类推。最后我们得到一系列的模型简记为： _h<sub>θ</sub><sup>(i)</sup>(x)=p(y=i|x;θ)_ 其中： _i=(1,2,3....k)_
+为了能实现这样的转变，我们将多个类中的一个类标记为正向类（ _y=1_ ），然后将其他所有类都标记为负向类，这个模型记作 _h<sub>θ</sub><sup>(1)</sup>(x)_ 。接着，类似地第我们选择另一个类标记为正向类（ _y=2_ ），再将其它类都标记为负向类，将这个模型记作 _h<sub>θ</sub><sup>(2)</sup>(x)_ ,依此类推。最后我们得到一系列的模型简记为： _h<sub>θ</sub><sup>(i)</sup>(x) = p(y=i|x;θ)_ 其中： _i=(1,2,3....k)_
 
 最后，在做预测时，将所有的分类机都运行一遍，然后对每一个输入变量，选择最高可能性的输出变量。
 
@@ -343,7 +342,7 @@ plt.show()
 <img src="https://latex.codecogs.com/gif.latex?J\left(\theta\right)=\frac{1}{2m}\left[\sum\limits_{i=1}^m{{({h_\theta}({x^{(i)}})-{y}^{(i)})}^2}&plus;\lambda\sum\limits_{j=1}^n{\theta_j^2}\right]" title="J\left(\theta\right)=\frac{1}{2m}\left[\sum\limits_{i=1}^m{{({h_\theta}({x^{(i)}})-{y}^{(i)})}^2}+\lambda\sum\limits_{j=1}^n{\theta_j^2}\right]" />
 </p>
 
-其中 _\lambda_ 又称为**正则化参数**（**RegularizationParameter**）。注：根据惯例，不对 _θ<sub>0</sub>_ 惩罚。经过正则化处理的模型与原模型的可能对比如下图所示：
+其中 _λ_ 又称为**正则化参数**（**RegularizationParameter**）。注：根据惯例，不对 _θ<sub>0</sub>_ 惩罚。经过正则化处理的模型与原模型的可能对比如下图所示：
 
 <p align="center">
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/ea76cc5394cf298f2414f230bcded0bd.jpg" />

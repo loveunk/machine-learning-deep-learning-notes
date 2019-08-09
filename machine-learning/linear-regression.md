@@ -79,7 +79,7 @@
 
 ### 代价函数
 为衡量 _h_ 的性能，回归任务中常见的方法是定义代价函数（Cost Function）：
-* 均方误差（MES: Mean Squared Error）
+* 均方误差（MSE: Mean Squared Error）
   <p align="center">
   <img src="https://latex.codecogs.com/gif.latex?J(\theta_0,\theta_1)&space;=&space;\frac{1}{2m}\sum\limits_{i=1}^m&space;\left(&space;h_{\theta}(x^{(i)})-y^{(i)}&space;\right)^{2}" title="J(\theta_0,\theta_1) = \frac{1}{2m}\sum\limits_{i=1}^m \left( h_{\theta}(x^{(i)})-y^{(i)} \right)^{2}" />
   </p>
@@ -215,7 +215,11 @@ Repeat {
 * _x<sup>(i)</sup>_：第i个训练样本。如果样本用矩阵表示，那它对应就是矩阵的第 _i_ 行，也是一个向量。比如 _x<sup>(2)</sup> = [1416; 3; 2; 40; 232]_。
 * _x<sub>j</sub><sup>(i)</sup>_：训练样本中的第 _i_ 个hang本中的第 _j_ 个特征，也就是矩阵里的 _i_ 行的 _j_ 列。
 
-多变量的假设 $h$ 表示为：<img src="https://latex.codecogs.com/gif.latex?h_{\theta}\left(&space;x&space;\right)={\theta_{0}}&plus;{\theta_{1}}{x_{1}}&plus;{\theta_{2}}{x_{2}}&plus;...&plus;{\theta_{n}}{x_{n}}" title="h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}" />
+多变量的假设 $h$ 表示为：
+
+<p align="center">
+<img src="https://latex.codecogs.com/gif.latex?h_{\theta}\left(&space;x&space;\right)={\theta_{0}}&plus;{\theta_{1}}{x_{1}}&plus;{\theta_{2}}{x_{2}}&plus;...&plus;{\theta_{n}}{x_{n}}" title="h_{\theta}\left( x \right)={\theta_{0}}+{\theta_{1}}{x_{1}}+{\theta_{2}}{x_{2}}+...+{\theta_{n}}{x_{n}}" />
+</p>
 
 上述公式中有 _n+1_ 个参数和 _n_ 个变量，为了简化公式，引入 _x<sub>0</sub> = 1_，则上式写作：
 <p align="center">
@@ -326,16 +330,14 @@ _h<sub>θ</sub>(x) = θ<sub>0</sub> + θ<sub>1</sub> × frontage + θ<sub>2</sub
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/a47ec797d8a9c331e02ed90bca48a24b.png" />
 </p>
 
-正规方程是通过求解下面的方程来找出使得代价函数最小的参数的：
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial}{\partial{\theta_{j}}}J\left(&space;{\theta_{j}}&space;\right)=0" title="\frac{\partial}{\partial{\theta_{j}}}J\left( {\theta_{j}} \right)=0" />
-。 假设我们的训练集特征矩阵为 _X_（包含了 _x<sub>0</sub> = 1_）并且我们的训练集结果为向量 _y_，则利用正规方程解出向量：
+正规方程是通过求解下面的方程来找出使得代价函数最小的参数的：<img src="https://latex.codecogs.com/gif.latex?\inline&space;\frac{\partial}{\partial{\theta_{j}}}J\left(&space;{\theta_{j}}&space;\right)=0" title="\frac{\partial}{\partial{\theta_{j}}}J\left( {\theta_{j}} \right)=0" />。 假设我们的训练集特征矩阵为 _X_（包含了 _x<sub>0</sub> = 1_）并且我们的训练集结果为向量 _y_，则利用正规方程解出向量：
 <p align="center">
 	<i>θ = (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y</i>
 </p>
 
 推导如下：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\inline&space;\begin{aligned}J&=\left(&space;y-x\theta&space;\right)&space;^{T}\left(&space;y-X\theta&space;\right)&space;\\&space;\dfrac{\partial&space;J}{\partial&space;\theta}&=2x^{T}\left(&space;y-x\theta&space;\right)&space;\\&space;\dfrac{\partial&space;J}{\partial&space;\theta}&=0\Leftrightarrow&space;X^{T}X\theta&space;=x^{T}y\\&space;&\Rightarrow&space;\theta&space;=\left(&space;X^{T}X\right)&space;^{-1}X^{T}y&space;\end{aligned}" title="\begin{aligned}J&=\left( y-x\theta \right) ^{T}\left( y-X\theta \right) \\ \dfrac{\partial J}{\partial \theta}&=2x^{T}\left( y-x\theta \right) \\ \dfrac{\partial J}{\partial \theta}&=0\Leftrightarrow X^{T}X\theta =x^{T}y\\ &\Rightarrow \theta =\left( X^{T}X\right) ^{-1}X^{T}y \end{aligned}" />
+<img src="https://latex.codecogs.com/gif.latex?\inline&space;\begin{aligned}J&=\left(&space;y-X\theta&space;\right)&space;^{T}\left(&space;y-X\theta&space;\right)&space;\\&space;\dfrac{\partial&space;J}{\partial&space;\theta}&=2X^{T}\left(&space;y-X\theta&space;\right)&space;\\&space;\dfrac{\partial&space;J}{\partial&space;\theta}&=0\Leftrightarrow&space;X^{T}X\theta&space;=X^{T}y\\&space;&\Rightarrow&space;\theta&space;=\left(&space;X^{T}X\right)&space;^{-1}X^{T}y&space;\end{aligned}" title="\begin{aligned}J&=\left( y-x\theta \right) ^{T}\left( y-X\theta \right) \\ \dfrac{\partial J}{\partial \theta}&=2x^{T}\left( y-x\theta \right) \\ \dfrac{\partial J}{\partial \theta}&=0\Leftrightarrow X^{T}X\theta =x^{T}y\\ &\Rightarrow \theta =\left( X^{T}X\right) ^{-1}X^{T}y \end{aligned}" />
 </p>
 
 举个例子：
@@ -363,7 +365,7 @@ def normal_equation(X, y):
 | ---------------- | ---------------------------------------- |
 | 需要选择学习率 _α_  | 不需要                                      |
 | 需要多次迭代           | 一次运算得出                                   |
-| 当特征数量 _n_ 很大时也适用 | 需要计算 _(X<sup>T</sup>X)<sup>-1_ 如果特征数量n较大则运算代价大，因为矩阵逆的计算时间复杂度为 _O(n<sup>3</sup>)_，通常来说当 _n_ 小于10000 时还是可以接受 |
+| 当特征数量 _n_ 很大时也适用 | 需要计算 _(X<sup>T</sup>X)<sup>-1</sup>_ 如果特征数量n较大则运算代价大，因为矩阵逆的计算时间复杂度为 _O(n<sup>3</sup>)_，通常来说当 _n_ 小于10000 时还是可以接受 |
 | 适用于各种类型的模型       | 只适用于线性模型，不适合逻辑回归模型等其他模型                  |
 
 #### 正规方程及不可逆性

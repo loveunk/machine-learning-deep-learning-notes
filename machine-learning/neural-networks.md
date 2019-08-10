@@ -73,7 +73,7 @@
 
 ### 神经元模型：逻辑单元
 
-神经网络模型建立在很多神经元之上，每一个神经元又是一个个学习模型。这些神经元（也叫激活单元，activation unit）采纳一些特征作为输出，并且根据本身的模型提供一个输出。下图是一个以逻辑回归模型作为自身学习模型的神经元示例，在神经网络中，参数又可被成为权重（weight）。
+神经网络模型建立在很多神经元之上，每一个神经元又是一个个学习模型。这些神经元（也叫激活单元，activation unit）采纳一些特征作为输出，并且根据本身的模型提供一个输出。下图是一个以逻辑回归模型作为自身学习模型的神经元示例，在神经网络中，参数又可被称为权重（weight）。
 
 <p align="center">
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/c2233cd74605a9f8fe69fd59547d3853.jpg" />
@@ -148,7 +148,7 @@
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/6167ad04e696c400cb9e1b7dc1e58d8a.png" />
 </p>
 
-可以看到，右半部分其实就是一个逻辑回归模型：以 _a<sub>0</sub>,a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>_ 作为输入，并按照LogisticRegression的方式输出 _h<sub>θ</sub>(x)_ 。
+可以看到，右半部分其实就是一个逻辑回归模型：以 _a<sub>0</sub>,a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>_ 作为输入，并按照Logistic Regression的方式输出 _h<sub>θ</sub>(x)_ 。
 
 其实神经网络就像是逻辑回归，只不过我们把逻辑回归中的输入向量 _[x<sub>1</sub> ~ x<sub>3</sub>]_ 变成了中间层的 _[a<sub>1</sub><sup>(2)</sup> ~ a<sub>3</sub><sup>(2)</sup>]_ ,即: _h<sub>θ</sub>(x)=g(Θ<sub>0</sub><sup>(2)</sup>a<sub>0</sub><sup>(2)</sup>+Θ<sub>1</sub><sup>(2)</sup>a<sub>1</sub><sup>(2)</sup>+Θ<sub>2</sub><sup>(2)</sup>a<sub>2</sub><sup>(2)</sup>+Θ<sub>3</sub><sup>(2)</sup>a<sub>3</sub><sup>(2)</sup>)_ 我们可以把 _a<sub>0</sub>, a<sub>1</sub>, a<sub>2</sub>, a<sub>3</sub>_ 看成更为高级的特征值，也就是 _x<sub>0</sub>, x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub>_ 的进化体，并且它们是由 _x_ 与 _Θ_ 决定的，因为是梯度下降的，所以 _a_ 是变化的，并且变得越来越厉害，所以这些更高级的特征值远比仅仅将 _x_ 次方厉害，也能更好的预测新数据。这就是神经网络相比于逻辑回归和线性回归的优势。
 
@@ -226,7 +226,7 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 #### 神经网络解决多分类问题
 当分类问题不止两种分类时（ _y=1,2,3…._ ），比如如果我们要训练一个神经网络算法来识别路人、汽车、摩托车和卡车。
 * 在输出层我们应该有4个值。例如，第一个值为1或0用于预测是否是行人，第二个值用于判断是否为汽车。
-* 输入向量 _x_ 有三个维度，两个中间层，输出层4个神经元分别用来表示4类，也就是每一个数据在输出层都会出现 _[abcd]<sup>T</sup>_ ，且 _a,b,c,d_ 中仅有一个为1，表示当前类。
+* 输入向量 _x_ 有三个维度，两个中间层，输出层4个神经元分别用来表示4类，也就是每一个数据在输出层都会出现 _[a b c d]<sup>T</sup>_ ，且 _a,b,c,d_ 中仅有一个为1，表示当前类。
 
 下面是该神经网络的可能结构示例：
 <p align="center">
@@ -289,12 +289,6 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/6a0954ad41f959d7f272e8f53d4ee2de.jpg" />
 </p>
 
-由于反向传播使用梯度下降法，需要计算平方误差函数（MSE）对网络权重的导数：
-<p align="center">
-<img src="https://latex.codecogs.com/gif.latex?E=\dfrac{1}{2}(t-y)^{2}" title="E=\dfrac{1}{2}(t-y)^{2}" />
-</p>
-
-其中 _E_ 为平方误差，_t_ 为训练样本的目标输出，_y_ 为输出神经元的实际输出。
 激活函数 _g_ 一般是非线性可微函数。常用作激活函数的是逻辑函数：
 
 <p align="center">
@@ -308,25 +302,26 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 
 首先，我们定义 _δ<sub>j</sub><sup>(l)</sup>_ 为第 _(l)_ 层第 _j_ 个神经元对最终结果导致的误差（Error），误差是相对于每个神经元的输入 _z_ 来讲的。
 定义：
+
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac{\partial&space;E}{\partial&space;z^{l}}=\dfrac&space;{\partial&space;E}{\partial&space;a^{(l)}}\cdot&space;\dfrac&space;{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}" title="\delta^{(l)}=\dfrac{\partial E}{\partial z^{l}}=\dfrac {\partial E}{\partial a^{(l)}}\cdot \dfrac {\partial a^{(l)}}{\partial z^{(l)}}" />
+<img src="https://latex.codecogs.com/gif.latex?\delta^{(l)}=\dfrac{\partial&space;J}{\partial&space;z^{l}}=\dfrac&space;{\partial&space;J}{\partial&space;a^{(l)}}\cdot&space;\dfrac&space;{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}" title="\delta^{(l)}=\dfrac{\partial E}{\partial z^{l}}=\dfrac {\partial E}{\partial a^{(l)}}\cdot \dfrac {\partial a^{(l)}}{\partial z^{(l)}}" />
 </p>
 
 由根据链式法则可得：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\dfrac{\partial&space;E}{\partial&space;a^{(l)}}=\dfrac{\partial&space;E}{\partial&space;a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}" title="\dfrac{\partial E}{\partial a^{(l)}}=\dfrac{\partial E}{\partial a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}" />
+<img src="https://latex.codecogs.com/gif.latex?\dfrac{\partial&space;J}{\partial&space;a^{(l)}}=\dfrac{\partial&space;J}{\partial&space;a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}" title="\dfrac{\partial J}{\partial a^{(l)}}=\dfrac{\partial J}{\partial a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}" />
 </p>
 
 
 可得：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\begin{align*}\delta^{(l)}&=\dfrac{\partial&space;E}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}\\&=\dfrac{\partial&space;E}{\partial&space;a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}\\&=\delta^{l&plus;1}\cdot\Theta^{l}\cdot&space;g'(z^{l})\end{align*}" title="\delta^{(l)}=\dfrac{\partial E}{\partial&space;a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\dfrac{\partial E}{\partial&space;a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\delta^{l+1}\cdot\Theta^{l}\cdot g'(z^{l})" />
+<img src="https://latex.codecogs.com/gif.latex?\begin{align*}\delta^{(l)}&=\dfrac{\partial&space;J}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}\\&=\dfrac{\partial&space;J}{\partial&space;a^{(l&plus;1)}}\cdot\dfrac{\partial&space;a^{(l&plus;1)}}{\partial&space;z^{(l&plus;1)}}\cdot\dfrac{\partial&space;z^{(l&plus;1)}}{\partial&space;a^{(l)}}\cdot\dfrac{\partial&space;a^{(l)}}{\partial&space;z^{(l)}}\\&=\delta^{l&plus;1}\cdot\Theta^{l}\cdot&space;g'(z^{l})\end{align*}" title="\delta^{(l)}=\dfrac{\partial J}{\partial&space;a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\dfrac{\partial J}{\partial&space;a^{(l+1)}}\cdot\dfrac{\partial a^{(l+1)}}{\partial z^{(l+1)}}\cdot\dfrac{\partial z^{(l+1)}}{\partial a^{(l)}}\cdot\dfrac{\partial a^{(l)}}{\partial z^{(l)}}=\delta^{l+1}\cdot\Theta^{l}\cdot g'(z^{l})" />
 </p>
 
 对于上面这个简单的神经网络，每一层的 _δ<sup>(l)</sup>_ 计算如下：
 1. 从最后一层的误差开始计算，误差是激活单元的预测（ _a<sup>(4)</sup>_ ）与实际值（ _y<sup>k</sup>_ ）之间的误差（ _k=1:k_ ）。则
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\delta^{\left(4\right)}=\dfrac{\partial&space;E}{\partial&space;a^{(4)}}=a^{(4)}-y" title="\delta^{\left(4\right)}=\dfrac{\partial E}{\partial a^{(4)}}=a^{(4)}-y" />
+<img src="https://latex.codecogs.com/gif.latex?\delta^{\left(4\right)}=a^{(4)}-y" title="\delta^{\left(4\right)}=a^{(4)}-y" />
 </p>
 
 2. 利用这个误差值来计算前一层的误差： **_δ<sup>(3)</sup>=(Θ<sup>(3)</sup>)<sup>T</sup>δ<sup>(4)</sup> * g'(z<sup>(3)</sup>)_**，其中：
@@ -339,7 +334,7 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 
 我们有了所有的误差的表达式后，便可以计算代价函数的偏导数了，假设 _λ=0_ ，即我们不做任何正则化处理时有：
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=a_{j}^{(l)}&space;\delta_{i}^{l&plus;1}" title="\frac{\partial}{\partial\Theta_{ij}^{(l)}}J(\Theta)=a_{j}^{(l)} \delta_{i}^{l+1}" />
+<a href="https://www.codecogs.com/eqnedit.php?latex=\frac{\partial&space;J(\Theta)}{\partial\Theta_{ij}^{(l)}}&space;=\frac{\partial&space;J(\Theta)}{\partial&space;z^{(l&plus;1)}}\frac{\partial&space;z^{(l&plus;1)}}{\partial&space;\Theta_{ij}^{(l)}}&space;=a_{j}^{(l)}&space;\delta_{i}^{l&plus;1}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\frac{\partial&space;J(\Theta)}{\partial\Theta_{ij}^{(l)}}&space;=\frac{\partial&space;J(\Theta)}{\partial&space;z^{(l&plus;1)}}\frac{\partial&space;z^{(l&plus;1)}}{\partial&space;\Theta_{ij}^{(l)}}&space;=a_{j}^{(l)}&space;\delta_{i}^{l&plus;1}" title="\frac{\partial J(\Theta)}{\partial\Theta_{ij}^{(l)}} =\frac{\partial J(\Theta)}{\partial z^{(l+1)}}\frac{\partial z^{(l+1)}}{\partial \Theta_{ij}^{(l)}} =a_{j}^{(l)} \delta_{i}^{l+1}" /></a>
 </p>
 
 注意，上面的公式是由 _δ_ 的定义决定的。
@@ -353,15 +348,17 @@ OR与AND整体一样，区别只在于 _Θ_ 的取值不同。
 
 那么上面的算法可以描述为：
 <p align="center">
-<img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/5514df14ebd508fd597e552fbadcf053.jpg" />
+<img src="img/neural-network-backpropagation-alg.png" />
 </p>
 
 即首先用正向传播方法计算出每一层的激活单元，利用训练集的结果与神经网络预测的结果求出最后一层的误差，然后利用该误差运用反向传播法计算出直至第二层的所有误差。
 
 在求出了 _Δ<sub>ij</sub><sup>(l)</sup>_ 之后，我们便可以计算代价函数的偏导数了，计算方法如下：
 
-* _D<sub>ij</sub><sup>(l)</sup>:=((1)/(m))Δ<sub>ij</sub><sup>(l)</sup>+λΘ<sub>ij</sub><sup>(l)</sup>_,  if _j != 0_
-* _D<sub>ij</sub><sup>(l)</sup>:=((1)/(m))Δ<sub>ij</sub><sup>(l)</sup>_,  if _j=0_
+* _D<sub>ij</sub><sup>(l)</sup>:=(1/m)Δ<sub>ij</sub><sup>(l)</sup> + λΘ<sub>ij</sub><sup>(l)</sup>_,  if _j != 0_
+* _D<sub>ij</sub><sup>(l)</sup>:=(1/m)Δ<sub>ij</sub><sup>(l)</sup>_,  if _j=0_
+
+上面的_D<sub>ij</sub><sup>(l)</sup>_就是可以最终用来在梯度下降中更新权重Θ的。
 
 #### 反向传播算法的直观理解
 前向传播算法：

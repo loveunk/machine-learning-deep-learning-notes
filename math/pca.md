@@ -32,15 +32,20 @@ PCA是一种数据线性降维的方法，在学习PCA之前，先回顾一些�
 
 ## 方差和协方差 Varianes & Covariances
 ### 方差 Variance
+
+**方差**：
+
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?Var[X]=\frac{1}{N}\sum_{n=1}^{N}(x_n-\mu)^2,\mu=E[X]" title="Var[X]=\frac{1}{N}\sum_{n=1}^{N}(x_n-\mu)^2,\mu=E[X]" />
 </p>
+
+**标准差**：
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?Std[X]=\sqrt{Var[X]}" title="Std[X]=\sqrt{Var[X]}" />
 </p>
 
-### Covariance 协方差
+### 协方差 Covariance
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?Cov[X,Y]=E[(X-\mu_x)(Y-\mu_y)],\mu_x=E[X],\mu_y=E[Y]" title="Cov[X,Y]=E[(X-\mu_x)(Y-\mu_y)],\mu_x=E[X],\mu_y=E[Y]" />
 </p>
@@ -152,6 +157,7 @@ PCA是一种数据线性降维的方法，在学习PCA之前，先回顾一些�
 <img src="https://latex.codecogs.com/gif.latex?\inline&space;\tilde{x}&space;\in&space;\mathbb{R}^M" title="\tilde{x} \in \mathbb{R}^M" />
 。
 有如下 **公式(_A_)**：
+
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\tilde{x}_n&space;=&space;\sum_{i=1}^D\beta_{in}b_i&space;\tag{A}" title="\tilde{x}_n = \sum_{i=1}^D\beta_{in}b_i \tag{A}" />
 </p>

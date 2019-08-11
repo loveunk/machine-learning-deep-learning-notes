@@ -64,6 +64,7 @@ PCA是其中一个很常见的方法。
 
 对于上图的例子，看起来是不是很像线性回归？
 但PCA和线性回归是不同的算法。PCA最小化的是投射误差（Projected Error），而线性回归最小化的是预测误差。线性回归的目的是预测结果，而主成分分析不作任何预测。下左图是线性回归的误差（垂直于横轴投影），下右图是PCA的误差（垂直于红线投影）：
+
 <p align="center">
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/7e1389918ab9358d1432d20ed20f8142.png" />
 </p>
@@ -79,7 +80,7 @@ PCA减少 _n_ 维到 _k_ 维：
 
 1. 均值归一化（Mean Normalization）。
 计算所有特征的均值 _μ<sub>j</sub>_，令 _x<sub>j</sub>=x<sub>j</sub> - μ<sub>j</sub>_ 。
-如果特征是在不同的数量级上，我们还需要将其除以标准差 _σ<sup>2</sup>_ 。
+如果特征是在不同的数量级上，我们还需要将其除以_s<sub>j</sub>_，可以是最大最小值只差(_x<sub>max</sub> - x<sub>min</sub>_)，或是标准差 _σ_ 。
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?x_j^{(i)}&space;=&space;\frac{x_j^{(i)}&space;-&space;\mu_j^{(i)}}{s_j}" title="x_j^{(i)} = \frac{x_j^{(i)} - \mu_j^{(i)}}{s_j}" />
 </p>
@@ -91,6 +92,8 @@ PCA减少 _n_ 维到 _k_ 维：
 
 3. 计算协方差矩阵 _Σ_ 的特征向量（eigenvectors）:
 
+* `[U, S, V] = svd(Sigma)`
+
 在`Python`里我们可以利用 **奇异值分解（singular value decomposition）** 来求解:
 
 ``` python
@@ -99,7 +102,7 @@ a = np.diag((1, 2, 3))
 U, S, vh = np.linalg.svd(a) # ((3, 3), (3,), (3, 3))
 ```
 
-其中 _U_ 是特征向量、 _S_ 是特征值。其实 _S_ 是按照特征值从大到小排序的，U的每一列 _u<sub>j</sub>_ 与对应位置的 _s<sub>j</sub>_ 对应的特征向量。其中 _U<sup>T</sup>U = I_。
+其中 _U_ 是特征向量、 _S_ 是特征值。其实 _S_ 只有对角线上有值，是按照特征值从大到小排序的，U的每一列 _u<sub>j</sub>_ 与对应位置的 _s<sub>j</sub>_ 对应的特征向量。其中 _U<sup>T</sup>U = I_。
 
 <p align="center">
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/0918b38594709705723ed34bb74928ba.png" />
@@ -107,7 +110,7 @@ U, S, vh = np.linalg.svd(a) # ((3, 3), (3,), (3, 3))
 
 所以，如果要把数据从 _n_ 维映射到 _k_ 维，只需要取特征向量 _U_ 的前 _k_ 维度列向量，构成映射矩阵 _U<sub>reduce</sub> = U[:, k]_。
 
-_z = U<sup>T</sup><sub>reduce</sub> * x_ 即为映射后的数据，其中 _x_ 为原始数据。
+* _z = U<sup>T</sup><sub>reduce</sub> * x_ 即为映射后的数据，其中 _x_ 为原始数据。
 
 ### 从压缩数据中恢复
 给定 _z<sup>(i)</sup>_，可能是100维，怎么得到到原来的表示 _x<sup>(i)</sup>_ ，也许本来是1000维的数组。
@@ -176,16 +179,14 @@ _z = U<sup>T</sup><sub>reduce</sub> * x_ 即为映射后的数据，其中 _x_ �
 
 * 第一步是运用主要成分分析将数据压缩至1000个特征
 * 然后对训练集运行学习算法
-* 在预测时，采用之前学习而来的 _U<sub>reduce</sub>_ 将输入的特征 _x_ 转换成特征向量 _z_ ，然后再进行预测
+* 在预测时，采用之前学习而来的 _U<sub>reduce</sub>_ 将输入的特征 _x_ 转换成特征 _z_ ，然后再进行预测
 
 注：如果我们有交叉验证集合测试集，也采用对训练集学习而来的 _U<sub>reduce</sub>_ 。
 
 错误的PCA用法：
 
 * 将其用于减少过拟合（减少了特征的数量）。
-  非常不好，不如尝试正则化处理。
-  原因在于PCA只是近似地丢弃掉一些特征，它并不考虑任何与结果变量有关的信息，因此可能会丢失非常重要的特征。
-  然而当我们进行正则化处理时，会考虑到结果变量，不会丢掉重要的数据。
+  非常不好，不如尝试正则化处理。原因在于PCA只是近似地丢弃掉一些特征，它并不考虑任何与结果变量有关的信息，因此可能会丢失非常重要的特征。然而当我们进行正则化处理时，会考虑到结果变量，不会丢掉重要的数据。
 * 默认地将PCA作为学习过程中的一部分，虽然PCA很多时候有效果，最好是从所有原始特征开始，只在有必要的时候（算法运行太慢或者用太多内存）才考虑采用PCA。
 
 ## Jupyter Notebook编程练习

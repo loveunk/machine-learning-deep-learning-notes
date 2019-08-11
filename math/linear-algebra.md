@@ -53,7 +53,7 @@ _r · s =|r| × |s| × cosθ_
 > 可以通过向量点乘的原理的来理解这一点，假设 _r_ 是在坐标系 _i_ 上的向量（ _r<sub>j</sub>=0_ ）。那么 _r · s = r<sub>i</sub>s<sub>i</sub> + r<sub>j</sub>s<sub>j</sub> = r<sub>i</sub>s<sub>i</sub> = |r|s<sub>i</sub>_ ，其中 _s<sub>i</sub> = |s| · cosθ_ ，所以 _r · s =|r| · |s| · cosθ_
 
 ##### 向量投影 Vector projection
- _s_ 往 _r_ 上的投影向量如下，同样可以用上图来解释
+ _s_ 往 _r_ 上的投影向量如下，同样可以用上图来0解释
 
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?proj_r^s=\frac{r\cdot&space;s}{|r|\times|r|}r" title="proj_r^s=\frac{r\cdot s}{|r|\times|r|}r" />
@@ -156,7 +156,6 @@ Transform (rotate) _R_ in _B_'s coordinates:  _B<sup>-1</sup>RB_
 Where $E$ is calculated via the gram-schmidt process, $T_E$ is the transformation matrix in the basic plane. $E^{-1} \cdot r$ stands for coverting $r$ to $E$'s plane, $T_E \cdot E^{-1} \cdot r$ stands for doing $T_E$ transformation in $E$'s plane. Finally, $E$ goes back to the original plane.
 
 <p align="center"><img src="./img/matrix-reflecting-in-a-plane.png" width="300"/></p>
-
 ### 特征向量和特征值 Eigenvectors and Eigenvalues
 对于一个给定的方阵 _A_，它的特征向量（eigenvector）_v_ 经过这个线性变换之后，得到的新向量仍然与原来的 _v_ 保持在同一条直线上，但其长度或方向也许会改变。
 它们满足： _**A**v = **λ**v_。
@@ -168,10 +167,7 @@ Where $E$ is calculated via the gram-schmidt process, $T_E$ is the transformatio
 
 根据线性方程组理论，为了使这个方程有非零解，矩阵 _A_ 的行列式  _det(A - λI)=0_ 必须是零。
 
-例如，矩阵 _A_ 为
-<img src="https://latex.codecogs.com/gif.latex?\begin{pmatrix}&space;a&space;&&space;b&space;\\&space;c&space;&&space;d&space;\end{pmatrix}" title="\begin{pmatrix} a & b \\ c & d \end{pmatrix}" />
-，
-那么
+例如，矩阵 _A_ 为<img src="https://latex.codecogs.com/gif.latex?\begin{pmatrix}&space;a&space;&&space;b&space;\\&space;c&space;&&space;d&space;\end{pmatrix}" title="\begin{pmatrix} a & b \\ c & d \end{pmatrix}" />，那么
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\det\left(\begin{pmatrix}a&b\\c&d\end{pmatrix}-\begin{pmatrix}\lambda&space;&&space;0\\0&\lambda\end{pmatrix}\right)=0" title="\det\left(\begin{pmatrix}a&b\\c&d\end{pmatrix}-\begin{pmatrix}\lambda & 0\\0&\lambda\end{pmatrix}\right)=0" />
 </p>
@@ -184,7 +180,6 @@ _λ<sup>2</sup>-(a+d)λ+ad-bc=0_ ，得到 _λ_ 并计算特征向量。
 </p>
 
 <p align="center"><img src="./img/Eigenbasis-example.png" width="300"/></p>
-
 其中，_C_ 是**特征向量**(eigenvectors)，$D$由**特征值**(eigenvalues)构成.
 
 一个例子：
@@ -200,7 +195,11 @@ _λ<sup>2</sup>-(a+d)λ+ad-bc=0_ ，得到 _λ_ 并计算特征向量。
 
 ## 推荐阅读
 1. [Mathematics for Machine Learning: Linear Algebra](https://www.coursera.org/learn/linear-algebra-machine-learning/)。
+
 2. [矩阵的特征：特征值，特征向量，行列式，trace](https://zhuanlan.zhihu.com/p/25955676)
+
 3. [理解矩阵](https://blog.csdn.net/myan/article/details/647511)
+
+4. [强大的矩阵奇异值分解(SVD)及其应用](https://www.cnblogs.com/LeftNotEasy/archive/2011/01/19/svd-and-applications.html)
 
 [回到顶部](#linear-algebra-线性代数)

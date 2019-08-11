@@ -53,7 +53,7 @@
 再一个例子是检测一个数据中心，特征可能包含：内存使用情况，被访问的磁盘数量，CPU的负载，网络的通信量等。根据这些特征可以构建一个模型，用来判断某些计算机是不是有可能出错了。
 
 ## 高斯分布
-通常如果认为变量 _x_ 符合高斯分布 _x ~ N(mu,σ<sup>2</sup>)_ 则其概率密度函数为：
+通常如果认为变量 _x_ 符合高斯分布 _x ~ N(μ, σ<sup>2</sup>)_ 则其概率密度函数为：
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?p(x,\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)" title="p(x,\mu,\sigma^2)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)" />
 </p>
@@ -266,6 +266,7 @@
 如上图，如果多元高斯分布模型的 _Σ_ 仅对角线上的元素为非零值，那么它就是与原始高斯分布模型一样。
 
 **原始模型和多元高斯分布比较**
+
 <table>
 <tr>
 <th>原始模型 </th>

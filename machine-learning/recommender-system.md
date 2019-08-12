@@ -114,8 +114,7 @@
 <img src="https://latex.codecogs.com/gif.latex?\theta_k^{(i)}:=\theta_k^{(i)}-\alpha\left(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}&plus;\lambda&space;\theta_k^{(j)}\right)" title="\theta_k^{(i)}:=\theta_k^{(i)}-\alpha\left(\sum_{i:r(i,j)=1}((\theta^{(j)})^Tx^{(i)}-y^{(i,j)})x_k^{(i)}+\lambda \theta_k^{(j)}\right)" />
 </p>
 
-注：在协同过滤从算法中，通常不使用方差项，如果需要的话，算法会自动学得。
-协同过滤算法使用步骤如下：
+注：在协同过滤从算法中，通常不使用方差项，如果需要的话，算法会自动学得。协同过滤算法使用步骤如下：
 
 1. 初始 _x<sup>(1)</sup>, x<sup>(1)</sup>, ..., x<sup>(nm)</sup>, θ<sup>(1)</sup>, θ<sup>(2)</sup>, ..., θ<sup>(n<sub>u</sub>)</sup>_ 为一些随机小值
 2. 使用梯度下降算法最小化代价函数

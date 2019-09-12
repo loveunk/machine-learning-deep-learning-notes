@@ -89,7 +89,7 @@ model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.MaxPool2D(pool_size=(2,2), strides=(2,2)))
 model.add(tf.keras.layers.Dropout(0.25))
 
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3,3), padding='Same',  activation='relu'))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3,3), padding='Same', activation='relu'))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Dropout(0.25))
 
@@ -99,6 +99,7 @@ model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Dropout(0.25))
 
 model.add(tf.keras.layers.Dense(10, activation="softmax"))
+model.add(tf.keras.layers.Dense(256, kernel_constraint=tf.keras.constraints.MaxNorm(2)))
 
 # 打印出model 看看
 tf.keras.utils.plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
@@ -117,6 +118,8 @@ learning_rate_reduction = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_acc'
                                                                verbose=1,
                                                                factor=0.5,
                                                                min_lr=0.00001)
+
+# should add early_stopping to the model training callbacks later
 early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', restore_best_weights=True)
 
 # 设置epochs和batch size

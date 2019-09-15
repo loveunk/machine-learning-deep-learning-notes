@@ -89,7 +89,7 @@ model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.MaxPool2D(pool_size=(2,2), strides=(2,2)))
 model.add(tf.keras.layers.Dropout(0.25))
 
-model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3,3), padding='Same',  activation='relu'))
+model.add(tf.keras.layers.Conv2D(filters=64, kernel_size=(3,3), padding='Same', activation='relu'))
 model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Dropout(0.25))
 
@@ -99,6 +99,7 @@ model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Dropout(0.25))
 
 model.add(tf.keras.layers.Dense(10, activation="softmax"))
+model.add(tf.keras.layers.Dense(256, kernel_constraint=tf.keras.constraints.MaxNorm(2)))
 
 # 打印出model 看看
 tf.keras.utils.plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)
@@ -117,6 +118,9 @@ learning_rate_reduction = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_acc'
                                                                verbose=1,
                                                                factor=0.5,
                                                                min_lr=0.00001)
+
+# should add early_stopping to the model training callbacks later
+early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', restore_best_weights=True)
 
 # 设置epochs和batch size
 epochs = 20
@@ -143,12 +147,12 @@ history = model.fit_generator(datagen.flow(X_train, Y_train, batch_size=batch_si
                               validation_data=(X_val, Y_val),
                               verbose=2,
                               steps_per_epoch=X_train.shape[0] // batch_size,
-                              callbacks=[learning_rate_reduction, tf.keras.callbacks.TensorBoard(log_dir='./log_dir')])
+                              callbacks=[learning_rate_reduction, early_stopping, tf.keras.callbacks.TensorBoard(log_dir='./log_dir')])
 
 # 画训练集和验证集的loss和accuracy曲线。可以判断是否欠拟合或过拟合
 fig, ax = plt.subplots(2, 1)
 ax[0].plot(history.history['loss'], color='b', label="Training loss")
-ax[0].plot(history.history['val_loss'], color='r', label="validation loss",axes =ax[0])
+ax[0].plot(history.history['val_loss'], color='r', label="validation loss", axes =ax[0])
 legend = ax[0].legend(loc='best', shadow=True)
 
 ax[1].plot(history.history['acc'], color='b', label="Training accuracy")

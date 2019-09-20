@@ -99,7 +99,6 @@ model.add(tf.keras.layers.BatchNormalization())
 model.add(tf.keras.layers.Dropout(0.25))
 
 model.add(tf.keras.layers.Dense(10, activation="softmax"))
-model.add(tf.keras.layers.Dense(256, kernel_constraint=tf.keras.constraints.MaxNorm(2)))
 
 # 打印出model 看看
 tf.keras.utils.plot_model(model, to_file='model.png', show_shapes=True, show_layer_names=True)

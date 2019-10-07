@@ -77,6 +77,9 @@
      - [自然语言处理与词嵌入](deep-learning/5.sequence-model-2.nlp-and-word-embeddings.md)
      - [序列模型和注意力机制](deep-learning/5.sequence-model-3.sequence-models-and-attention-machanism.md)
   6. 进阶讨论（待补充）
+     1. 元学习（Meta learning）
+     2. Few-shot / Zero-shot learning
+     3. 网络压缩
 
 ### TensorFlow 
 * 推荐吴恩达DeepLearning.ai和Coursera推出的系列TensoFlow课程。每门课均包括四周内容，Exercise基于Google Colab平台，讲师是来自Google Brain团队的Laurence Moroney：

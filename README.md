@@ -78,7 +78,7 @@
      - [序列模型和注意力机制](deep-learning/5.sequence-model-3.sequence-models-and-attention-machanism.md)
   6. 更多讨论（待补充）
      1. [元学习（Meta learning）](6.meta-learning.md)
-     2. Few-shot / Zero-shot learning
+     2. [Few-shot / Zero-shot learning](6.few-shot-learning.md)
      3. 网络压缩
 
 ### TensorFlow 

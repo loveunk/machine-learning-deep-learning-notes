@@ -76,8 +76,8 @@
      - [循环序列模型（RNN）](deep-learning/5.sequence-model-1.recurrent-neural-netoworks.md)
      - [自然语言处理与词嵌入](deep-learning/5.sequence-model-2.nlp-and-word-embeddings.md)
      - [序列模型和注意力机制](deep-learning/5.sequence-model-3.sequence-models-and-attention-machanism.md)
-  6. 进阶讨论（待补充）
-     1. 元学习（Meta learning）
+  6. 更多讨论（待补充）
+     1. [元学习（Meta learning）](6.meta-learning.md)
      2. Few-shot / Zero-shot learning
      3. 网络压缩
 

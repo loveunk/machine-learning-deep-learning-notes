@@ -360,7 +360,66 @@ with open("example.txt", "w") as file:
 * 删除一个文件或目录：
 	* `os.remove("filename_or_foldername")`
 
+## 函数变量
+
+### 局部变量和全局变量
+
+有其他语言经验的朋友对这两点一定很容易理解这两点。只是想提醒一下，避免`global`的全部变量，毕竟让code很难维护。下面说说模块导入变量。
+
+### 模块导入变量
+
+这部分的内容主要来自参考文章[2]：
+
+核心思想是把同一个全局模块的内容组织到一个py文件中，通过模块导入的方式共享到相同模块的代码中：
+
+看例子，在`main.py`中：
+
+```python
+import global_abc
+import another
+
+def print_variables():
+    print(global_abc.GLOBAL_A + ", " + global_abc.GLOBAL_B)
+    
+if __name__ == '__main__':
+    print_variables()       # Hello, Python
+
+    global_abc.print_name() # Kevin
+    global_abc.modify_name()# change Kevin --> GoGo
+    global_abc.print_name() # GoGo
+    another.print_name_in_3rd_module()  # GoGo
+```
+
+在`global_abc.py`中：
+
+```python
+GLOBAL_A = 'Hello'
+GLOBAL_B = 'Python'
+
+name = 'Kevin'
+
+def modify_name():
+    global name
+    name = 'GoGo'
+
+def print_name():
+    print(name)
+```
+
+在`another.py`中：
+
+```python
+import global_abc
+
+def print_name_in_3rd_module():
+    global_abc.print_name()
+```
+
+通过这种方式，可以在多个不同的文件间组织和共享变量。
+
 ## Reference
-* [Python 3 官方文档](https://docs.python.org/zh-cn/3/)
+
+1. [Python 3 官方文档](https://docs.python.org/zh-cn/3/)
+2. https://blog.csdn.net/Eastmount/article/details/48766861
 
 [回到目录](#python基础)

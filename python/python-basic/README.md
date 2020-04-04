@@ -419,6 +419,30 @@ def print_name_in_3rd_module():
 
 > 这部分的内容的组织方式自参考了文章[2]。
 
+## 其他
+
+### Python 参数传递
+
+Python函数参数前面单星号（*）和双星号（**）的区别
+
+```python
+'''单星号（*）：*agrs：将所以参数以元组(tuple)的形式导入'''
+def foo(param1, *param2):
+    print(param1, param2)
+
+'''双星号（**）：**kwargs：将参数以字典的形式导入'''
+def bar(param1, **param2):
+    print(param1, param2)
+    
+foo(1,2,3,4,5)
+# output: 1 (2, 3, 4, 5)
+
+bar(1,a=2,b=3)
+# output: 1 {'a': 2, 'b': 3}
+```
+
+
+
 ## Reference
 
 1. [Python 3 官方文档](https://docs.python.org/zh-cn/3/)

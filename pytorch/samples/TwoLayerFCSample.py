@@ -8,21 +8,24 @@ D_in, H, D_out = 100, 500, 100
 x = torch.randn(N, D_in).cuda()
 y = torch.randn(N, D_out).cuda()
 
+
 class TwoLayerNet(torch.nn.Module):
     def __init__(self, D_in, H, D_out):
         super(TwoLayerNet, self).__init__()
         self.l1 = torch.nn.Linear(D_in, H)
         self.l2 = torch.nn.ReLU()
         self.l3 = torch.nn.Linear(H, D_out)
-    
+
     def forward(self, x):
         x = self.l1(x)
         x = self.l2(x)
         x = self.l3(x)
         return x
 
-#torch.nn.init.normal_(model[0].weight)
-#torch.nn.init.normal_(model[2].weight)
+# torch.nn.init.normal_(model[0].weight)
+# torch.nn.init.normal_(model[2].weight)
+
+
 model = TwoLayerNet(D_in, H, D_out).cuda()
 
 loss_fn = torch.nn.MSELoss(reduction="sum")
@@ -42,4 +45,3 @@ for it in range(epochs):
 
     # update weights
     optimizer.step()
-

@@ -89,11 +89,15 @@
   4. 《[Sequences, Time Series and Prediction](https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction)》：用RNNs/ConvNets/WaveNet解决时序和预测问题
 * 关于TensorFlow 2.0，推荐阅读[<img src="img/zhihu32.png" width="18" />《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)以便对TensorFlow体系有个完整认知。
 * [TensorFlow/Keras的例子](tensorflow)
+* [Inside TensorFlow](https://www.youtube.com/playlist?list=PLQY2H8rRoyvzIuB8rZXs7pfyjiSUs8Vza) （TensorFlow团队对TF内部原理做的一系列视频）
 
 ### PyTorch
 PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得关注
 * [<img src="img/zhihu32.png" width="18" />PyTorch的安装与Tutorial](https://zhuanlan.zhihu.com/p/60526007)
 * [<img src="img/github32.png" width="18" />PyTorch 中文手册](https://github.com/zergtant/pytorch-handbook)
+
+### 分布式训练
+* [<img src="img/zhihu32.png" width="18" />《分布式训练》](https://zhuanlan.zhihu.com/p/129912419)
 
 ## 强化学习
 * Reinforcement learning (RL) is a type of machine learning, in which an agent explores an environment to learn how to perform desired tasks by taking actions with good outcomes and avoiding actions with bad outcomes.

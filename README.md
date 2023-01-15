@@ -80,6 +80,9 @@
      1. [元学习（Meta learning）](deep-learning/6.meta-learning.md)
      2. [Few-shot / Zero-shot learning](deep-learning/6.few-shot-learning.md)
      3. 网络压缩
+     4. <img src="img/bilibili32.png" width="18" /> [GAN网络](https://www.bilibili.com/video/BV1rb4y187vD)
+     5. <img src="img/bilibili32.png" width="18" /> [Transformer](https://www.bilibili.com/video/BV1pu411o7BE)
+     6. <img src="img/bilibili32.png" width="18" /> [对比学习](https://www.bilibili.com/video/BV19S4y1M7hm)
 
 ### PyTorch
 修订这段文字的时候已经是2023年，PyTorch无论是在工业界还是学术界，都已经碾压了其他的框架，例如TensorFlow、Keras。如果是入坑不久的朋友，我建议你直接学PyTorch就好了。其他框架基本上可以仅follow up即可。
@@ -91,43 +94,41 @@
 ### 分布式训练
 * [<img src="img/zhihu32.png" width="18" />《分布式训练》](https://zhuanlan.zhihu.com/p/129912419)
 
-## 大模型
-综述：[<img src="img/zhihu32.png" width="18" /> 2022 年中回顾 ｜ 大模型技术最新进展](https://zhuanlan.zhihu.com/p/545709881?theme=dark)
-
-### LLM 语言大模型
-语言大模型（LLM）可以通过学习大量的语料来模拟人类语言处理的能力，如文本生成、翻译、问答等。相比普通的模型，LLM具有更高的准确性和更强的适用性。在最近几年，LLM取得了长足的发展，并在各种应用中取得了显著成果。LLM的发展有许多关键节点，下面列举几个重要的节点:
-
-* 2014年，Google提出了Word2Vec模型，它能够将单词映射到一个低维向量空间中，并且能够在这个空间中表示单词之间的语义关系。这个模型为深度学习语言模型的发展奠定了基础。
-* 2015年，Microsoft提出了LSTM(长短时记忆网络)，这个模型具有记忆能力，能够处理长文本序列。
-* 2016年，OpenAI提出了GPT(Generative Pre-training Transformer)模型，这是一个预训练的语言模型，能够在大量语料上进行预训练，并且能够很好地解决各种语言任务。
-* 2018年，Google提出了BERT(Bidirectional Encoder Representations from Transformer)模型，这个模型能够同时利用上下文来理解词语，这个模型在NLP任务上取得了很好的效果。
-* 2020年, GPT-3 (Generative Pre-training Transformer 3)模型发布, 它是一个预训练语言模型，具有175B参数, 能够完成各种复杂的语言任务.
-* 2022年，3月，推出了InstructGPT，是基于人工的对话样本对GPT-3做了微调后的模型。同时引入了reward模型，能给生成回复打分，利用强化学习对模型进一步微调，得到了一个13亿参数的模型，同时比GPT-3的性能更优秀。
-* 2022年，11月，OpenAI推出[ChatGPT](https://chat.openai.com/chat)，直接出圈引爆了行业内外对大模型的关注。ChatGPT是基于GPT3.5，目前还没发布论文，据称其核心技术是和InstructGPT类似。
-
-### LVM 视觉大模型
-* TBD
-
 ## 强化学习
 * Reinforcement learning (RL) is a type of machine learning, in which an agent explores an environment to learn how to perform desired tasks by taking actions with good outcomes and avoiding actions with bad outcomes.
 A reinforcement learning model will learn from its experience and over time will be able to identify which actions lead to the best rewards.
   
 * TBD
 
-## 项目和竞赛
-### 竞赛
-* [Kaggle](competitions/kaggle.md)（全球赛、推荐的平台）
-* [天池](https://tianchi.aliyun.com) - 阿里云（中国）
-* [DataFountain](https://www.datafountain.cn/)（中国）
-* [SODA](http://soda.shdataic.org.cn/) - 开放数据创新应用大赛（中国）
+## Advanced Topics
 
-## 相关论文
+### 大模型
+综述：[<img src="img/zhihu32.png" width="18" /> 2022 年中回顾 ｜ 大模型技术最新进展](https://zhuanlan.zhihu.com/p/545709881?theme=dark)
 
-对于一些问题的深入研究，最终是离不开阅读优秀论文，推荐如下GitHub：
+#### LLM 语言大模型
+语言大模型（LLM）可以通过学习大量的语料来模拟人类语言处理的能力，如文本生成、翻译、问答等。相比普通的模型，LLM具有更高的准确性和更强的适用性。在最近几年，LLM取得了长足的发展，并在各种应用中取得了显著成果。LLM的发展有许多关键节点，下面列举几个重要的节点:
 
-* [<img src="img/github32.png" width="18" />深度学习论文的阅读路径](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap)：适合深度学习领域新人，循序渐进带你读论文
+* 2014年，Google提出了Word2Vec模型，它能够将单词映射到一个低维向量空间中，并且能够在这个空间中表示单词之间的语义关系。这个模型为深度学习语言模型的发展奠定了基础。
+* 2015年，Microsoft提出了LSTM(长短时记忆网络)，这个模型具有记忆能力，能够处理长文本序列。
+* 2016年，OpenAI提出了GPT(Generative Pre-training Transformer)模型，这是一个预训练的语言模型，能够在大量语料上进行预训练，并且能够很好地解决各种语言任务。
+* 2018年，Google提出了BERT(Bidirectional Encoder Representations from Transformer)模型，这个模型能够同时利用上下文来理解词语，这个模型在NLP任务上取得了很好的效果。<img src="img/bilibili32.png" width="18" /> [BERT论文精读](https://www.bilibili.com/video/BV1PL411M7eQ/)
+* 2020年, GPT-3 (Generative Pre-training Transformer 3)模型发布, 它是一个预训练语言模型，具有175B参数, 能够完成各种复杂的语言任务.
+* 2022年，3月，推出了InstructGPT，是基于人工的对话样本对GPT-3做了微调后的模型。同时引入了reward模型，能给生成回复打分，利用强化学习对模型进一步微调，得到了一个13亿参数的模型，同时比GPT-3的性能更优秀。<img src="img/bilibili32.png" width="18" /> [InstructGPT论文精读](https://www.bilibili.com/video/BV1hd4y187CR/)
+* 2022年，11月，OpenAI推出[ChatGPT](https://chat.openai.com/chat)，直接出圈引爆了行业内外对大模型的关注。ChatGPT是基于GPT3.5，目前还没发布论文，据称其核心技术是和InstructGPT类似。
 
-* [<img src="img/github32.png" width="18" />Papers with code](https://github.com/zziz/pwc)：总结了近 10 年来顶会（包括NIPS/CVPR/ECCV/ICML）优秀论文和复现代码
+* <img src="img/bilibili32.png" width="18" /> [GPT，GPT-2，GPT-3 论文精读【论文精读】](https://www.bilibili.com/video/BV1AF411b7xQ)
+
+#### LVM 视觉大模型
+* TBD
+
+### 多模态
+* TBD
+
+### 视频理解
+* <img src="img/bilibili32.png" width="18" /> [视频理解论文串讲（上）【论文精读】](https://www.bilibili.com/video/BV1fL4y157yA)
+* <img src="img/bilibili32.png" width="18" /> [视频理解论文串讲（下）【论文精读】](https://www.bilibili.com/video/BV11Y411P7ep)
+* <img src="img/bilibili32.png" width="18" /> [双流网络：视频理解开山之作【论文精读】](https://www.bilibili.com/video/BV1mq4y1x7RU)
+* <img src="img/bilibili32.png" width="18" /> [I3D：3D卷积网络【论文精读】](https://www.bilibili.com/video/BV1tY4y1p7hq)
 
 ## 工欲善其事，必先利其器
 ### 推荐的书
@@ -145,10 +146,26 @@ A reinforcement learning model will learn from its experience and over time will
 * 在线Jupyter环境：[Google Colab](https://colab.research.google.com)：可参考[<img src="img/zhihu32.png" width="18" />一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)
 * 科学上网：内地朋友避免不了和China GFW斗智斗勇，建议花小钱省事省心。参考[《科学上网》](https://github.com/haoel/haoel.github.io)
 
+
+## 项目和竞赛
+### 竞赛
+* [Kaggle](competitions/kaggle.md)（全球赛、推荐的平台）
+* [天池](https://tianchi.aliyun.com) - 阿里云（中国）
+* [DataFountain](https://www.datafountain.cn/)（中国）
+* [SODA](http://soda.shdataic.org.cn/) - 开放数据创新应用大赛（中国）
+
+## 相关论文
+
+对于一些问题的深入研究，最终是离不开阅读优秀论文，推荐如下GitHub：
+
+* [<img src="img/github32.png" width="18" />深度学习论文的阅读路径](https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap)：适合深度学习领域新人，循序渐进带你读论文
+
+* [<img src="img/github32.png" width="18" />Papers with code](https://github.com/zziz/pwc)：总结了近 10 年来顶会（包括NIPS/CVPR/ECCV/ICML）优秀论文和复现代码
+
+
 ## 写在最后
 
 ### 一点建议
-
 对于此前不是机器学习/深度学习这个领域的朋友，不管此前在其他领域有多深的积累，还请以一个敬畏之心来对待。
 
 * 持续的投入：三天打鱼两天晒网的故事，我们从小便知，不多说了；
@@ -160,9 +177,10 @@ A reinforcement learning model will learn from its experience and over time will
 * 个人精力有限，欢迎感兴趣的朋友一起来完善和补充内容
 * 欢迎Star 和Share 此Repository ​
 
-# Backup
+## Backup
+
 <details>
-  <summary>以下内容是之前撰写的，目前已经不主推</summary>
+  <summary>以下内容是之前撰写的，目前已经不推荐</summary>
 ### TensorFlow 
 * 推荐吴恩达DeepLearning.ai和Coursera推出的系列TensoFlow课程。每门课均包括四周内容，Exercise基于Google Colab平台，讲师是来自Google Brain团队的Laurence Moroney：
   1. 《[Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning](https://www.coursera.org/learn/introduction-tensorflow)》：TF入门

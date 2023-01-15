@@ -1,6 +1,5 @@
 """
 Author: Kevin
-Link: www.kaikai.ai
 Github: github.com/loveunk
 
 这是一个完整的mnist分类demo，其中涉及的技术点包括：

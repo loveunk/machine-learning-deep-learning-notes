@@ -1,4 +1,4 @@
-# 深度学习（机器学习）学习路径
+# 深度学习（DL/ML）学习路径
 
 最近几年，尤其是自从2016年Alpha Go打败李世石事件后，人工智能技术受到了各行业极大关注。其中以机器学习技术中深度学习最受瞩目。主要原因是这些技术在科研领域和工业界的应用效果非常好，大幅提升了算法效率、降低了成本。因而市场对相关技术有了如此大的需求。
 
@@ -81,23 +81,32 @@
      2. [Few-shot / Zero-shot learning](deep-learning/6.few-shot-learning.md)
      3. 网络压缩
 
-### TensorFlow 
-* 推荐吴恩达DeepLearning.ai和Coursera推出的系列TensoFlow课程。每门课均包括四周内容，Exercise基于Google Colab平台，讲师是来自Google Brain团队的Laurence Moroney：
-  1. 《[Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning](https://www.coursera.org/learn/introduction-tensorflow)》：TF入门
-  2. 《[Convolutional Neural Networks in TensorFlow](https://www.coursera.org/learn/convolutional-neural-networks-tensorflow)》：CNN, Transfer Learning
-  3. 《[Natural Language Processing in TensorFlow](https://www.coursera.org/learn/natural-language-processing-tensorflow)》：构建NLP系统，涉及RNN, GRU, and LSTM等
-  4. 《[Sequences, Time Series and Prediction](https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction)》：用RNNs/ConvNets/WaveNet解决时序和预测问题
-* 关于TensorFlow 2.0，推荐阅读[<img src="img/zhihu32.png" width="18" />《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)以便对TensorFlow体系有个完整认知。
-* [TensorFlow/Keras的例子](tensorflow)
-* [Inside TensorFlow](https://www.youtube.com/playlist?list=PLQY2H8rRoyvzIuB8rZXs7pfyjiSUs8Vza) （TensorFlow团队对TF内部原理做的一系列视频）
-
 ### PyTorch
-PyTorch同样是一个优秀的深度学习框架，发展势头不错，值得关注
-* [<img src="img/zhihu32.png" width="18" />PyTorch的安装与Tutorial](https://zhuanlan.zhihu.com/p/60526007)
-* [<img src="img/github32.png" width="18" />PyTorch 中文手册](https://github.com/zergtant/pytorch-handbook)
+修订这段文字的时候已经是2023年，PyTorch无论是在工业界还是学术界，都已经碾压了其他的框架，例如TensorFlow、Keras。如果是入坑不久的朋友，我建议你直接学PyTorch就好了。其他框架基本上可以仅follow up即可。
+* [<img src="img/bilibili32.png" width="18" /> PyTorch视频集合（32集）](https://www.bilibili.com/video/BV197411Z7CE/)
+* [<img src="img/zhihu32.png" width="18" /> PyTorch的安装与Tutorial](https://zhuanlan.zhihu.com/p/60526007)
+* [<img src="img/github32.png" width="18" /> PyTorch 中文手册](https://github.com/zergtant/pytorch-handbook)
+* [PyTorch 官网的Tutorial](https://pytorch.org/tutorials/)
 
 ### 分布式训练
 * [<img src="img/zhihu32.png" width="18" />《分布式训练》](https://zhuanlan.zhihu.com/p/129912419)
+
+## 大模型
+综述：[<img src="img/zhihu32.png" width="18" /> 2022 年中回顾 ｜ 大模型技术最新进展](https://zhuanlan.zhihu.com/p/545709881?theme=dark)
+
+### LLM 语言大模型
+语言大模型（LLM）可以通过学习大量的语料来模拟人类语言处理的能力，如文本生成、翻译、问答等。相比普通的模型，LLM具有更高的准确性和更强的适用性。在最近几年，LLM取得了长足的发展，并在各种应用中取得了显著成果。LLM的发展有许多关键节点，下面列举几个重要的节点:
+
+* 2014年，Google提出了Word2Vec模型，它能够将单词映射到一个低维向量空间中，并且能够在这个空间中表示单词之间的语义关系。这个模型为深度学习语言模型的发展奠定了基础。
+* 2015年，Microsoft提出了LSTM(长短时记忆网络)，这个模型具有记忆能力，能够处理长文本序列。
+* 2016年，OpenAI提出了GPT(Generative Pre-training Transformer)模型，这是一个预训练的语言模型，能够在大量语料上进行预训练，并且能够很好地解决各种语言任务。
+* 2018年，Google提出了BERT(Bidirectional Encoder Representations from Transformer)模型，这个模型能够同时利用上下文来理解词语，这个模型在NLP任务上取得了很好的效果。
+* 2020年, GPT-3 (Generative Pre-training Transformer 3)模型发布, 它是一个预训练语言模型，具有175B参数, 能够完成各种复杂的语言任务.
+* 2022年，3月，推出了InstructGPT，是基于人工的对话样本对GPT-3做了微调后的模型。同时引入了reward模型，能给生成回复打分，利用强化学习对模型进一步微调，得到了一个13亿参数的模型，同时比GPT-3的性能更优秀。
+* 2022年，11月，OpenAI推出[ChatGPT](https://chat.openai.com/chat)，直接出圈引爆了行业内外对大模型的关注。ChatGPT是基于GPT3.5，目前还没发布论文，据称其核心技术是和InstructGPT类似。
+
+### LVM 视觉大模型
+* TBD
 
 ## 强化学习
 * Reinforcement learning (RL) is a type of machine learning, in which an agent explores an environment to learn how to perform desired tasks by taking actions with good outcomes and avoiding actions with bad outcomes.
@@ -129,16 +138,12 @@ A reinforcement learning model will learn from its experience and over time will
 * 非常推荐购买纸质书，关于电子版可参考这个的Repo：[<img src="img/github32.png" width="18" target="_blank" />机器学习/深度学习/Data Science相关的书籍](https://github.com/loveunk/Deep-learning-books)
 
 ### 推荐的实践环境
-* Anaconda
-  * [<img src="img/zhihu32.png" width="18" />Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)
-* IDE
-  * PyCharm（推荐） / VS Code（推荐）/ Atom 等：[<img src="img/zhihu32.png" width="18" />参考阅读《Python的几款IDE》](https://zhuanlan.zhihu.com/p/58178996)。
+* Anaconda：[<img src="img/zhihu32.png" width="18" />Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)
+* IDE：VS Code（推荐）、PyCharm等：[<img src="img/zhihu32.png" width="18" />参考阅读《Python的几款IDE》](https://zhuanlan.zhihu.com/p/58178996)。
 
-### 一些好用的工具
-* 机器学习在线环境
-  * [Google Colab](https://colab.research.google.com)：Jupyter环境。[<img src="img/zhihu32.png" width="18" />一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)。
-* 科学上网
-  * 内地朋友避免不了和China GFW斗智斗勇，建议花小钱省事省心。可看左耳耗子的文章[《科学上网》](https://github.com/haoel/haoel.github.io)。
+### 一些相关工具
+* 在线Jupyter环境：[Google Colab](https://colab.research.google.com)：可参考[<img src="img/zhihu32.png" width="18" />一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)
+* 科学上网：内地朋友避免不了和China GFW斗智斗勇，建议花小钱省事省心。参考[《科学上网》](https://github.com/haoel/haoel.github.io)
 
 ## 写在最后
 
@@ -154,5 +159,19 @@ A reinforcement learning model will learn from its experience and over time will
 * 如果发现内容的错误，欢迎在GitHub提交Issue或者Pull Request
 * 个人精力有限，欢迎感兴趣的朋友一起来完善和补充内容
 * 欢迎Star 和Share 此Repository ​
+
+# Backup
+<details>
+  <summary>以下内容是之前撰写的，目前已经不主推</summary>
+### TensorFlow 
+* 推荐吴恩达DeepLearning.ai和Coursera推出的系列TensoFlow课程。每门课均包括四周内容，Exercise基于Google Colab平台，讲师是来自Google Brain团队的Laurence Moroney：
+  1. 《[Introduction to TensorFlow for Artificial Intelligence, Machine Learning, and Deep Learning](https://www.coursera.org/learn/introduction-tensorflow)》：TF入门
+  2. 《[Convolutional Neural Networks in TensorFlow](https://www.coursera.org/learn/convolutional-neural-networks-tensorflow)》：CNN, Transfer Learning
+  3. 《[Natural Language Processing in TensorFlow](https://www.coursera.org/learn/natural-language-processing-tensorflow)》：构建NLP系统，涉及RNN, GRU, and LSTM等
+  4. 《[Sequences, Time Series and Prediction](https://www.coursera.org/learn/tensorflow-sequences-time-series-and-prediction)》：用RNNs/ConvNets/WaveNet解决时序和预测问题
+* 关于TensorFlow 2.0，推荐阅读[<img src="img/zhihu32.png" width="18" />《TensorFlow Dev Summit 2019》](https://zhuanlan.zhihu.com/p/60077966)以便对TensorFlow体系有个完整认知。
+* [TensorFlow/Keras的例子](tensorflow)
+* [Inside TensorFlow](https://www.youtube.com/playlist?list=PLQY2H8rRoyvzIuB8rZXs7pfyjiSUs8Vza) （TensorFlow团队对TF内部原理做的一系列视频）
+</details>
 
 [回到顶部](#深度学习机器学习学习路径)

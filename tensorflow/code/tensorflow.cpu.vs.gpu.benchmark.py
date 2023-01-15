@@ -1,6 +1,5 @@
 """
 Author: Kevin
-Link: www.kaikai.ai
 Github: github.com/loveunk
 
 使用一个简单的conv2d网络测试CPU & GPU的性能对比

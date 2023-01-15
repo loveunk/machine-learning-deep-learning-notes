@@ -1,6 +1,5 @@
 """
 Author: Kevin
-Link: www.kaikai.ai
 Github: github.com/loveunk
 
 这个例子用来讲述利用Keras api保存和加载model。

@@ -1,6 +1,5 @@
 """
 Author: Kevin
-Link: www.kaikai.ai
 Github: github.com/loveunk
 
 这是一个image segmentation的例子，使用

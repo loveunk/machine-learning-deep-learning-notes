@@ -1,6 +1,5 @@
 """
 Author: Kevin
-Link: www.kaikai.ai
 Github: github.com/loveunk
 
 这是基于TensorFlow2.0版本的2个完整的mnist分类demo，涉及：

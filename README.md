@@ -110,13 +110,11 @@ A reinforcement learning model will learn from its experience and over time will
 
 * 2014年，Google提出了Word2Vec模型，它能够将单词映射到一个低维向量空间中，并且能够在这个空间中表示单词之间的语义关系。这个模型为深度学习语言模型的发展奠定了基础。
 * 2015年，Microsoft提出了LSTM(长短时记忆网络)，这个模型具有记忆能力，能够处理长文本序列。
-* 2016年，OpenAI提出了GPT(Generative Pre-training Transformer)模型，这是一个预训练的语言模型，能够在大量语料上进行预训练，并且能够很好地解决各种语言任务。
+* 2016年，OpenAI提出了GPT(Generative Pre-training Transformer)模型，这是一个预训练的语言模型，能够在大量语料上进行预训练，并且能够很好地解决各种语言任务。<img src="img/bilibili32.png" width="18" /> [GPT，GPT-2，GPT-3 论文精读](https://www.bilibili.com/video/BV1AF411b7xQ)
 * 2018年，Google提出了BERT(Bidirectional Encoder Representations from Transformer)模型，这个模型能够同时利用上下文来理解词语，这个模型在NLP任务上取得了很好的效果。<img src="img/bilibili32.png" width="18" /> [BERT论文精读](https://www.bilibili.com/video/BV1PL411M7eQ/)
-* 2020年, GPT-3 (Generative Pre-training Transformer 3)模型发布, 它是一个预训练语言模型，具有175B参数, 能够完成各种复杂的语言任务.
+* 2020年, GPT-3 (Generative Pre-training Transformer 3)模型发布, 它是一个预训练语言模型，具有175B参数, 能够完成各种复杂的语言任务。<img src="img/bilibili32.png" width="18" /> [GPT，GPT-2，GPT-3 论文精读](https://www.bilibili.com/video/BV1AF411b7xQ)
 * 2022年，3月，推出了InstructGPT，是基于人工的对话样本对GPT-3做了微调后的模型。同时引入了reward模型，能给生成回复打分，利用强化学习对模型进一步微调，得到了一个13亿参数的模型，同时比GPT-3的性能更优秀。<img src="img/bilibili32.png" width="18" /> [InstructGPT论文精读](https://www.bilibili.com/video/BV1hd4y187CR/)
 * 2022年，11月，OpenAI推出[ChatGPT](https://chat.openai.com/chat)，直接出圈引爆了行业内外对大模型的关注。ChatGPT是基于GPT3.5，目前还没发布论文，据称其核心技术是和InstructGPT类似。
-
-* <img src="img/bilibili32.png" width="18" /> [GPT，GPT-2，GPT-3 论文精读【论文精读】](https://www.bilibili.com/video/BV1AF411b7xQ)
 
 #### LVM 视觉大模型
 * TBD

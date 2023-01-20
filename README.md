@@ -139,18 +139,18 @@ A reinforcement learning model will learn from its experience and over time will
 ### 推荐的实践环境
 * Anaconda：[<img src="img/zhihu32.png" width="18" />Anaconda/Tensorflow-GPU安装总结](https://zhuanlan.zhihu.com/p/58607298)
 * IDE：VS Code（推荐）、PyCharm等：[<img src="img/zhihu32.png" width="18" />参考阅读《Python的几款IDE》](https://zhuanlan.zhihu.com/p/58178996)。
+* Online Editor: [GitHub Codespaces](https://github.com/features/codespaces)(60 hours free)、[Gitpod](https://www.gitpod.io/) (50 hours free)
 
 ### 一些相关工具
-* 在线Jupyter环境：[Google Colab](https://colab.research.google.com)：可参考[<img src="img/zhihu32.png" width="18" />一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)
-* 科学上网：内地朋友避免不了和China GFW斗智斗勇，建议花小钱省事省心。参考[《科学上网》](https://github.com/haoel/haoel.github.io)
+* Jupyter环境：[Google Colab](https://colab.research.google.com)：可参考[<img src="img/zhihu32.png" width="18" />一篇介绍Google Colab的总结](https://zhuanlan.zhihu.com/p/57759598)
+* 科学上网：[《科学上网》](https://github.com/haoel/haoel.github.io)
 
 
 ## 项目和竞赛
 ### 竞赛
 * [Kaggle](competitions/kaggle.md)（全球赛、推荐的平台）
 * [天池](https://tianchi.aliyun.com) - 阿里云（中国）
-* [DataFountain](https://www.datafountain.cn/)（中国）
-* [SODA](http://soda.shdataic.org.cn/) - 开放数据创新应用大赛（中国）
+
 
 ## 相关论文
 

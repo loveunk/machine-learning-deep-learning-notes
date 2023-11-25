@@ -34,13 +34,13 @@
 ## Derivative 导数
 导数的定义:
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\frac{df}{dx}&space;=&space;f'(x)&space;=&space;\lim&space;_{\Delta&space;x\rightarrow&space;0}\left(&space;\dfrac&space;{f\left(&space;x&space;&plus;&space;\Delta&space;x&space;\right)&space;-f(x)}{\Delta&space;x}\right)" title="\frac{df}{dx} = f'(x) = \lim _{\Delta x\rightarrow 0}\left( \dfrac {f\left( x + \Delta x \right) -f(x)}{\Delta x}\right)" />
+<img src="https://latex.codecogs.com/svg.image?\frac{df}{dx}&space;=&space;f'(x)&space;=&space;\lim&space;_{\Delta&space;x\rightarrow&space;0}\left(&space;\dfrac&space;{f\left(&space;x&space;&plus;&space;\Delta&space;x&space;\right)&space;-f(x)}{\Delta&space;x}\right)" title="\frac{df}{dx} = f'(x) = \lim _{\Delta x\rightarrow 0}\left( \dfrac {f\left( x + \Delta x \right) -f(x)}{\Delta x}\right)" />
 </p>
 
 ### 导数基本规则
 #### 线性法则 (Sum / Subtraction rule)
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}\dfrac{d}{dx}\left(f\left(x\right)&plus;g\left(x\right)\right)=\dfrac{df\left(x\right)}{dx}&plus;\dfrac{dg\left(x\right)}{dx}\end{aligned}" title="\begin{aligned}\dfrac{d}{dx}\left(f\left(x\right)+g\left(x\right)\right)=\dfrac{df\left(x\right)}{dx}+\dfrac{dg\left(x\right)}{dx}\end{aligned}" />
+<img src="https://latex.codecogs.com/svg.image?\begin{aligned}\dfrac{d}{dx}\left(f\left(x\right)&plus;g\left(x\right)\right)=\dfrac{df\left(x\right)}{dx}&plus;\dfrac{dg\left(x\right)}{dx}\end{aligned}" title="\begin{aligned}\dfrac{d}{dx}\left(f\left(x\right)+g\left(x\right)\right)=\dfrac{df\left(x\right)}{dx}+\dfrac{dg\left(x\right)}{dx}\end{aligned}" />
 </p>
 
 #### 指数法则 (Power rule)
@@ -68,7 +68,7 @@ f'(x) = ab x<sup>(b-1)</sup>
 ### 乘积法则 (Product Rule)
 函数为 _f(x) · g(x) = f(x) g'(x) + f'(x) g(x)_，则：
 
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\begin&space;{aligned}&space;\lim&space;_{\Delta&space;x\rightarrow&space;0}(\Delta&space;A(x))&space;&&space;=&space;\lim_{\Delta&space;x\rightarrow&space;0}(f(x)&space;(g(x&plus;\Delta&space;x)&space;-&space;g(x))&space;&plus;&space;(f(x&plus;\Delta&space;x)&space;-&space;f(x)))&space;\\&space;&=&space;f(x)&space;g'(x)&space;&plus;&space;f'(x)&space;g(x)&space;\end{aligned}" title="\begin {aligned} \lim _{\Delta x\rightarrow 0}(\Delta A(x)) & = \lim_{\Delta x\rightarrow 0}(f(x) (g(x+\Delta x) - g(x)) + (f(x+\Delta x) - f(x))) \\ &= f(x) g'(x) + f'(x) g(x) \end{aligned}" /></p>
+<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;\begin&space;{aligned}&space;\lim&space;_{\Delta&space;x\rightarrow&space;0}(\Delta&space;A(x))&space;&&space;=&space;\lim_{\Delta&space;x\rightarrow&space;0}(f(x)&space;(g(x&plus;\Delta&space;x)&space;-&space;g(x))&space;&plus;&space;(f(x&plus;\Delta&space;x)&space;-&space;f(x)))&space;\\&space;&=&space;f(x)&space;g'(x)&space;&plus;&space;f'(x)&space;g(x)&space;\end{aligned}" title="\begin {aligned} \lim _{\Delta x\rightarrow 0}(\Delta A(x)) & = \lim_{\Delta x\rightarrow 0}(f(x) (g(x+\Delta x) - g(x)) + (f(x+\Delta x) - f(x))) \\ &= f(x) g'(x) + f'(x) g(x) \end{aligned}" /></p>
 
 需要说明上面的等式忽略了 _(f(x+Δx) - f(x)) (g(x+Δx) - g(x))_ ，结合下图就可以更好理解，被忽略的部分是右下角白色的小框，随着  _lim<sub>Δx→0</sub>_ ，这部分可以忽略不计了。
 
@@ -89,7 +89,7 @@ f'(x) = ab x<sup>(b-1)</sup>
 
 表示为：
 
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?\inline&space;f'_x,f_x,\partial_x&space;f,D_xf,D_1f,\frac{\partial}{\partial&space;x}f,\text{&space;or&space;}&space;\frac{\partial&space;f}{\partial&space;x}.\text{&space;or&space;}f_x(x,&space;y,\ldots),\frac{\partial&space;f}{\partial&space;x}(x,y,\ldots)" title="f'_x,f_x,\partial_x f,D_xf,D_1f,\frac{\partial}{\partial x}f,\text{ or } \frac{\partial f}{\partial x}.\text{ or }f_x(x, y,\ldots),\frac{\partial f}{\partial x}(x,y,\ldots)" /></p>
+<p align="center"><img src="https://latex.codecogs.com/svg.image?\inline&space;f'_x,f_x,\partial_x&space;f,D_xf,D_1f,\frac{\partial}{\partial&space;x}f,\text{&space;or&space;}&space;\frac{\partial&space;f}{\partial&space;x}.\text{&space;or&space;}f_x(x,&space;y,\ldots),\frac{\partial&space;f}{\partial&space;x}(x,y,\ldots)" title="f'_x,f_x,\partial_x f,D_xf,D_1f,\frac{\partial}{\partial x}f,\text{ or } \frac{\partial f}{\partial x}.\text{ or }f_x(x, y,\ldots),\frac{\partial f}{\partial x}(x,y,\ldots)" /></p>
 
 ## 雅可比矩阵(Jacobians Matrix)
 
@@ -98,7 +98,7 @@ f'(x) = ab x<sup>(b-1)</sup>
 假设某函数从 _R<sup>n</sup>_ 映射到 _R<sup>m</sup>_，其雅克比矩阵是从 _R<sup>n</sup>_ 到 _R<sup>m</sup>_的线性映射，其意义在于它表现了一个多变量函数的最佳线性逼近。因此，雅可比矩阵类似于单变数函数的导数。 假设_F : R<sub>n</sub> →  R<sub>m</sub>_ 是一个从 _n_ 维欧氏空间映射到到  _m_ 维欧氏空间的函数。假设一个函数由 _m_ 个实函数组成：_y<sub>1</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>), ..., y<sub>n</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，这些函数的偏导数可以组成 _m_ 行 _n_ 列的矩阵，矩阵就是雅克比矩阵 (Jacobians Matrix)：
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\left[&space;\begin{array}{ccc}{\frac{\partial&space;y_{1}}{\partial&space;x_{1}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial&space;y_{1}}{\partial&space;x_{n}}}&space;\\&space;{\vdots}&space;&&space;{\ddots}&space;&&space;{\vdots}&space;\\&space;{\frac{\partial&space;y_{m}}{\partial&space;x_{1}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial&space;y_{m}}{\partial&space;x_{n}}}\end{array}\right]" title="\left[ \begin{array}{ccc}{\frac{\partial y_{1}}{\partial x_{1}}} & {\cdots} & {\frac{\partial y_{1}}{\partial x_{n}}} \\ {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial y_{m}}{\partial x_{1}}} & {\cdots} & {\frac{\partial y_{m}}{\partial x_{n}}}\end{array}\right]" />
+<img src="https://latex.codecogs.com/svg.image?\left[&space;\begin{array}{ccc}{\frac{\partial&space;y_{1}}{\partial&space;x_{1}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial&space;y_{1}}{\partial&space;x_{n}}}&space;\\&space;{\vdots}&space;&&space;{\ddots}&space;&&space;{\vdots}&space;\\&space;{\frac{\partial&space;y_{m}}{\partial&space;x_{1}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial&space;y_{m}}{\partial&space;x_{n}}}\end{array}\right]" title="\left[ \begin{array}{ccc}{\frac{\partial y_{1}}{\partial x_{1}}} & {\cdots} & {\frac{\partial y_{1}}{\partial x_{n}}} \\ {\vdots} & {\ddots} & {\vdots} \\ {\frac{\partial y_{m}}{\partial x_{1}}} & {\cdots} & {\frac{\partial y_{m}}{\partial x_{n}}}\end{array}\right]" />
 </p>
 
 矩阵符号写作：
@@ -134,7 +134,7 @@ J<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 则Jacobians Matrix为：
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;J&space;&=\left[\begin{array}{ll}{\frac{\partial&space;x}{\partial&space;r}}&{\frac{\partial&space;x}{\partial\theta}}&space;\\&space;{\frac{\partial&space;y}{\partial&space;r}}&{\frac{\partial&space;y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)}&space;&&space;{-r\sin(\theta)}&space;\\&space;{\sin(\theta)}&{r\cos(\theta)}\end{array}\right]&space;\end{aligned}" title="\begin{aligned} J &=\left[\begin{array}{ll}{\frac{\partial x}{\partial r}}&{\frac{\partial x}{\partial\theta}} \\ {\frac{\partial y}{\partial r}}&{\frac{\partial y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)} & {-r\sin(\theta)} \\ {\sin(\theta)}&{r\cos(\theta)}\end{array}\right] \end{aligned}" />
+<img src="https://latex.codecogs.com/svg.image?\begin{aligned}J&=\left[\begin{array}{ll}{\frac{\partial&space;u}{\partial&space;x}}&{\frac{\partial&space;u}{\partial&space;y}}\\{\frac{\partial&space;v}{\partial&space;x}}&{\frac{\partial&space;v}{\partial&space;y}}\end{array}\right]=\left[\begin{array}{ll}{1}&{-2}\\{-2}&{3}\end{array}\right]\end{aligned}" title="\begin{aligned}J&=\left[\begin{array}{ll}{\frac{\partial u}{\partial x}}&{\frac{\partial u}{\partial y}}\\ {\frac{\partial v}{\partial x}}&{\frac{\partial v}{\partial y}}\end{array}\right] =\left[\begin{array}{ll}{1}&{-2}\\{-2}&{3}\end{array}\right] \end{aligned}" />
 </p>
 
 ### 例子2
@@ -147,7 +147,7 @@ J<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 则Jacobians Matrix为：
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;J&space;&=\left[\begin{array}{ll}{\frac{\partial&space;x}{\partial&space;r}}&{\frac{\partial&space;x}{\partial\theta}}&space;\\&space;{\frac{\partial&space;y}{\partial&space;r}}&{\frac{\partial&space;y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)}&space;&&space;{-r\sin(\theta)}&space;\\&space;{\sin(\theta)}&{r\cos(\theta)}\end{array}\right]&space;\end{aligned}" title="\begin{aligned} J &=\left[\begin{array}{ll}{\frac{\partial x}{\partial r}}&{\frac{\partial x}{\partial\theta}} \\ {\frac{\partial y}{\partial r}}&{\frac{\partial y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)} & {-r\sin(\theta)} \\ {\sin(\theta)}&{r\cos(\theta)}\end{array}\right] \end{aligned}" />
+<img src="https://latex.codecogs.com/svg.image?\begin{aligned}&space;J&space;&=\left[\begin{array}{ll}{\frac{\partial&space;x}{\partial&space;r}}&{\frac{\partial&space;x}{\partial\theta}}&space;\\&space;{\frac{\partial&space;y}{\partial&space;r}}&{\frac{\partial&space;y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)}&space;&&space;{-r\sin(\theta)}&space;\\&space;{\sin(\theta)}&{r\cos(\theta)}\end{array}\right]&space;\end{aligned}" title="\begin{aligned} J &=\left[\begin{array}{ll}{\frac{\partial x}{\partial r}}&{\frac{\partial x}{\partial\theta}} \\ {\frac{\partial y}{\partial r}}&{\frac{\partial y}{\partial\theta}}\end{array}\right]=\left[\begin{array}{ll}{\cos(\theta)} & {-r\sin(\theta)} \\ {\sin(\theta)}&{r\cos(\theta)}\end{array}\right] \end{aligned}" />
 </p>
 
 Jacobians Det为
@@ -170,7 +170,7 @@ Jacobians Det为
 在一些情况下Jacobians Matrix没法很好的解决问题，比如对于 _F_：
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?z(x,y)=3(1-x)^{2}e^{-x^{2}-(y&plus;1)^{2}}-10\left(\frac{x}{5}-x^{3}\right)e^{-x^{2}-y^{2}}-\frac{1}{3}e^{-(x&plus;1)^{2}-y^{2}}" title="z(x,y)=3(1-x)^{2}e^{-x^{2}-(y+1)^{2}}-10\left(\frac{x}{5}-x^{3}\right)e^{-x^{2}-y^{2}}-\frac{1}{3}e^{-(x+1)^{2}-y^{2}}" />
+<img src="https://latex.codecogs.com/svg.image?z(x,y)=3(1-x)^{2}e^{-x^{2}-(y&plus;1)^{2}}-10\left(\frac{x}{5}-x^{3}\right)e^{-x^{2}-y^{2}}-\frac{1}{3}e^{-(x&plus;1)^{2}-y^{2}}" title="z(x,y)=3(1-x)^{2}e^{-x^{2}-(y+1)^{2}}-10\left(\frac{x}{5}-x^{3}\right)e^{-x^{2}-y^{2}}-\frac{1}{3}e^{-(x+1)^{2}-y^{2}}" />
 </p>
 
 它的Jacobians Matrix可视化之后如下图：
@@ -182,7 +182,7 @@ Jacobians Det为
 Hessian Matrix是一个以德国数学家**Ludwig Otto Hesse**命名的多变量实值函数的二阶偏导数组成的方块矩阵。假设_F : R<sub>n</sub> →  R<sub>m</sub>_ 是一个从 _n_ 维欧氏空间映射到到  _m_ 维欧氏空间的函数。假设一个函数由 _m_ 个实函数组成：_y<sub>1</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>), ..., y<sub>n</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，这些函数的二阶偏导数可以组成 _m_ 行 _n_ 列的矩阵，矩阵就是Hessian矩阵：
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\mathbf{H}=\left[\begin{array}{cccc}{\frac{\partial^{2}f}{\partial&space;x_{1}^{2}}}&{\frac{\partial^{2}&space;f}{\partial&space;x_{1}&space;\partial&space;x_{2}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial^{2}&space;f}{\partial&space;x_{1}\partial&space;x_{n}}}\\&space;{\frac{\partial^{2}f}{\partial&space;x_{2}\partial&space;x_{1}}}&{\frac{\partial^{2}f}{\partial&space;x_{2}^{2}}}&{\cdots}&space;&&space;{\frac{\partial^{2}f}{\partial&space;x_{2}\partial&space;x_{n}}}\\&space;{\vdots}&{\vdots}&{\ddots}&{\vdots}\\&space;{\frac{\partial^{2}f}{\partial&space;x_{n}\partial&space;x_{1}}}&{\frac{\partial^{2}f}{\partial&space;x_{n}\partial&space;x_{2}}}&space;&&space;{\cdots}&{\frac{\partial^{2}&space;f}{\partial&space;x_{n}^{2}}}\end{array}\right]" title="\mathbf{H}=\left[\begin{array}{cccc}{\frac{\partial^{2}f}{\partial x_{1}^{2}}}&{\frac{\partial^{2} f}{\partial x_{1} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f}{\partial x_{1}\partial x_{n}}}\\ {\frac{\partial^{2}f}{\partial x_{2}\partial x_{1}}}&{\frac{\partial^{2}f}{\partial x_{2}^{2}}}&{\cdots} & {\frac{\partial^{2}f}{\partial x_{2}\partial x_{n}}}\\ {\vdots}&{\vdots}&{\ddots}&{\vdots}\\ {\frac{\partial^{2}f}{\partial x_{n}\partial x_{1}}}&{\frac{\partial^{2}f}{\partial x_{n}\partial x_{2}}} & {\cdots}&{\frac{\partial^{2} f}{\partial x_{n}^{2}}}\end{array}\right]" />
+<img src="https://latex.codecogs.com/svg.image?\mathbf{H}=\left[\begin{array}{cccc}{\frac{\partial^{2}f}{\partial&space;x_{1}^{2}}}&{\frac{\partial^{2}&space;f}{\partial&space;x_{1}&space;\partial&space;x_{2}}}&space;&&space;{\cdots}&space;&&space;{\frac{\partial^{2}&space;f}{\partial&space;x_{1}\partial&space;x_{n}}}\\&space;{\frac{\partial^{2}f}{\partial&space;x_{2}\partial&space;x_{1}}}&{\frac{\partial^{2}f}{\partial&space;x_{2}^{2}}}&{\cdots}&space;&&space;{\frac{\partial^{2}f}{\partial&space;x_{2}\partial&space;x_{n}}}\\&space;{\vdots}&{\vdots}&{\ddots}&{\vdots}\\&space;{\frac{\partial^{2}f}{\partial&space;x_{n}\partial&space;x_{1}}}&{\frac{\partial^{2}f}{\partial&space;x_{n}\partial&space;x_{2}}}&space;&&space;{\cdots}&{\frac{\partial^{2}&space;f}{\partial&space;x_{n}^{2}}}\end{array}\right]" title="\mathbf{H}=\left[\begin{array}{cccc}{\frac{\partial^{2}f}{\partial x_{1}^{2}}}&{\frac{\partial^{2} f}{\partial x_{1} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f}{\partial x_{1}\partial x_{n}}}\\ {\frac{\partial^{2}f}{\partial x_{2}\partial x_{1}}}&{\frac{\partial^{2}f}{\partial x_{2}^{2}}}&{\cdots} & {\frac{\partial^{2}f}{\partial x_{2}\partial x_{n}}}\\ {\vdots}&{\vdots}&{\ddots}&{\vdots}\\ {\frac{\partial^{2}f}{\partial x_{n}\partial x_{1}}}&{\frac{\partial^{2}f}{\partial x_{n}\partial x_{2}}} & {\cdots}&{\frac{\partial^{2} f}{\partial x_{n}^{2}}}\end{array}\right]" />
 </p>
 
 矩阵符号写作：
@@ -217,7 +217,7 @@ H<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 - _g<sub>2</sub>(x)  =  f(0)  +  f<sup>'</sup>(0)x  +  (<sup> 1 </sup>/<sub> 2 </sub>)f<sup>''</sup>(0)x<sup>2</sup>_ 
 - _g<sub>3</sub>(x)  =  f(0)  +  f<sup>'</sup>(0)x  +  (<sup> 1 </sup>/<sub> 2 </sub>)f<sup>''</sup>(0)x<sup>2</sup>  +  (<sup> 1 </sup>/<sub> 6 </sub>)f<sup>(3)</sup>x<sup>3</sup>_
 - ...
-- <img src="https://latex.codecogs.com/gif.latex?g(x)=\sum&space;^{\infty&space;}_{n=0}\dfrac&space;{f^{\left(&space;n\right)&space;}\left(&space;0\right)&space;}{n!}x^{n}" title="g(x) = \sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( 0\right) }{n!}x^{n}" /> 
+- <img src="https://latex.codecogs.com/svg.image?g(x)=\sum&space;^{\infty&space;}_{n=0}\dfrac&space;{f^{\left(&space;n\right)&space;}\left(&space;0\right)&space;}{n!}x^{n}" title="g(x) = \sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( 0\right) }{n!}x^{n}" /> 
 
 这种级数又称为 麦克劳林级数（**Maclaurin Series**），实际是泰勒级数的一种特殊情况。
 
@@ -228,12 +228,12 @@ H<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 当 x = 0, 可得
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\sum&space;^{\infty&space;}_{n=0}\dfrac&space;{f^{\left(&space;n\right)&space;}\left(&space;0\right)&space;}{n!}x^{n}" title="\sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( 0\right) }{n!}x^{n}" />
+<img src="https://latex.codecogs.com/svg.image?\sum&space;^{\infty&space;}_{n=0}\dfrac&space;{f^{\left(&space;n\right)&space;}\left(&space;0\right)&space;}{n!}x^{n}" title="\sum ^{\infty }_{n=0}\dfrac {f^{\left( n\right) }\left( 0\right) }{n!}x^{n}" />
 </p>
 
 其中
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;f(x)&=f(p)\\&space;f(x)&=f(p)&plus;f'(p)(x-p)\\&space;f(x)&=f(p)&plus;f'(p)(x-p)&plus;\frac{1}{2}f''(p-p)(x-p)^2\\&space;f(x)&=\sum^{\infty&space;}_{n=0}\dfrac{f^{\left(n\right)}\left(p\right)}{n!}(x-p)^{n}&space;\end{aligned}" title="\begin{aligned} f(x)&=f(p)\\ f(x)&=f(p)+f'(p)(x-p)\\ f(x)&=f(p)+f'(p)(x-p)+\frac{1}{2}f''(p-p)(x-p)^2\\ f(x)&=\sum^{\infty }_{n=0}\dfrac{f^{\left(n\right)}\left(p\right)}{n!}(x-p)^{n} \end{aligned}" />
+<img src="https://latex.codecogs.com/svg.image?\begin{aligned}&space;f(x)&=f(p)\\&space;f(x)&=f(p)&plus;f'(p)(x-p)\\&space;f(x)&=f(p)&plus;f'(p)(x-p)&plus;\frac{1}{2}f''(p-p)(x-p)^2\\&space;f(x)&=\sum^{\infty&space;}_{n=0}\dfrac{f^{\left(n\right)}\left(p\right)}{n!}(x-p)^{n}&space;\end{aligned}" title="\begin{aligned} f(x)&=f(p)\\ f(x)&=f(p)+f'(p)(x-p)\\ f(x)&=f(p)+f'(p)(x-p)+\frac{1}{2}f''(p-p)(x-p)^2\\ f(x)&=\sum^{\infty }_{n=0}\dfrac{f^{\left(n\right)}\left(p\right)}{n!}(x-p)^{n} \end{aligned}" />
 </p>
 对于 _cos(x)_ 这样的函数泰勒级数可以很好的拟合，但是对于 _<sup>1</sup>/<sub>x</sub>_ 这样的函数拟合的很糟糕。
 
@@ -246,7 +246,7 @@ H<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 多变量泰勒级数的公式：
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;f(x&plus;\partial_x,&space;y&plus;\partial_y)&={f(x,y)}\\&space;&{&plus;\left(\partial_{x}f(x,y)\Delta&space;x&plus;\partial_{y}&space;f(x,y)&space;\Delta&space;y\right)}\\&space;&{&plus;\frac{1}{2}\left(\partial_{x&space;x}&space;f(x,y)&space;\Delta&space;x^{2}&plus;2&space;\partial_{x&space;y}&space;f(x,y)&space;\Delta&space;x&space;\Delta&space;y&plus;\partial_{y&space;y}&space;f(x,y)&space;\Delta&space;y^{2}\right)}&space;\end{align*}" title="\begin{align*} f(x+\partial_x, y+\partial_y)&={f(x,y)}\\ &{+\left(\partial_{x}f(x,y)\Delta x+\partial_{y} f(x,y) \Delta y\right)}\\ &{+\frac{1}{2}\left(\partial_{x x} f(x,y) \Delta x^{2}+2 \partial_{x y} f(x,y) \Delta x \Delta y+\partial_{y y} f(x,y) \Delta y^{2}\right)} \end{align*}" />
+<img src="https://latex.codecogs.com/svg.image?\begin{align*}&space;f(x&plus;\partial_x,&space;y&plus;\partial_y)&={f(x,y)}\\&space;&{&plus;\left(\partial_{x}f(x,y)\Delta&space;x&plus;\partial_{y}&space;f(x,y)&space;\Delta&space;y\right)}\\&space;&{&plus;\frac{1}{2}\left(\partial_{x&space;x}&space;f(x,y)&space;\Delta&space;x^{2}&plus;2&space;\partial_{x&space;y}&space;f(x,y)&space;\Delta&space;x&space;\Delta&space;y&plus;\partial_{y&space;y}&space;f(x,y)&space;\Delta&space;y^{2}\right)}&space;\end{align*}" title="\begin{align*} f(x+\partial_x, y+\partial_y)&={f(x,y)}\\ &{+\left(\partial_{x}f(x,y)\Delta x+\partial_{y} f(x,y) \Delta y\right)}\\ &{+\frac{1}{2}\left(\partial_{x x} f(x,y) \Delta x^{2}+2 \partial_{x y} f(x,y) \Delta x \Delta y+\partial_{y y} f(x,y) \Delta y^{2}\right)} \end{align*}" />
 </p>
 
 
@@ -264,15 +264,15 @@ H<sub>F</sub>(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)_，或者 (<sup>
 ## 非线性回归 Non-linear Regression
 ## 快速下降法 Steepest Descent
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\mathbf{J}=\left[\frac{\partial(\chi^2)}{\partial\mu},\frac{\partial(\chi^2)}{\partial\sigma}\right]" title="\mathbf{J}=\left[\frac{\partial(\chi^2)}{\partial\mu},\frac{\partial(\chi^2)}{\partial\sigma}\right]" />
+<img src="https://latex.codecogs.com/svg.image?\mathbf{J}=\left[\frac{\partial(\chi^2)}{\partial\mu},\frac{\partial(\chi^2)}{\partial\sigma}\right]" title="\mathbf{J}=\left[\frac{\partial(\chi^2)}{\partial\mu},\frac{\partial(\chi^2)}{\partial\sigma}\right]" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\chi^2=|\mathbf{y}-f(\mathbf{x};\mu,\sigma)|^2" title="\chi^2=|\mathbf{y}-f(\mathbf{x};\mu,\sigma)|^2" />
+<img src="https://latex.codecogs.com/svg.image?\chi^2=|\mathbf{y}-f(\mathbf{x};\mu,\sigma)|^2" title="\chi^2=|\mathbf{y}-f(\mathbf{x};\mu,\sigma)|^2" />
 </p>
 
 <p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\frac{\partial(\chi^2)}{\partial\mu}=-2(\mathbf{y}-f(\mathbf{x};\mu,\sigma))\cdot\frac{\partial&space;f}{\partial\mu}(\mathbf{x};\mu,\sigma)" title="\frac{\partial(\chi^2)}{\partial\mu}=-2(\mathbf{y}-f(\mathbf{x};\mu,\sigma))\cdot\frac{\partial f}{\partial\mu}(\mathbf{x};\mu,\sigma)" />
+<img src="https://latex.codecogs.com/svg.image?\frac{\partial(\chi^2)}{\partial\mu}=-2(\mathbf{y}-f(\mathbf{x};\mu,\sigma))\cdot\frac{\partial&space;f}{\partial\mu}(\mathbf{x};\mu,\sigma)" title="\frac{\partial(\chi^2)}{\partial\mu}=-2(\mathbf{y}-f(\mathbf{x};\mu,\sigma))\cdot\frac{\partial f}{\partial\mu}(\mathbf{x};\mu,\sigma)" />
 </p>
 
 [回到顶部](#微积分-calculus)

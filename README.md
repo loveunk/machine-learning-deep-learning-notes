@@ -116,11 +116,16 @@ A reinforcement learning model will learn from its experience and over time will
 * 2022年，3月，推出了InstructGPT，是基于人工的对话样本对GPT-3做了微调后的模型。同时引入了reward模型，能给生成回复打分，利用强化学习对模型进一步微调，得到了一个13亿参数的模型，同时比GPT-3的性能更优秀。<img src="img/bilibili32.png" width="18" /> [InstructGPT论文精读](https://www.bilibili.com/video/BV1hd4y187CR/)
 * 2022年，11月，OpenAI推出[ChatGPT](https://chat.openai.com/chat)，直接出圈引爆了行业内外对大模型的关注。ChatGPT是基于GPT3.5，目前还没发布论文，据称其核心技术是和InstructGPT类似。
 
+* [语言大模型介绍 <img src="img/bilibili32.png" width="18" />](https://www.bilibili.com/video/BV1Hj41177fb), by Andrej Karpathy
+
 #### LVM 视觉大模型
-* TBD
+* DINO-v2
+* SAM (Segment-Anything)
 
 ### 多模态
-* TBD
+* BLIP-2, InstructBLIP
+* CogVLM
+* GPT-4V
 
 ### 视频理解
 * <img src="img/bilibili32.png" width="18" /> [视频理解论文串讲（上）【论文精读】](https://www.bilibili.com/video/BV1fL4y157yA)

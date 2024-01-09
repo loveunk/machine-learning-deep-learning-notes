@@ -84,7 +84,7 @@
      5. <img src="img/bilibili32.png" width="18" /> [Transformer](https://www.bilibili.com/video/BV1pu411o7BE)
      6. <img src="img/bilibili32.png" width="18" /> [对比学习](https://www.bilibili.com/video/BV19S4y1M7hm)
 
-### PyTorch
+### 深度学习框架：PyTorch
 修订这段文字的时候已经是2023年，PyTorch无论是在工业界还是学术界，都已经碾压了其他的框架，例如TensorFlow、Keras。如果是入坑不久的朋友，我建议你直接学PyTorch就好了。其他框架基本上可以仅follow up即可。
 * [<img src="img/bilibili32.png" width="18" /> PyTorch视频集合（32集）](https://www.bilibili.com/video/BV197411Z7CE/)
 * [<img src="img/zhihu32.png" width="18" /> PyTorch的安装与Tutorial](https://zhuanlan.zhihu.com/p/60526007)
@@ -94,18 +94,11 @@
 ### 分布式训练
 * [<img src="img/zhihu32.png" width="18" />《分布式训练》](https://zhuanlan.zhihu.com/p/129912419)
 
-## 强化学习
-* Reinforcement learning (RL) is a type of machine learning, in which an agent explores an environment to learn how to perform desired tasks by taking actions with good outcomes and avoiding actions with bad outcomes.
-A reinforcement learning model will learn from its experience and over time will be able to identify which actions lead to the best rewards.
-  
-* TBD
 
-## Advanced Topics
-
-### 大模型
+## 大模型
 综述：[<img src="img/zhihu32.png" width="18" /> 2022 年中回顾 ｜ 大模型技术最新进展](https://zhuanlan.zhihu.com/p/545709881?theme=dark)
 
-#### LLM 语言大模型
+### LLM 语言大模型
 语言大模型（LLM）可以通过学习大量的语料来模拟人类语言处理的能力，如文本生成、翻译、问答等。相比普通的模型，LLM具有更高的准确性和更强的适用性。在最近几年，LLM取得了长足的发展，并在各种应用中取得了显著成果。LLM的发展有许多关键节点，下面列举几个重要的节点:
 
 * 2014年，Google提出了Word2Vec模型，它能够将单词映射到一个低维向量空间中，并且能够在这个空间中表示单词之间的语义关系。这个模型为深度学习语言模型的发展奠定了基础。
@@ -118,20 +111,34 @@ A reinforcement learning model will learn from its experience and over time will
 
 * [语言大模型介绍 <img src="img/bilibili32.png" width="18" />](https://www.bilibili.com/video/BV1Hj41177fb), by Andrej Karpathy
 
-#### LVM 视觉大模型
+### LVM 视觉大模型
 * DINO-v2
 * SAM (Segment-Anything)
 
-### 多模态
-* BLIP-2, InstructBLIP
-* CogVLM
-* GPT-4V
+### 多模态 (MLLM/VLM)
+随着语言大模型的发展，图文多模态领域从23年开始也获得了巨大的突破。其中BLIP-2架构 巧妙的利用冻结的LLM和ViT，仅训练Adapter层的架构，成为后来图文多模态领域的主流。
+* [<img src="img/github32.png" width="18" /> BLIP-2](https://github.com/salesforce/LAVIS/tree/main/projects/blip2) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2023年1月发布）
+* [<img src="img/github32.png" width="18" /> InstructBLIP](https://github.com/salesforce/LAVIS/tree/main/projects/instructblip)（2023年5月发布）
+* [<img src="img/github32.png" width="18" /> Next-GPT](https://github.com/NExT-GPT/NExT-GPT) &nbsp;&nbsp;（2023年9月发布）
+* [<img src="img/github32.png" width="18" /> CogVLM](https://github.com/THUDM/CogVLM)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2023年10月发布）
+* [<img src="img/github32.png" width="18" /> LLaVA-1.5](https://github.com/haotian-liu/LLaVA/) &nbsp;&nbsp;（2023年10月发布）
+* [<img src="img/github32.png" width="18" /> Unified-IO 2](https://github.com/allenai/unified-io-2/)（2023年12月发布）
+
+### 大模型微调
+- [<img src="img/colab32.png" width="18" /> 微调 Mixtral-8x7b, QLoRA, 数据集ultrachat](https://colab.research.google.com/drive/1VDa0lIfqiwm16hBlIlEaabGVTNB3dN1A)
+- [<img src="img/colab32.png" width="18" /> 微调LLaMA-2, LoRA, 数据集guanaco-llama2-1k](https://colab.research.google.com/drive/1PEQyJO1-f6j0S_XJ8DV50NkpzasXkrzd)
+
+## 其他主题
 
 ### 视频理解
 * <img src="img/bilibili32.png" width="18" /> [视频理解论文串讲（上）【论文精读】](https://www.bilibili.com/video/BV1fL4y157yA)
 * <img src="img/bilibili32.png" width="18" /> [视频理解论文串讲（下）【论文精读】](https://www.bilibili.com/video/BV11Y411P7ep)
 * <img src="img/bilibili32.png" width="18" /> [双流网络：视频理解开山之作【论文精读】](https://www.bilibili.com/video/BV1mq4y1x7RU)
 * <img src="img/bilibili32.png" width="18" /> [I3D：3D卷积网络【论文精读】](https://www.bilibili.com/video/BV1tY4y1p7hq)
+
+### 强化学习
+* Reinforcement learning (RL) is a type of machine learning, in which an agent explores an environment to learn how to perform desired tasks by taking actions with good outcomes and avoiding actions with bad outcomes.
+A reinforcement learning model will learn from its experience and over time will be able to identify which actions lead to the best rewards.
 
 ## 工欲善其事，必先利其器
 ### 推荐的书
@@ -178,7 +185,7 @@ A reinforcement learning model will learn from its experience and over time will
 ### 欢迎反馈
 * 如果发现内容的错误，欢迎在GitHub提交Issue或者Pull Request
 * 个人精力有限，欢迎感兴趣的朋友一起来完善和补充内容
-* 欢迎Star 和Share 此Repository ​
+* 欢迎 :star: Star :star: 和Share 此Repository ​
 
 ## Backup
 

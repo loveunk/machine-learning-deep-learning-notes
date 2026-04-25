@@ -46,7 +46,8 @@ _(r - s)<sup>2</sup> = r<sup>2</sup> + s<sup>2</sup> - 2r · s · cosθ_
 ##### 标量投影 Scalar projection
 _r · s =|r| × |s| × cosθ_
 
-<img src="https://latex.codecogs.com/gif.latex?proj_r^s=\frac{r\cdot&space;s}{|r|}" title="proj_r^s=\frac{r\cdot s}{|r|}" />
+
+<img width="345" height="112" alt="image" src="https://github.com/user-attachments/assets/1595f349-a0c6-49df-ac3f-d2eb4a2fffae" />
 
 > <p align="center"><img src="./img/vector-projection-r-s.png" width="300" /> </p>
 
@@ -55,10 +56,7 @@ _r · s =|r| × |s| × cosθ_
 ##### 向量投影 Vector projection
  _s_ 往 _r_ 上的投影向量如下，同样可以用上图来0解释
 
-<p align="center">
-<img src="https://latex.codecogs.com/gif.latex?proj_r^s=\frac{r\cdot&space;s}{|r|\times|r|}r" title="proj_r^s=\frac{r\cdot s}{|r|\times|r|}r" />
-</p>
-
+<img src="https://latex.codecogs.com/gif.latex?proj_r^s=\frac{r\cdot&space;s}{|r|}" title="proj_r^s=\frac{r\cdot s}{|r|}" />
 ### 转换参考系
 #### 向量基变更 Vector change basis
 对于在坐标系 _(e<sub>1</sub>, e<sub>2</sub>)_ 上的向量 _r_，把它的坐标点映射到 _(b<sub>1</sub>,b<sub>2</sub>)_ ，_r_ 在新的坐标系中的坐标点是
@@ -142,25 +140,24 @@ Transform (rotate) _R_ in _B_'s coordinates:  _B<sup>-1</sup>RB_
 ### 格拉姆-施密特正交化 The Gram–Schmidt process
 如果内积空间上的一组向量能够组成一个子空间，那么这一组向量就称为这个子空间的一个基。Gram－Schmidt正交化提供了一种方法，能够通过这一子空间上的一个基得出子空间的一个正交基，并可进一步求出对应的标准正交基。
 
-<p align="center">
-<img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;\beta_1&=v_1,&e_1=\dfrac{\beta_1}{\left|\beta_1\right|}\\&space;\beta_2&=v_2-\left(v_2\cdot&space;e_1\right)e_1,&e_2=\dfrac{\beta_2}{\left|\beta_2\right|}\\&space;\beta_3&=v_3-\left(v_3\cdot&space;e_1\right)e_1-\left(v_3\cdot&space;e_2\right)e_2,&e_3=\dfrac{\beta_3}{\left|\beta_3\right|}\\&space;\vdots\\&space;\beta_n&=v_n-\sum^{n-1}_{i=1}\left(v_n\cdot&space;e_i\right)e_i,&e_n=\dfrac{\beta_n}{\left|\beta_n\right|}&space;\end{aligned}" title="\begin{aligned} \beta_1&=v_1,&e_1=\dfrac{\beta_1}{\left|\beta_1\right|}\\ \beta_2&=v_2-\left(v_2\cdot e_1\right)e_1,&e_2=\dfrac{\beta_2}{\left|\beta_2\right|}\\ \beta_3&=v_3-\left(v_3\cdot e_1\right)e_1-\left(v_3\cdot e_2\right)e_2,&e_3=\dfrac{\beta_3}{\left|\beta_3\right|}\\ \vdots\\ \beta_n&=v_n-\sum^{n-1}_{i=1}\left(v_n\cdot e_i\right)e_i,&e_n=\dfrac{\beta_n}{\left|\beta_n\right|} \end{aligned}" />
-</p>
+Gram-Schmidt 正交化过程，它是一个用于将一组向量转化为一组正交（且可能是单位正交）向量的数学方法。简而言之，它提供了通过正交化将一组线性无关的向量转换为正交基的方法
+<img width="1479" height="1333" alt="image" src="https://github.com/user-attachments/assets/fed941b6-ab96-4ec6-9e1f-8abdfa7ed17e" />
+<img width="1385" height="517" alt="image" src="https://github.com/user-attachments/assets/0e838c3b-0c2d-4f25-96f4-a8b37e1eb431" />
 
-经过上述过程后，对于任何 _i, j_ ， _β<sub>i</sub> β<sub>j</sub> = 0_ 。
+
+
+经过上述过程后，对于任何 _i, j_ ， _β<sub>i</sub> β<sub>j</sub> = 0_ 。（在经过正交化过程后，所有得到的正交基向量之间的点积（内积）为零，意味着它们是正交的。）
 
 ### Reflecting in a plane
-<p align="center">
-<img src="https://latex.codecogs.com/gif.latex?r'=E\cdot&space;T_E\cdot&space;E^{-1}\cdot&space;r" title="r'=E\cdot T_E\cdot E^{-1}\cdot r" />
-</p>
 
-Where $E$ is calculated via the gram-schmidt process, $T_E$ is the transformation matrix in the basic plane. $E^{-1} \cdot r$ stands for coverting $r$ to $E$'s plane, $T_E \cdot E^{-1} \cdot r$ stands for doing $T_E$ transformation in $E$'s plane. Finally, $E$ goes back to the original plane.
+<img width="1643" height="564" alt="image" src="https://github.com/user-attachments/assets/2988d4e4-9fc8-46c4-9234-b7bfbb9de882" />
 
-<p align="center"><img src="./img/matrix-reflecting-in-a-plane.png" width="300"/></p>
 ### 特征向量和特征值 Eigenvectors and Eigenvalues
 对于一个给定的方阵 _A_，它的特征向量（eigenvector）_v_ 经过这个线性变换之后，得到的新向量仍然与原来的 _v_ 保持在同一条直线上，但其长度或方向也许会改变。
 它们满足： _**A**v = **λ**v_。
 
 **λ** 为标量，即特征向量的长度在该线性变换下缩放的比例，称 **λ**  为其特征值。
+<img width="1700" height="918" alt="image" src="https://github.com/user-attachments/assets/e886b0d6-ab45-43c5-915f-294912f44e65" />
 
 > <p align="center"><img src="./img/eigenvector-eigenvalues-example.png"/></p>
 > 在上面这个图像变换的例子中，红色箭头改变方向，但蓝色箭头不改变方向。蓝色箭头是此剪切映射的特征向量，因为它不会改变方向，并且由于其长度不变，因此其特征值为1。
@@ -174,7 +171,9 @@ Where $E$ is calculated via the gram-schmidt process, $T_E$ is the transformatio
 
 _λ<sup>2</sup>-(a+d)λ+ad-bc=0_ ，得到 _λ_ 并计算特征向量。
 
-#### 改变特征 Changing the Eigenbasis
+#### 特征值分解（Eigenvalue Decomposition）中的 基变换（Changing the Eigenbasis）
+<img width="1755" height="1554" alt="image" src="https://github.com/user-attachments/assets/83446c00-7869-4cfd-967b-2835222f5619" />
+
 <p align="center">
 <img src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;C&=\begin{pmatrix}x_1&x_2&x_3\\&space;\vdots&\vdots&\vdots\end{pmatrix},&space;D=\begin{pmatrix}\lambda_1&0&0\\0&\lambda_2&0\\0&0&\lambda_3\end{pmatrix},&space;T^n=\begin{pmatrix}a^n&0&0\\0&b^n&0\\0&0&c^n\end{pmatrix}\\&space;T&=CDC^{-1}\\&space;T^2&=CDC^{-1}CDC^{-1}=CD^2C^{-1}\\&space;T^n&=CD^nC^{-1}&space;\end{align*}" title="\begin{align*} C&=\begin{pmatrix}x_1&x_2&x_3\\ \vdots&\vdots&\vdots\end{pmatrix}, D=\begin{pmatrix}\lambda_1&0&0\\0&\lambda_2&0\\0&0&\lambda_3\end{pmatrix}, T^n=\begin{pmatrix}a^n&0&0\\0&b^n&0\\0&0&c^n\end{pmatrix}\\ T&=CDC^{-1}\\ T^2&=CDC^{-1}CDC^{-1}=CD^2C^{-1}\\ T^n&=CD^nC^{-1} \end{align*}" />
 </p>

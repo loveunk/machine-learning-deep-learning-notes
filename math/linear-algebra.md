@@ -156,6 +156,8 @@ Transform (rotate) _R_ in _B_'s coordinates:  _B<sup>-1</sup>RB_
 Where $E$ is calculated via the gram-schmidt process, $T_E$ is the transformation matrix in the basic plane. $E^{-1} \cdot r$ stands for coverting $r$ to $E$'s plane, $T_E \cdot E^{-1} \cdot r$ stands for doing $T_E$ transformation in $E$'s plane. Finally, $E$ goes back to the original plane.
 
 <p align="center"><img src="./img/matrix-reflecting-in-a-plane.png" width="300"/></p>
+<img width="1694" height="1455" alt="image" src="https://github.com/user-attachments/assets/a993dab4-3cd1-4d5b-987f-998c8a62c710" />
+
 ### 特征向量和特征值 Eigenvectors and Eigenvalues
 对于一个给定的方阵 _A_，它的特征向量（eigenvector）_v_ 经过这个线性变换之后，得到的新向量仍然与原来的 _v_ 保持在同一条直线上，但其长度或方向也许会改变。
 它们满足： _**A**v = **λ**v_。
@@ -181,6 +183,7 @@ _λ<sup>2</sup>-(a+d)λ+ad-bc=0_ ，得到 _λ_ 并计算特征向量。
 
 <p align="center"><img src="./img/Eigenbasis-example.png" width="300"/></p>
 其中，_C_ 是**特征向量**(eigenvectors)，$D$由**特征值**(eigenvalues)构成.
+<img width="1745" height="1544" alt="image" src="https://github.com/user-attachments/assets/f92e1ab7-2ef8-462a-92b8-b82431874699" />
 
 一个例子：
 <p align="center">

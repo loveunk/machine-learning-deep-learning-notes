@@ -157,7 +157,8 @@ Where $E$ is calculated via the gram-schmidt process, $T_E$ is the transformatio
 
 <p align="center"><img src="./img/matrix-reflecting-in-a-plane.png" width="300"/></p>
 
-<img width="1632" height="1426" alt="image" src="https://github.com/user-attachments/assets/9d63b109-e1c4-4cf1-8ec5-bbfa94ba245a" />
+<img src="https://github.com/user-attachments/assets/9d63b109-e1c4-4cf1-8ec5-bbfa94ba245a" />
+
 
 ### 特征向量和特征值 Eigenvectors and Eigenvalues
 对于一个给定的方阵 _A_，它的特征向量（eigenvector）_v_ 经过这个线性变换之后，得到的新向量仍然与原来的 _v_ 保持在同一条直线上，但其长度或方向也许会改变。
@@ -184,6 +185,7 @@ _λ<sup>2</sup>-(a+d)λ+ad-bc=0_ ，得到 _λ_ 并计算特征向量。
 
 <p align="center"><img src="./img/Eigenbasis-example.png" width="300"/></p>
 其中，_C_ 是**特征向量**(eigenvectors)，$D$由**特征值**(eigenvalues)构成.
+<img width="1745" height="1544" alt="image" src="https://github.com/user-attachments/assets/f92e1ab7-2ef8-462a-92b8-b82431874699" />
 
 一个例子：
 <p align="center">

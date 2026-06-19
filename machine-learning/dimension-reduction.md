@@ -128,7 +128,7 @@ U, S, vh = np.linalg.svd(a) # ((3, 3), (3,), (3, 3))
 <img src="https://raw.github.com/loveunk/Coursera-ML-AndrewNg-Notes/master/images/66544d8fa1c1639d80948006f7f4a8ff.png" />
 </p>
 
-**关于PCA更多的推导和证明：**请见[这里](../../math/pca.md)
+**关于PCA更多的推导和证明：**请见[这里](../math/pca.md)
 
 ### 选择主成分的数量
 

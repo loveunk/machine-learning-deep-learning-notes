@@ -1,365 +1,216 @@
-# 深度学习（DL/ML）学习路径（2025 现代版）
+# 深度学习与大模型学习路径（2026）
 
-> **现代化学习理念：先实践，后理论；用完再学，按需深入**
+面向中文学习者的 AI 学习路线图：从机器学习、深度学习基础，到大语言模型、RAG、Agent 和多模态工程实践。
 
----
+本仓库的定位不是资料堆砌，而是帮你回答三个问题：
 
-## 🎯 为什么要这个仓库？
+1. 现在应该先学什么。
+2. 每个主题学到什么程度算够用。
+3. 如何从概念走到可运行的 AI 应用。
 
-在 AI 编码助手（如 GitHub Copilot、Cursor、v0.dev 等）普及的今天，传统的"先学完所有基础再动手"已经过时了。
+## 学习理念
 
-**本仓库的学习理念：**
-- 🚀 **快速上手**：用工具做出东西，获得即时反馈
-- 🧠 **理解本质**：只学核心原理，不死抠推导
-- 🔧 **按需回溯**：遇到问题再回头查原理
-- 📈 **持续迭代**：在实践中逐步深入
+AI 工具普及后，学习方式应该从“先补完所有理论”变成“先跑通最小闭环，再按问题补理论”。
 
-**为什么这样学？**
-1. 快速成就感 → 坚持下去的动力
-2. 有实际问题导向 → 学习更高效
-3. 记忆更深刻 → 用过才忘不掉
-4. 时间投入比传统方式减少 **40-60%**
+本仓库采用四个原则：
 
----
+- 先实践后理论：先让模型、数据和代码跑起来。
+- 只深挖关键概念：向量化、梯度、过拟合、Transformer、检索、工具调用、评估。
+- 按需回溯：遇到诊断、调优、评估问题时再回到数学和经典算法。
+- 关注工程闭环：能部署、能评估、能定位错误，比只看懂概念更重要。
 
-## 🎯 从哪开始学？
+## 该从哪里开始
 
-### 新人路径（60-70 小时）
+| 目标 | 推荐入口 | 结果 |
+| --- | --- | --- |
+| 零基础进入 AI | [30 天新人路线](#30-天新人路线) | 会用 Python、sklearn、PyTorch 和 LLM API 完成基础任务 |
+| 转向 LLM 工程 | [LLM 工程师路线](#llm-工程师路线) | 能构建 Prompt、Embedding、RAG、评估和微调流程 |
+| 学 Agent | [Agent 工程路线](#agent-工程路线) | 理解工具调用、工作流、记忆、guardrails 和上线风险 |
+| 补经典深度学习 | [经典深度学习补课路线](#经典深度学习补课路线) | 补齐 CNN、RNN、优化、正则化和训练策略 |
 
-> 适合：从零开始，想快速进入 AI/ML 领域
+## 30 天新人路线
 
-| 阶段 | 内容 | 时间 | 学习方式 |
-|------|------|------|----------|
-| **数学** | 核心概念（向量化、梯度、概率） | 5h | 🎯 概念理解，不深钻推导 |
-| **Python** | NumPy/Pandas 快速上手 | 8h | 🚀 调库实践，手写代码用 AI 生成 |
-| **机器学习** | 分类、回归、聚类实战 | 15h | 🚀 scikit-learn 调库 + 理解输出 |
-| **深度学习** | CNN/RNN/PyTorch 实战 | 15h | 🚀 PyTorch 快速上手 |
-| **LLM 入门** | HuggingFace + Prompting | 20h | 🚀 立刻用 API 调用模型 |
-| **补课** | 按需回溯数学/原理 | 按需 | 💡 遇到问题再查 |
+适合：从零开始，希望快速进入 AI/ML 领域。
 
-**总时间：** ~60-70 小时（vs 传统 150h）
+| 周期 | 内容 | 学到什么程度 |
+| --- | --- | --- |
+| 第 1 周 | Python、NumPy、Pandas、Matplotlib | 能读写数据、做基础清洗和可视化 |
+| 第 2 周 | 线性回归、逻辑回归、聚类、模型评估 | 能用 sklearn 完成一个小型监督学习任务 |
+| 第 3 周 | 神经网络、PyTorch、CNN/RNN 基础 | 能训练和调试一个小型深度学习模型 |
+| 第 4 周 | LLM API、Prompt、Embedding、RAG 入门 | 能调用模型并做一个最小知识库问答 |
 
----
+建议顺序：
 
-### 进阶路径（80+ 小时）
+1. [Python 基础](python/python-basic/README.md)
+2. [NumPy](python/numpy/README.md)
+3. [Pandas](python/pandas/README.md)
+4. [机器学习绪论](machine-learning/machine-learning-intro.md)
+5. [线性回归](machine-learning/linear-regression.md)
+6. [逻辑回归](machine-learning/logistic-regression.md)
+7. [深度学习基础](deep-learning/1.deep-learning-basic.md)
+8. [PyTorch 基础](pytorch/pytorch_basic.md)
+9. [LLM 入门](llm/intro.md)
+10. [Prompt 与上下文工程](llm/prompting.md)
 
-> 适合：有基础，想深入理解和研究
+## LLM 工程师路线
 
-| 阶段 | 内容 | 时间 | 重点 |
-|------|------|------|------|
-| **Transformer** | 架构深入、Attention 机制 | 15h | 📖 数学 + 代码 |
-| **LLM 原理** | 微调、RAG、Prompt Engineering | 30h | 🚀 实战 + 原理 |
-| **多模态** | CLIP、BLIP、LLaVA 等 | 20h | 🚀 最新模型跟进 |
-| **Agent** | ReAct、AutoGPT、LangChain | 15h | 🚀 体系化学习 |
+适合：已有 Python/深度学习基础，希望构建 RAG、微调和大模型应用。
 
----
+| 阶段 | 主题 | 内容 |
+| --- | --- | --- |
+| 1 | 模型调用 | [LLM 入门](llm/intro.md)、[API 与模型选型](llm/api-and-models.md) |
+| 2 | 控制输出 | [Prompt 与上下文工程](llm/prompting.md)、结构化输出、few-shot |
+| 3 | 理解架构 | [Transformer](llm/transformer.md)、[GPT 系列](llm/gpt-series.md)、[BERT 系列](llm/bert-series.md) |
+| 4 | 检索增强 | [Embedding 与向量检索](llm/embeddings.md)、[RAG](llm/rag.md)、[从零实现 RAG](llm/rag-from-scratch.md) |
+| 5 | 评估优化 | [RAG 评估](llm/rag-evaluation.md)、成本、延迟、召回率、答案可信度 |
+| 6 | 定制模型 | [微调方法](llm/fine-tuning.md)、LoRA、QLoRA、数据集质量 |
 
-### 实践路径（100+ 小时）
+学习完成标志：
 
-> 适合：想快速建立项目作品集
+- 能解释 Prompt、RAG、微调三者的适用边界。
+- 能为一个业务问题选择“只提示词 / RAG / 微调 / Agent”。
+- 能用评估集证明改动是否真的变好。
 
-| 阶段 | 内容 | 时间 |
-|------|------|------|
-| **Kaggle 比赛** | 完成 3-5 个竞赛 | 40h |
-| **项目实践** | 端到端项目（推荐系统、NLP、CV） | 30h |
-| **论文阅读** | 跟进最新研究 | 30h |
+## Agent 工程路线
 
----
+适合：希望从 Chatbot 升级到能调用工具、处理多步骤任务的智能体系统。
 
-## 📖 学习指南
+| 阶段 | 主题 | 内容 |
+| --- | --- | --- |
+| 1 | 基本概念 | [AI Agent 总览](llm/agent.md) |
+| 2 | 工具调用 | [工具调用与结构化输出](llm/agent-tools.md) |
+| 3 | 工作流 | [Agent 工作流模式](llm/agent-workflows.md) |
+| 4 | 记忆与状态 | 短期上下文、长期记忆、任务状态、人工介入 |
+| 5 | 生产化 | [Agent 生产化](llm/agent-production.md)、guardrails、tracing、eval、权限 |
 
-### 每个章节的结构
+Agent 学习的重点不是“让模型自己想办法”，而是把任务边界、工具契约、状态转移、失败处理和评估设计清楚。
 
-每个主题都分为两种学习模式：
+## 经典深度学习补课路线
 
-#### 🚀 快速模式（15-30 分钟）
-**目标：** 知道它是什么、怎么用、什么时候用
+适合：已经在用 LLM，但希望补齐深度学习底层能力。
 
-- ✅ 跑一个示例代码
-- ✅ 看懂输出结果
-- ✅ 了解应用场景
-- ✅ 能用 AI 工具生成类似代码
+| 阶段 | 内容 |
+| --- | --- |
+| 神经网络基础 | [深度学习基础](deep-learning/1.deep-learning-basic.md)、[神经网络](machine-learning/neural-networks.md) |
+| 优化与调参 | [实践层面](deep-learning/2.improving-deep-neural-networks-1.practical-aspects.md)、[优化算法](deep-learning/2.improving-deep-neural-networks-2.optimization-algorithms.md)、[超参数调试](deep-learning/2.improving-deep-neural-networks-3.pyperparameter-tuning.md) |
+| CNN | [CNN 基础](deep-learning/4.convolutional-neural-network-1.foundations-of-cnn.md)、[经典网络](deep-learning/4.convolutional-neural-network-2.deep-convolutional-models.md)、[目标检测](deep-learning/4.convolutional-neural-network-3.object-detection.md) |
+| 序列模型 | [RNN](deep-learning/5.sequence-model-1.recurrent-neural-netoworks.md)、[词嵌入](deep-learning/5.sequence-model-2.nlp-and-word-embeddings.md)、[注意力机制](deep-learning/5.sequence-model-3.sequence-models-and-attention-machanism.md) |
 
-#### 📖 深度模式（1-2 小时）
-**目标：** 理解原理，能独立优化和创新
+## 每章学习方式
 
-- ✅ 理解数学原理
-- ✅ 手写核心算法（用 AI 辅助）
-- ✅ 调优参数并理解影响
-- ✅ 能诊断和解决复杂问题
-
-**建议：** 先快速模式上手，感兴趣再深度模式深入
-
----
-
-### 基础知识：哪些必须学 vs 哪些会用就行？
-
-#### ⚠️ 必须理解（决定你能走多远）
-
-| 主题 | 为什么重要 |
-|------|------------|
-| **向量化运算** | 深度学习的核心运算方式 |
-| **梯度下降** | 所有优化算法的基础 |
-| **过拟合/欠拟合** | 诊断模型问题的核心能力 |
-| **Transformer 架构** | 现代 LLM 的基石 |
-| **损失函数** | 评估模型的关键 |
-
-#### 💡 会用就行（快速浏览）
-
-| 主题 | 建议 |
-|------|------|
-| **微积分推导** | 知道概念，用 AI 生成推导 |
-| **线性代数证明** | 理解应用场景，不钻牛角尖 |
-| **手写算法完整实现** | 调库 + AI 生成，看懂代码即可 |
-
----
-
-## 🗂️ 目录结构
-
-### 📊 难度标记
-- ⭐ 新人友好
-- ⭐⭐ 需要一定基础
-- ⭐⭐⭐ 进阶内容
-
----
-
-### 数学基础 ⭐
-
-> 只学核心概念，按需回溯
-
-- [Calculus 微积分](math/calculus.md) ⭐
-- [Linear Algebra 线性代数](math/linear-algebra.md) ⭐
-- [PCA 主成分分析](math/pca.md) ⭐⭐
-- 概率论 (TBD - 不急需)
-
----
-
-### Python ⭐
-
-> 快速上手，重点是理解数据操作
-
-- [Python 基础](python/python-basic) ⭐
-- [Pandas](python/pandas) ⭐
-- [NumPy](python/numpy) ⭐
-- [Matplotlib](python/Matplotlib) ⭐
-- [Scikit-Learn](python/Sklearn) ⭐
-
----
-
-### 机器学习算法 ⭐⭐
-
-> 调库实践，理解原理
-
-- [机器学习绪论](machine-learning/machine-learning-intro.md) ⭐
-- [线性回归](machine-learning/linear-regression.md) ⭐
-- [逻辑回归](machine-learning/logistic-regression.md) ⭐
-- [神经网络](machine-learning/neural-networks.md) ⭐⭐
-- [支持向量机 SVM](machine-learning/svm.md) ⭐⭐
-- [聚类算法](machine-learning/clustering.md) ⭐
-- [数据降维](machine-learning/dimension-reduction.md) ⭐⭐
-- [推荐系统](machine-learning/recommender-system.md) ⭐⭐
-- [打造实用的机器学习系统](machine-learning/advice-for-appying-and-system-design.md) ⭐⭐⭐
-
----
-
-### 深度学习 ⭐⭐
-
-> PyTorch 快速上手，理解核心架构
-
-- [Deep Learning 专题课程](deep-learning/deep-learning-specialization.md) ⭐⭐
-- [深度学习框架：PyTorch](deep-learning/pytorch.md) ⭐⭐
-- [分布式训练](deep-learning/distributed-training.md) ⭐⭐⭐
-
----
-
-### 大语言模型 (LLM) ⭐⭐⭐
-
-> 重点！现代 AI 的核心
-
-- [LLM 入门](llm/intro.md) ⭐⭐
-- [Transformer 架构详解](llm/transformer.md) ⭐⭐⭐
-- [GPT 系列](llm/gpt-series.md) ⭐⭐
-- [BERT 系列](llm/bert-series.md) ⭐⭐
-- [微调方法](llm/fine-tuning.md) ⭐⭐⭐
-- [RAG（检索增强生成）](llm/rag.md) ⭐⭐⭐
-- [AI Agent](llm/agent.md) ⭐⭐⭐
-
----
-
-### 多模态 (Multimodal) ⭐⭐⭐
-
-> 跨越图文边界
-
-- [多模态模型综述](multimodal/README.md) ⭐⭐⭐
-- [CLIP](multimodal/clip.md) ⭐⭐⭐
-- [BLIP 系列](multimodal/blip.md) ⭐⭐⭐
-- [LLaVA](multimodal/llava.md) ⭐⭐⭐
-
----
-
-### 实践
-
-> 理论结合实践
-
-- [Kaggle 竞赛](competitions/kaggle.md) ⭐⭐
-- [天池竞赛](https://tianchi.aliyun.com) ⭐⭐
-- [项目实战](projects/README.md) ⭐⭐⭐
-
----
-
-## 🛠️ 推荐工具和环境
-
-### AI 编码助手（必用！）
-
-| 工具 | 特点 | 适用场景 |
-|------|------|----------|
-| **GitHub Copilot** | IDE 集成，代码补全 | 日常开发 |
-| **Cursor** | AI 驱动的编辑器 | 快速原型 |
-| **Claude Code / ChatGPT** | 代码生成和调试 | 解决问题 |
-| **v0.dev** | UI 生成 | 快速界面 |
-
-**建议：** 至少熟悉一个 AI 编码助手，能节省 50%+ 时间。
-
----
-
-### 实践环境
+每个主题建议按两层学习：
+
+快速模式，15-30 分钟：
+
+- 知道它解决什么问题。
+- 跑通一个最小示例。
+- 理解输入、输出和常见失败模式。
+- 能用 AI 编码助手生成相似代码，并能检查关键逻辑。
+
+深度模式，1-3 小时：
+
+- 理解核心公式或架构。
+- 能解释关键参数为什么影响结果。
+- 能设计评估指标。
+- 能定位错误并提出改进方案。
+
+## 目录结构
+
+### 数学基础
+
+- [微积分](math/calculus.md)
+- [线性代数](math/linear-algebra.md)
+- [PCA](math/pca.md)
+
+### Python 与数据处理
+
+- [Python 基础](python/python-basic/README.md)
+- [NumPy](python/numpy/README.md)
+- [Pandas](python/pandas/README.md)
+- [Matplotlib](python/Matplotlib/README.md)
+- [Scikit-Learn](python/Sklearn/README.md)
+
+### 机器学习算法
+
+- [机器学习绪论](machine-learning/machine-learning-intro.md)
+- [线性回归](machine-learning/linear-regression.md)
+- [逻辑回归](machine-learning/logistic-regression.md)
+- [神经网络](machine-learning/neural-networks.md)
+- [SVM](machine-learning/svm.md)
+- [聚类](machine-learning/clustering.md)
+- [数据降维](machine-learning/dimension-reduction.md)
+- [异常检测](machine-learning/anomaly-detection.md)
+- [推荐系统](machine-learning/recommender-system.md)
+- [机器学习系统设计](machine-learning/advice-for-appying-and-system-design.md)
+
+### 深度学习
+
+- [深度学习总览](deep-learning/README.md)
+- [深度学习基础](deep-learning/1.deep-learning-basic.md)
+- [优化与调参](deep-learning/2.improving-deep-neural-networks-2.optimization-algorithms.md)
+- [机器学习策略](deep-learning/3.structuring-machine-learning-1.ml-strategy.md)
+- [CNN](deep-learning/4.convolutional-neural-network-1.foundations-of-cnn.md)
+- [RNN 与注意力](deep-learning/5.sequence-model-3.sequence-models-and-attention-machanism.md)
+- [PyTorch 基础](pytorch/pytorch_basic.md)
+
+### 大语言模型与 Agent
+
+- [LLM 学习路径](llm/README.md)
+- [LLM 入门](llm/intro.md)
+- [API 与模型选型](llm/api-and-models.md)
+- [Prompt 与上下文工程](llm/prompting.md)
+- [Transformer](llm/transformer.md)
+- [Embedding 与向量检索](llm/embeddings.md)
+- [RAG](llm/rag.md)
+- [从零实现 RAG](llm/rag-from-scratch.md)
+- [RAG 评估](llm/rag-evaluation.md)
+- [微调方法](llm/fine-tuning.md)
+- [AI Agent](llm/agent.md)
+- [Agent 工具调用](llm/agent-tools.md)
+- [Agent 工作流](llm/agent-workflows.md)
+- [Agent 生产化](llm/agent-production.md)
+
+### 多模态
+
+- [多模态总览](multimodal/README.md)
+- [CLIP](multimodal/clip.md)
+- [BLIP](multimodal/blip.md)
+- [LLaVA](multimodal/llava.md)
+
+### 实践与竞赛
+
+- [项目实战](projects/README.md)
+- [Kaggle](competitions/kaggle.md)
+
+## 推荐工具
 
 | 工具 | 用途 |
-|------|------|
-| **Google Colab** | 免费算力，适合学习 |
-| **Kaggle Kernels** | 竞赛环境 |
-| **Hugging Face Spaces** | 模型部署 |
-| **JupyterLab / VS Code** | 本地开发 |
+| --- | --- |
+| Google Colab / Kaggle Notebook | 低成本运行实验 |
+| VS Code / Cursor / PyCharm | 本地开发 |
+| PyTorch | 深度学习训练 |
+| Hugging Face Transformers | 开源模型加载、推理、微调 |
+| LlamaIndex / LangChain / LangGraph | RAG、工具调用和 Agent 工作流 |
+| OpenAI / Anthropic / Google / Qwen API | 托管模型调用 |
 
----
+## 贡献方式
 
-## 📚 推荐资源
+欢迎提交 Issue 或 PR。建议优先贡献：
 
-### 必读书籍
+- 修正文档错误和失效链接。
+- 给 LLM/RAG/Agent 章节补充可验证的最小示例。
+- 补充评估方法、失败案例和排错经验。
+- 改善中文表达和学习路径衔接。
 
-| 书名 | 特点 | 难度 |
-|------|------|------|
-| 《机器学习》（西瓜书）周志华 | 系统性强 | ⭐⭐ |
-| 《Deep Learning》（花书）Ian Goodfellow | 理论深度 | ⭐⭐⭐ |
-| 《Hands-on Machine Learning》Aurélien Géron | 实战导向 | ⭐⭐ |
+贡献前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，长期规划见 [ROADMAP.md](ROADMAP.md)。
 
-**建议：** 《Hands-on Machine Learning》最适合新人，其他按需阅读。
+## 更新记录
 
----
+- 2026-06：重构为“深度学习 + 大模型 + Agent”学习路径，补充 LLM 工程化章节。
+- 2025-02：重构学习路径，加入现代化学习理念。
+- 2023：添加 LLM 和多模态内容。
+- 2016：初始版本。
 
-### 在线课程
-
-- **Andrew Ng 系列课程**（Coursera）：经典入门
-- **Fast.ai**：自顶向下，实用导向
-- **李沐《动手学深度学习》**：中英文，代码丰富
-
----
-
-## 💡 学习技巧
-
-### 1. 用 AI 辅助学习
-
-**AI 能帮你：**
-- ✅ 生成代码示例
-- ✅ 解释复杂概念
-- ✅ 调试错误
-- ✅ 总结长文档
-
-**AI 帮不了你：**
-- ❌ 理解问题本质
-- ❌ 判断模型选择
-- ❌ 诊断训练问题
-- ❌ 创新和改进
-
-**原则：** 用 AI 节省重复劳动，用脑力做判断和决策。
-
----
-
-### 2. 遇到问题的处理流程
-
-```mermaid
-graph TD
-    A[遇到问题] --> B{AI 能解决?}
-    B -->|是| C[用 AI 生成方案]
-    B -->|否| D[搜索资料]
-    D --> E{理解原理?}
-    E -->|是| F[解决问题]
-    E -->|否| G[回溯基础学习]
-    G --> F
-    F --> H[记录笔记]
-```
-
----
-
-### 3. 记笔记的方法
-
-**不要：** ❌ 抄公式、抄代码
-
-**应该：** ✅ 记理解、记坑、记灵感
-
-**笔记模板：**
-```
-## [主题]
-
-### 理解（用自己的话）
-...
-
-### 代码片段（关键点）
-...
-
-### 遇到的坑
-...
-
-### 相关链接
-...
-```
-
----
-
-## 🔥 2025 年热门方向
-
-如果想深入，推荐关注：
-
-| 方向 | 说明 |
-|------|------|
-| **RAG** | 检索增强生成，企业级应用 |
-| **Agent** | AI 智能体，自动化任务 |
-| **多模态** | 图文理解和生成 |
-| **小模型优化** | 本地部署，隐私保护 |
-| **MLOps** | 模型部署和运维 |
-
----
-
-## 🤝 贡献和反馈
-
-- 发现错误？欢迎提交 Issue 或 PR
-- 有想法？欢迎一起完善内容
-- 觉得有用？点个 ⭐ Star
-
----
-
-## 📝 更新日志
-
-- **2025-02**：重构学习路径，采用现代化学习理念
-- **2023**：添加 LLM 和多模态内容
-- **2016**：初始版本
-
----
-
-## 📄 License
+## License
 
 MIT License
-
----
-
-## 💬 联系方式
-
-有疑问欢迎交流！
-- GitHub Issues
-- [相关书籍合集](https://github.com/loveunk/Deep-learning-books)
-
----
-
-**最后说一句：** 在这个 AI 时代，最重要的不是记住所有知识，而是学会如何快速学习和解决问题。本仓库的目标是帮你构建这个能力。
-
-**Happy Learning! 🚀**

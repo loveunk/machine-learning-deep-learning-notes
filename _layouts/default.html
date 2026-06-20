@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'zh-CN' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  {% seo title=false %}
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="{{ '/' | relative_url }}">首页</a>
+        <a href="{{ '/llm/' | relative_url }}">LLM 与 Agent</a>
+        <a href="{{ '/deep-learning/' | relative_url }}">深度学习</a>
+        <a href="{{ '/machine-learning/' | relative_url }}">机器学习</a>
+        <a href="https://github.com/{{ site.repository }}">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-shell">
+    <aside class="sidebar" aria-label="章节导航">
+      <nav>
+        <p class="sidebar__title">学习路径</p>
+        <a href="{{ '/' | relative_url }}#30-天新人路线">30 天新人路线</a>
+        <a href="{{ '/' | relative_url }}#llm-工程师路线">LLM 工程师路线</a>
+        <a href="{{ '/' | relative_url }}#agent-工程路线">Agent 工程路线</a>
+        <a href="{{ '/' | relative_url }}#经典深度学习补课路线">经典深度学习补课</a>
+
+        <p class="sidebar__title">核心章节</p>
+        <a href="{{ '/llm/' | relative_url }}">LLM 学习路径</a>
+        <a href="{{ '/llm/rag.html' | relative_url }}">RAG</a>
+        <a href="{{ '/llm/agent.html' | relative_url }}">AI Agent</a>
+        <a href="{{ '/llm/coding-agents.html' | relative_url }}">AI 编程智能体</a>
+        <a href="{{ '/llm/harness-engineering.html' | relative_url }}">Harness Engineering</a>
+        <a href="{{ '/llm/loop-engineering.html' | relative_url }}">Loop Engineering</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      {{ content }}
+    </main>
+  </div>
+</body>
+</html>

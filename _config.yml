@@ -1,0 +1,53 @@
+title: 深度学习与大模型学习路径
+description: 面向中文学习者的机器学习、深度学习、大语言模型、RAG 和 Agent 学习路径。
+lang: zh-CN
+repository: loveunk/deep-learning-llm-agent-notes
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-relative-links
+  - jekyll-seo-tag
+  - jekyll-titles-from-headings
+
+include:
+  - CONTRIBUTING.md
+
+optional_front_matter:
+  remove_originals: true
+
+readme_index:
+  enabled: true
+  remove_originals: true
+  with_frontmatter: false
+
+relative_links:
+  enabled: true
+  collections: true
+
+titles_from_headings:
+  enabled: true
+  strip_title: false
+  collections: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      render_with_liquid: false
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - tools
+  - vendor
+  - node_modules
+  - .github
+  - .gitignore
+  - .DS_Store

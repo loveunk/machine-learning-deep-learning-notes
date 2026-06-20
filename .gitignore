@@ -9,3 +9,7 @@ tensorflow/introduction-to-tensorflow-for-AI-ML-DL/cats-v-dogs
 tensorflow/introduction-to-tensorflow-for-AI-ML-DL/sign-language-mnist
 pytorch/samples/data
 pytorch/samples/runs
+_site
+.jekyll-cache
+.bundle
+vendor

@@ -1,108 +1,119 @@
 # RAG（检索增强生成）
 
-> **解决幻觉问题，增强模型能力**
+RAG（Retrieval-Augmented Generation）把“检索”和“生成”结合起来：先从外部知识库找资料，再让 LLM 基于资料回答。
 
----
+## 为什么需要 RAG
 
-## 什么是 RAG？
+LLM 的常见问题：
 
-**RAG = Retrieval-Augmented Generation**
+- 不知道训练数据之后的新信息。
+- 不知道企业内部文档。
+- 会编造看似合理的答案。
+- 难以给出可追溯引用。
 
-结合：
-- **检索**（从知识库找相关信息）
-- **生成**（用 LLM 生成答案）
+RAG 的价值：
 
----
+- 把知识从模型参数中移到可更新的文档库。
+- 回答可以附引用。
+- 文档更新不需要重新训练模型。
+- 可以单独优化检索和生成。
 
-## 为什么需要 RAG？
+## 基本架构
 
-### LLM 的问题
-
-- ❌ 知识截止日期
-- ❌ 会产生幻觉
-- ❌ 缺少私有数据
-
-### RAG 的优势
-
-- ✅ 实时信息
-- ✅ 有据可依
-- ✅ 私有数据支持
-- ✅ 可解释性强
-
----
-
-## RAG 架构
-
-```
-用户提问
-    ↓
-向量检索
-    ↓
-获取相关文档
-    ↓
-拼接上下文 + 问题
-    ↓
-LLM 生成答案
-    ↓
-返回结果
+```text
+用户问题
+  -> 查询改写（可选）
+  -> 向量检索 / 关键词检索 / 混合检索
+  -> rerank（可选）
+  -> 拼接上下文
+  -> LLM 生成答案
+  -> 引用和事实校验
 ```
 
----
+## 最小 RAG 流程
 
-## 实战代码
+1. 收集文档。
+2. 切分成 chunk。
+3. 生成 embedding。
+4. 写入向量索引。
+5. 对用户问题做检索。
+6. 把 top-k 结果放进 prompt。
+7. 要求模型仅依据上下文回答并给引用。
+8. 评估检索和生成质量。
 
-### 1. 向量化
+## RAG 组件
 
-```python
-from sentence_transformers import SentenceTransformer
+| 组件 | 作用 | 常见问题 |
+| --- | --- | --- |
+| 文档解析 | 读取 PDF、网页、Markdown、表格 | 表格、图片、页眉页脚噪声 |
+| chunking | 将文档切成可检索片段 | 太大噪声多，太小缺上下文 |
+| embedding | 把 chunk 转成向量 | 领域术语、中文、代码符号 |
+| 检索 | 找相关 chunk | 召回不足、排序差 |
+| rerank | 重新排序候选结果 | 成本和延迟增加 |
+| prompt | 约束模型基于资料回答 | 幻觉、引用错位 |
+| eval | 衡量效果 | 没有标注集、只凭主观判断 |
 
-embedder = SentenceTransformer('all-MiniLM-L6-v2')
+## 什么时候不该用 RAG
 
-documents = ["文档1内容", "文档2内容", ...]
-document_embeddings = embedder.encode(documents)
-```
+| 场景 | 更好的方案 |
+| --- | --- |
+| 只是要求固定输出格式 | Prompt 或结构化输出 |
+| 需要模型学习稳定风格 | 微调 |
+| 需要执行外部动作 | Agent 工具调用 |
+| 文档质量很差且无人维护 | 先治理数据 |
+| 答案必须来自结构化数据库 | SQL/工具查询，必要时再由 LLM 解释 |
 
-### 2. 检索
+## 常见失败
 
-```python
-query = "用户的问题"
-query_embedding = embedder.encode(query)
+### 检索不到
 
-from sklearn.metrics.pairwise import cosine_similarity
+原因可能是：
 
-similarities = cosine_similarity([query_embedding], document_embeddings)
-top_k_indices = similarities[0].argsort()[-3:][::-1]
-```
+- chunk 切分不合理。
+- query 太短或表达和文档不一致。
+- embedding 模型不适合语言或领域。
+- 只用向量检索，漏掉精确关键词。
 
-### 3. 生成
+解决：
 
-```python
-from openai import OpenAI
+- 调整 chunk size 和 overlap。
+- 加 query rewrite。
+- 尝试 hybrid search。
+- 建立 Recall@k 评估。
 
-client = OpenAI()
+### 检索到了但答错
 
-context = "\n".join([documents[i] for i in top_k_indices])
+原因可能是：
 
-response = client.chat.completions.create(
-    model="gpt-4o",
-    messages=[
-        {"role": "system", "content": f"根据以下信息回答：\n{context}"},
-        {"role": "user", "content": query}
-    ]
-)
-```
+- top-k 太多，噪声污染上下文。
+- prompt 没限制仅依据 context。
+- 模型把多个片段错误拼接。
+- 引用粒度太粗。
 
----
+解决：
 
-## RAG 工具
+- 加 rerank。
+- 降低 top-k 或压缩 context。
+- 要求逐条引用。
+- 做 faithfulness 检查。
 
-| 工具 | 特点 |
-|------|------|
-| **LangChain** | 最流行的框架 |
-| **LlamaIndex** | 数据连接器丰富 |
-| **Haystack** | 企业级 |
-| **Chroma** | 向量数据库 |
+### 答案没有引用
 
----
+解决：
 
-**继续学习 [AI Agent](agent.md)！**
+- 在 prompt 中要求每个关键结论标注引用。
+- 检索结果中保留稳定 `source_id`。
+- 输出后做引用存在性检查。
+
+## 推荐学习顺序
+
+1. [Embedding 与向量检索](embeddings.md)
+2. [从零实现 RAG](rag-from-scratch.md)
+3. [RAG 评估](rag-evaluation.md)
+4. [Prompt 与上下文工程](prompting.md)
+
+## 参考资料
+
+- LlamaIndex Docs: https://docs.llamaindex.ai/
+- LangChain Retrieval: https://docs.langchain.com/oss/python/langchain/retrieval
+- Ragas: https://docs.ragas.io/

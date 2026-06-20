@@ -16,6 +16,9 @@
 | 8 | [微调方法](fine-tuning.md) | 会判断何时需要 LoRA/QLoRA/全量微调 |
 | 9 | [AI Agent](agent.md) | 理解 Agent 的边界和风险 |
 | 10 | [工具调用](agent-tools.md)、[工作流](agent-workflows.md)、[生产化](agent-production.md) | 能设计可控、可观测、可评估的 Agent 系统 |
+| 11 | [AI 编程智能体](coding-agents.md) | 会用 Codex、Claude Code 等工具完成代码库任务 |
+| 12 | [Agent 记忆与上下文](agent-memory-context.md)、[MCP](mcp.md) | 会管理项目规则、长期记忆和外部工具接入 |
+| 13 | [Harness Engineering](harness-engineering.md)、[Loop Engineering](loop-engineering.md) | 会设计模型外部系统和持续验证循环 |
 
 ## 四个能力层级
 
@@ -63,6 +66,18 @@
 
 对应章节：[AI Agent](agent.md)、[工具调用](agent-tools.md)、[Agent 工作流](agent-workflows.md)、[Agent 生产化](agent-production.md)。
 
+### Level 5: 会使用和设计编程 Agent
+
+你应该能做到：
+
+- 用 Codex、Claude Code 等工具探索代码库、改代码、跑测试和 review diff。
+- 把项目规则写入 `AGENTS.md`、`CLAUDE.md`、rules 或 skills。
+- 用 MCP 接入外部文档、issue tracker、浏览器、设计工具或内部系统。
+- 设计 harness，把模型、工具、权限、测试、CI 和人类 review 组合成可靠执行环境。
+- 设计 loop，让 Agent 反复执行、验证、修正和停止。
+
+对应章节：[AI 编程智能体](coding-agents.md)、[Agent 记忆与上下文](agent-memory-context.md)、[MCP](mcp.md)、[Harness Engineering](harness-engineering.md)、[Loop Engineering](loop-engineering.md)。
+
 ## 什么时候用 Prompt、RAG、微调或 Agent
 
 | 方案 | 适合 | 不适合 |
@@ -75,6 +90,8 @@
 ## 推荐阅读源
 
 - OpenAI API 文档：[Responses、工具、Agents、评估与生产化](https://developers.openai.com/api/docs/guides/agents)
+- OpenAI Codex：[CLI](https://developers.openai.com/codex/cli)、[IDE](https://developers.openai.com/codex/ide)、[MCP](https://developers.openai.com/codex/mcp)、[Skills](https://developers.openai.com/codex/skills)
+- Claude Code：[Overview](https://docs.anthropic.com/en/docs/claude-code/overview)、[Hooks](https://docs.anthropic.com/en/docs/claude-code/hooks-guide)、[MCP](https://docs.anthropic.com/en/docs/claude-code/mcp)
 - Hugging Face：[Transformers](https://huggingface.co/docs/transformers/index)、[smolagents](https://huggingface.co/docs/smolagents/en/index)、[Agents Course](https://huggingface.co/learn/agents-course/en/unit0/introduction)
 - LangChain / LangGraph：[LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview)
 - LlamaIndex：[LlamaIndex docs](https://docs.llamaindex.ai/)
@@ -88,3 +105,6 @@
 - [ ] 能写 3 个工具并让模型按 schema 调用。
 - [ ] 能画出 Agent 工作流的状态图。
 - [ ] 能记录每次模型调用、工具调用、成本、延迟和失败原因。
+- [ ] 能用 Codex 或 Claude Code 完成一次“探索-计划-修改-验证-review”的代码任务。
+- [ ] 能为一个项目写出最小 `AGENTS.md` 或 `CLAUDE.md`。
+- [ ] 能解释 harness、loop、MCP、memory 各自解决什么问题。

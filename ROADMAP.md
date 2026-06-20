@@ -32,6 +32,11 @@
 - [x] 增加 Agent 工具调用章节。
 - [x] 增加 Agent 工作流章节。
 - [x] 增加 Agent 生产化章节。
+- [x] 增加 AI 编程智能体章节，覆盖 Codex、Claude Code 等工具。
+- [x] 增加 Agent 记忆与上下文管理章节。
+- [x] 增加 MCP 章节，解释 Agent 工具生态。
+- [x] 增加 Harness Engineering 章节。
+- [x] 增加 Loop Engineering 章节。
 - [ ] 后续为每章补充可运行 notebook 或脚本。
 
 ### 阶段 3：项目实践

@@ -5,7 +5,7 @@ AI Agent 是能基于目标、上下文和工具执行多步骤任务的 LLM 系
 ## 一个实用定义
 
 ```text
-Agent = LLM + tools + state + workflow + guardrails + evaluation
+Agent = LLM + tools + state + workflow + harness + loop + guardrails + evaluation
 ```
 
 其中：
@@ -14,6 +14,8 @@ Agent = LLM + tools + state + workflow + guardrails + evaluation
 - tools：搜索、数据库、计算、文件、API 等外部能力。
 - state：保存任务进度、工具结果、用户确认和错误。
 - workflow：控制任务怎么推进、何时停止、何时转人工。
+- harness：模型之外的执行环境、工具、权限、反馈和观测。
+- loop：观察、行动、验证、修正和停止的迭代机制。
 - guardrails：约束输入、工具和输出。
 - evaluation：证明系统是否可靠。
 
@@ -68,6 +70,18 @@ Agent = LLM + tools + state + workflow + guardrails + evaluation
 
 工作流决定 Agent 如何推进。见 [Agent 工作流模式](agent-workflows.md)。
 
+### 记忆与上下文
+
+Agent 要知道项目规则、任务状态和长期偏好。见 [Agent 记忆与上下文](agent-memory-context.md)。
+
+### Harness
+
+Harness 是模型外部的工程系统，包括工具、文件系统、shell、权限、CI、日志和人类 review。见 [Harness Engineering](harness-engineering.md)。
+
+### Loop
+
+Loop 决定 Agent 如何基于反馈反复执行、验证和停止。见 [Loop Engineering](loop-engineering.md)。
+
 ### 评估
 
 Agent 评估要覆盖：
@@ -105,7 +119,12 @@ Agent 评估要覆盖：
 
 1. [Agent 工具调用与结构化输出](agent-tools.md)
 2. [Agent 工作流模式](agent-workflows.md)
-3. [Agent 生产化](agent-production.md)
+3. [AI 编程智能体](coding-agents.md)
+4. [Agent 记忆与上下文](agent-memory-context.md)
+5. [MCP：Agent 的工具与上下文协议](mcp.md)
+6. [Harness Engineering](harness-engineering.md)
+7. [Loop Engineering](loop-engineering.md)
+8. [Agent 生产化](agent-production.md)
 
 如果你还没有做过 RAG，建议先学 [RAG](rag.md)，因为很多 Agent 都会把检索作为基础工具。
 

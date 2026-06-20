@@ -1,0 +1,23 @@
+[
+  {
+    "name": "OpenAI News",
+    "feed_url": "https://openai.com/news/rss.xml",
+    "homepage": "https://openai.com/news/",
+    "topics": ["llm", "agent", "eval", "safety"],
+    "weight": 2
+  },
+  {
+    "name": "Google DeepMind Blog",
+    "feed_url": "https://deepmind.google/blog/rss.xml",
+    "homepage": "https://deepmind.google/blog/",
+    "topics": ["research", "agent", "multimodal", "safety"],
+    "weight": 2
+  },
+  {
+    "name": "LangChain Blog",
+    "feed_url": "https://www.langchain.com/blog/rss.xml",
+    "homepage": "https://www.langchain.com/blog",
+    "topics": ["agent", "rag", "eval", "observability", "infra"],
+    "weight": 2
+  }
+]

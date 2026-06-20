@@ -1,0 +1,54 @@
+name: Collect reading candidates
+
+on:
+  schedule:
+    - cron: "30 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Collect candidates
+        run: |
+          python3 tools/collect_reading_candidates.py \
+            --sources reading/sources.json \
+            --since-days 3 \
+            --max-items 12 \
+            --output reading-candidates.md
+
+      - name: Check if candidates exist
+        id: candidates
+        run: |
+          if grep -q "No matching candidates found." reading-candidates.md; then
+            echo "has_candidates=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_candidates=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create daily candidate issue
+        if: steps.candidates.outputs.has_candidates == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Reading candidates $(date -u +%F)"
+          existing="$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number // empty')"
+          if [ -n "$existing" ]; then
+            echo "Issue already exists: #$existing"
+            exit 0
+          fi
+          gh issue create \
+            --title "$title" \
+            --body-file reading-candidates.md

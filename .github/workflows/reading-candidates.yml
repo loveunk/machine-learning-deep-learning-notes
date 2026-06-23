@@ -25,8 +25,12 @@ jobs:
         run: |
           python3 tools/collect_reading_candidates.py \
             --sources reading/sources.json \
-            --since-days 3 \
-            --max-items 12 \
+            --since-days 7 \
+            --max-items 24 \
+            --max-per-source 2 \
+            --min-score 4 \
+            --timeout 8 \
+            --workers 8 \
             --output reading-candidates.md
 
       - name: Check if candidates exist

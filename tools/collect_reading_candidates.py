@@ -8,6 +8,7 @@ content. A maintainer should still decide which links deserve curated summaries.
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 import datetime as dt
 import email.utils
 import html
@@ -21,9 +22,27 @@ from typing import Any
 
 
 KEYWORDS: dict[str, list[str]] = {
+    "llm": [
+        "llm",
+        "large language model",
+        "large language models",
+        "language model",
+        "foundation model",
+        "gpt",
+        "claude",
+        "gemini",
+        "deepseek",
+        "qwen",
+        "llama",
+        "大模型",
+        "语言模型",
+        "基础模型",
+        "通用模型",
+    ],
     "agent": [
         "agent",
         "agents",
+        "agentic",
         "tool use",
         "tools",
         "workflow",
@@ -33,6 +52,14 @@ KEYWORDS: dict[str, list[str]] = {
         "memory",
         "guardrail",
         "guardrails",
+        "智能体",
+        "代理",
+        "工具调用",
+        "函数调用",
+        "多智能体",
+        "记忆",
+        "工作流",
+        "护栏",
     ],
     "coding-agent": [
         "coding agent",
@@ -42,6 +69,12 @@ KEYWORDS: dict[str, list[str]] = {
         "developer",
         "code",
         "repository",
+        "编程智能体",
+        "代码智能体",
+        "代码生成",
+        "软件工程",
+        "开发者",
+        "仓库",
     ],
     "rag": [
         "rag",
@@ -51,6 +84,12 @@ KEYWORDS: dict[str, list[str]] = {
         "embeddings",
         "rerank",
         "context engineering",
+        "检索增强",
+        "检索",
+        "向量",
+        "嵌入",
+        "重排",
+        "上下文工程",
     ],
     "eval": [
         "eval",
@@ -59,6 +98,12 @@ KEYWORDS: dict[str, list[str]] = {
         "benchmark",
         "observability",
         "tracing",
+        "评测",
+        "评估",
+        "基准",
+        "可观测",
+        "观测",
+        "追踪",
     ],
     "infra": [
         "inference",
@@ -68,6 +113,14 @@ KEYWORDS: dict[str, list[str]] = {
         "cost",
         "cache",
         "sandbox",
+        "推理",
+        "部署",
+        "服务化",
+        "延迟",
+        "成本",
+        "缓存",
+        "沙箱",
+        "工程化",
     ],
     "multimodal": [
         "multimodal",
@@ -76,6 +129,12 @@ KEYWORDS: dict[str, list[str]] = {
         "image",
         "document",
         "ocr",
+        "多模态",
+        "视觉",
+        "视频",
+        "图像",
+        "文档",
+        "语音",
     ],
     "safety": [
         "safety",
@@ -83,6 +142,24 @@ KEYWORDS: dict[str, list[str]] = {
         "control",
         "alignment",
         "risk",
+        "安全",
+        "对齐",
+        "风险",
+        "控制",
+        "红队",
+    ],
+    "training": [
+        "training",
+        "fine-tuning",
+        "finetuning",
+        "post-training",
+        "distillation",
+        "rlhf",
+        "lora",
+        "训练",
+        "微调",
+        "后训练",
+        "蒸馏",
     ],
 }
 
@@ -112,20 +189,57 @@ def parse_date(value: str) -> dt.datetime | None:
             parsed = parsed.replace(tzinfo=dt.timezone.utc)
         return parsed.astimezone(dt.timezone.utc)
     except ValueError:
+        pass
+
+    for date_format in ("%Y-%m-%d %H:%M:%S %z", "%Y-%m-%d %H:%M:%S"):
+        try:
+            parsed = dt.datetime.strptime(value, date_format)
+            if parsed.tzinfo is None:
+                parsed = parsed.replace(tzinfo=dt.timezone.utc)
+            return parsed.astimezone(dt.timezone.utc)
+        except ValueError:
+            continue
+
+    return None
+
+
+def parse_date_from_link(link: str) -> dt.datetime | None:
+    match = re.search(r"/(20\d{2})/(\d{1,2})/(\d{1,2})(?:/|-)", link)
+    if not match:
+        return None
+
+    try:
+        year, month, day = (int(part) for part in match.groups())
+        return dt.datetime(year, month, day, tzinfo=dt.timezone.utc)
+    except ValueError:
         return None
 
 
+def local_name(tag: str) -> str:
+    return tag.rsplit("}", 1)[-1].lower()
+
+
+def children(node: ET.Element, name: str) -> list[ET.Element]:
+    expected = name.lower()
+    return [child for child in list(node) if local_name(child.tag) == expected]
+
+
+def descendants(node: ET.Element, name: str) -> list[ET.Element]:
+    expected = name.lower()
+    return [child for child in node.iter() if child is not node and local_name(child.tag) == expected]
+
+
 def element_text(node: ET.Element, names: list[str]) -> str:
-    for name in names:
-        found = node.find(name)
-        if found is not None and found.text:
-            return found.text.strip()
+    expected = {name.lower() for name in names}
+    for child in list(node):
+        if local_name(child.tag) in expected and child.text:
+            return child.text.strip()
     return ""
 
 
 def element_link(node: ET.Element, atom: bool) -> str:
     if atom:
-        for found in node.findall("{http://www.w3.org/2005/Atom}link"):
+        for found in children(node, "link"):
             href = found.attrib.get("href", "").strip()
             rel = found.attrib.get("rel", "alternate")
             if href and rel == "alternate":
@@ -141,40 +255,45 @@ def element_link(node: ET.Element, atom: bool) -> str:
 
 def parse_entries(xml_bytes: bytes, source: dict[str, Any]) -> list[dict[str, Any]]:
     root = ET.fromstring(xml_bytes)
-    is_atom = root.tag.endswith("feed")
+    root_name = local_name(root.tag)
+    is_atom = root_name == "feed"
     entries: list[ET.Element]
 
     if is_atom:
-        entries = root.findall("{http://www.w3.org/2005/Atom}entry")
+        entries = children(root, "entry")
     else:
-        entries = root.findall("./channel/item")
+        channel = children(root, "channel")
+        entries = children(channel[0], "item") if channel else children(root, "item")
+        if not entries:
+            entries = descendants(root, "item")
 
     parsed: list[dict[str, Any]] = []
     for item in entries:
         if is_atom:
-            title = element_text(item, ["{http://www.w3.org/2005/Atom}title"])
+            title = element_text(item, ["title"])
             summary = element_text(
                 item,
                 [
-                    "{http://www.w3.org/2005/Atom}summary",
-                    "{http://www.w3.org/2005/Atom}content",
+                    "summary",
+                    "content",
                 ],
             )
             date_text = element_text(
                 item,
                 [
-                    "{http://www.w3.org/2005/Atom}published",
-                    "{http://www.w3.org/2005/Atom}updated",
+                    "published",
+                    "updated",
                 ],
             )
         else:
             title = element_text(item, ["title"])
-            summary = element_text(item, ["description", "{http://purl.org/rss/1.0/modules/content/}encoded"])
-            date_text = element_text(item, ["pubDate", "published", "updated"])
+            summary = element_text(item, ["description", "encoded", "summary", "content"])
+            date_text = element_text(item, ["pubDate", "published", "updated", "date"])
 
         link = element_link(item, is_atom)
         if not title or not link:
             continue
+        published = parse_date(date_text) or parse_date_from_link(link)
 
         parsed.append(
             {
@@ -182,9 +301,11 @@ def parse_entries(xml_bytes: bytes, source: dict[str, Any]) -> list[dict[str, An
                 "title": strip_html(title),
                 "link": link,
                 "summary": strip_html(summary),
-                "published": parse_date(date_text),
+                "published": published,
                 "topics": source.get("topics", []),
                 "weight": int(source.get("weight", 1)),
+                "language": source.get("language", ""),
+                "category": source.get("category", ""),
             }
         )
 
@@ -197,24 +318,54 @@ def fetch_feed(source: dict[str, Any], timeout: int) -> bytes:
         headers={
             "User-Agent": "Mozilla/5.0 (compatible; AIReadingCandidates/1.0)",
             "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml",
+            "Accept-Encoding": "identity",
+            "Connection": "close",
         },
     )
     with urllib.request.urlopen(request, timeout=timeout) as response:
         return response.read()
 
 
+def keyword_matches(haystack: str, keyword: str) -> bool:
+    keyword = keyword.lower()
+    if keyword.isascii():
+        pattern = rf"(?<![a-z0-9]){re.escape(keyword)}(?![a-z0-9])"
+        return re.search(pattern, haystack) is not None
+    return keyword in haystack
+
+
 def score_item(item: dict[str, Any]) -> tuple[int, list[str]]:
-    haystack = f"{item['title']} {item.get('summary', '')}".lower()
+    summary = item.get("summary", "")
+    haystack = f"{item['title']} {summary[:800]}".lower()
     matched_topics: list[str] = []
     score = item.get("weight", 1)
 
     for topic, keywords in KEYWORDS.items():
-        hits = sum(1 for keyword in keywords if keyword in haystack)
+        hits = sum(1 for keyword in keywords if keyword_matches(haystack, keyword))
         if hits:
             matched_topics.append(topic)
             score += min(hits, 3)
 
     return score, matched_topics
+
+
+def is_excluded(item: dict[str, Any], source: dict[str, Any]) -> bool:
+    exclude_keywords = source.get("exclude_keywords", [])
+    if not exclude_keywords:
+        return False
+
+    summary = item.get("summary", "")
+    haystack = f"{item['title']} {summary[:800]}".lower()
+    return any(keyword_matches(haystack, keyword) for keyword in exclude_keywords)
+
+
+def fetch_source_entries(source: dict[str, Any], timeout: int) -> tuple[dict[str, Any], list[dict[str, Any]], str]:
+    try:
+        feed = fetch_feed(source, timeout)
+        entries = parse_entries(feed, source)
+        return source, entries, ""
+    except Exception as exc:  # noqa: BLE001 - keep scheduled collection resilient.
+        return source, [], f"- {source['name']}: {type(exc).__name__}: {exc}"
 
 
 def collect(args: argparse.Namespace) -> tuple[list[dict[str, Any]], list[str]]:
@@ -223,29 +374,35 @@ def collect(args: argparse.Namespace) -> tuple[list[dict[str, Any]], list[str]]:
     candidates: list[dict[str, Any]] = []
     warnings: list[str] = []
 
-    for source in sources:
-        try:
-            feed = fetch_feed(source, args.timeout)
-            entries = parse_entries(feed, source)
-        except Exception as exc:  # noqa: BLE001 - keep scheduled collection resilient.
-            warnings.append(f"- {source['name']}: {type(exc).__name__}: {exc}")
-            continue
+    with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as executor:
+        source_results = executor.map(lambda source: fetch_source_entries(source, args.timeout), sources)
 
-        for item in entries:
-            published = item.get("published")
-            if published and published < cutoff:
+        for source, entries, warning in source_results:
+            if warning:
+                warnings.append(warning)
                 continue
 
-            score, matched_topics = score_item(item)
-            if score < args.min_score or not matched_topics:
-                continue
+            for item in entries:
+                published = item.get("published")
+                if not published and not args.include_undated:
+                    continue
+                if published and published < cutoff:
+                    continue
+                if is_excluded(item, source):
+                    continue
 
-            item["score"] = score
-            item["matched_topics"] = matched_topics
-            candidates.append(item)
+                score, matched_topics = score_item(item)
+                min_score = max(args.min_score, int(source.get("min_score", args.min_score)))
+                if score < min_score or not matched_topics:
+                    continue
+
+                item["score"] = score
+                item["matched_topics"] = matched_topics
+                candidates.append(item)
 
     seen: set[str] = set()
     unique: list[dict[str, Any]] = []
+    source_counts: dict[str, int] = {}
     for item in sorted(
         candidates,
         key=lambda value: (value.get("score", 0), value.get("published") or dt.datetime.min.replace(tzinfo=dt.timezone.utc)),
@@ -254,7 +411,11 @@ def collect(args: argparse.Namespace) -> tuple[list[dict[str, Any]], list[str]]:
         link = item["link"].split("?")[0].rstrip("/")
         if link in seen:
             continue
+        source = item["source"]
+        if args.max_per_source > 0 and source_counts.get(source, 0) >= args.max_per_source:
+            continue
         seen.add(link)
+        source_counts[source] = source_counts.get(source, 0) + 1
         unique.append(item)
         if len(unique) >= args.max_items:
             break
@@ -272,6 +433,7 @@ def render_markdown(items: list[dict[str, Any]], warnings: list[str], args: argp
         "",
         f"- Window: last {args.since_days} days",
         f"- Max items: {args.max_items}",
+        f"- Max per source: {args.max_per_source if args.max_per_source > 0 else 'unlimited'}",
         "",
     ]
 
@@ -298,6 +460,7 @@ def render_markdown(items: list[dict[str, Any]], warnings: list[str], args: argp
                 "",
                 f"- Link: {item['link']}",
                 f"- Source: {item['source']}",
+                f"- Language: {item.get('language') or 'unknown'}",
                 f"- Published: {published_text}",
                 f"- Matched topics: {', '.join(item.get('matched_topics', []))}",
                 f"- Score: {item.get('score', 0)}",
@@ -314,8 +477,11 @@ def main() -> int:
     parser.add_argument("--sources", default="reading/sources.json")
     parser.add_argument("--since-days", type=int, default=7)
     parser.add_argument("--max-items", type=int, default=12)
+    parser.add_argument("--max-per-source", type=int, default=3)
     parser.add_argument("--min-score", type=int, default=3)
     parser.add_argument("--timeout", type=int, default=15)
+    parser.add_argument("--workers", type=int, default=8)
+    parser.add_argument("--include-undated", action="store_true")
     parser.add_argument("--output", default="")
     args = parser.parse_args()
 

@@ -3,21 +3,282 @@
     "name": "OpenAI News",
     "feed_url": "https://openai.com/news/rss.xml",
     "homepage": "https://openai.com/news/",
-    "topics": ["llm", "agent", "eval", "safety"],
+    "language": "en",
+    "category": "official",
+    "topics": ["llm", "agent", "coding-agent", "eval", "safety"],
+    "weight": 2
+  },
+  {
+    "name": "Anthropic Engineering",
+    "feed_url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
+    "homepage": "https://www.anthropic.com/engineering",
+    "language": "en",
+    "category": "official-generated",
+    "topics": ["llm", "agent", "coding-agent", "infra", "safety"],
+    "weight": 2
+  },
+  {
+    "name": "Anthropic Research",
+    "feed_url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml",
+    "homepage": "https://www.anthropic.com/research",
+    "language": "en",
+    "category": "official-generated",
+    "topics": ["llm", "agent", "eval", "safety", "training"],
     "weight": 2
   },
   {
     "name": "Google DeepMind Blog",
     "feed_url": "https://deepmind.google/blog/rss.xml",
     "homepage": "https://deepmind.google/blog/",
-    "topics": ["research", "agent", "multimodal", "safety"],
+    "language": "en",
+    "category": "official",
+    "topics": ["research", "agent", "multimodal", "safety", "training"],
+    "weight": 2
+  },
+  {
+    "name": "Google Research Blog",
+    "feed_url": "https://research.google/blog/rss/",
+    "homepage": "https://research.google/blog/",
+    "language": "en",
+    "category": "official",
+    "topics": ["research", "llm", "agent", "multimodal", "infra"],
     "weight": 2
   },
   {
     "name": "LangChain Blog",
     "feed_url": "https://www.langchain.com/blog/rss.xml",
     "homepage": "https://www.langchain.com/blog",
+    "language": "en",
+    "category": "engineering",
     "topics": ["agent", "rag", "eval", "observability", "infra"],
+    "weight": 2
+  },
+  {
+    "name": "GitHub AI and ML Blog",
+    "feed_url": "https://github.blog/ai-and-ml/feed/",
+    "homepage": "https://github.blog/ai-and-ml/",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["coding-agent", "agent", "eval", "infra"],
+    "weight": 2
+  },
+  {
+    "name": "Sourcegraph Blog",
+    "feed_url": "https://sourcegraph.com/blog/rss.xml",
+    "homepage": "https://sourcegraph.com/blog",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["coding-agent", "agent", "repository", "infra"],
+    "weight": 2
+  },
+  {
+    "name": "Cloudflare AI Blog",
+    "feed_url": "https://blog.cloudflare.com/tag/ai/rss/",
+    "homepage": "https://blog.cloudflare.com/tag/ai/",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["agent", "infra", "security", "deployment"],
+    "weight": 2
+  },
+  {
+    "name": "AWS Machine Learning Blog",
+    "feed_url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "homepage": "https://aws.amazon.com/blogs/machine-learning/",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["llm", "agent", "rag", "infra", "deployment"],
+    "weight": 2
+  },
+  {
+    "name": "Databricks Blog",
+    "feed_url": "https://www.databricks.com/feed",
+    "homepage": "https://www.databricks.com/blog",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["llm", "rag", "eval", "infra", "data"],
+    "min_score": 5,
+    "weight": 2
+  },
+  {
+    "name": "Together AI Blog",
+    "feed_url": "https://www.together.ai/blog/rss.xml",
+    "homepage": "https://www.together.ai/blog",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["llm", "inference", "training", "infra", "cost"],
+    "weight": 2
+  },
+  {
+    "name": "Replicate Blog",
+    "feed_url": "https://replicate.com/blog/rss",
+    "homepage": "https://replicate.com/blog",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["multimodal", "deployment", "inference", "infra"],
+    "weight": 1
+  },
+  {
+    "name": "NVIDIA Generative AI Blog",
+    "feed_url": "https://developer.nvidia.com/blog/category/generative-ai/feed/",
+    "homepage": "https://developer.nvidia.com/blog/category/generative-ai/",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["llm", "agent", "multimodal", "infra", "inference"],
+    "weight": 2
+  },
+  {
+    "name": "PyTorch Blog",
+    "feed_url": "https://pytorch.org/blog/feed.xml",
+    "homepage": "https://pytorch.org/blog/",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["training", "inference", "infra", "deployment"],
+    "weight": 1
+  },
+  {
+    "name": "TensorFlow Blog",
+    "feed_url": "https://blog.tensorflow.org/feeds/posts/default?alt=rss",
+    "homepage": "https://blog.tensorflow.org/",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["training", "inference", "deployment", "infra"],
+    "weight": 1
+  },
+  {
+    "name": "BAIR Blog",
+    "feed_url": "https://bair.berkeley.edu/blog/feed.xml",
+    "homepage": "https://bair.berkeley.edu/blog/",
+    "language": "en",
+    "category": "research",
+    "topics": ["research", "llm", "agent", "robotics", "multimodal"],
+    "weight": 1
+  },
+  {
+    "name": "MIT News AI",
+    "feed_url": "https://news.mit.edu/rss/topic/artificial-intelligence2",
+    "homepage": "https://news.mit.edu/topic/artificial-intelligence2",
+    "language": "en",
+    "category": "research",
+    "topics": ["research", "llm", "robotics", "multimodal", "safety"],
+    "weight": 1
+  },
+  {
+    "name": "arXiv cs.AI",
+    "feed_url": "https://export.arxiv.org/api/query?search_query=cat:cs.AI&sortBy=submittedDate&sortOrder=descending&max_results=50",
+    "homepage": "https://arxiv.org/list/cs.AI/recent",
+    "language": "en",
+    "category": "paper",
+    "topics": ["research", "agent", "llm", "planning", "reasoning"],
+    "weight": 1
+  },
+  {
+    "name": "arXiv cs.CL",
+    "feed_url": "https://export.arxiv.org/api/query?search_query=cat:cs.CL&sortBy=submittedDate&sortOrder=descending&max_results=50",
+    "homepage": "https://arxiv.org/list/cs.CL/recent",
+    "language": "en",
+    "category": "paper",
+    "topics": ["research", "llm", "rag", "eval", "training"],
+    "weight": 1
+  },
+  {
+    "name": "arXiv cs.LG",
+    "feed_url": "https://export.arxiv.org/api/query?search_query=cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=50",
+    "homepage": "https://arxiv.org/list/cs.LG/recent",
+    "language": "en",
+    "category": "paper",
+    "topics": ["research", "training", "eval", "multimodal", "infra"],
+    "weight": 1
+  },
+  {
+    "name": "Lilian Weng Blog",
+    "feed_url": "https://lilianweng.github.io/index.xml",
+    "homepage": "https://lilianweng.github.io/",
+    "language": "en",
+    "category": "personal",
+    "topics": ["llm", "agent", "rag", "eval", "safety"],
+    "weight": 2
+  },
+  {
+    "name": "Chip Huyen Blog",
+    "feed_url": "https://huyenchip.com/feed.xml",
+    "homepage": "https://huyenchip.com/",
+    "language": "en",
+    "category": "personal",
+    "topics": ["llm", "mlops", "eval", "infra", "deployment"],
+    "weight": 2
+  },
+  {
+    "name": "Simon Willison",
+    "feed_url": "https://simonwillison.net/atom/everything/",
+    "homepage": "https://simonwillison.net/",
+    "language": "en",
+    "category": "personal",
+    "topics": ["llm", "agent", "coding-agent", "security", "tools"],
+    "weight": 2
+  },
+  {
+    "name": "Latent Space",
+    "feed_url": "https://www.latent.space/feed",
+    "homepage": "https://www.latent.space/",
+    "language": "en",
+    "category": "newsletter",
+    "topics": ["llm", "agent", "coding-agent", "infra", "startups"],
+    "weight": 1
+  },
+  {
+    "name": "The Gradient",
+    "feed_url": "https://thegradient.pub/rss/",
+    "homepage": "https://thegradient.pub/",
+    "language": "en",
+    "category": "media",
+    "topics": ["research", "llm", "safety", "agent", "multimodal"],
+    "weight": 1
+  },
+  {
+    "name": "量子位",
+    "feed_url": "https://www.qbitai.com/feed",
+    "homepage": "https://www.qbitai.com/",
+    "language": "zh-CN",
+    "category": "media",
+    "topics": ["大模型", "智能体", "具身智能", "多模态", "产业"],
+    "weight": 2
+  },
+  {
+    "name": "InfoQ 中国",
+    "feed_url": "https://www.infoq.cn/feed",
+    "homepage": "https://www.infoq.cn/",
+    "language": "zh-CN",
+    "category": "media",
+    "topics": ["大模型", "智能体", "工程化", "架构", "开发者"],
+    "weight": 2
+  },
+  {
+    "name": "OSChina AI",
+    "feed_url": "https://www.oschina.net/news/rss?tag=ai",
+    "homepage": "https://www.oschina.net/news/widgets/_news_index_all_list?tag=ai",
+    "language": "zh-CN",
+    "category": "community",
+    "topics": ["开源", "大模型", "智能体", "开发者", "工程化"],
+    "weight": 2
+  },
+  {
+    "name": "36Kr",
+    "feed_url": "https://36kr.com/feed",
+    "homepage": "https://36kr.com/",
+    "language": "zh-CN",
+    "category": "media",
+    "topics": ["AI产业", "大模型", "智能体", "创业", "投资"],
+    "min_score": 6,
+    "exclude_keywords": ["圆桌", "论坛", "创投", "投资", "峰会", "大会", "大赛"],
+    "weight": 1
+  },
+  {
+    "name": "美团技术团队",
+    "feed_url": "https://tech.meituan.com/feed/",
+    "homepage": "https://tech.meituan.com/",
+    "language": "zh-CN",
+    "category": "engineering",
+    "topics": ["大模型", "AIGC", "多模态", "工程化", "开源"],
     "weight": 2
   }
 ]

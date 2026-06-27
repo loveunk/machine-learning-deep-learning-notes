@@ -27,6 +27,7 @@ Anthropic 当前没有稳定官方 RSS，因此自动源暂时使用第三方生
 | LangChain Blog | <https://www.langchain.com/blog/rss.xml> | Agent、LangGraph、RAG、评估、观测 |
 | GitHub AI and ML Blog | <https://github.blog/ai-and-ml/feed/> | Copilot、Coding Agent、开发者工作流 |
 | Sourcegraph Blog | <https://sourcegraph.com/blog/rss.xml> | 代码智能体、代码检索、软件工程 |
+| ColaOS Blog | <https://colaos.ai/rss.xml> | Agent Harness、Agent 记忆、Prompt caching、Sandbox、AI Native 编程 |
 | Cloudflare AI Blog | <https://blog.cloudflare.com/tag/ai/rss/> | AI infra、Agent 安全、部署 |
 | AWS Machine Learning Blog | <https://aws.amazon.com/blogs/machine-learning/feed/> | Bedrock、RAG、Agent、生产化 |
 | Databricks Blog | <https://www.databricks.com/feed> | 数据、RAG、评估、MLOps |

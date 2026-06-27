@@ -72,6 +72,15 @@
     "weight": 2
   },
   {
+    "name": "ColaOS Blog",
+    "feed_url": "https://colaos.ai/rss.xml",
+    "homepage": "https://colaos.ai/blog/",
+    "language": "en",
+    "category": "engineering",
+    "topics": ["agent", "coding-agent", "memory", "harness", "sandbox", "infra"],
+    "weight": 2
+  },
+  {
     "name": "Cloudflare AI Blog",
     "feed_url": "https://blog.cloudflare.com/tag/ai/rss/",
     "homepage": "https://blog.cloudflare.com/tag/ai/",
